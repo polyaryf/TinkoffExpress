@@ -8,10 +8,10 @@
 import Foundation
 
 protocol DeliveryPresenterProtocol {
-    func showOnboarding()
+    func didSelectItemAt()
 }
 
-class DeliveryPresenter {
+class DeliveryPresenter: DeliveryPresenterProtocol {
     weak private var view: DeliveryViewController?
     private var coordinator: AppCoordinator?
     
@@ -22,9 +22,18 @@ class DeliveryPresenter {
     }
 }
 
+
+// MARK: - Event
+extension DeliveryPresenter {
+    func didSelectItemAt() {
+        showOnboarding()
+    }
+}
+
+
 // MARK: - Navigation
-extension DeliveryPresenter: DeliveryPresenterProtocol {
-    func showOnboarding() {
+extension DeliveryPresenter {
+    private func showOnboarding() {
         coordinator?.moveToOnboarding()
     }
 }

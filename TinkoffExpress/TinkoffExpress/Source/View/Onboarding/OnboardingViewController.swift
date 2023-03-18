@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 final class OnboardingViewController: UIViewController {
-    var onboardingPresenter: OnboardingPresenterProtocol?
+    private var onboardingPresenter: OnboardingPresenterProtocol?
 }
+
 
 // MARK: - Life Cycle
 extension OnboardingViewController {
@@ -26,6 +27,7 @@ extension OnboardingViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
+
 
 // MARK: - Setup
 extension OnboardingViewController {

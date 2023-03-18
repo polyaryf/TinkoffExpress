@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 final class DeliveryCell: UICollectionViewCell {
-    var label = UILabel()
-    var imageView = UIImageView()
+    private lazy var label = UILabel()
+    private lazy var imageView = UIImageView()
     
-    let sizeImageView = CGRect(x: 0, y: 0, width: 45, height: 45)
+    private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 45, height: 45)
     
     // Initialization
     override init(frame: CGRect) {
@@ -25,6 +25,7 @@ final class DeliveryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 // MARK: - Setup
 extension DeliveryCell {
@@ -69,6 +70,7 @@ extension DeliveryCell {
         }
     }
 }
+
 
 // MARK: - Animation
 extension DeliveryCell {

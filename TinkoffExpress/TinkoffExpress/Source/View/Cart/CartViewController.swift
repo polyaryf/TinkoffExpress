@@ -9,10 +9,11 @@ import UIKit
 import SnapKit
 
 final class CartViewController: UIViewController {
-    var cartPresenter: CartPresenterProtocol?
+    private var cartPresenter: CartPresenterProtocol?
     
-    let checkoutButton = UIButton()
+    private lazy var checkoutButton = UIButton()
 }
+
 
 // MARK: - Life Cycle
 extension CartViewController {
@@ -24,16 +25,18 @@ extension CartViewController {
     }
 }
 
+
 // MARK: Action
 extension CartViewController {
     @objc private func checkoutButtonTapped() {
-        cartPresenter?.showDelivery()
+        cartPresenter?.checkoutButtonTapped()
     }
 }
 
+
 // MARK: - Setup
 extension CartViewController {
-    func setupCheckoutButton() {
+    private func setupCheckoutButton() {
         // Configure
         checkoutButton.setTitle("Оформить", for: .normal)
         checkoutButton.setTitleColor(.black, for: .normal)

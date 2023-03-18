@@ -9,11 +9,12 @@ import UIKit
 import SnapKit
 
 final class DeliveryViewController: UIViewController {
-    var deliveryPresenter: DeliveryPresenterProtocol?
+    private var deliveryPresenter: DeliveryPresenterProtocol?
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    let closeButton = UIButton(type: .system)
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var closeButton = UIButton(type: .system)
 }
+
 
 // MARK: - Life Cycle
 extension DeliveryViewController {
@@ -32,6 +33,7 @@ extension DeliveryViewController {
     }
 }
 
+
 // MARK: - Actions
 extension DeliveryViewController {
     @objc func closeButtonTapped() {
@@ -39,9 +41,10 @@ extension DeliveryViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        deliveryPresenter?.showOnboarding()
+        deliveryPresenter?.didSelectItemAt()
     }
 }
+
 
 // MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
 extension DeliveryViewController: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout {
@@ -77,9 +80,10 @@ extension DeliveryViewController: UICollectionViewDataSource & UICollectionViewD
     }
 }
 
+
 // MARK: - Setup
 extension DeliveryViewController {
-    func setupCloseButton() {
+    private func setupCloseButton() {
         // Configure closeButton
         closeButton.setTitle("Закрыть", for: .normal)
 
@@ -96,7 +100,7 @@ extension DeliveryViewController {
         }
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         // Assignment to DataSource and Delegate
         collectionView.dataSource = self
         collectionView.delegate = self

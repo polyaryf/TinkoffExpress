@@ -8,10 +8,10 @@
 import Foundation
 
 protocol CartPresenterProtocol {
-    func showDelivery()
+    func checkoutButtonTapped()
 }
 
-class CartPresenter {
+class CartPresenter: CartPresenterProtocol {
     weak private var view: CartViewController?
     private var coordinator: AppCoordinator?
 
@@ -22,9 +22,18 @@ class CartPresenter {
     }
 }
 
+
+// MARK: - Event
+extension CartPresenter {
+    func checkoutButtonTapped() {
+        showDelivery()
+    }
+}
+
+
 // MARK: - Navigation
-extension CartPresenter: CartPresenterProtocol {
-    func showDelivery() {
+extension CartPresenter {
+    private func showDelivery() {
         coordinator?.moveToDelivery()
     }
 }

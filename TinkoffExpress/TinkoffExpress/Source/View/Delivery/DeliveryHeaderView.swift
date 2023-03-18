@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class DeliveryHeaderView: UICollectionReusableView {
-    let titleLabel = UILabel()
+    private lazy var titleLabel = UILabel()
     
     // Initializations
     override init(frame: CGRect) {
@@ -21,6 +21,7 @@ final class DeliveryHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 // MARK: - Setup
 extension DeliveryHeaderView {

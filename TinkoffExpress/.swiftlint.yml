@@ -78,6 +78,7 @@ identifier_name:
 line_length:
   ignores_urls: true
   ignores_comments: true
+  warning: 200
 
 multiline_arguments:
   first_argument_location: next_line
@@ -87,4 +88,4 @@ private_over_fileprivate:
   validate_extensions: true
 
 vertical_whitespace:
-  max_empty_lines: 1
+  max_empty_lines: 2

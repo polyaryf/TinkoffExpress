@@ -29,6 +29,7 @@ class AppCoordinator: AbstractCoordinator, RootCoordinator {
     }
 }
 
+
 // MARK: - Navigation
 extension AppCoordinator {
     func start(_ navigationController: UINavigationController) {
