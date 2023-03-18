@@ -8,31 +8,29 @@
 import Foundation
 
 protocol OnboardingPresenterProtocol {
-    func checkoutButtonTapped()
+    func continueButtonTapped()
 }
 
 class OnboardingPresenter: OnboardingPresenterProtocol {
+    // MARK: Dependencies
+
     weak private var view: OnboardingViewController?
     private var coordinator: AppCoordinator?
 
-    // Initialization
+    // MARK: Init
     init(coordinator: AppCoordinator, view: OnboardingViewController) {
         self.coordinator = coordinator
         self.view = view
     }
-}
-
-
-// MARK: - Event
-extension OnboardingPresenter {
-    func checkoutButtonTapped() {
+    
+    // MARK: Events
+    
+    func continueButtonTapped() {
         showDestination()
     }
-}
-
-
-// MARK: - Navigation
-extension OnboardingPresenter {
+    
+    // MARK: Navigation
+    
     private func showDestination() {
         coordinator?.moveToDestination()
     }

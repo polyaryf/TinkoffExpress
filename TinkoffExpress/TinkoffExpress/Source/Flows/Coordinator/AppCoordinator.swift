@@ -27,11 +27,9 @@ class AppCoordinator: AbstractCoordinator, RootCoordinator {
     func removeAllChildCoordinators() {
         childCoordinators.removeAll()
     }
-}
-
-
-// MARK: - Navigation
-extension AppCoordinator {
+    
+    // MARK: Navigation
+    
     func start(_ navigationController: UINavigationController) {
         let viewController = factory.makeInitialViewController(coordinator: self)
         self.navigationController = navigationController

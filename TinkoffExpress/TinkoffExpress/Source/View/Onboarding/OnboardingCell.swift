@@ -1,5 +1,5 @@
 //
-//  DeliveryCell.swift
+//  OnboardingCell.swift
 //  TinkoffExpress
 //
 //  Created by zedsbook on 18.03.2023.
@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-final class DeliveryCell: UICollectionViewCell {
+final class OnboardingCell: UICollectionViewCell {
     // MARK: Subviews
     
     private lazy var label = UILabel()
     private lazy var imageView = UIImageView()
     
-    private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 40, height: 40)
+    private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 90, height: 90)
     
     // MARK: Init
     
@@ -22,8 +22,8 @@ final class DeliveryCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setupContentView()
-        setupLabel()
         setupImageView()
+        setupLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -34,41 +34,36 @@ final class DeliveryCell: UICollectionViewCell {
     
     private func setupContentView() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 20
-        contentView.layer.masksToBounds = false
-
-        contentView.layer.shadowColor = UIColor.black.cgColor
-        contentView.layer.shadowOpacity = 0.2
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        contentView.layer.shadowRadius = 4
-    }
-    
-    private func setupLabel() {
-        label.text = "Доставка"
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        
-        contentView.addSubview(label)
-        
-        label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.centerY.equalToSuperview()
-        }
     }
     
     private func setupImageView() {
-        imageView.image = UIImage(named: "deliveryIcon")
+        imageView.image = UIImage(named: "onboardingLetter")
         imageView.frame = sizeImageView
-        imageView.layer.cornerRadius = imageView.bounds.size.width / 2
         imageView.clipsToBounds = true
         
         contentView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
             make.width.equalTo(sizeImageView.width)
             make.height.equalTo(sizeImageView.height)
+        }
+    }
+    
+    private func setupLabel() {
+        label.text = "Курьер доставит посылку в указанное время"
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.numberOfLines = 2
+        
+        contentView.addSubview(label)
+        
+        label.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset((sizeImageView.width - contentView.bounds.height) / 2)
+            make.leading.equalTo(imageView.snp.trailing).offset(20)
+            make.trailing.equalToSuperview().offset(-20)
         }
     }
     

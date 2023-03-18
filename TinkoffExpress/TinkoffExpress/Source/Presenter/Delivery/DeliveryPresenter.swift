@@ -12,27 +12,25 @@ protocol DeliveryPresenterProtocol {
 }
 
 class DeliveryPresenter: DeliveryPresenterProtocol {
+    // MARK: Dependencies
+    
     weak private var view: DeliveryViewController?
     private var coordinator: AppCoordinator?
     
-    // Initialization
+    // MARK: Init
     init(coordinator: AppCoordinator, view: DeliveryViewController) {
         self.coordinator = coordinator
         self.view = view
     }
-}
-
-
-// MARK: - Event
-extension DeliveryPresenter {
+    
+    // MARK: Events
+    
     func didSelectItemAt() {
         showOnboarding()
     }
-}
-
-
-// MARK: - Navigation
-extension DeliveryPresenter {
+    
+    // MARK: Navigation
+    
     private func showOnboarding() {
         coordinator?.moveToOnboarding()
     }

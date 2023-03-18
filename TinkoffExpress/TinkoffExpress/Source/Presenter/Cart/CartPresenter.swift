@@ -12,27 +12,25 @@ protocol CartPresenterProtocol {
 }
 
 class CartPresenter: CartPresenterProtocol {
+    // MARK: Dependencies
+    
     weak private var view: CartViewController?
     private var coordinator: AppCoordinator?
 
-    // Initialization
+    // MARK: Init
     init(coordinator: AppCoordinator, view: CartViewController) {
         self.coordinator = coordinator
         self.view = view
     }
-}
-
-
-// MARK: - Event
-extension CartPresenter {
+    
+    // MARK: Events
+    
     func checkoutButtonTapped() {
         showDelivery()
     }
-}
-
-
-// MARK: - Navigation
-extension CartPresenter {
+    
+    // MARK: Navigation
+    
     private func showDelivery() {
         coordinator?.moveToDelivery()
     }

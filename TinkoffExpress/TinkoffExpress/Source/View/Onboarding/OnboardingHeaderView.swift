@@ -1,5 +1,5 @@
 //
-//  DeliveryHeaderView.swift
+//  OnboardingHeaderView.swift
 //  TinkoffExpress
 //
 //  Created by zedsbook on 18.03.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class DeliveryHeaderView: UICollectionReusableView {
+final class OnboardingHeaderView: UICollectionReusableView {
     // MARK: Subviews
     
     private lazy var titleLabel = UILabel()
@@ -27,12 +27,12 @@ final class DeliveryHeaderView: UICollectionReusableView {
     // MARK: Setup Subviews
     
     private func setupTitleLabel() {
-        titleLabel.text = "Выберите\nспособ получения"
+        titleLabel.text = "Оформите\nбесплатную доставку"
         let largeTitleDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
         let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold)!
         titleLabel.font = UIFont(descriptor: boldDescriptor, size: 0)
         titleLabel.textColor = .black
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
         
         addSubview(titleLabel)
         
@@ -42,3 +42,4 @@ final class DeliveryHeaderView: UICollectionReusableView {
         }
     }
 }
+

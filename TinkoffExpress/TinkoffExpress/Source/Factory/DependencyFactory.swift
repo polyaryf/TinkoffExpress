@@ -14,7 +14,7 @@ protocol Factory {
     func makeOnboardingViewController(coordinator: AppCoordinator) -> OnboardingViewController
 }
 
-class DependencyFactory {
+class DependencyFactory: Factory {
     struct Dependencies {
         // This is for Managers
     }
@@ -29,11 +29,9 @@ class DependencyFactory {
         let coordinator = AppCoordinator(factory: self)
         return coordinator
     }
-}
-
-
-// MARK: - Creating ViewControllers
-extension DependencyFactory: Factory {
+    
+    // MARK: Creating ViewControllers
+    
     func makeInitialViewController(coordinator: AppCoordinator) -> CartViewController {
         makeCartViewController(coordinator: coordinator)
     }

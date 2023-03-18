@@ -23,6 +23,8 @@
 		438F301E29C5101000B55CA9 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438F301D29C5101000B55CA9 /* CartPresenter.swift */; };
 		438F302029C512B300B55CA9 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438F301F29C512B300B55CA9 /* OnboardingPresenter.swift */; };
 		438F302229C5159500B55CA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438F302129C5159500B55CA9 /* SceneDelegate.swift */; };
+		43A5513E29C5FC46006B7ED7 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5513D29C5FC46006B7ED7 /* OnboardingCell.swift */; };
+		43A5514029C5FC52006B7ED7 /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5513F29C5FC52006B7ED7 /* OnboardingHeaderView.swift */; };
 		F684F963A1E0016F14E27F0B /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C87DD1D6CDE53DC00EA799 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		438F301D29C5101000B55CA9 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		438F301F29C512B300B55CA9 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		438F302129C5159500B55CA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		43A5513D29C5FC46006B7ED7 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		43A5513F29C5FC52006B7ED7 /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		A4C87DD1D6CDE53DC00EA799 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				438F301829C50F4500B55CA9 /* OnboardingViewController.swift */,
+				43A5513D29C5FC46006B7ED7 /* OnboardingCell.swift */,
+				43A5513F29C5FC52006B7ED7 /* OnboardingHeaderView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -409,6 +415,8 @@
 				438F302029C512B300B55CA9 /* OnboardingPresenter.swift in Sources */,
 				438F300929C50D3B00B55CA9 /* AppCoordinator.swift in Sources */,
 				438F301E29C5101000B55CA9 /* CartPresenter.swift in Sources */,
+				43A5513E29C5FC46006B7ED7 /* OnboardingCell.swift in Sources */,
+				43A5514029C5FC52006B7ED7 /* OnboardingHeaderView.swift in Sources */,
 				438F301929C50F4500B55CA9 /* OnboardingViewController.swift in Sources */,
 				438F301729C50F0700B55CA9 /* CartViewController.swift in Sources */,
 				438F300E29C50D9800B55CA9 /* DependencyFactory.swift in Sources */,
