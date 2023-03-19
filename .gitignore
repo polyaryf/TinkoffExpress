@@ -89,4 +89,9 @@ fastlane/test_output
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
 
+## Environment normalization:
+2/.bundle/
+3/vendor/bundle
+4/lib/bundler/man/
+
 iOSInjectionProject/
