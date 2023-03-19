@@ -45,14 +45,16 @@ class DependencyFactory: Factory {
     
     func makeDeliveryViewController(coordinator: AppCoordinator) -> DeliveryViewController {
         let viewController = DeliveryViewController()
-        let presenter = DeliveryPresenter(coordinator: coordinator, view: viewController)
+        let mockService = MockDeliveryService()
+        let presenter = DeliveryPresenter(coordinator: coordinator, view: viewController, service: mockService)
         viewController.setPresenter(presenter)
         return viewController
     }
     
     func makeOnboardingViewController(coordinator: AppCoordinator) -> OnboardingViewController {
         let viewController = OnboardingViewController()
-        let presenter = OnboardingPresenter(coordinator: coordinator, view: viewController)
+        let mockService = MockOnboardingService()
+        let presenter = OnboardingPresenter(coordinator: coordinator, view: viewController, service: mockService)
         viewController.setPresenter(presenter)
         return viewController
     }

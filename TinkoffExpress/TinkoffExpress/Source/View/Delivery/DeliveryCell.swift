@@ -14,6 +14,8 @@ final class DeliveryCell: UICollectionViewCell {
     private lazy var label = UILabel()
     private lazy var imageView = UIImageView()
     
+    // MARK: Sizes
+    
     private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 40, height: 40)
     
     // MARK: Init
@@ -32,6 +34,11 @@ final class DeliveryCell: UICollectionViewCell {
     
     // MARK: Setup Subviews
     
+    func setupCell(text: String, imageName: String) {
+        label.text = text
+        imageView.image = UIImage(named: imageName)
+    }
+    
     private func setupContentView() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 20
@@ -44,7 +51,6 @@ final class DeliveryCell: UICollectionViewCell {
     }
     
     private func setupLabel() {
-        label.text = "Доставка"
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 23)
         
@@ -57,7 +63,6 @@ final class DeliveryCell: UICollectionViewCell {
     }
     
     private func setupImageView() {
-        imageView.image = UIImage(named: "deliveryIcon")
         imageView.frame = sizeImageView
         imageView.layer.cornerRadius = imageView.bounds.size.width / 2
         imageView.clipsToBounds = true

@@ -25,6 +25,10 @@
 		438F302229C5159500B55CA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438F302129C5159500B55CA9 /* SceneDelegate.swift */; };
 		43A5513E29C5FC46006B7ED7 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5513D29C5FC46006B7ED7 /* OnboardingCell.swift */; };
 		43A5514029C5FC52006B7ED7 /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A5513F29C5FC52006B7ED7 /* OnboardingHeaderView.swift */; };
+		43A7BCC529C759D800D3FCFC /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A7BCC429C759D800D3FCFC /* Delivery.swift */; };
+		43A7BCCB29C75B9600D3FCFC /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A7BCCA29C75B9600D3FCFC /* DeliveryService.swift */; };
+		43A7BCCD29C7649E00D3FCFC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A7BCCC29C7649E00D3FCFC /* Onboarding.swift */; };
+		43A7BCCF29C764F700D3FCFC /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A7BCCE29C764F700D3FCFC /* OnboardingService.swift */; };
 		F684F963A1E0016F14E27F0B /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C87DD1D6CDE53DC00EA799 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +53,10 @@
 		438F302129C5159500B55CA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43A5513D29C5FC46006B7ED7 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		43A5513F29C5FC52006B7ED7 /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
+		43A7BCC429C759D800D3FCFC /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		43A7BCCA29C75B9600D3FCFC /* DeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
+		43A7BCCC29C7649E00D3FCFC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		43A7BCCE29C764F700D3FCFC /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		A4C87DD1D6CDE53DC00EA799 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +127,7 @@
 				438F2FF829C509D900B55CA9 /* Model */,
 				438F2FF929C509DE00B55CA9 /* View */,
 				438F2FFA29C509E900B55CA9 /* Presenter */,
+				43A7BCC629C75B3200D3FCFC /* Service */,
 				438F2FFC29C50ABC00B55CA9 /* Flows */,
 				438F300C29C50D8200B55CA9 /* Factory */,
 			);
@@ -235,6 +244,7 @@
 		438F300429C50C4500B55CA9 /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
+				43A7BCC429C759D800D3FCFC /* Delivery.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 		438F300529C50C4C00B55CA9 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				43A7BCCC29C7649E00D3FCFC /* Onboarding.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -252,6 +263,39 @@
 				438F300D29C50D9800B55CA9 /* DependencyFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		43A7BCC629C75B3200D3FCFC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43A7BCC729C75B4600D3FCFC /* Cart */,
+				43A7BCC829C75B5C00D3FCFC /* Delivery */,
+				43A7BCC929C75B6200D3FCFC /* Onboarding */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		43A7BCC729C75B4600D3FCFC /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		43A7BCC829C75B5C00D3FCFC /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				43A7BCCA29C75B9600D3FCFC /* DeliveryService.swift */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		43A7BCC929C75B6200D3FCFC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				43A7BCCE29C764F700D3FCFC /* OnboardingService.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
@@ -405,7 +449,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				438F300B29C50D5500B55CA9 /* RootCoordinator.swift in Sources */,
+				43A7BCCD29C7649E00D3FCFC /* Onboarding.swift in Sources */,
 				438F302229C5159500B55CA9 /* SceneDelegate.swift in Sources */,
+				43A7BCC529C759D800D3FCFC /* Delivery.swift in Sources */,
 				438F301229C50E4800B55CA9 /* DeliveryCell.swift in Sources */,
 				438F300729C50D1A00B55CA9 /* AbstractCoordinator.swift in Sources */,
 				438F301429C50E6A00B55CA9 /* DeliveryHeaderView.swift in Sources */,
@@ -416,10 +462,12 @@
 				438F300929C50D3B00B55CA9 /* AppCoordinator.swift in Sources */,
 				438F301E29C5101000B55CA9 /* CartPresenter.swift in Sources */,
 				43A5513E29C5FC46006B7ED7 /* OnboardingCell.swift in Sources */,
+				43A7BCCF29C764F700D3FCFC /* OnboardingService.swift in Sources */,
 				43A5514029C5FC52006B7ED7 /* OnboardingHeaderView.swift in Sources */,
 				438F301929C50F4500B55CA9 /* OnboardingViewController.swift in Sources */,
 				438F301729C50F0700B55CA9 /* CartViewController.swift in Sources */,
 				438F300E29C50D9800B55CA9 /* DependencyFactory.swift in Sources */,
+				43A7BCCB29C75B9600D3FCFC /* DeliveryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

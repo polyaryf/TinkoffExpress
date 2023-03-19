@@ -13,6 +13,10 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     
     private var onboardingPresenter: OnboardingPresenterProtocol?
     
+    // MARK: Properties
+    
+    lazy var items: [Onboarding] = []
+    
     // MARK: Subviews
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -26,6 +30,8 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
         view.backgroundColor = .white
         setupCollectionView()
         setupContinueButton()
+        
+        onboardingPresenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +69,8 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
+            make.leading.trailing.equalToSuperview()
         }
     }
     
@@ -91,11 +98,14 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingCell
+        let textCell = items[indexPath.row].text
+        let imageNameCell = items[indexPath.row].imageName
+        cell.setupCell(text: textCell, imageName: imageNameCell)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -114,6 +124,10 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 90)
+        return CGSize(width: collectionView.bounds.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
 }

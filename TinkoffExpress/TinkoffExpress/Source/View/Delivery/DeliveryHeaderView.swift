@@ -28,9 +28,7 @@ final class DeliveryHeaderView: UICollectionReusableView {
     
     private func setupTitleLabel() {
         titleLabel.text = "Выберите\nспособ получения"
-        let largeTitleDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
-        guard let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold) else { return }
-        titleLabel.font = UIFont(descriptor: boldDescriptor, size: 0)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 33)
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 0
         
@@ -39,6 +37,7 @@ final class DeliveryHeaderView: UICollectionReusableView {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
 }

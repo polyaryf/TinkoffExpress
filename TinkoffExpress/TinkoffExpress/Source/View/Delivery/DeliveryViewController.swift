@@ -12,6 +12,10 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     // MARK: Dependencies
     
     private var deliveryPresenter: DeliveryPresenterProtocol?
+    
+    // MARK: Properties
+    
+    lazy var items: [Delivery] = []
 
     // MARK: Subviews
     
@@ -23,9 +27,12 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         view.backgroundColor = .white
         setupCloseButton()
         setupCollectionView()
+        
+        deliveryPresenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +63,7 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     
     private func setupCloseButton() {
         closeButton.setTitle("Закрыть", for: .normal)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
 
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
 
@@ -63,7 +71,7 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
 
         // Add Constraints using SnapKit
         closeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(20)
         }
     }
@@ -83,7 +91,7 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(closeButton.snp.bottom).offset(10)
+            make.top.equalTo(closeButton.snp.bottom).offset(12)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -93,11 +101,14 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeliveryCell", for: indexPath) as! DeliveryCell
+        let textCell = items[indexPath.row].text
+        let imageNameCell = items[indexPath.row].imageName
+        cell.setupCell(text: textCell, imageName: imageNameCell)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,6 +127,10 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 90)
+        return CGSize(width: collectionView.bounds.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
     }
 }

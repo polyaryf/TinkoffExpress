@@ -14,7 +14,9 @@ final class OnboardingCell: UICollectionViewCell {
     private lazy var label = UILabel()
     private lazy var imageView = UIImageView()
     
-    private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 90, height: 90)
+    // MARK: Sizes
+    
+    private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 80, height: 80)
     
     // MARK: Init
     
@@ -32,12 +34,16 @@ final class OnboardingCell: UICollectionViewCell {
     
     // MARK: Setup Subviews
     
+    func setupCell(text: String, imageName: String) {
+        label.text = text
+        imageView.image = UIImage(named: imageName)
+    }
+    
     private func setupContentView() {
         contentView.backgroundColor = .white
     }
     
     private func setupImageView() {
-        imageView.image = UIImage(named: "onboardingLetter")
         imageView.frame = sizeImageView
         imageView.clipsToBounds = true
         
@@ -52,7 +58,6 @@ final class OnboardingCell: UICollectionViewCell {
     }
     
     private func setupLabel() {
-        label.text = "Курьер доставит посылку в указанное время"
         label.textAlignment = .left
         label.textColor = .black
         label.font = UIFont.preferredFont(forTextStyle: .body)
