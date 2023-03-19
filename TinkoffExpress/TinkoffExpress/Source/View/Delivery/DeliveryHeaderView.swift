@@ -29,7 +29,7 @@ final class DeliveryHeaderView: UICollectionReusableView {
     private func setupTitleLabel() {
         titleLabel.text = "Выберите\nспособ получения"
         let largeTitleDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
-        let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold)!
+        guard let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold) else { return }
         titleLabel.font = UIFont(descriptor: boldDescriptor, size: 0)
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 0

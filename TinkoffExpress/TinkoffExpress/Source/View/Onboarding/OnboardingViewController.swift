@@ -18,7 +18,6 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var continueButton = UIButton()
     
-    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -90,7 +89,8 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingCell
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingCell
         return cell
     }
 
@@ -105,6 +105,7 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     // Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
+            // swiftlint:disable:next force_cast
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "OnboardingHeaderView", for: indexPath) as! OnboardingHeaderView
             return headerView
         } else {

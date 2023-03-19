@@ -91,7 +91,8 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeliveryCell", for: indexPath) as! DeliveryCell
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DeliveryCell", for: indexPath) as! DeliveryCell
         return cell
     }
 
@@ -106,6 +107,7 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     // Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
+            // swiftlint:disable:next force_cast
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DeliveryHeaderView", for: indexPath) as! DeliveryHeaderView
             return headerView
         } else {

@@ -29,7 +29,7 @@ final class OnboardingHeaderView: UICollectionReusableView {
     private func setupTitleLabel() {
         titleLabel.text = "Оформите\nбесплатную доставку"
         let largeTitleDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1)
-        let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold)!
+        guard let boldDescriptor = largeTitleDescriptor.withSymbolicTraits(.traitBold) else { return }
         titleLabel.font = UIFont(descriptor: boldDescriptor, size: 0)
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 2
@@ -42,4 +42,3 @@ final class OnboardingHeaderView: UICollectionReusableView {
         }
     }
 }
-
