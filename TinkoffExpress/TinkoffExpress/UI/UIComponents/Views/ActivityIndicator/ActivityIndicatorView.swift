@@ -74,8 +74,92 @@ final class ActivityIndicatorView: UIView {
     
     // MARK: - Public
     
-    func startAnimation(animated: Bool) {}
-    func stopAnimation(animated: Bool) {}
+    func startAnimation(animated: Bool) {
+        defer { startAnimation() }
+
+        let animations = {
+            self.circle.opacity = 1
+        }
+        guard animated else {
+            animations()
+            return
+        }
+
+        UIView.animate(
+            withDuration: Constants.Animation.duration300ms,
+            animations: animations
+        )
+    }
+    
+    func stopAnimation(animated: Bool) {
+        let animations = {
+            self.circle.opacity = 0
+        }
+        let completion = { (isFinished: Bool) in
+            guard isFinished else { return }
+
+            self.circle.removeAllAnimations()
+            self.isAnimating = false
+        }
+
+        guard animated else {
+            animations()
+            completion(true)
+            return
+        }
+
+        UIView.animate(
+            withDuration: Constants.Animation.duration300ms,
+            animations: animations,
+            completion: completion
+        )
+    }
+    
+    // MARK: - Private
+    
+    private func startAnimation() {
+        guard !isAnimating else { return }
+
+        startStrokeAnimation()
+        startRotationAnimation()
+        isAnimating = true
+    }
+    
+    private func startStrokeAnimation() {
+        guard circle.animation(forKey: Constants.Animation.strokeAnimation) == nil else { return }
+        
+        let forwardStrokeAnimation = CABasicAnimation(keyPath: Constants.Animation.layerStrokeEndAnimation)
+        forwardStrokeAnimation.duration = Constants.Animation.duration3s / 2
+        forwardStrokeAnimation.fromValue = 0
+        forwardStrokeAnimation.toValue = 1
+        
+        let backwardStrokeAnimation = CABasicAnimation(keyPath: Constants.Animation.layerStrokeStartAnimation)
+        backwardStrokeAnimation.duration = Constants.Animation.duration3s / 2
+        backwardStrokeAnimation.fromValue = 0
+        backwardStrokeAnimation.toValue = 1
+        backwardStrokeAnimation.beginTime = Constants.Animation.duration3s / 2
+
+        let group = CAAnimationGroup()
+        group.animations = [forwardStrokeAnimation, backwardStrokeAnimation]
+        group.repeatCount = .infinity
+        group.duration = Constants.Animation.duration3s
+        group.isRemovedOnCompletion = false
+
+        circle.add(group, forKey: Constants.Animation.strokeAnimation)
+    }
+    
+    private func startRotationAnimation() {
+        guard circle.animation(forKey: Constants.Animation.rotationAnimation) == nil else { return }
+
+        let rotationAnimation = CABasicAnimation(keyPath: Constants.Animation.layerTransformRotationZAnimation)
+        rotationAnimation.fromValue = -Double.pi * 0.5
+        rotationAnimation.toValue = Double.pi * 1.5
+        rotationAnimation.duration = Constants.Animation.duration3s * 2 / Constants.Animation.rotationMultiplier
+        rotationAnimation.repeatCount = .infinity
+        rotationAnimation.isRemovedOnCompletion = false
+
+        circle.add(rotationAnimation, forKey: Constants.Animation.rotationAnimation)
+    }
     
     // MARK: - TCSStylable
 
