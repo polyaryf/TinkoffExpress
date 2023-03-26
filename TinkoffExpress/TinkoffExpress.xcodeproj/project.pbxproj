@@ -28,7 +28,6 @@
 		292BB89E29D07D47004B2CE7 /* Button+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
-		29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBC29C37E73007C763D /* ViewController.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
@@ -56,7 +55,6 @@
 		292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+ContentSize.swift"; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		29B3AEBC29C37E73007C763D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				292BB87629D06918004B2CE7 /* UI */,
 				29B3AEB829C37E73007C763D /* AppDelegate.swift */,
 				29B3AEBA29C37E73007C763D /* SceneDelegate.swift */,
-				29B3AEBC29C37E73007C763D /* ViewController.swift */,
 				29B3AEC129C37E74007C763D /* Assets.xcassets */,
 				29B3AEC629C37E74007C763D /* Info.plist */,
 			);
@@ -365,7 +362,6 @@
 				292BB89229D07968004B2CE7 /* UIColor+Highlight.swift in Sources */,
 				292BB89629D079D3004B2CE7 /* HSBAColor+UIColor.swift in Sources */,
 				292BB89A29D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift in Sources */,
-				29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */,
 				292BB88C29D076F1004B2CE7 /* Button.Configuration+Extensions.swift in Sources */,
 				292BB87B29D069FA004B2CE7 /* Extension+UIColor.swift in Sources */,
 				292BB87529D06824004B2CE7 /* ActivityIndicatorView.swift in Sources */,

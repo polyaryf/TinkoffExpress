@@ -35,8 +35,8 @@ final class Button: UIView {
         self.configuration = configuration
         self.action = action
         super.init(frame: .zero)
-//        setupView()
-//        updateView()
+        setupView()
+        updateView()
     }
 
     @available(*, unavailable)
@@ -119,6 +119,7 @@ final class Button: UIView {
 
     private func setupConstraints() {
         control.pinEdgesToSuperview()
+        loader.pinEdgesToSuperview()
         contentStack.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
