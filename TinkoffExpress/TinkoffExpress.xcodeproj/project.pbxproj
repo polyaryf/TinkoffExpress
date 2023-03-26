@@ -27,7 +27,8 @@
 		292BB89C29D07BB3004B2CE7 /* HSBAColor+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89B29D07BB3004B2CE7 /* HSBAColor+Highlight.swift */; };
 		292BB89E29D07D47004B2CE7 /* Button+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */; };
 		292BB8A929D0A52E004B2CE7 /* OrderCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */; };
-		292BB8AC29D0AB47004B2CE7 /* CellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */; };
+		292BB8AC29D0AB47004B2CE7 /* OrderCheckoutCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8AB29D0AB47004B2CE7 /* OrderCheckoutCellType.swift */; };
+		292BB8AE29D0C5DB004B2CE7 /* OrderCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8AD29D0C5DB004B2CE7 /* OrderCheckoutTableViewCell.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
@@ -56,7 +57,8 @@
 		292BB89B29D07BB3004B2CE7 /* HSBAColor+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSBAColor+Highlight.swift"; sourceTree = "<group>"; };
 		292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+ContentSize.swift"; sourceTree = "<group>"; };
 		292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutViewController.swift; sourceTree = "<group>"; };
-		292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeader.swift; sourceTree = "<group>"; };
+		292BB8AB29D0AB47004B2CE7 /* OrderCheckoutCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutCellType.swift; sourceTree = "<group>"; };
+		292BB8AD29D0C5DB004B2CE7 /* OrderCheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,18 +216,19 @@
 		292BB8A729D0A3FA004B2CE7 /* OrderCheckout */ = {
 			isa = PBXGroup;
 			children = (
-				292BB8AA29D0AAC4004B2CE7 /* CustomCells */,
+				292BB8AA29D0AAC4004B2CE7 /* OrderCheckoutCell */,
 				292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */,
 			);
 			path = OrderCheckout;
 			sourceTree = "<group>";
 		};
-		292BB8AA29D0AAC4004B2CE7 /* CustomCells */ = {
+		292BB8AA29D0AAC4004B2CE7 /* OrderCheckoutCell */ = {
 			isa = PBXGroup;
 			children = (
-				292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */,
+				292BB8AB29D0AB47004B2CE7 /* OrderCheckoutCellType.swift */,
+				292BB8AD29D0C5DB004B2CE7 /* OrderCheckoutTableViewCell.swift */,
 			);
-			path = CustomCells;
+			path = OrderCheckoutCell;
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -405,7 +408,7 @@
 				292BB88029D06B82004B2CE7 /* ShadowAvailable.swift in Sources */,
 				292BB89E29D07D47004B2CE7 /* Button+ContentSize.swift in Sources */,
 				292BB89829D07A0D004B2CE7 /* HSBAColor.swift in Sources */,
-				292BB8AC29D0AB47004B2CE7 /* CellHeader.swift in Sources */,
+				292BB8AC29D0AB47004B2CE7 /* OrderCheckoutCellType.swift in Sources */,
 				292BB89229D07968004B2CE7 /* UIColor+Highlight.swift in Sources */,
 				292BB89629D079D3004B2CE7 /* HSBAColor+UIColor.swift in Sources */,
 				292BB89A29D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift in Sources */,
@@ -419,6 +422,7 @@
 				292BB89C29D07BB3004B2CE7 /* HSBAColor+Highlight.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				292BB87D29D06A1E004B2CE7 /* UIColor+Dynamic.swift in Sources */,
+				292BB8AE29D0C5DB004B2CE7 /* OrderCheckoutTableViewCell.swift in Sources */,
 				292BB88329D06D35004B2CE7 /* Theme.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 				292BB88829D0766A004B2CE7 /* Button.Style+Extensions.swift in Sources */,
