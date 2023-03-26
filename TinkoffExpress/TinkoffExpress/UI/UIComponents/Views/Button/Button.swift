@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class Button: UIView {
-    
+final class Button: UIView {    
     private(set) var configuration: Configuration
     
     // MARK: Subviews & Constraints
@@ -225,7 +224,9 @@ final class Button: UIView {
         // Исправляет некорректное поведение внутри стека во время анимации
         UIView.performWithoutAnimation {
             imageView.isHidden = configuration.image == nil || configuration.isLoading
-            titleLabel.isHidden = configuration.title == nil || configuration.title?.isEmpty == true || configuration.isLoading
+            titleLabel.isHidden = configuration.title == nil ||
+            configuration.title?.isEmpty == true ||
+            configuration.isLoading
         }
     }
 

@@ -10,9 +10,9 @@ disabled_rules:
   - notification_center_detachment
   - orphaned_doc_comment
   - identifier_name
-  - vertical_whitespace_opening_braces
   - type_body_length
   - convenience_type
+  - nesting
 
 opt_in_rules:
   - attributes

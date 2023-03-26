@@ -13,7 +13,6 @@ extension UIColor {
         let b: CGFloat
         let a: CGFloat
        
-
         if hex.hasPrefix("#") {
             let start = hex.index(hex.startIndex, offsetBy: 1)
             var hexColor = String(hex[start...])

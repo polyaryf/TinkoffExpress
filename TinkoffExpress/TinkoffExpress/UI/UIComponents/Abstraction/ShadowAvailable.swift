@@ -8,7 +8,6 @@
 import UIKit
 
 protocol ShadowAvailable: AnyObject {
-
     /// Применяет стиль тени к объекту
     func dropShadow(with style: ShadowStyle)
 

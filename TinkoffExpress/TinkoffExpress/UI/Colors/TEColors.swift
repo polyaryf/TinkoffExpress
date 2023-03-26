@@ -8,7 +8,6 @@
 import UIKit
 
 struct TEColors {
-
     static var black: UIColor {
         UIColor(hex: "#333333") ?? .clear
     }
@@ -61,11 +60,9 @@ struct TEColors {
 // MARK: - Pallete
 
 extension TEColors {
-
     // MARK: - Foreground
 
     struct Foreground {
-
         // Static
 
         static var brandTinkoffAccent: UIColor { UIColor(hex: "#FFDD2D") ?? .clear }
@@ -84,7 +81,6 @@ extension TEColors {
     // MARK: - Background
 
     struct Background {
-
         static var base: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: TEColors.n14,
@@ -145,7 +141,6 @@ extension TEColors {
     // MARK: - Text
 
     struct Text {
-
         static var primary: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: TEColors.textPrimary,
@@ -166,7 +161,7 @@ extension TEColors {
                 dark: UIColor(hex: "#9299A2")!
             )
         }
-
+        
         static var tertiary: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: UIColor(hex: "#001024")!.withAlphaComponent(0.22),
@@ -192,7 +187,6 @@ extension TEColors {
     // MARK: - Button
 
     struct Button {
-
         struct Sbp {
             static var background: UIColor.Dynamic {
                 return UIColor.Dynamic(

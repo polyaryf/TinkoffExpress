@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIColor {
-
     struct Dynamic {
         let light: UIColor
         let dark: UIColor
@@ -28,7 +27,6 @@ extension UIColor {
 }
 
 extension UIColor {
-
     static func dynamicColor(dynamic: Dynamic) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor(dynamicProvider: {
