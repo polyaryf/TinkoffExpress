@@ -34,6 +34,49 @@ final class ActivityIndicatorView: UIView {
         super.init(coder: aDecoder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let padding = style?.padding ?? Constants.Layout.padding
+        let originSize = (padding - size.height) / 2
+        let widthHeight = size.height - padding
+        let ovalRect = CGRect(
+            origin: CGPoint(x: originSize, y: originSize),
+            size: CGSize(width: widthHeight, height: widthHeight)
+        )
+
+        circle.path = UIBezierPath(ovalIn: ovalRect).cgPath
+        circle.position = CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil {
+            stopAnimation(animated: false)
+        } else {
+            startAnimation(animated: false)
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                circle.strokeColor = style?.lineColor.cgColor
+            }
+        }
+    }
+    
+    // MARK: - Layout
+
+    override var intrinsicContentSize: CGSize {
+        size
+    }
+    
+    // MARK: - Public
+    
+    func startAnimation(animated: Bool) {}
+    func stopAnimation(animated: Bool) {}
+    
     // MARK: - TCSStylable
 
     var style: Style?
