@@ -9,6 +9,7 @@ disabled_rules:
   - trailing_whitespace
   - notification_center_detachment
   - orphaned_doc_comment
+  - identifier_name
 
 opt_in_rules:
   - attributes

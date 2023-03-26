@@ -12,6 +12,8 @@
 		292BB87929D0694D004B2CE7 /* TEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB87829D0694D004B2CE7 /* TEColors.swift */; };
 		292BB87B29D069FA004B2CE7 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB87A29D069FA004B2CE7 /* Extension+UIColor.swift */; };
 		292BB87D29D06A1E004B2CE7 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB87C29D06A1E004B2CE7 /* UIColor+Dynamic.swift */; };
+		292BB88029D06B82004B2CE7 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB87F29D06B82004B2CE7 /* ShadowAvailable.swift */; };
+		292BB88329D06D35004B2CE7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB88229D06D35004B2CE7 /* Theme.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
 		29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBC29C37E73007C763D /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 		292BB87829D0694D004B2CE7 /* TEColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEColors.swift; sourceTree = "<group>"; };
 		292BB87A29D069FA004B2CE7 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		292BB87C29D06A1E004B2CE7 /* UIColor+Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Dynamic.swift"; sourceTree = "<group>"; };
+		292BB87F29D06B82004B2CE7 /* ShadowAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
+		292BB88229D06D35004B2CE7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBC29C37E73007C763D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		292BB86E29D06683004B2CE7 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				292BB88129D06D2A004B2CE7 /* Colors */,
+				292BB87E29D06B67004B2CE7 /* Abstraction */,
 				292BB86F29D0676D004B2CE7 /* Views */,
 			);
 			path = UIComponents;
@@ -98,6 +104,22 @@
 				292BB87829D0694D004B2CE7 /* TEColors.swift */,
 				292BB87A29D069FA004B2CE7 /* Extension+UIColor.swift */,
 				292BB87C29D06A1E004B2CE7 /* UIColor+Dynamic.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		292BB87E29D06B67004B2CE7 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				292BB87F29D06B82004B2CE7 /* ShadowAvailable.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		292BB88129D06D2A004B2CE7 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				292BB88229D06D35004B2CE7 /* Theme.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -277,11 +299,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				292BB87929D0694D004B2CE7 /* TEColors.swift in Sources */,
+				292BB88029D06B82004B2CE7 /* ShadowAvailable.swift in Sources */,
 				29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */,
 				292BB87B29D069FA004B2CE7 /* Extension+UIColor.swift in Sources */,
 				292BB87529D06824004B2CE7 /* ActivityIndicatorView.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				292BB87D29D06A1E004B2CE7 /* UIColor+Dynamic.swift in Sources */,
+				292BB88329D06D35004B2CE7 /* Theme.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 				292BB87329D067DD004B2CE7 /* Button.swift in Sources */,
 			);

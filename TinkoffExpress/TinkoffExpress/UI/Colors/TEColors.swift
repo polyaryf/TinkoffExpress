@@ -87,36 +87,36 @@ extension TEColors {
 
         static var base: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.n14,
-                dark: ASDKColors.n15
+                light: TEColors.n14,
+                dark: TEColors.n15
             )
         }
 
         static var elevation1: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.n14,
-                dark: ASDKColors.n16
+                light: TEColors.n14,
+                dark: TEColors.n16
             )
         }
 
         static var elevation2: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.n14,
-                dark: ASDKColors.n18
+                light: TEColors.n14,
+                dark: TEColors.n18
             )
         }
 
         static var elevation3: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: .white,
-                dark: ASDKColors.black
+                dark: TEColors.black
             )
         }
 
         static var separator: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.darkGray,
-                dark: ASDKColors.black
+                light: TEColors.darkGray,
+                dark: TEColors.black
             )
         }
 
@@ -148,15 +148,15 @@ extension TEColors {
 
         static var primary: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.textPrimary,
-                dark: ASDKColors.n7
+                light: TEColors.textPrimary,
+                dark: TEColors.n7
             )
         }
 
         static var primaryOnTinkoff: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: ASDKColors.textPrimary,
-                dark: ASDKColors.textPrimary
+                light: TEColors.textPrimary,
+                dark: TEColors.textPrimary
             )
         }
 
