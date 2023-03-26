@@ -26,6 +26,8 @@
 		292BB89A29D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89929D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift */; };
 		292BB89C29D07BB3004B2CE7 /* HSBAColor+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89B29D07BB3004B2CE7 /* HSBAColor+Highlight.swift */; };
 		292BB89E29D07D47004B2CE7 /* Button+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */; };
+		292BB8A929D0A52E004B2CE7 /* OrderCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */; };
+		292BB8AC29D0AB47004B2CE7 /* CellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		292BB89929D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button.CornerStyle+Extensions.swift"; sourceTree = "<group>"; };
 		292BB89B29D07BB3004B2CE7 /* HSBAColor+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HSBAColor+Highlight.swift"; sourceTree = "<group>"; };
 		292BB89D29D07D47004B2CE7 /* Button+ContentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+ContentSize.swift"; sourceTree = "<group>"; };
+		292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutViewController.swift; sourceTree = "<group>"; };
+		292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeader.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +186,48 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
+		292BB8A429D0A2E1004B2CE7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				29B3AEBA29C37E73007C763D /* SceneDelegate.swift */,
+				29B3AEB829C37E73007C763D /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		292BB8A529D0A303004B2CE7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				292BB8A629D0A316004B2CE7 /* Views */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		292BB8A629D0A316004B2CE7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				292BB8A729D0A3FA004B2CE7 /* OrderCheckout */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		292BB8A729D0A3FA004B2CE7 /* OrderCheckout */ = {
+			isa = PBXGroup;
+			children = (
+				292BB8AA29D0AAC4004B2CE7 /* CustomCells */,
+				292BB8A829D0A52E004B2CE7 /* OrderCheckoutViewController.swift */,
+			);
+			path = OrderCheckout;
+			sourceTree = "<group>";
+		};
+		292BB8AA29D0AAC4004B2CE7 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				292BB8AB29D0AB47004B2CE7 /* CellHeader.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		29B3AEAC29C37E73007C763D = {
 			isa = PBXGroup;
 			children = (
@@ -196,9 +242,9 @@
 		29B3AEB729C37E73007C763D /* TinkoffExpress */ = {
 			isa = PBXGroup;
 			children = (
+				292BB8A529D0A303004B2CE7 /* Source */,
+				292BB8A429D0A2E1004B2CE7 /* App */,
 				292BB87629D06918004B2CE7 /* UI */,
-				29B3AEB829C37E73007C763D /* AppDelegate.swift */,
-				29B3AEBA29C37E73007C763D /* SceneDelegate.swift */,
 				29B3AEC129C37E74007C763D /* Assets.xcassets */,
 				29B3AEC629C37E74007C763D /* Info.plist */,
 			);
@@ -359,6 +405,7 @@
 				292BB88029D06B82004B2CE7 /* ShadowAvailable.swift in Sources */,
 				292BB89E29D07D47004B2CE7 /* Button+ContentSize.swift in Sources */,
 				292BB89829D07A0D004B2CE7 /* HSBAColor.swift in Sources */,
+				292BB8AC29D0AB47004B2CE7 /* CellHeader.swift in Sources */,
 				292BB89229D07968004B2CE7 /* UIColor+Highlight.swift in Sources */,
 				292BB89629D079D3004B2CE7 /* HSBAColor+UIColor.swift in Sources */,
 				292BB89A29D07B66004B2CE7 /* Button.CornerStyle+Extensions.swift in Sources */,
@@ -368,6 +415,7 @@
 				292BB88529D075F8004B2CE7 /* Button+Configuration.swift in Sources */,
 				292BB89429D07995004B2CE7 /* HighlightSettings.swift in Sources */,
 				292BB89029D07910004B2CE7 /* UIView+Utils.swift in Sources */,
+				292BB8A929D0A52E004B2CE7 /* OrderCheckoutViewController.swift in Sources */,
 				292BB89C29D07BB3004B2CE7 /* HSBAColor+Highlight.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				292BB87D29D06A1E004B2CE7 /* UIColor+Dynamic.swift in Sources */,
