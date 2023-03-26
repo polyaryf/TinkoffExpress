@@ -13,7 +13,6 @@ class OrderCheckoutViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         var table: UITableView = .init()
-        table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -26,6 +25,7 @@ class OrderCheckoutViewController: UIViewController {
         )
         // TODO: add action
         let button = Button(configuration: config, action: nil)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -33,41 +33,50 @@ class OrderCheckoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
     }
     
     // MARK: Initial Configuration
     
     private func setupView() {
+        view.backgroundColor = .white
+        
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         setupViewHierarchy()
         setupConstraints()
     }
     
     private func setupViewHierarchy() {
         view.addSubview(tableView)
+        view.addSubview(checkoutButton)
     }
     
     private func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
+        }
+        checkoutButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
 }
 
 // MARK: - UITableViewDelegate
 extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
     }
 }
