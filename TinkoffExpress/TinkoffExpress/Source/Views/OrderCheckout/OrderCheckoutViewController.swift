@@ -42,13 +42,9 @@ class OrderCheckoutViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(OrderCheckoutTableViewCell.self, forCellReuseIdentifier: "cell")
-        
         setupViewHierarchy()
         setupConstraints()
+        setUpTable()
     }
     
     private func setupViewHierarchy() {
@@ -66,6 +62,13 @@ class OrderCheckoutViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
+    }
+    
+    private func setUpTable() {
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(OrderCheckoutTableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
 
@@ -92,6 +95,6 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        130
+        return 130
     }
 }
