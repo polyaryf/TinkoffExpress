@@ -27,7 +27,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    private lazy var textContent: UILabel = {
+    private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +65,14 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         updateView()
     }
     
+    func setPrimaryText(_ text: String) {
+        primaryText.text = text
+    }
+    
+    func setSecondaryText(_ text: String) {
+        secondaryText.text = text
+    }
+    
     // MARK: Private
     
     private func setupView() {
@@ -79,35 +87,35 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     private func setupWhatWillBeDeliveredCellView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(cellImageView)
-        contentView.addSubview(textContent)
+        contentView.addSubview(primaryText)
         
         whatWillBeDeliveredCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        textContent.text = "Посылку"
+        primaryText.text = "Посылку"
     }
     
     private func setupDeliveryCellView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(editButton)
-        contentView.addSubview(textContent)
+        contentView.addSubview(primaryText)
         contentView.addSubview(secondaryText)
         
         deliveryCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        textContent.text = "Завтра с 10:00 до 12:00"
+        primaryText.text = "Завтра с 10:00 до 12:00"
         secondaryText.text = "Ивангород, ул. Гагарина, д. 1"
     }
     
     private func setupPaymentCellView() {
         contentView.addSubview(titleLabel)
-        contentView.addSubview(textContent)
+        contentView.addSubview(primaryText)
         
         paymentCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        textContent.text = "Картой при получении"
+        primaryText.text = "Картой при получении"
     }
     
     // MARK: Consrtaints
@@ -123,7 +131,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.width.equalTo(40)
             $0.height.equalTo(40)
         }
-        textContent.snp.makeConstraints {
+        primaryText.snp.makeConstraints {
             $0.left.equalTo(cellImageView.snp.right).offset(16)
             $0.top.equalTo(contentView).offset(82)
         }
@@ -141,13 +149,13 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.bottom.equalTo(contentView.snp.top).offset(60)
             $0.height.equalTo(titleLabel)
         }
-        textContent.snp.makeConstraints {
+        primaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
             $0.top.equalTo(contentView).offset(89)
         }
         secondaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
-            $0.top.equalTo(textContent.snp.bottom)
+            $0.top.equalTo(primaryText.snp.bottom)
         }
     }
     
@@ -157,7 +165,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.left.equalTo(contentView)
             $0.bottom.equalTo(contentView.snp.top).offset(60)
         }
-        textContent.snp.makeConstraints {
+        primaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
             $0.top.equalTo(contentView).offset(89)
         }
