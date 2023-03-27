@@ -27,7 +27,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    private lazy var text: UILabel = {
+    private lazy var textContent: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -79,32 +79,35 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     private func setupWhatWillBeDeliveredCellView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(cellImageView)
-        contentView.addSubview(text)
+        contentView.addSubview(textContent)
         
         whatWillBeDeliveredCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        text.text = "Посылку"
+        textContent.text = "Посылку"
     }
     
     private func setupDeliveryCellView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(editButton)
-        contentView.addSubview(text)
+        contentView.addSubview(textContent)
         contentView.addSubview(secondaryText)
         
         deliveryCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        text.text = "Завтра с 10:00 до 12:00"
+        textContent.text = "Завтра с 10:00 до 12:00"
         secondaryText.text = "Ивангород, ул. Гагарина, д. 1"
     }
     
     private func setupPaymentCellView() {
         contentView.addSubview(titleLabel)
-        contentView.addSubview(text)
+        contentView.addSubview(textContent)
+        
+        paymentCellConsrtaints()
         
         titleLabel.text = type.rawValue
+        textContent.text = "Картой при получении"
     }
     
     // MARK: Consrtaints
@@ -120,7 +123,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.width.equalTo(40)
             $0.height.equalTo(40)
         }
-        text.snp.makeConstraints {
+        textContent.snp.makeConstraints {
             $0.left.equalTo(cellImageView.snp.right).offset(16)
             $0.top.equalTo(contentView).offset(82)
         }
@@ -138,13 +141,25 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.bottom.equalTo(contentView.snp.top).offset(60)
             $0.height.equalTo(titleLabel)
         }
-        text.snp.makeConstraints {
+        textContent.snp.makeConstraints {
             $0.left.equalTo(contentView)
             $0.top.equalTo(contentView).offset(89)
         }
         secondaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
-            $0.top.equalTo(text.snp.bottom)
+            $0.top.equalTo(textContent.snp.bottom)
+        }
+    }
+    
+    private func paymentCellConsrtaints() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView).offset(28)
+            $0.left.equalTo(contentView)
+            $0.bottom.equalTo(contentView.snp.top).offset(60)
+        }
+        textContent.snp.makeConstraints {
+            $0.left.equalTo(contentView)
+            $0.top.equalTo(contentView).offset(89)
         }
     }
     
