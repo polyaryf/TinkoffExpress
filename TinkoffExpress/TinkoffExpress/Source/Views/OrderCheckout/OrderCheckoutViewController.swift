@@ -45,6 +45,7 @@ class OrderCheckoutViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(OrderCheckoutTableViewCell.self, forCellReuseIdentifier: "cell")
         
         setupViewHierarchy()
         setupConstraints()
@@ -57,7 +58,9 @@ class OrderCheckoutViewController: UIViewController {
     
     private func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.left.right.equalToSuperview().offset(16)
+            $0.top.equalToSuperview().offset(88 + 28)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         checkoutButton.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
@@ -69,14 +72,20 @@ class OrderCheckoutViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = OrderCheckoutTableViewCell()
+        cell.setType(.whatWillBeDelivered)
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        118
     }
 }
