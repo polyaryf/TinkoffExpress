@@ -5,10 +5,13 @@
 //  Created by Полина Рыфтина on 26.03.2023.
 //
 
-import Foundation
+import UIKit
 
-enum OrderCheckoutCellType: String {
-    case whatWillBeDelivered = "Что будет доставлено"
-    case delivery = "Доставка"
-    case payment = "Оплата"
+extension OrderCheckoutTableViewCell {
+    enum OrderCheckoutCellType: String {
+        case empty
+        case whatWillBeDelivered = "Что привезем"
+        case delivery = "Доставка"
+        case payment = "Оплата"
+    }
 }
