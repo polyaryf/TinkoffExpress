@@ -92,7 +92,6 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         whatWillBeDeliveredCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        primaryText.text = "Посылку"
     }
     
     private func setupDeliveryCellView() {
@@ -104,8 +103,6 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         deliveryCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        primaryText.text = "Завтра с 10:00 до 12:00"
-        secondaryText.text = "Ивангород, ул. Гагарина, д. 1"
     }
     
     private func setupPaymentCellView() {
@@ -115,7 +112,6 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         paymentCellConsrtaints()
         
         titleLabel.text = type.rawValue
-        primaryText.text = "Картой при получении"
     }
     
     // MARK: Consrtaints
