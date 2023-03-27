@@ -58,7 +58,7 @@ class OrderCheckoutViewController: UIViewController {
     
     private func setupConstraints() {
         tableView.snp.makeConstraints {
-            $0.left.right.equalToSuperview().offset(16)
+            $0.left.right.equalToSuperview().inset(16)
             $0.top.equalToSuperview().offset(88 + 28)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -72,13 +72,19 @@ class OrderCheckoutViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = OrderCheckoutTableViewCell()
-        cell.setType(.whatWillBeDelivered)
+        let cell = OrderCheckoutTableViewCell()
+        if indexPath.section == 0 {
+            cell.setType(.whatWillBeDelivered)
+        } else if indexPath.section == 1 {
+            cell.setType(.delivery)
+        } else {
+            cell.setType(.payment)
+        }
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +92,6 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        118
+        130
     }
 }
