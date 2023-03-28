@@ -5,10 +5,8 @@
 //  Created by zedsbook on 28.03.2023.
 //
 
-import Foundation
-
-protocol Modulated { }
+import UIKit
 
 protocol Module {
-    static func createViewController(coordinator: AppCoordinator) -> Modulated
+    static func createViewController(coordinator: AppCoordinator) -> UIViewController
 }

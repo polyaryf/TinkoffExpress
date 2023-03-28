@@ -7,8 +7,8 @@
 
 import UIKit
 import SnapKit
-// swiftlint:disable:next line_length
-final class CartViewController: UIViewController, Modulated, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// swiftlint:disable:next superfluous_disable_command
+final class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: Dependencies
     
     private var cartPresenter: CartPresenterProtocol?
