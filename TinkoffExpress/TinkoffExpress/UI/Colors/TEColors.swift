@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TEColors {
+enum TEColors {
     static var black: UIColor {
         UIColor(hex: "#333333") ?? .clear
     }
@@ -62,7 +62,7 @@ struct TEColors {
 extension TEColors {
     // MARK: - Foreground
 
-    struct Foreground {
+    enum Foreground {
         // Static
 
         static var brandTinkoffAccent: UIColor { UIColor(hex: "#FFDD2D") ?? .clear }
@@ -80,7 +80,7 @@ extension TEColors {
 
     // MARK: - Background
 
-    struct Background {
+    enum Background {
         static var base: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: TEColors.n14,
@@ -186,8 +186,8 @@ extension TEColors {
 
     // MARK: - Button
 
-    struct Button {
-        struct Sbp {
+    enum Button {
+        enum Sbp {
             static var background: UIColor.Dynamic {
                 return UIColor.Dynamic(
                     light: .black,
