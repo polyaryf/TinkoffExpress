@@ -14,6 +14,8 @@
 		43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */; };
 		43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */; };
 		43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA529D30122003B0EC2 /* RootCoordinator.swift */; };
+		43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */; };
+		43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA929D301F4003B0EC2 /* Module.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
 		43E10BA529D30122003B0EC2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
+		43E10BA929D301F4003B0EC2 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,8 @@
 		43E10B9C29D2FEE6003B0EC2 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */,
+				43E10BA929D301F4003B0EC2 /* Module.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -276,8 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
+				43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */,
 				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
 				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
+				43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 			);
