@@ -7,8 +7,8 @@
 
 import UIKit
 import SnapKit
-// swiftlint:disable:next line_length
-final class DeliveryViewController: UIViewController, Modulated, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// swiftlint:disable:next superfluous_disable_command
+final class DeliveryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: Dependencies
     
     private var deliveryPresenter: DeliveryPresenterProtocol?
