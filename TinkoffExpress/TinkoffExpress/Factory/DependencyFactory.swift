@@ -5,10 +5,10 @@
 //  Created by zedsbook on 28.03.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol Factory {
-    func makeViewController(coordinator: AppCoordinator, module: Module.Type) -> Modulated
+    func makeViewController(coordinator: AppCoordinator, module: Module.Type) -> UIViewController
 }
 
 class DependencyFactory: Factory {
@@ -29,7 +29,7 @@ class DependencyFactory: Factory {
     
     // MARK: Creating ViewController
     
-    func makeViewController(coordinator: AppCoordinator, module: Module.Type) -> Modulated {
+    func makeViewController(coordinator: AppCoordinator, module: Module.Type) -> UIViewController {
         return module.createViewController(coordinator: coordinator)
     }
 }
