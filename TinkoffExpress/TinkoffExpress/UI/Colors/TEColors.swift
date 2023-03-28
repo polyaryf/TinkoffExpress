@@ -125,14 +125,14 @@ extension TEColors {
 
         static var neutral1: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#001024")!.withAlphaComponent(0.03),
+                light: UIColor(hex: "#001024") ?? .clear.withAlphaComponent(0.03),
                 dark: .white.withAlphaComponent(0.10)
             )
         }
 
         static var neutral2: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#001024")!.withAlphaComponent(0.06),
+                light: UIColor(hex: "#001024") ?? .clear.withAlphaComponent(0.06),
                 dark: .white.withAlphaComponent(0.15)
             )
         }
@@ -140,7 +140,7 @@ extension TEColors {
 
     // MARK: - Text
 
-    struct Text {
+    enum Text {
         static var primary: UIColor.Dynamic {
             UIColor.Dynamic(
                 light: TEColors.textPrimary,
@@ -157,29 +157,29 @@ extension TEColors {
 
         static var secondary: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#9299A2")!,
-                dark: UIColor(hex: "#9299A2")!
+                light: UIColor(hex: "#9299A2") ?? .clear,
+                dark: UIColor(hex: "#9299A2") ?? .clear
             )
         }
         
         static var tertiary: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#001024")!.withAlphaComponent(0.22),
+                light: (UIColor(hex: "#001024") ?? .clear).withAlphaComponent(0.22),
                 dark: UIColor.white.withAlphaComponent(0.3)
             )
         }
 
         static var accent: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#428BF9")!,
-                dark: UIColor(hex: "#428BF9")!
+                light: UIColor(hex: "#428BF9") ?? .clear,
+                dark: UIColor(hex: "#428BF9") ?? .clear
             )
         }
 
         static var negative: UIColor.Dynamic {
             UIColor.Dynamic(
-                light: UIColor(hex: "#F52222")!,
-                dark: UIColor(hex: "#F52222")!
+                light: UIColor(hex: "#F52222") ?? .clear,
+                dark: UIColor(hex: "#F52222") ?? .clear
             )
         }
     }
