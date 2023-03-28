@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
-		29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBC29C37E73007C763D /* ViewController.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		29B3AEBC29C37E73007C763D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -43,10 +41,10 @@
 		29B3AEAC29C37E73007C763D = {
 			isa = PBXGroup;
 			children = (
+				29B3AED129C38C3A007C763D /* TinkoffExpress.app */,
 				29B3AECD29C388C0007C763D /* .swiftlint.yml */,
 				29B3AEB729C37E73007C763D /* TinkoffExpress */,
 				5E746E02A0EE7E044421EF3D /* Pods */,
-				29B3AED129C38C3A007C763D /* TinkoffExpress.app */,
 				6038A1AEB29DBFABAF64BFFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -54,13 +52,68 @@
 		29B3AEB729C37E73007C763D /* TinkoffExpress */ = {
 			isa = PBXGroup;
 			children = (
-				29B3AEB829C37E73007C763D /* AppDelegate.swift */,
-				29B3AEBA29C37E73007C763D /* SceneDelegate.swift */,
-				29B3AEBC29C37E73007C763D /* ViewController.swift */,
-				29B3AEC129C37E74007C763D /* Assets.xcassets */,
-				29B3AEC629C37E74007C763D /* Info.plist */,
+				43E10B9729D2FD8D003B0EC2 /* App */,
+				43E10B9829D2FD9C003B0EC2 /* Config */,
+				43E10B9929D2FDB1003B0EC2 /* Resources */,
+				43E10B9C29D2FEE6003B0EC2 /* Factory */,
+				43E10B9D29D30030003B0EC2 /* Flows */,
+				43E10B9A29D2FDCD003B0EC2 /* Modules */,
 			);
 			path = TinkoffExpress;
+			sourceTree = "<group>";
+		};
+		43E10B9729D2FD8D003B0EC2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				29B3AEB829C37E73007C763D /* AppDelegate.swift */,
+				29B3AEBA29C37E73007C763D /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		43E10B9829D2FD9C003B0EC2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				29B3AEC629C37E74007C763D /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		43E10B9929D2FDB1003B0EC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29B3AEC129C37E74007C763D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		43E10B9A29D2FDCD003B0EC2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		43E10B9C29D2FEE6003B0EC2 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		43E10B9D29D30030003B0EC2 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				43E10B9E29D3003E003B0EC2 /* Coordinator */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		43E10B9E29D3003E003B0EC2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
@@ -213,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B3AEBD29C37E73007C763D /* ViewController.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 			);
@@ -344,8 +396,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 72SVK4HY2X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TinkoffExpress/Info.plist;
+				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -375,8 +428,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 72SVK4HY2X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TinkoffExpress/Info.plist;
+				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
