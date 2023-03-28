@@ -22,6 +22,13 @@
 		43E10BB829D303B1003B0EC2 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB729D303B1003B0EC2 /* CartCell.swift */; };
 		43E10BBA29D303C8003B0EC2 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB929D303C8003B0EC2 /* CartPresenter.swift */; };
 		43E10BBC29D303E5003B0EC2 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BBB29D303E5003B0EC2 /* CartService.swift */; };
+		43E10BC829D31297003B0EC2 /* DeliveryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BC729D31297003B0EC2 /* DeliveryModule.swift */; };
+		43E10BCA29D312A1003B0EC2 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BC929D312A1003B0EC2 /* Delivery.swift */; };
+		43E10BCC29D312AC003B0EC2 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BCB29D312AC003B0EC2 /* DeliveryViewController.swift */; };
+		43E10BCE29D312C3003B0EC2 /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BCD29D312C3003B0EC2 /* DeliveryCell.swift */; };
+		43E10BD029D312CE003B0EC2 /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BCF29D312CE003B0EC2 /* DeliveryHeaderView.swift */; };
+		43E10BD229D312E5003B0EC2 /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BD129D312E5003B0EC2 /* DeliveryPresenter.swift */; };
+		43E10BD429D312EE003B0EC2 /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BD329D312EE003B0EC2 /* DeliveryService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +51,13 @@
 		43E10BB729D303B1003B0EC2 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		43E10BB929D303C8003B0EC2 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		43E10BBB29D303E5003B0EC2 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		43E10BC729D31297003B0EC2 /* DeliveryModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModule.swift; sourceTree = "<group>"; };
+		43E10BC929D312A1003B0EC2 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		43E10BCB29D312AC003B0EC2 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		43E10BCD29D312C3003B0EC2 /* DeliveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCell.swift; sourceTree = "<group>"; };
+		43E10BCF29D312CE003B0EC2 /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
+		43E10BD129D312E5003B0EC2 /* DeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
+		43E10BD329D312EE003B0EC2 /* DeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				43E10BAB29D302D8003B0EC2 /* Cart */,
+				43E10BC229D3122F003B0EC2 /* Delivery */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -187,6 +202,52 @@
 				43E10BBB29D303E5003B0EC2 /* CartService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		43E10BC229D3122F003B0EC2 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BC729D31297003B0EC2 /* DeliveryModule.swift */,
+				43E10BC629D3128A003B0EC2 /* Model */,
+				43E10BC529D31286003B0EC2 /* View */,
+				43E10BC429D31281003B0EC2 /* Presenter */,
+				43E10BC329D3127C003B0EC2 /* Service */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		43E10BC329D3127C003B0EC2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BD329D312EE003B0EC2 /* DeliveryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		43E10BC429D31281003B0EC2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BD129D312E5003B0EC2 /* DeliveryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43E10BC529D31286003B0EC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BCB29D312AC003B0EC2 /* DeliveryViewController.swift */,
+				43E10BCD29D312C3003B0EC2 /* DeliveryCell.swift */,
+				43E10BCF29D312CE003B0EC2 /* DeliveryHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43E10BC629D3128A003B0EC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BC929D312A1003B0EC2 /* Delivery.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
@@ -340,13 +401,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
+				43E10BCE29D312C3003B0EC2 /* DeliveryCell.swift in Sources */,
+				43E10BD229D312E5003B0EC2 /* DeliveryPresenter.swift in Sources */,
 				43E10BB429D30359003B0EC2 /* Cart.swift in Sources */,
 				43E10BB629D3039E003B0EC2 /* CartViewController.swift in Sources */,
+				43E10BD429D312EE003B0EC2 /* DeliveryService.swift in Sources */,
+				43E10BC829D31297003B0EC2 /* DeliveryModule.swift in Sources */,
+				43E10BCA29D312A1003B0EC2 /* Delivery.swift in Sources */,
 				43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */,
 				43E10BBC29D303E5003B0EC2 /* CartService.swift in Sources */,
 				43E10BB829D303B1003B0EC2 /* CartCell.swift in Sources */,
 				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
 				43E10BB229D3033A003B0EC2 /* CartModule.swift in Sources */,
+				43E10BD029D312CE003B0EC2 /* DeliveryHeaderView.swift in Sources */,
+				43E10BCC29D312AC003B0EC2 /* DeliveryViewController.swift in Sources */,
 				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
 				43E10BBA29D303C8003B0EC2 /* CartPresenter.swift in Sources */,
 				43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */,

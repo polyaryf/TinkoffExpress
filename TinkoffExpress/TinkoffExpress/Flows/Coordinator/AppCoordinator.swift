@@ -38,4 +38,26 @@ class AppCoordinator: AbstractCoordinator, RootCoordinator {
         self.navigationController = navigationController
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func moveToCart() {
+        // swiftlint:disable:next superfluous_disable_command
+        let viewController = factory.makeViewController(coordinator: self, module: CartModule.self)
+        // swiftlint:disable:next force_cast
+        as! CartViewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func moveToDelivery() {
+        let childCoordinator = AppCoordinator(factory: factory)
+        addChildCoordinator(childCoordinator)
+        
+        // swiftlint:disable:next superfluous_disable_command
+        let viewController = factory.makeViewController(coordinator: childCoordinator, module: DeliveryModule.self)
+        // swiftlint:disable:next force_cast
+        as! DeliveryViewController
+        let navController = UINavigationController(rootViewController: viewController)
+        
+        childCoordinator.navigationController = navController
+        navigationController?.present(navController, animated: true)
+    }
 }

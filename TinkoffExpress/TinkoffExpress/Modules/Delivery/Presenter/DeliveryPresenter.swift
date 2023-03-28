@@ -1,5 +1,5 @@
 //
-//  CartPresenter.swift
+//  DeliveryPresenter.swift
 //  TinkoffExpress
 //
 //  Created by zedsbook on 28.03.2023.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-protocol CartPresenterProtocol {
+protocol DeliveryPresenterProtocol {
     func viewDidLoad()
-    func checkoutButtonTapped()
+    func didSelectItemAt()
 }
 
-class CartPresenter: CartPresenterProtocol {
+class DeliveryPresenter: DeliveryPresenterProtocol {
     // MARK: Dependencies
     
-    weak private var view: CartViewController?
+    weak private var view: DeliveryViewController?
     private var coordinator: AppCoordinator?
-    private var service: CartService?
-
+    private var service: DeliveryService?
+    
     // MARK: Init
-    init(coordinator: AppCoordinator, view: CartViewController, service: CartService) {
+    init(coordinator: AppCoordinator, view: DeliveryViewController, service: DeliveryService) {
         self.coordinator = coordinator
         self.view = view
         self.service = service
@@ -37,11 +37,6 @@ class CartPresenter: CartPresenterProtocol {
     
     // MARK: Events
     
-    func checkoutButtonTapped() {
-        showDelivery()
-    }
-    
-    private func showDelivery() {
-        coordinator?.moveToDelivery()
+    func didSelectItemAt() {
     }
 }
