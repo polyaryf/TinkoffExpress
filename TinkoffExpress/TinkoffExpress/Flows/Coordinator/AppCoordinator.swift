@@ -10,7 +10,12 @@ import UIKit
 class AppCoordinator: AbstractCoordinator, RootCoordinator {
     private(set) var childCoordinators: [AbstractCoordinator] = []
     weak var navigationController: UINavigationController?
-
+    private var factory: Factory
+    
+    init(factory: Factory) {
+        self.factory = factory
+    }
+    
     func addChildCoordinator(_ coordinator: AbstractCoordinator) {
         childCoordinators.append(coordinator)
     }
