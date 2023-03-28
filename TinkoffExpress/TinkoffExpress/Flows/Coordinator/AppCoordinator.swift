@@ -60,4 +60,12 @@ class AppCoordinator: AbstractCoordinator, RootCoordinator {
         childCoordinator.navigationController = navController
         navigationController?.present(navController, animated: true)
     }
+    
+    func moveToOnboarding() {
+        // swiftlint:disable:next superfluous_disable_command
+        let viewController = factory.makeViewController(coordinator: self, module: OnboardingModule.self)
+        // swiftlint:disable:next force_cast
+        as! OnboardingViewController
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

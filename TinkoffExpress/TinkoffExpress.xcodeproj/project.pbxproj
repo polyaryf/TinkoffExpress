@@ -29,6 +29,13 @@
 		43E10BD029D312CE003B0EC2 /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BCF29D312CE003B0EC2 /* DeliveryHeaderView.swift */; };
 		43E10BD229D312E5003B0EC2 /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BD129D312E5003B0EC2 /* DeliveryPresenter.swift */; };
 		43E10BD429D312EE003B0EC2 /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BD329D312EE003B0EC2 /* DeliveryService.swift */; };
+		43E10BD729D32787003B0EC2 /* OnboardingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BD629D32787003B0EC2 /* OnboardingModule.swift */; };
+		43E10BDD29D327FA003B0EC2 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BDC29D327FA003B0EC2 /* Onboarding.swift */; };
+		43E10BDF29D32829003B0EC2 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BDE29D32829003B0EC2 /* OnboardingViewController.swift */; };
+		43E10BE129D3287C003B0EC2 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BE029D3287C003B0EC2 /* OnboardingCell.swift */; };
+		43E10BE329D3288D003B0EC2 /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BE229D3288D003B0EC2 /* OnboardingHeaderView.swift */; };
+		43E10BE529D328A6003B0EC2 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BE429D328A6003B0EC2 /* OnboardingPresenter.swift */; };
+		43E10BE729D328E6003B0EC2 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BE629D328E6003B0EC2 /* OnboardingService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +65,13 @@
 		43E10BCF29D312CE003B0EC2 /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
 		43E10BD129D312E5003B0EC2 /* DeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
 		43E10BD329D312EE003B0EC2 /* DeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
+		43E10BD629D32787003B0EC2 /* OnboardingModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModule.swift; sourceTree = "<group>"; };
+		43E10BDC29D327FA003B0EC2 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		43E10BDE29D32829003B0EC2 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		43E10BE029D3287C003B0EC2 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		43E10BE229D3288D003B0EC2 /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
+		43E10BE429D328A6003B0EC2 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		43E10BE629D328E6003B0EC2 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +142,7 @@
 			children = (
 				43E10BAB29D302D8003B0EC2 /* Cart */,
 				43E10BC229D3122F003B0EC2 /* Delivery */,
+				43E10BD529D32774003B0EC2 /* Onboarding */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -246,6 +261,52 @@
 			isa = PBXGroup;
 			children = (
 				43E10BC929D312A1003B0EC2 /* Delivery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43E10BD529D32774003B0EC2 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BD629D32787003B0EC2 /* OnboardingModule.swift */,
+				43E10BDB29D3279C003B0EC2 /* Model */,
+				43E10BDA29D32796003B0EC2 /* View */,
+				43E10BD929D32790003B0EC2 /* Presenter */,
+				43E10BD829D3278C003B0EC2 /* Service */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		43E10BD829D3278C003B0EC2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BE629D328E6003B0EC2 /* OnboardingService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		43E10BD929D32790003B0EC2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BE429D328A6003B0EC2 /* OnboardingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43E10BDA29D32796003B0EC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BDE29D32829003B0EC2 /* OnboardingViewController.swift */,
+				43E10BE029D3287C003B0EC2 /* OnboardingCell.swift */,
+				43E10BE229D3288D003B0EC2 /* OnboardingHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43E10BDB29D3279C003B0EC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43E10BDC29D327FA003B0EC2 /* Onboarding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,22 +462,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
+				43E10BD729D32787003B0EC2 /* OnboardingModule.swift in Sources */,
+				43E10BE129D3287C003B0EC2 /* OnboardingCell.swift in Sources */,
 				43E10BCE29D312C3003B0EC2 /* DeliveryCell.swift in Sources */,
 				43E10BD229D312E5003B0EC2 /* DeliveryPresenter.swift in Sources */,
+				43E10BDF29D32829003B0EC2 /* OnboardingViewController.swift in Sources */,
 				43E10BB429D30359003B0EC2 /* Cart.swift in Sources */,
 				43E10BB629D3039E003B0EC2 /* CartViewController.swift in Sources */,
 				43E10BD429D312EE003B0EC2 /* DeliveryService.swift in Sources */,
 				43E10BC829D31297003B0EC2 /* DeliveryModule.swift in Sources */,
 				43E10BCA29D312A1003B0EC2 /* Delivery.swift in Sources */,
 				43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */,
+				43E10BE729D328E6003B0EC2 /* OnboardingService.swift in Sources */,
+				43E10BE329D3288D003B0EC2 /* OnboardingHeaderView.swift in Sources */,
 				43E10BBC29D303E5003B0EC2 /* CartService.swift in Sources */,
 				43E10BB829D303B1003B0EC2 /* CartCell.swift in Sources */,
 				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
 				43E10BB229D3033A003B0EC2 /* CartModule.swift in Sources */,
 				43E10BD029D312CE003B0EC2 /* DeliveryHeaderView.swift in Sources */,
 				43E10BCC29D312AC003B0EC2 /* DeliveryViewController.swift in Sources */,
+				43E10BDD29D327FA003B0EC2 /* Onboarding.swift in Sources */,
 				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
 				43E10BBA29D303C8003B0EC2 /* CartPresenter.swift in Sources */,
+				43E10BE529D328A6003B0EC2 /* OnboardingPresenter.swift in Sources */,
 				43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,

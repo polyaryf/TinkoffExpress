@@ -38,5 +38,12 @@ class DeliveryPresenter: DeliveryPresenterProtocol {
     // MARK: Events
     
     func didSelectItemAt() {
+        showOnboarding()
+    }
+    
+    // MARK: Navigation
+    
+    private func showOnboarding() {
+        coordinator?.moveToOnboarding()
     }
 }

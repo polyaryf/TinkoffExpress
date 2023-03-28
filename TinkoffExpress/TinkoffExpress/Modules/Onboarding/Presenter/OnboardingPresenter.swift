@@ -1,5 +1,5 @@
 //
-//  CartPresenter.swift
+//  DeliveryPresenter.swift
 //  TinkoffExpress
 //
 //  Created by zedsbook on 28.03.2023.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-protocol CartPresenterProtocol {
+protocol OnboardingPresenterProtocol {
     func viewDidLoad()
-    func checkoutButtonTapped()
-    func checkoutButtonTouchDown(with button: UIButton)
-    func checkoutButtonTouchUpInside(with button: UIButton)
+    func continueButtonTapped()
+    func continueButtonTouchDown(with button: UIButton)
+    func continueButtonTouchUpInside(with button: UIButton)
 }
 
-class CartPresenter: CartPresenterProtocol {
+class OnboardingPresenter: OnboardingPresenterProtocol {
     // MARK: Dependencies
-    
-    weak private var view: CartViewController?
+
+    weak private var view: OnboardingViewController?
     private var coordinator: AppCoordinator?
-    private var service: CartService?
+    private var service: OnboardingService?
 
     // MARK: Init
-    init(coordinator: AppCoordinator, view: CartViewController, service: CartService) {
+    init(coordinator: AppCoordinator, view: OnboardingViewController, service: OnboardingService) {
         self.coordinator = coordinator
         self.view = view
         self.service = service
@@ -39,21 +39,16 @@ class CartPresenter: CartPresenterProtocol {
     
     // MARK: Events
     
-    func checkoutButtonTapped() {
-        showDelivery()
+    func continueButtonTapped() {
     }
     
-    func checkoutButtonTouchDown(with button: UIButton) {
+    func continueButtonTouchDown(with button: UIButton) {
         button.backgroundColor = UIColor(named: "yellowButtonPressedColor")
     }
     
-    func checkoutButtonTouchUpInside(with button: UIButton) {
+    func continueButtonTouchUpInside(with button: UIButton) {
         button.backgroundColor = UIColor(named: "yellowButtonColor")
     }
     
     // MARK: Navigation
-    
-    private func showDelivery() {
-        coordinator?.moveToDelivery()
-    }
 }
