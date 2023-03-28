@@ -118,6 +118,9 @@
 		43E10B9E29D3003E003B0EC2 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */,
+				43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */,
+				43E10BA529D30122003B0EC2 /* RootCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -272,6 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
+				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
+				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 			);
