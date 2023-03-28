@@ -5,11 +5,13 @@
 //  Created by zedsbook on 28.03.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol CartPresenterProtocol {
     func viewDidLoad()
     func checkoutButtonTapped()
+    func checkoutButtonTouchDown(with button: UIButton)
+    func checkoutButtonTouchUpInside(with button: UIButton)
 }
 
 class CartPresenter: CartPresenterProtocol {
@@ -40,6 +42,16 @@ class CartPresenter: CartPresenterProtocol {
     func checkoutButtonTapped() {
         showDelivery()
     }
+    
+    func checkoutButtonTouchDown(with button: UIButton) {
+        button.backgroundColor = UIColor(named: "yellowButtonPressedColor")
+    }
+    
+    func checkoutButtonTouchUpInside(with button: UIButton) {
+        button.backgroundColor = UIColor(named: "yellowButtonColor")
+    }
+    
+    // MARK: Navigation
     
     private func showDelivery() {
         coordinator?.moveToDelivery()

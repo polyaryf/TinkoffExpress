@@ -47,6 +47,14 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     @objc private func checkoutButtonTapped() {
         cartPresenter?.checkoutButtonTapped()
     }
+    
+    @objc private func checkoutButtonTouchDown() {
+        cartPresenter?.checkoutButtonTouchDown(with: checkoutButton)
+    }
+    
+    @objc private func checkoutButtonTouchUpInside() {
+        cartPresenter?.checkoutButtonTouchUpInside(with: checkoutButton)
+    }
 
     // MARK: Setup Dependencies
     
@@ -175,6 +183,8 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         checkoutButton.layer.cornerRadius = 15
         
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTapped), for: .touchUpInside)
+        checkoutButton.addTarget(self, action: #selector(checkoutButtonTouchDown), for: .touchDown)
+        checkoutButton.addTarget(self, action: #selector(checkoutButtonTouchUpInside), for: .touchUpInside)
         
         finalView.addSubview(checkoutButton)
         
