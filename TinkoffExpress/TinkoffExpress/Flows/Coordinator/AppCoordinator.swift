@@ -31,5 +31,11 @@ class AppCoordinator: AbstractCoordinator, RootCoordinator {
     // MARK: Navigation
     
     func start(_ navigationController: UINavigationController) {
+        // swiftlint:disable:next superfluous_disable_command
+        let viewController = factory.makeViewController(coordinator: self, module: CartModule.self)
+        // swiftlint:disable:next force_cast
+        as! CartViewController
+        self.navigationController = navigationController
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
