@@ -14,6 +14,25 @@
 		43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */; };
 		43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA529D30122003B0EC2 /* RootCoordinator.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
+		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
+		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
+		5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518429D4318A00BD5C28 /* HSBAColor.swift */; };
+		5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518529D4318A00BD5C28 /* HSBAColor+UIColor.swift */; };
+		5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518629D4318A00BD5C28 /* HighlightSettings.swift */; };
+		5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518729D4318A00BD5C28 /* UIColor+Highlight.swift */; };
+		579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518829D4318A00BD5C28 /* HSBAColor+Highlight.swift */; };
+		579251A129D4318A00BD5C28 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518929D4318A00BD5C28 /* Theme.swift */; };
+		579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518C29D4318A00BD5C28 /* Button+Configuration.swift */; };
+		579251A329D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518E29D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift */; };
+		579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518F29D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift */; };
+		579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519029D4318A00BD5C28 /* Button.Configuration+Extensions.swift */; };
+		579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519129D4318A00BD5C28 /* Button+ContentSize.swift */; };
+		579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519229D4318A00BD5C28 /* Button.Style+Extensions.swift */; };
+		579251A829D4318A00BD5C28 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519329D4318A00BD5C28 /* Button.swift */; };
+		579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519529D4318A00BD5C28 /* ActivityIndicatorView.swift */; };
+		579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519729D4318A00BD5C28 /* TEColors.swift */; };
+		579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519829D4318A00BD5C28 /* Extension+UIColor.swift */; };
+		579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +47,25 @@
 		43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
 		43E10BA529D30122003B0EC2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
+		5792518429D4318A00BD5C28 /* HSBAColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBAColor.swift; sourceTree = "<group>"; };
+		5792518529D4318A00BD5C28 /* HSBAColor+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HSBAColor+UIColor.swift"; sourceTree = "<group>"; };
+		5792518629D4318A00BD5C28 /* HighlightSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightSettings.swift; sourceTree = "<group>"; };
+		5792518729D4318A00BD5C28 /* UIColor+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Highlight.swift"; sourceTree = "<group>"; };
+		5792518829D4318A00BD5C28 /* HSBAColor+Highlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HSBAColor+Highlight.swift"; sourceTree = "<group>"; };
+		5792518929D4318A00BD5C28 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5792518C29D4318A00BD5C28 /* Button+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+Configuration.swift"; sourceTree = "<group>"; };
+		5792518E29D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button.InteractiveColor+Extensions.swift"; sourceTree = "<group>"; };
+		5792518F29D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button.CornerStyle+Extensions.swift"; sourceTree = "<group>"; };
+		5792519029D4318A00BD5C28 /* Button.Configuration+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button.Configuration+Extensions.swift"; sourceTree = "<group>"; };
+		5792519129D4318A00BD5C28 /* Button+ContentSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button+ContentSize.swift"; sourceTree = "<group>"; };
+		5792519229D4318A00BD5C28 /* Button.Style+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Button.Style+Extensions.swift"; sourceTree = "<group>"; };
+		5792519329D4318A00BD5C28 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		5792519529D4318A00BD5C28 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		5792519729D4318A00BD5C28 /* TEColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEColors.swift; sourceTree = "<group>"; };
+		5792519829D4318A00BD5C28 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Dynamic.swift"; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +96,7 @@
 		29B3AEB729C37E73007C763D /* TinkoffExpress */ = {
 			isa = PBXGroup;
 			children = (
+				5792517C29D4318A00BD5C28 /* CommonUI */,
 				43E10B9729D2FD8D003B0EC2 /* App */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
 				43E10B9929D2FDB1003B0EC2 /* Resources */,
@@ -123,6 +162,112 @@
 				43E10BA529D30122003B0EC2 /* RootCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		5792517C29D4318A00BD5C28 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				5792517D29D4318A00BD5C28 /* Utils */,
+				5792518029D4318A00BD5C28 /* UIComponents */,
+				5792519629D4318A00BD5C28 /* Colors */,
+			);
+			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		5792517D29D4318A00BD5C28 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5792517E29D4318A00BD5C28 /* Extentions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5792517E29D4318A00BD5C28 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				5792517F29D4318A00BD5C28 /* UIView+Utils.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		5792518029D4318A00BD5C28 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5792518129D4318A00BD5C28 /* Abstraction */,
+				5792518329D4318A00BD5C28 /* Colors */,
+				5792518A29D4318A00BD5C28 /* Views */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		5792518129D4318A00BD5C28 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				5792518229D4318A00BD5C28 /* ShadowAvailable.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		5792518329D4318A00BD5C28 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				5792518429D4318A00BD5C28 /* HSBAColor.swift */,
+				5792518529D4318A00BD5C28 /* HSBAColor+UIColor.swift */,
+				5792518629D4318A00BD5C28 /* HighlightSettings.swift */,
+				5792518729D4318A00BD5C28 /* UIColor+Highlight.swift */,
+				5792518829D4318A00BD5C28 /* HSBAColor+Highlight.swift */,
+				5792518929D4318A00BD5C28 /* Theme.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		5792518A29D4318A00BD5C28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5792518B29D4318A00BD5C28 /* Button */,
+				5792519429D4318A00BD5C28 /* ActivityIndicator */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5792518B29D4318A00BD5C28 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				5792518C29D4318A00BD5C28 /* Button+Configuration.swift */,
+				5792518D29D4318A00BD5C28 /* Extentions */,
+				5792519329D4318A00BD5C28 /* Button.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		5792518D29D4318A00BD5C28 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				5792518E29D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift */,
+				5792518F29D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift */,
+				5792519029D4318A00BD5C28 /* Button.Configuration+Extensions.swift */,
+				5792519129D4318A00BD5C28 /* Button+ContentSize.swift */,
+				5792519229D4318A00BD5C28 /* Button.Style+Extensions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		5792519429D4318A00BD5C28 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				5792519529D4318A00BD5C28 /* ActivityIndicatorView.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		5792519629D4318A00BD5C28 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				5792519729D4318A00BD5C28 /* TEColors.swift */,
+				5792519829D4318A00BD5C28 /* Extension+UIColor.swift */,
+				5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
@@ -275,11 +420,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */,
+				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
 				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
+				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
+				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
 				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
+				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
+				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
+				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
+				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
+				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
+				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
 				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
+				579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */,
+				579251A329D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift in Sources */,
+				5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */,
+				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
+				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
+				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
+				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
+				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
+				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
