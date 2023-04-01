@@ -36,7 +36,6 @@ final class AppCoordinator: Coordinator {
             let viewController = assembly.createViewController(coordinator: childCoordinator)
             let childNavigationController = UINavigationController(rootViewController: viewController)
             
-            childCoordinator.start(childNavigationController)
             childCoordinator.navigationController = childNavigationController
             navigationController?.present(childNavigationController, animated: true)
         }
