@@ -43,6 +43,6 @@ final class DeliveryPresenter: DeliveryPresenterProtocol {
     // MARK: Navigation
     
     private func showOnboarding() {
-        // TODO: coordinator?.move(OnboardingAssembly(), with: .push)
+        coordinator?.move(OnboardingAssembly(), with: .push)
     }
 }

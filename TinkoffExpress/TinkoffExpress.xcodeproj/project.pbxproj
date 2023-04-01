@@ -27,6 +27,13 @@
 		43B7BC8929D8AAFD00685763 /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8829D8AAFD00685763 /* DeliveryHeaderView.swift */; };
 		43B7BC8B29D8AB1300685763 /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8A29D8AB1300685763 /* DeliveryPresenter.swift */; };
 		43B7BC8D29D8AB2100685763 /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8C29D8AB2100685763 /* DeliveryService.swift */; };
+		43B7BC9529D8AC0C00685763 /* OnboardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9429D8AC0C00685763 /* OnboardingAssembly.swift */; };
+		43B7BC9729D8AC1B00685763 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9629D8AC1B00685763 /* Onboarding.swift */; };
+		43B7BC9929D8AC2C00685763 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9829D8AC2C00685763 /* OnboardingViewController.swift */; };
+		43B7BC9B29D8AC3500685763 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9A29D8AC3500685763 /* OnboardingCell.swift */; };
+		43B7BC9D29D8AC4800685763 /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9C29D8AC4800685763 /* OnboardingHeaderView.swift */; };
+		43B7BC9F29D8AC6300685763 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC9E29D8AC6300685763 /* OnboardingPresenter.swift */; };
+		43B7BCA129D8AC8200685763 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BCA029D8AC8200685763 /* OnboardingService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +61,13 @@
 		43B7BC8829D8AAFD00685763 /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
 		43B7BC8A29D8AB1300685763 /* DeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
 		43B7BC8C29D8AB2100685763 /* DeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
+		43B7BC9429D8AC0C00685763 /* OnboardingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAssembly.swift; sourceTree = "<group>"; };
+		43B7BC9629D8AC1B00685763 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		43B7BC9829D8AC2C00685763 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		43B7BC9A29D8AC3500685763 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		43B7BC9C29D8AC4800685763 /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
+		43B7BC9E29D8AC6300685763 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		43B7BCA029D8AC8200685763 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +223,60 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		43B7BC8E29D8ABC300685763 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC9329D8ABF100685763 /* Assembly */,
+				43B7BC9229D8ABEA00685763 /* Model */,
+				43B7BC9129D8ABE600685763 /* View */,
+				43B7BC9029D8ABDD00685763 /* Presenter */,
+				43B7BC8F29D8ABD900685763 /* Service */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		43B7BC8F29D8ABD900685763 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BCA029D8AC8200685763 /* OnboardingService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		43B7BC9029D8ABDD00685763 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC9E29D8AC6300685763 /* OnboardingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43B7BC9129D8ABE600685763 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC9829D8AC2C00685763 /* OnboardingViewController.swift */,
+				43B7BC9A29D8AC3500685763 /* OnboardingCell.swift */,
+				43B7BC9C29D8AC4800685763 /* OnboardingHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43B7BC9229D8ABEA00685763 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC9629D8AC1B00685763 /* Onboarding.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43B7BC9329D8ABF100685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC9429D8AC0C00685763 /* OnboardingAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +307,7 @@
 			children = (
 				43B7BC6529D8A14000685763 /* Cart */,
 				43B7BC7A29D8AA6400685763 /* Delivery */,
+				43B7BC8E29D8ABC300685763 /* Onboarding */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -410,16 +479,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B7BC9D29D8AC4800685763 /* OnboardingHeaderView.swift in Sources */,
 				43B7BC7629D8A20E00685763 /* CartService.swift in Sources */,
 				43B7BC8129D8AABC00685763 /* DeliveryAssembly.swift in Sources */,
+				43B7BC9729D8AC1B00685763 /* Onboarding.swift in Sources */,
 				43B7BC8B29D8AB1300685763 /* DeliveryPresenter.swift in Sources */,
+				43B7BC9929D8AC2C00685763 /* OnboardingViewController.swift in Sources */,
 				43B7BC6429D8A10400685763 /* Assembly.swift in Sources */,
 				43B7BC6029D8A06F00685763 /* TypeOfNavigation.swift in Sources */,
 				43B7BC5E29D8A06700685763 /* Coordinator.swift in Sources */,
 				43B7BC6E29D8A19100685763 /* Cart.swift in Sources */,
 				43B7BC7029D8A1A800685763 /* CartViewController.swift in Sources */,
+				43B7BC9B29D8AC3500685763 /* OnboardingCell.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
+				43B7BC9529D8AC0C00685763 /* OnboardingAssembly.swift in Sources */,
 				43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */,
+				43B7BC9F29D8AC6300685763 /* OnboardingPresenter.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
 				43B7BC8529D8AADE00685763 /* DeliveryViewController.swift in Sources */,
 				43B7BC8929D8AAFD00685763 /* DeliveryHeaderView.swift in Sources */,
@@ -428,6 +503,7 @@
 				43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */,
 				43B7BC8329D8AAC800685763 /* Delivery.swift in Sources */,
 				43B7BC8D29D8AB2100685763 /* DeliveryService.swift in Sources */,
+				43B7BCA129D8AC8200685763 /* OnboardingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
