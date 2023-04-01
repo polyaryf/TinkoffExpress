@@ -7,11 +7,9 @@
 
 import UIKit
 
-extension OrderCheckoutTableViewCell {
-    enum OrderCheckoutCellType: String {
-        case empty
-        case whatWillBeDelivered = "Что привезем"
-        case delivery = "Доставка"
-        case payment = "Оплата"
-    }
+enum OrderCheckoutCellType: String {
+    case empty
+    case whatWillBeDelivered = "Что привезем"
+    case delivery = "Доставка"
+    case payment = "Оплата"
 }

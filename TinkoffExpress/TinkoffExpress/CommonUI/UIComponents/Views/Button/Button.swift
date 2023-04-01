@@ -73,6 +73,7 @@ final class Button: UIView {
     }
 
     func setStyle(_ style: Button.Style) {
+        guard configuration.style != style else { return }
         configuration.style = style
         updateStyleForCurrentState()
     }
