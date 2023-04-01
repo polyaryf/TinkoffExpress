@@ -20,6 +20,13 @@
 		43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7129D8A1BC00685763 /* CartCell.swift */; };
 		43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7329D8A20000685763 /* CartPresenter.swift */; };
 		43B7BC7629D8A20E00685763 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7529D8A20E00685763 /* CartService.swift */; };
+		43B7BC8129D8AABC00685763 /* DeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8029D8AABC00685763 /* DeliveryAssembly.swift */; };
+		43B7BC8329D8AAC800685763 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8229D8AAC800685763 /* Delivery.swift */; };
+		43B7BC8529D8AADE00685763 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8429D8AADE00685763 /* DeliveryViewController.swift */; };
+		43B7BC8729D8AAEF00685763 /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8629D8AAEF00685763 /* DeliveryCell.swift */; };
+		43B7BC8929D8AAFD00685763 /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8829D8AAFD00685763 /* DeliveryHeaderView.swift */; };
+		43B7BC8B29D8AB1300685763 /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8A29D8AB1300685763 /* DeliveryPresenter.swift */; };
+		43B7BC8D29D8AB2100685763 /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC8C29D8AB2100685763 /* DeliveryService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +47,13 @@
 		43B7BC7129D8A1BC00685763 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		43B7BC7329D8A20000685763 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		43B7BC7529D8A20E00685763 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		43B7BC8029D8AABC00685763 /* DeliveryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAssembly.swift; sourceTree = "<group>"; };
+		43B7BC8229D8AAC800685763 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		43B7BC8429D8AADE00685763 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		43B7BC8629D8AAEF00685763 /* DeliveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCell.swift; sourceTree = "<group>"; };
+		43B7BC8829D8AAFD00685763 /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
+		43B7BC8A29D8AB1300685763 /* DeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
+		43B7BC8C29D8AB2100685763 /* DeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +155,60 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		43B7BC7A29D8AA6400685763 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC7F29D8AA9100685763 /* Assembly */,
+				43B7BC7E29D8AA8800685763 /* Model */,
+				43B7BC7D29D8AA8300685763 /* View */,
+				43B7BC7C29D8AA7F00685763 /* Presenter */,
+				43B7BC7B29D8AA7A00685763 /* Service */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		43B7BC7B29D8AA7A00685763 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC8C29D8AB2100685763 /* DeliveryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		43B7BC7C29D8AA7F00685763 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC8A29D8AB1300685763 /* DeliveryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43B7BC7D29D8AA8300685763 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC8429D8AADE00685763 /* DeliveryViewController.swift */,
+				43B7BC8629D8AAEF00685763 /* DeliveryCell.swift */,
+				43B7BC8829D8AAFD00685763 /* DeliveryHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43B7BC7E29D8AA8800685763 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC8229D8AAC800685763 /* Delivery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43B7BC7F29D8AA9100685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC8029D8AABC00685763 /* DeliveryAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				43B7BC6529D8A14000685763 /* Cart */,
+				43B7BC7A29D8AA6400685763 /* Delivery */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -342,6 +411,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B7BC7629D8A20E00685763 /* CartService.swift in Sources */,
+				43B7BC8129D8AABC00685763 /* DeliveryAssembly.swift in Sources */,
+				43B7BC8B29D8AB1300685763 /* DeliveryPresenter.swift in Sources */,
 				43B7BC6429D8A10400685763 /* Assembly.swift in Sources */,
 				43B7BC6029D8A06F00685763 /* TypeOfNavigation.swift in Sources */,
 				43B7BC5E29D8A06700685763 /* Coordinator.swift in Sources */,
@@ -350,8 +421,13 @@
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
+				43B7BC8529D8AADE00685763 /* DeliveryViewController.swift in Sources */,
+				43B7BC8929D8AAFD00685763 /* DeliveryHeaderView.swift in Sources */,
 				43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */,
+				43B7BC8729D8AAEF00685763 /* DeliveryCell.swift in Sources */,
 				43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */,
+				43B7BC8329D8AAC800685763 /* Delivery.swift in Sources */,
+				43B7BC8D29D8AB2100685763 /* DeliveryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
