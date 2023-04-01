@@ -288,6 +288,7 @@
 		5792519429D4318A00BD5C28 /* ActivityIndicator */ = {
 			isa = PBXGroup;
 			children = (
+				2926F3DC29D84CAA00938AA1 /* TEActivityIndicator */,
 				5792519529D4318A00BD5C28 /* ActivityIndicatorView.swift */,
 			);
 			path = ActivityIndicator;
@@ -480,6 +481,7 @@
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
+				2926F3DE29D84CAA00938AA1 /* TEActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
