@@ -76,7 +76,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     // MARK: Private
     
     private func setupView() {
-        switch(type) {
+        switch type {
         case .empty: return
         case .whatWillBeDelivered: setupWhatWillBeDeliveredCellView()
         case .delivery: setupDeliveryCellView()
