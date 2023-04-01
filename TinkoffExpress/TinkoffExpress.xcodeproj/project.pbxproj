@@ -34,7 +34,7 @@
 		43B7BC5D29D8A06700685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5F29D8A06F00685763 /* TypeOfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNavigation.swift; sourceTree = "<group>"; };
 		43B7BC6329D8A10400685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
-		43B7BC6B29D8A17600685763 /* CartAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartAssembly.swift; path = TinkoffExpress/Assembly/CartAssembly.swift; sourceTree = SOURCE_ROOT; };
+		43B7BC6B29D8A17600685763 /* CartAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartAssembly.swift; path = TinkoffExpress/Modules/Cart/Assembly/CartAssembly.swift; sourceTree = SOURCE_ROOT; };
 		43B7BC6D29D8A19100685763 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		43B7BC6F29D8A1A800685763 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		43B7BC7129D8A1BC00685763 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -91,21 +91,13 @@
 		43B7BC6529D8A14000685763 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				43B7BC6629D8A14500685763 /* Assembly */,
+				43B7BC7929D8A8A600685763 /* Assembly */,
 				43B7BC6729D8A14900685763 /* Model */,
 				43B7BC6829D8A15000685763 /* View */,
 				43B7BC6929D8A15300685763 /* Presenter */,
 				43B7BC6A29D8A15800685763 /* Service */,
 			);
 			path = Cart;
-			sourceTree = "<group>";
-		};
-		43B7BC6629D8A14500685763 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC6B29D8A17600685763 /* CartAssembly.swift */,
-			);
-			path = Assembly;
 			sourceTree = "<group>";
 		};
 		43B7BC6729D8A14900685763 /* Model */ = {
@@ -139,6 +131,14 @@
 				43B7BC7529D8A20E00685763 /* CartService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		43B7BC7929D8A8A600685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6B29D8A17600685763 /* CartAssembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
