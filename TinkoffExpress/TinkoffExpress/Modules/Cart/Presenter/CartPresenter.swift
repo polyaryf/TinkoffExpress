@@ -14,17 +14,16 @@ protocol CartPresenterProtocol {
     func checkoutButtonTouchUpInside(with button: UIButton)
 }
 
-class CartPresenter: CartPresenterProtocol {
+final class CartPresenter: CartPresenterProtocol {
     // MARK: Dependencies
     
-    weak private var view: CartViewController?
-    private var coordinator: AppCoordinator?
+    weak var view: CartViewController?
+    private var coordinator: Coordinator?
     private var service: CartService?
 
     // MARK: Init
-    init(coordinator: AppCoordinator, view: CartViewController, service: CartService) {
+    init(coordinator: Coordinator, service: CartService) {
         self.coordinator = coordinator
-        self.view = view
         self.service = service
     }
     
@@ -54,5 +53,6 @@ class CartPresenter: CartPresenterProtocol {
     // MARK: Navigation
     
     private func showDelivery() {
+        // TODO: coordinator?.move(DeliveryAssembly(), with: .present)
     }
 }

@@ -7,11 +7,11 @@
 
 import UIKit
 import SnapKit
-// swiftlint:disable:next superfluous_disable_command
+
 final class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: Dependencies
     
-    private var cartPresenter: CartPresenterProtocol?
+    private var cartPresenter: CartPresenterProtocol
     
     // MARK: Properties
     
@@ -27,12 +27,24 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     private lazy var finalLabel = UILabel()
     private lazy var checkoutButton = UIButton()
     
+    // MARK: Init
+    
+    init(cartPresenter: CartPresenterProtocol) {
+        self.cartPresenter = cartPresenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cartPresenter?.viewDidLoad()
+        cartPresenter.viewDidLoad()
         
         setupTitleLabel()
         setupTrashButton()
@@ -45,21 +57,15 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Actions
     
     @objc private func checkoutButtonTapped() {
-        cartPresenter?.checkoutButtonTapped()
+        cartPresenter.checkoutButtonTapped()
     }
     
     @objc private func checkoutButtonTouchDown() {
-        cartPresenter?.checkoutButtonTouchDown(with: checkoutButton)
+        cartPresenter.checkoutButtonTouchDown(with: checkoutButton)
     }
     
     @objc private func checkoutButtonTouchUpInside() {
-        cartPresenter?.checkoutButtonTouchUpInside(with: checkoutButton)
-    }
-
-    // MARK: Setup Dependencies
-    
-    func setPresenter(_ presenter: CartPresenterProtocol) {
-        self.cartPresenter = presenter
+        cartPresenter.checkoutButtonTouchUpInside(with: checkoutButton)
     }
     
     // MARK: Setup Colors
@@ -197,21 +203,31 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
-    // swiftlint:disable:next line_length
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CartCell", for: indexPath) as! CartCell
-        let textCell = items[indexPath.row].text
-        let imageNameCell = items[indexPath.row].imageName
-        cell.setupCell(text: textCell, imageName: imageNameCell)
-        return cell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "CartCell", for: indexPath
+        ) as? CartCell {
+            let textCell = items[indexPath.row].text
+            let imageNameCell = items[indexPath.row].imageName
+            cell.setupCell(text: textCell, imageName: imageNameCell)
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
-    // swiftlint:disable:next line_length
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 36, height: 72)
     }
 }

@@ -11,17 +11,15 @@
 		29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEBA29C37E73007C763D /* SceneDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
-		43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */; };
-		43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */; };
-		43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA529D30122003B0EC2 /* RootCoordinator.swift */; };
-		43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */; };
-		43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA929D301F4003B0EC2 /* Module.swift */; };
-		43E10BB229D3033A003B0EC2 /* CartModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB129D3033A003B0EC2 /* CartModule.swift */; };
-		43E10BB429D30359003B0EC2 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB329D30359003B0EC2 /* Cart.swift */; };
-		43E10BB629D3039E003B0EC2 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB529D3039E003B0EC2 /* CartViewController.swift */; };
-		43E10BB829D303B1003B0EC2 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB729D303B1003B0EC2 /* CartCell.swift */; };
-		43E10BBA29D303C8003B0EC2 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BB929D303C8003B0EC2 /* CartPresenter.swift */; };
-		43E10BBC29D303E5003B0EC2 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BBB29D303E5003B0EC2 /* CartService.swift */; };
+		43B7BC5E29D8A06700685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5D29D8A06700685763 /* Coordinator.swift */; };
+		43B7BC6029D8A06F00685763 /* TypeOfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5F29D8A06F00685763 /* TypeOfNavigation.swift */; };
+		43B7BC6429D8A10400685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6329D8A10400685763 /* Assembly.swift */; };
+		43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6B29D8A17600685763 /* CartAssembly.swift */; };
+		43B7BC6E29D8A19100685763 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6D29D8A19100685763 /* Cart.swift */; };
+		43B7BC7029D8A1A800685763 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6F29D8A1A800685763 /* CartViewController.swift */; };
+		43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7129D8A1BC00685763 /* CartCell.swift */; };
+		43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7329D8A20000685763 /* CartPresenter.swift */; };
+		43B7BC7629D8A20E00685763 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7529D8A20E00685763 /* CartService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,17 +31,15 @@
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
-		43E10BA529D30122003B0EC2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
-		43E10BA929D301F4003B0EC2 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
-		43E10BB129D3033A003B0EC2 /* CartModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModule.swift; sourceTree = "<group>"; };
-		43E10BB329D30359003B0EC2 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		43E10BB529D3039E003B0EC2 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		43E10BB729D303B1003B0EC2 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
-		43E10BB929D303C8003B0EC2 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
-		43E10BBB29D303E5003B0EC2 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		43B7BC5D29D8A06700685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		43B7BC5F29D8A06F00685763 /* TypeOfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNavigation.swift; sourceTree = "<group>"; };
+		43B7BC6329D8A10400685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		43B7BC6B29D8A17600685763 /* CartAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartAssembly.swift; path = TinkoffExpress/Assembly/CartAssembly.swift; sourceTree = SOURCE_ROOT; };
+		43B7BC6D29D8A19100685763 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		43B7BC6F29D8A1A800685763 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		43B7BC7129D8A1BC00685763 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		43B7BC7329D8A20000685763 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
+		43B7BC7529D8A20E00685763 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,11 +73,72 @@
 				43E10B9729D2FD8D003B0EC2 /* App */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
 				43E10B9929D2FDB1003B0EC2 /* Resources */,
-				43E10B9C29D2FEE6003B0EC2 /* Factory */,
 				43E10B9D29D30030003B0EC2 /* Flows */,
+				43B7BC6229D8A0EE00685763 /* Assembly */,
 				43E10B9A29D2FDCD003B0EC2 /* Modules */,
 			);
 			path = TinkoffExpress;
+			sourceTree = "<group>";
+		};
+		43B7BC6229D8A0EE00685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6329D8A10400685763 /* Assembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43B7BC6529D8A14000685763 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6629D8A14500685763 /* Assembly */,
+				43B7BC6729D8A14900685763 /* Model */,
+				43B7BC6829D8A15000685763 /* View */,
+				43B7BC6929D8A15300685763 /* Presenter */,
+				43B7BC6A29D8A15800685763 /* Service */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		43B7BC6629D8A14500685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6B29D8A17600685763 /* CartAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43B7BC6729D8A14900685763 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6D29D8A19100685763 /* Cart.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43B7BC6829D8A15000685763 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC6F29D8A1A800685763 /* CartViewController.swift */,
+				43B7BC7129D8A1BC00685763 /* CartCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43B7BC6929D8A15300685763 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC7329D8A20000685763 /* CartPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43B7BC6A29D8A15800685763 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC7529D8A20E00685763 /* CartService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
@@ -112,18 +169,9 @@
 		43E10B9A29D2FDCD003B0EC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				43E10BAB29D302D8003B0EC2 /* Cart */,
+				43B7BC6529D8A14000685763 /* Cart */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		43E10B9C29D2FEE6003B0EC2 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BA729D301DC003B0EC2 /* DependencyFactory.swift */,
-				43E10BA929D301F4003B0EC2 /* Module.swift */,
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		43E10B9D29D30030003B0EC2 /* Flows */ = {
@@ -137,56 +185,10 @@
 		43E10B9E29D3003E003B0EC2 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */,
-				43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */,
-				43E10BA529D30122003B0EC2 /* RootCoordinator.swift */,
+				43B7BC5D29D8A06700685763 /* Coordinator.swift */,
+				43B7BC5F29D8A06F00685763 /* TypeOfNavigation.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		43E10BAB29D302D8003B0EC2 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BB129D3033A003B0EC2 /* CartModule.swift */,
-				43E10BAC29D302E4003B0EC2 /* Model */,
-				43E10BAD29D302EB003B0EC2 /* View */,
-				43E10BAE29D302F5003B0EC2 /* Presenter */,
-				43E10BAF29D3031E003B0EC2 /* Service */,
-			);
-			path = Cart;
-			sourceTree = "<group>";
-		};
-		43E10BAC29D302E4003B0EC2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BB329D30359003B0EC2 /* Cart.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		43E10BAD29D302EB003B0EC2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BB529D3039E003B0EC2 /* CartViewController.swift */,
-				43E10BB729D303B1003B0EC2 /* CartCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		43E10BAE29D302F5003B0EC2 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BB929D303C8003B0EC2 /* CartPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		43E10BAF29D3031E003B0EC2 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				43E10BBB29D303E5003B0EC2 /* CartService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
@@ -339,19 +341,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
-				43E10BB429D30359003B0EC2 /* Cart.swift in Sources */,
-				43E10BB629D3039E003B0EC2 /* CartViewController.swift in Sources */,
-				43E10BA829D301DC003B0EC2 /* DependencyFactory.swift in Sources */,
-				43E10BBC29D303E5003B0EC2 /* CartService.swift in Sources */,
-				43E10BB829D303B1003B0EC2 /* CartCell.swift in Sources */,
-				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
-				43E10BB229D3033A003B0EC2 /* CartModule.swift in Sources */,
-				43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */,
-				43E10BBA29D303C8003B0EC2 /* CartPresenter.swift in Sources */,
-				43E10BAA29D301F4003B0EC2 /* Module.swift in Sources */,
+				43B7BC7629D8A20E00685763 /* CartService.swift in Sources */,
+				43B7BC6429D8A10400685763 /* Assembly.swift in Sources */,
+				43B7BC6029D8A06F00685763 /* TypeOfNavigation.swift in Sources */,
+				43B7BC5E29D8A06700685763 /* Coordinator.swift in Sources */,
+				43B7BC6E29D8A19100685763 /* Cart.swift in Sources */,
+				43B7BC7029D8A1A800685763 /* CartViewController.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
+				43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */,
 				29B3AEBB29C37E73007C763D /* SceneDelegate.swift in Sources */,
+				43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */,
+				43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

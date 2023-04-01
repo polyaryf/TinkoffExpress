@@ -11,7 +11,7 @@ protocol CartService {
     func loadItems(completion: @escaping ([Cart]?) -> Void)
 }
 
-class MockCartService: CartService {
+final class MockCartService: CartService {
     func loadItems(completion: @escaping ([Cart]?) -> Void) {
         let items: [Cart] = [
             .init(text: "Чайник электрический Xiaomi Mi Smart Kettle RU EAC White", imageName: "kettle"),
