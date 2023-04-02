@@ -22,6 +22,7 @@ final class AppCoordinator: Coordinator {
     func start(_ navigationController: UINavigationController) {
         guard isRootCoordinator else { return }
         self.navigationController = navigationController
+        move(CartAssembly(), with: .push)
     }
     
     func move(_ assembly: Assembly, with typeOfNavigation: TypeOfNaviation) {
