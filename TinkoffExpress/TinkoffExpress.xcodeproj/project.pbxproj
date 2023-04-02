@@ -36,12 +36,6 @@
 		579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519729D4318A00BD5C28 /* TEColors.swift */; };
 		579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519829D4318A00BD5C28 /* Extension+UIColor.swift */; };
 		579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */; };
-		43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6B29D8A17600685763 /* CartAssembly.swift */; };
-		43B7BC6E29D8A19100685763 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6D29D8A19100685763 /* Cart.swift */; };
-		43B7BC7029D8A1A800685763 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC6F29D8A1A800685763 /* CartViewController.swift */; };
-		43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7129D8A1BC00685763 /* CartCell.swift */; };
-		43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7329D8A20000685763 /* CartPresenter.swift */; };
-		43B7BC7629D8A20E00685763 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC7529D8A20E00685763 /* CartService.swift */; };
 		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +44,6 @@
 		2926F3D229D7099D00938AA1 /* OrderCheckoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		2926F3D329D7099D00938AA1 /* OrderCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutViewController.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29B3AEBA29C37E73007C763D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -79,12 +72,6 @@
 		5792519729D4318A00BD5C28 /* TEColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEColors.swift; sourceTree = "<group>"; };
 		5792519829D4318A00BD5C28 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Dynamic.swift"; sourceTree = "<group>"; };
-		43B7BC6B29D8A17600685763 /* CartAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CartAssembly.swift; path = TinkoffExpress/Modules/Cart/Assembly/CartAssembly.swift; sourceTree = SOURCE_ROOT; };
-		43B7BC6D29D8A19100685763 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		43B7BC6F29D8A1A800685763 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		43B7BC7129D8A1BC00685763 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
-		43B7BC7329D8A20000685763 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
-		43B7BC7529D8A20E00685763 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
 		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,63 +139,10 @@
 			path = TinkoffExpress;
 			sourceTree = "<group>";
 		};
-		43B7BC6229D8A0EE00685763 /* Assembly */ = {
+		43B7BC5C29D89F5C00685763 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				43B7BC6329D8A10400685763 /* Assembly.swift */,
-			);
-			path = Assembly;
-			sourceTree = "<group>";
-		};
-		43B7BC6529D8A14000685763 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC7929D8A8A600685763 /* Assembly */,
-				43B7BC6729D8A14900685763 /* Model */,
-				43B7BC6829D8A15000685763 /* View */,
-				43B7BC6929D8A15300685763 /* Presenter */,
-				43B7BC6A29D8A15800685763 /* Service */,
-			);
-			path = Cart;
-			sourceTree = "<group>";
-		};
-		43B7BC6729D8A14900685763 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC6D29D8A19100685763 /* Cart.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		43B7BC6829D8A15000685763 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC6F29D8A1A800685763 /* CartViewController.swift */,
-				43B7BC7129D8A1BC00685763 /* CartCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		43B7BC6929D8A15300685763 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC7329D8A20000685763 /* CartPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		43B7BC6A29D8A15800685763 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC7529D8A20E00685763 /* CartService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		43B7BC7929D8A8A600685763 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				43B7BC6B29D8A17600685763 /* CartAssembly.swift */,
+				43B7BC5A29D89F5600685763 /* Assembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -241,7 +175,6 @@
 		43E10B9A29D2FDCD003B0EC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				43B7BC6529D8A14000685763 /* Cart */,
 				2926F3CF29D7099D00938AA1 /* OrderCheckout */,
 			);
 			path = Modules;
@@ -547,12 +480,6 @@
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
-				43B7BC7629D8A20E00685763 /* CartService.swift in Sources */,
-				43B7BC6E29D8A19100685763 /* Cart.swift in Sources */,
-				43B7BC7029D8A1A800685763 /* CartViewController.swift in Sources */,
-				43B7BC7429D8A20000685763 /* CartPresenter.swift in Sources */,
-				43B7BC7229D8A1BC00685763 /* CartCell.swift in Sources */,
-				43B7BC6C29D8A17600685763 /* CartAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
