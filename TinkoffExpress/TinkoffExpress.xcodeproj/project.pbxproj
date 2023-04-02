@@ -13,6 +13,9 @@
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
+		43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */; };
+		43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */; };
+		43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA529D30122003B0EC2 /* RootCoordinator.swift */; };
 		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
 		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
@@ -49,6 +52,9 @@
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
+		43E10BA529D30122003B0EC2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
 		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -180,6 +186,13 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		43E10B9C29D2FEE6003B0EC2 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		43E10B9D29D30030003B0EC2 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,9 @@
 		43E10B9E29D3003E003B0EC2 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */,
+				43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */,
+				43E10BA529D30122003B0EC2 /* RootCoordinator.swift */,
 				43B7BC5629D89EDD00685763 /* Coordinator.swift */,
 				43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */,
 			);
@@ -458,8 +474,10 @@
 				579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */,
 				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
+				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
+				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
 				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
