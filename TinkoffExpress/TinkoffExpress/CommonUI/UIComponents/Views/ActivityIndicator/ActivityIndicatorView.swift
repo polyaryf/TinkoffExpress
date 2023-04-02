@@ -192,6 +192,14 @@ final class ActivityIndicatorView: UIView {
                 width: 4
             )
         }
+        
+        static var mYellow: ActivityIndicatorView.Style {
+            ActivityIndicatorView.Style(
+                lineColor: TEColors.Foreground.brandTinkoffAccent,
+                diameter: 40,
+                width: 3
+            )
+        }
 
         var backgroundColor: UIColor
         var lineColor: UIColor
