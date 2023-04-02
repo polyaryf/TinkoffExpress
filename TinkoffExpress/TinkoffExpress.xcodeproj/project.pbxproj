@@ -16,6 +16,9 @@
 		43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */; };
 		43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */; };
 		43E10BA629D30122003B0EC2 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E10BA529D30122003B0EC2 /* RootCoordinator.swift */; };
+		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
+		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
+		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -52,6 +55,9 @@
 		43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
 		43E10BA529D30122003B0EC2 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
+		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -131,12 +137,22 @@
 				43E10B9729D2FD8D003B0EC2 /* App */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
 				43E10B9C29D2FEE6003B0EC2 /* Factory */,
+				43E10B9929D2FDB1003B0EC2 /* Resources */,
+				43B7BC5C29D89F5C00685763 /* Assembly */,
 				43E10B9D29D30030003B0EC2 /* Flows */,
 				5792517C29D4318A00BD5C28 /* CommonUI */,
 				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43E10B9A29D2FDCD003B0EC2 /* Modules */,
 			);
 			path = TinkoffExpress;
+			sourceTree = "<group>";
+		};
+		43B7BC5C29D89F5C00685763 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43B7BC5A29D89F5600685763 /* Assembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
@@ -193,6 +209,8 @@
 				43E10B9F29D300FF003B0EC2 /* AppCoordinator.swift */,
 				43E10BA229D30110003B0EC2 /* AbstractCoordinator.swift */,
 				43E10BA529D30122003B0EC2 /* RootCoordinator.swift */,
+				43B7BC5629D89EDD00685763 /* Coordinator.swift */,
+				43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -453,6 +471,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
+				43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */,
 				579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */,
 				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
@@ -461,6 +481,7 @@
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
 				43E10BA029D300FF003B0EC2 /* AppCoordinator.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
+				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
 				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
