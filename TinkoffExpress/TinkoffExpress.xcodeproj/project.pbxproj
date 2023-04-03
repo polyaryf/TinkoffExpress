@@ -22,6 +22,7 @@
 		29F89C8229DB2584009325EE /* FinalDeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */; };
 		29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */; };
 		29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */; };
+		29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */; };
 		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
 		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
@@ -87,6 +88,7 @@
 		29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryPresenter.swift; sourceTree = "<group>"; };
 		29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryService.swift; sourceTree = "<group>"; };
 		29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryAssembly.swift; sourceTree = "<group>"; };
+		29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
 		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		2926F3CF29D7099D00938AA1 /* OrderCheckout */ = {
 			isa = PBXGroup;
 			children = (
+				29F89C8929DB5D6A009325EE /* Model */,
 				29F89C7D29DB21AF009325EE /* Assembly */,
 				29F89C7A29DB1D45009325EE /* Service */,
 				29F89C7729DB1C98009325EE /* Presenater */,
@@ -277,6 +280,14 @@
 				29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		29F89C8929DB5D6A009325EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		43B7BC5C29D89F5C00685763 /* Assembly */ = {
@@ -799,6 +810,7 @@
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
+				29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */,
 				43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */,
 				43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */,
 				43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */,
