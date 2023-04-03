@@ -5,22 +5,22 @@
 //  Created by zedsbook on 28.03.2023.
 //
 
-import Foundation
+import UIKit
 
-protocol DeliveryPresenterProtocol {
+protocol OnboardingPresenterProtocol {
     func viewDidLoad()
-    func didSelectItemAt()
+    func continueButtonTapped()
 }
 
-final class DeliveryPresenter: DeliveryPresenterProtocol {
+final class OnboardingPresenter: OnboardingPresenterProtocol {
     // MARK: Dependencies
-    
-    weak var view: DeliveryViewController?
+
+    weak var view: OnboardingViewController?
     private var coordinator: Coordinator?
-    private var service: DeliveryService?
-    
+    private var service: OnboardingService?
+
     // MARK: Init
-    init(coordinator: Coordinator, service: DeliveryService) {
+    init(coordinator: Coordinator, service: OnboardingService) {
         self.coordinator = coordinator
         self.service = service
     }
@@ -36,13 +36,13 @@ final class DeliveryPresenter: DeliveryPresenterProtocol {
     
     // MARK: Events
     
-    func didSelectItemAt() {
-        showOnboarding()
+    func continueButtonTapped() {
+        showMeetingAppointment()
     }
     
     // MARK: Navigation
     
-    private func showOnboarding() {
-        coordinator?.move(OnboardingAssembly(), with: .push)
+    private func showMeetingAppointment() {
+        // TODO: coordinator?.move(MeetingAppointmentAssembly(), with: .push)
     }
 }

@@ -30,6 +30,13 @@
 		43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7F29DAAE800044840D /* CartViewController.swift */; };
 		43D78F8E29DAAE800044840D /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F8029DAAE800044840D /* CartCell.swift */; };
 		43D78F8F29DAAE800044840D /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F8229DAAE800044840D /* CartService.swift */; };
+		43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9229DAB3690044840D /* OnboardingAssembly.swift */; };
+		43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9429DAB3690044840D /* OnboardingPresenter.swift */; };
+		43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9629DAB3690044840D /* Onboarding.swift */; };
+		43D78FA029DAB3690044840D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9829DAB3690044840D /* OnboardingViewController.swift */; };
+		43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9929DAB3690044840D /* OnboardingHeaderView.swift */; };
+		43D78FA229DAB3690044840D /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9A29DAB3690044840D /* OnboardingCell.swift */; };
+		43D78FA329DAB3690044840D /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9C29DAB3690044840D /* OnboardingService.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -80,6 +87,13 @@
 		43D78F7F29DAAE800044840D /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		43D78F8029DAAE800044840D /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		43D78F8229DAAE800044840D /* CartService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		43D78F9229DAB3690044840D /* OnboardingAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingAssembly.swift; sourceTree = "<group>"; };
+		43D78F9429DAB3690044840D /* OnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		43D78F9629DAB3690044840D /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		43D78F9829DAB3690044840D /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		43D78F9929DAB3690044840D /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
+		43D78F9A29DAB3690044840D /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		43D78F9C29DAB3690044840D /* OnboardingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -158,11 +172,11 @@
 			children = (
 				43E10B9729D2FD8D003B0EC2 /* App */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
+				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43B7BC5C29D89F5C00685763 /* Assembly */,
 				43E10B9D29D30030003B0EC2 /* Flows */,
-				5792517C29D4318A00BD5C28 /* CommonUI */,
-				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43E10B9A29D2FDCD003B0EC2 /* Modules */,
+				5792517C29D4318A00BD5C28 /* CommonUI */,
 			);
 			path = TinkoffExpress;
 			sourceTree = "<group>";
@@ -187,9 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				43D78F6B29DAAE800044840D /* Assembly */,
-				43D78F6D29DAAE800044840D /* Presenter */,
 				43D78F6F29DAAE800044840D /* Model */,
 				43D78F7129DAAE800044840D /* View */,
+				43D78F6D29DAAE800044840D /* Presenter */,
 				43D78F7529DAAE800044840D /* Service */,
 			);
 			path = Delivery;
@@ -241,9 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				43D78F7829DAAE800044840D /* Assembly */,
-				43D78F7A29DAAE800044840D /* Presenter */,
 				43D78F7C29DAAE800044840D /* Model */,
 				43D78F7E29DAAE800044840D /* View */,
+				43D78F7A29DAAE800044840D /* Presenter */,
 				43D78F8129DAAE800044840D /* Service */,
 			);
 			path = Cart;
@@ -290,6 +304,60 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		43D78F9029DAB3690044840D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9129DAB3690044840D /* Assembly */,
+				43D78F9529DAB3690044840D /* Model */,
+				43D78F9729DAB3690044840D /* View */,
+				43D78F9329DAB3690044840D /* Presenter */,
+				43D78F9B29DAB3690044840D /* Service */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		43D78F9129DAB3690044840D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9229DAB3690044840D /* OnboardingAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43D78F9329DAB3690044840D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9429DAB3690044840D /* OnboardingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43D78F9529DAB3690044840D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9629DAB3690044840D /* Onboarding.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43D78F9729DAB3690044840D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9829DAB3690044840D /* OnboardingViewController.swift */,
+				43D78F9929DAB3690044840D /* OnboardingHeaderView.swift */,
+				43D78F9A29DAB3690044840D /* OnboardingCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43D78F9B29DAB3690044840D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F9C29DAB3690044840D /* OnboardingService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +388,7 @@
 			children = (
 				43D78F7729DAAE800044840D /* Cart */,
 				43D78F6A29DAAE800044840D /* Delivery */,
+				43D78F9029DAB3690044840D /* Onboarding */,
 				2926F3CF29D7099D00938AA1 /* OrderCheckout */,
 			);
 			path = Modules;
@@ -599,12 +668,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */,
+				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
 				43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */,
 				579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */,
+				43D78FA329DAB3690044840D /* OnboardingService.swift in Sources */,
 				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
+				43D78FA029DAB3690044840D /* OnboardingViewController.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
@@ -612,6 +685,7 @@
 				43D78F8329DAAE800044840D /* DeliveryAssembly.swift in Sources */,
 				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
 				43D78F8E29DAAE800044840D /* CartCell.swift in Sources */,
+				43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */,
 				43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */,
 				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
@@ -623,6 +697,7 @@
 				43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */,
 				43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */,
 				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
+				43D78FA229DAB3690044840D /* OnboardingCell.swift in Sources */,
 				43D78F8C29DAAE800044840D /* Cart.swift in Sources */,
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
 				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
@@ -635,6 +710,7 @@
 				43D78F8829DAAE800044840D /* DeliveryViewController.swift in Sources */,
 				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
 				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
+				43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
