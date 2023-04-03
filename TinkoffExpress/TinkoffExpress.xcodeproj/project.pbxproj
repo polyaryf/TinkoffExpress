@@ -16,6 +16,7 @@
 		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
 		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
+		43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -52,6 +53,7 @@
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
 		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 				43B7BC5A29D89F5600685763 /* Assembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43D78F4129DAAA500044840D /* TEActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */,
+			);
+			path = TEActivityIndicator;
 			sourceTree = "<group>";
 		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
@@ -288,8 +298,8 @@
 		5792519429D4318A00BD5C28 /* ActivityIndicator */ = {
 			isa = PBXGroup;
 			children = (
-				2926F3DC29D84CAA00938AA1 /* TEActivityIndicator */,
 				5792519529D4318A00BD5C28 /* ActivityIndicatorView.swift */,
+				43D78F4129DAAA500044840D /* TEActivityIndicator */,
 			);
 			path = ActivityIndicator;
 			sourceTree = "<group>";
@@ -468,6 +478,7 @@
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
+				43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */,
 				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
@@ -481,7 +492,6 @@
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
-				2926F3DE29D84CAA00938AA1 /* TEActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
