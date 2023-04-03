@@ -17,19 +17,19 @@
 		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
 		43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */; };
-		43D78F5029DAABB60044840D /* CartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4629DAABB60044840D /* CartAssembly.swift */; };
-		43D78F5129DAABB60044840D /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4829DAABB60044840D /* CartPresenter.swift */; };
-		43D78F5229DAABB60044840D /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4A29DAABB60044840D /* Cart.swift */; };
-		43D78F5329DAABB60044840D /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4C29DAABB60044840D /* CartViewController.swift */; };
-		43D78F5429DAABB60044840D /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4D29DAABB60044840D /* CartCell.swift */; };
-		43D78F5529DAABB60044840D /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4F29DAABB60044840D /* CartService.swift */; };
-		43D78F6329DAAD2B0044840D /* DeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F5829DAAD2B0044840D /* DeliveryAssembly.swift */; };
-		43D78F6429DAAD2B0044840D /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F5A29DAAD2B0044840D /* DeliveryPresenter.swift */; };
-		43D78F6529DAAD2B0044840D /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F5C29DAAD2B0044840D /* Delivery.swift */; };
-		43D78F6629DAAD2B0044840D /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F5E29DAAD2B0044840D /* DeliveryCell.swift */; };
-		43D78F6729DAAD2B0044840D /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F5F29DAAD2B0044840D /* DeliveryHeaderView.swift */; };
-		43D78F6829DAAD2B0044840D /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F6029DAAD2B0044840D /* DeliveryViewController.swift */; };
-		43D78F6929DAAD2B0044840D /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F6229DAAD2B0044840D /* DeliveryService.swift */; };
+		43D78F8329DAAE800044840D /* DeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F6C29DAAE800044840D /* DeliveryAssembly.swift */; };
+		43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F6E29DAAE800044840D /* DeliveryPresenter.swift */; };
+		43D78F8529DAAE800044840D /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7029DAAE800044840D /* Delivery.swift */; };
+		43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7229DAAE800044840D /* DeliveryCell.swift */; };
+		43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7329DAAE800044840D /* DeliveryHeaderView.swift */; };
+		43D78F8829DAAE800044840D /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7429DAAE800044840D /* DeliveryViewController.swift */; };
+		43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7629DAAE800044840D /* DeliveryService.swift */; };
+		43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7929DAAE800044840D /* CartAssembly.swift */; };
+		43D78F8B29DAAE800044840D /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7B29DAAE800044840D /* CartPresenter.swift */; };
+		43D78F8C29DAAE800044840D /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7D29DAAE800044840D /* Cart.swift */; };
+		43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F7F29DAAE800044840D /* CartViewController.swift */; };
+		43D78F8E29DAAE800044840D /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F8029DAAE800044840D /* CartCell.swift */; };
+		43D78F8F29DAAE800044840D /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F8229DAAE800044840D /* CartService.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -67,19 +67,19 @@
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
 		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEActivityIndicatorView.swift; sourceTree = "<group>"; };
-		43D78F4629DAABB60044840D /* CartAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartAssembly.swift; sourceTree = "<group>"; };
-		43D78F4829DAABB60044840D /* CartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
-		43D78F4A29DAABB60044840D /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		43D78F4C29DAABB60044840D /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		43D78F4D29DAABB60044840D /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
-		43D78F4F29DAABB60044840D /* CartService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
-		43D78F5829DAAD2B0044840D /* DeliveryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAssembly.swift; sourceTree = "<group>"; };
-		43D78F5A29DAAD2B0044840D /* DeliveryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
-		43D78F5C29DAAD2B0044840D /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
-		43D78F5E29DAAD2B0044840D /* DeliveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryCell.swift; sourceTree = "<group>"; };
-		43D78F5F29DAAD2B0044840D /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
-		43D78F6029DAAD2B0044840D /* DeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
-		43D78F6229DAAD2B0044840D /* DeliveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
+		43D78F6C29DAAE800044840D /* DeliveryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAssembly.swift; sourceTree = "<group>"; };
+		43D78F6E29DAAE800044840D /* DeliveryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryPresenter.swift; sourceTree = "<group>"; };
+		43D78F7029DAAE800044840D /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		43D78F7229DAAE800044840D /* DeliveryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryCell.swift; sourceTree = "<group>"; };
+		43D78F7329DAAE800044840D /* DeliveryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryHeaderView.swift; sourceTree = "<group>"; };
+		43D78F7429DAAE800044840D /* DeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		43D78F7629DAAE800044840D /* DeliveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryService.swift; sourceTree = "<group>"; };
+		43D78F7929DAAE800044840D /* CartAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartAssembly.swift; sourceTree = "<group>"; };
+		43D78F7B29DAAE800044840D /* CartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
+		43D78F7D29DAAE800044840D /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		43D78F7F29DAAE800044840D /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		43D78F8029DAAE800044840D /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		43D78F8229DAAE800044840D /* CartService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -183,111 +183,109 @@
 			path = TEActivityIndicator;
 			sourceTree = "<group>";
 		};
-		43D78F4429DAABB60044840D /* Cart */ = {
+		43D78F6A29DAAE800044840D /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4529DAABB60044840D /* Assembly */,
-				43D78F4729DAABB60044840D /* Presenter */,
-				43D78F4929DAABB60044840D /* Model */,
-				43D78F4B29DAABB60044840D /* View */,
-				43D78F4E29DAABB60044840D /* Service */,
+				43D78F6B29DAAE800044840D /* Assembly */,
+				43D78F6D29DAAE800044840D /* Presenter */,
+				43D78F6F29DAAE800044840D /* Model */,
+				43D78F7129DAAE800044840D /* View */,
+				43D78F7529DAAE800044840D /* Service */,
 			);
-			name = Cart;
-			path = ../../../../../Work/TinkoffExpress/TinkoffExpress/Modules/Cart;
+			path = Delivery;
 			sourceTree = "<group>";
 		};
-		43D78F4529DAABB60044840D /* Assembly */ = {
+		43D78F6B29DAAE800044840D /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4629DAABB60044840D /* CartAssembly.swift */,
+				43D78F6C29DAAE800044840D /* DeliveryAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		43D78F4729DAABB60044840D /* Presenter */ = {
+		43D78F6D29DAAE800044840D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4829DAABB60044840D /* CartPresenter.swift */,
+				43D78F6E29DAAE800044840D /* DeliveryPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		43D78F4929DAABB60044840D /* Model */ = {
+		43D78F6F29DAAE800044840D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4A29DAABB60044840D /* Cart.swift */,
+				43D78F7029DAAE800044840D /* Delivery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		43D78F4B29DAABB60044840D /* View */ = {
+		43D78F7129DAAE800044840D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4C29DAABB60044840D /* CartViewController.swift */,
-				43D78F4D29DAABB60044840D /* CartCell.swift */,
+				43D78F7229DAAE800044840D /* DeliveryCell.swift */,
+				43D78F7329DAAE800044840D /* DeliveryHeaderView.swift */,
+				43D78F7429DAAE800044840D /* DeliveryViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		43D78F4E29DAABB60044840D /* Service */ = {
+		43D78F7529DAAE800044840D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4F29DAABB60044840D /* CartService.swift */,
+				43D78F7629DAAE800044840D /* DeliveryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		43D78F5629DAAD2B0044840D /* Delivery */ = {
+		43D78F7729DAAE800044840D /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F5729DAAD2B0044840D /* Assembly */,
-				43D78F5929DAAD2B0044840D /* Presenter */,
-				43D78F5B29DAAD2B0044840D /* Model */,
-				43D78F5D29DAAD2B0044840D /* View */,
-				43D78F6129DAAD2B0044840D /* Service */,
+				43D78F7829DAAE800044840D /* Assembly */,
+				43D78F7A29DAAE800044840D /* Presenter */,
+				43D78F7C29DAAE800044840D /* Model */,
+				43D78F7E29DAAE800044840D /* View */,
+				43D78F8129DAAE800044840D /* Service */,
 			);
-			name = Delivery;
-			path = ../../../../../Work/TinkoffExpress/TinkoffExpress/Modules/Delivery;
+			path = Cart;
 			sourceTree = "<group>";
 		};
-		43D78F5729DAAD2B0044840D /* Assembly */ = {
+		43D78F7829DAAE800044840D /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F5829DAAD2B0044840D /* DeliveryAssembly.swift */,
+				43D78F7929DAAE800044840D /* CartAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		43D78F5929DAAD2B0044840D /* Presenter */ = {
+		43D78F7A29DAAE800044840D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F5A29DAAD2B0044840D /* DeliveryPresenter.swift */,
+				43D78F7B29DAAE800044840D /* CartPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		43D78F5B29DAAD2B0044840D /* Model */ = {
+		43D78F7C29DAAE800044840D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F5C29DAAD2B0044840D /* Delivery.swift */,
+				43D78F7D29DAAE800044840D /* Cart.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		43D78F5D29DAAD2B0044840D /* View */ = {
+		43D78F7E29DAAE800044840D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F5E29DAAD2B0044840D /* DeliveryCell.swift */,
-				43D78F5F29DAAD2B0044840D /* DeliveryHeaderView.swift */,
-				43D78F6029DAAD2B0044840D /* DeliveryViewController.swift */,
+				43D78F7F29DAAE800044840D /* CartViewController.swift */,
+				43D78F8029DAAE800044840D /* CartCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		43D78F6129DAAD2B0044840D /* Service */ = {
+		43D78F8129DAAE800044840D /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F6229DAAD2B0044840D /* DeliveryService.swift */,
+				43D78F8229DAAE800044840D /* CartService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -320,8 +318,8 @@
 		43E10B9A29D2FDCD003B0EC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				43D78F4429DAABB60044840D /* Cart */,
-				43D78F5629DAAD2B0044840D /* Delivery */,
+				43D78F7729DAAE800044840D /* Cart */,
+				43D78F6A29DAAE800044840D /* Delivery */,
 				2926F3CF29D7099D00938AA1 /* OrderCheckout */,
 			);
 			path = Modules;
@@ -602,45 +600,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
+				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
 				43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */,
-				43D78F6829DAAD2B0044840D /* DeliveryViewController.swift in Sources */,
-				43D78F5229DAABB60044840D /* Cart.swift in Sources */,
 				579251A729D4318A00BD5C28 /* Button.Style+Extensions.swift in Sources */,
-				43D78F6929DAAD2B0044840D /* DeliveryService.swift in Sources */,
-				43D78F5429DAABB60044840D /* CartCell.swift in Sources */,
 				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
-				43D78F5529DAABB60044840D /* CartService.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
-				43D78F6529DAAD2B0044840D /* Delivery.swift in Sources */,
-				43D78F6429DAAD2B0044840D /* DeliveryPresenter.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
-				43D78F6629DAAD2B0044840D /* DeliveryCell.swift in Sources */,
-				43D78F6729DAAD2B0044840D /* DeliveryHeaderView.swift in Sources */,
+				43D78F8B29DAAE800044840D /* CartPresenter.swift in Sources */,
+				43D78F8329DAAE800044840D /* DeliveryAssembly.swift in Sources */,
 				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
+				43D78F8E29DAAE800044840D /* CartCell.swift in Sources */,
+				43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */,
+				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
 				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
 				43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */,
+				43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */,
+				43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */,
 				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
+				43D78F8C29DAAE800044840D /* Cart.swift in Sources */,
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
+				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
-				43D78F6329DAAD2B0044840D /* DeliveryAssembly.swift in Sources */,
+				43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */,
 				579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */,
+				43D78F8529DAAE800044840D /* Delivery.swift in Sources */,
 				579251A329D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift in Sources */,
 				5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */,
+				43D78F8829DAAE800044840D /* DeliveryViewController.swift in Sources */,
 				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
 				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
-				43D78F5129DAABB60044840D /* CartPresenter.swift in Sources */,
-				43D78F5329DAABB60044840D /* CartViewController.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
-				43D78F5029DAABB60044840D /* CartAssembly.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
