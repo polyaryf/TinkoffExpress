@@ -8,6 +8,10 @@
 import UIKit
 
 final class FinalDeliveryViewController: UIViewController {
+    // MARK: Dependencies
+    
+    private var finalDeliveryPresenter: FinalDeliveryPresenterProtocol
+    
     // MARK: Subviews
     
     private lazy var titleLabel: UILabel = {
@@ -35,12 +39,30 @@ final class FinalDeliveryViewController: UIViewController {
         return button
     }()
     
+    // MARK: Init
+    
+    init(finalDeliveryPresenter: FinalDeliveryPresenterProtocol) {
+        self.finalDeliveryPresenter = finalDeliveryPresenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+    }
+    
+    // MARK: Actions
+    
+    private func okButtonTapped() {
+        finalDeliveryPresenter.okButtonTapped()
     }
     
     // MARK: Initial Configuration
