@@ -59,7 +59,7 @@ final class DeliveryCell: UICollectionViewCell {
     
     private func setupLabel() {
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         
         contentView.addSubview(label)
         

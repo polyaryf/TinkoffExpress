@@ -190,11 +190,11 @@
 			children = (
 				43E10B9729D2FD8D003B0EC2 /* App */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
+				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43B7BC5C29D89F5C00685763 /* Assembly */,
 				43E10B9D29D30030003B0EC2 /* Flows */,
-				5792517C29D4318A00BD5C28 /* CommonUI */,
-				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43E10B9A29D2FDCD003B0EC2 /* Modules */,
+				5792517C29D4318A00BD5C28 /* CommonUI */,
 			);
 			path = TinkoffExpress;
 			sourceTree = "<group>";
@@ -254,9 +254,9 @@
 		43D78F7129DAAE800044840D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				43D78F7429DAAE800044840D /* DeliveryViewController.swift */,
 				43D78F7229DAAE800044840D /* DeliveryCell.swift */,
 				43D78F7329DAAE800044840D /* DeliveryHeaderView.swift */,
-				43D78F7429DAAE800044840D /* DeliveryViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,7 +640,6 @@
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
 				296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */,
 				296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */,
-				43E10BA329D30110003B0EC2 /* AbstractCoordinator.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
