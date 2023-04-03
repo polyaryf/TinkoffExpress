@@ -19,6 +19,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     private var service: OrderCheckoutService?
     
     // MARK: Init
+    
     init(coordinator: Coordinator, service: OrderCheckoutService) {
         self.coordinator = coordinator
         self.service = service
