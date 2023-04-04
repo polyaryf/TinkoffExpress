@@ -13,6 +13,7 @@
 		296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */; };
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
+		298D5BDC29DC1C8600C12EEE /* FinalDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
@@ -76,6 +77,7 @@
 		296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
+		298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDelivery.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		296CA91829D973060048FE9D /* FinalDelivery */ = {
 			isa = PBXGroup;
 			children = (
+				298D5BDA29DC1C6C00C12EEE /* Model */,
 				29F89C8629DB279E009325EE /* Assembly */,
 				29F89C8329DB268E009325EE /* Service */,
 				29F89C8029DB2565009325EE /*  Presenter */,
@@ -204,6 +207,14 @@
 				296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */,
 			);
 			path = FinelDeliveryCell;
+			sourceTree = "<group>";
+		};
+		298D5BDA29DC1C6C00C12EEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -809,6 +820,7 @@
 				29F89C7C29DB1D55009325EE /* OrderCheckoutService.swift in Sources */,
 				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
+				298D5BDC29DC1C8600C12EEE /* FinalDelivery.swift in Sources */,
 				43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */,
 				579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */,
 				43D78F8529DAAE800044840D /* Delivery.swift in Sources */,

@@ -15,12 +15,14 @@ final class FinalDeliveryTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 13)
+        label.textColor = UIColor(named: "title.cell.finalDelivery.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
+        label.textColor = UIColor(named: "primaryText.cell.finalDelivery.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -53,6 +55,7 @@ final class FinalDeliveryTableViewCell: UITableViewCell {
     private func setupView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(primaryText)
+        contentView.backgroundColor = UIColor(named: "background.finalDelivery.color")
     
         titleLabel.text = type.rawValue
         
