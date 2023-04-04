@@ -133,7 +133,7 @@ final class OrderCheckoutViewController: UIViewController {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "backgroundColor.orderCheckout")
         appearance.titleTextAttributes = [
-            .foregroundColor: UIColor(named: "title.navBar.orderCheckout.color")!
+            .foregroundColor: UIColor(named: "title.navBar.orderCheckout.color") ?? UIColor.black
         ]
         appearance.shadowColor = .clear
         
