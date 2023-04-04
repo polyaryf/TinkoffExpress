@@ -8,7 +8,11 @@
 import UIKit
 import SnapKit
 
-class OrderCheckoutViewController: UIViewController {
+final class OrderCheckoutViewController: UIViewController {
+    // MARK: Dependencies
+    
+    private var orderCheckoutPresenter: OrderCheckoutPresenterProtocol
+    
     // MARK: Subviews
     
     private lazy var tableView: UITableView = {
@@ -23,11 +27,25 @@ class OrderCheckoutViewController: UIViewController {
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )
-        // TODO: add action
-        let button = Button(configuration: config, action: nil)
+        let button = Button(configuration: config) { [ weak self ] in
+            guard let self else { return }
+            self.checkoutButtonTapped()
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    // MARK: Init
+    
+    init(orderCheckoutPresenter: OrderCheckoutPresenterProtocol) {
+        self.orderCheckoutPresenter = orderCheckoutPresenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     
@@ -35,6 +53,12 @@ class OrderCheckoutViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+    }
+    
+    // MARK: Actions
+    
+    private func checkoutButtonTapped() {
+        orderCheckoutPresenter.checkoutButtonTapped()
     }
     
     // MARK: Initial Configuration
