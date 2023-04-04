@@ -287,9 +287,9 @@
 			isa = PBXGroup;
 			children = (
 				43D78F7829DAAE800044840D /* Assembly */,
-				43D78F7A29DAAE800044840D /* Presenter */,
 				43D78F7C29DAAE800044840D /* Model */,
 				43D78F7E29DAAE800044840D /* View */,
+				43D78F7A29DAAE800044840D /* Presenter */,
 				43D78F8129DAAE800044840D /* Service */,
 			);
 			path = Cart;

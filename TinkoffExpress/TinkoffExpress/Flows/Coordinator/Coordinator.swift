@@ -39,6 +39,9 @@ final class AppCoordinator: Coordinator {
             
             childCoordinator.navigationController = childNavigationController
             navigationController?.present(childNavigationController, animated: true)
+        case .set:
+            let viewController = assembly.createViewController(coordinator: self)
+            navigationController?.setViewControllers([viewController], animated: true)
         }
     }
 }

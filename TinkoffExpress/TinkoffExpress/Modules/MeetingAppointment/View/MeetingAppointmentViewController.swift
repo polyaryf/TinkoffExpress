@@ -14,9 +14,8 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     private var meetingAppointmentPresenter: MeetingAppointmentPresenterProtocol?
     
     // MARK: Properties
-    
-    private var textViewHeightConstraint: Constraint?
-    private var scrollViewBottomConstraint: Constraint?
+
+    private var keyboardHeight: CGFloat = 0
     var dates: [MeetingAppointmentDate] = []
     var times: [MeetingAppointmentTime] = []
     
@@ -32,6 +31,10 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
+    private lazy var textView = UITextView()
+    private lazy var clearButton = UIButton(type: .system)
+    private lazy var countLabel = UILabel()
+    private lazy var readyButton = UIButton()
     private lazy var deliveryButton: Button = {
         let config = Button.Configuration(
             title: "Доставить сегодня",
@@ -66,8 +69,25 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         setupAddressButton()
         setupDateCollectionView()
         setupTimeCollectionView()
+        setupTextView()
+        setupClearButton()
+        setupCountLabel()
+        setupReadyButton()
         setupDeliveryButton()
         setupColors()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +125,41 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         meetingAppointmentPresenter?.didSelectItemAt(with: collectionView, and: indexPath)
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        meetingAppointmentPresenter?.textViewDidChange(with: textView, countLabel, deliveryButton)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        meetingAppointmentPresenter?.textViewDidBeginEditing(with: textView, countLabel, clearButton)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        meetingAppointmentPresenter?.textViewDidEndEditing(with: textView, countLabel, clearButton)
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        meetingAppointmentPresenter?.keyboardWillShow(
+            with: notification,
+            &keyboardHeight,
+            view,
+            textView,
+            scrollView,
+            readyButton
+        )
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        meetingAppointmentPresenter?.keyboardWillHide(with: notification, view, scrollView, readyButton)
+    }
+    
+    @objc private func clearButtonTapped() {
+        meetingAppointmentPresenter?.clearButtonTapped(with: textView, countLabel)
+    }
+    
+    @objc private func readyButtonTapped() {
+        meetingAppointmentPresenter?.readyButtonTapped(with: view)
+    }
+    
     // MARK: Setup Colors
     
     private func setupColors() {
@@ -114,6 +169,11 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         addressButton.backgroundColor = UIColor(named: "addressButtonColor")
         dateCollectionView.backgroundColor = .clear
         timeCollectionView.backgroundColor = .clear
+        textView.backgroundColor = UIColor(named: "textViewButtonColor")
+        textView.textColor = UIColor(named: "textViewPlaceholderColor")
+        clearButton.tintColor = UIColor(named: "clearButtonColor")
+        readyButton.backgroundColor = UIColor(named: "readyButtonColor")
+        countLabel.textColor = UIColor(named: "textColor")
     }
     
     // MARK: Setup Subviews
@@ -137,9 +197,7 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         addressButton.contentVerticalAlignment = .center
         addressButton.titleEdgeInsets.left = 12
         addressButton.titleEdgeInsets.right = 12
-        
         addressButton.layer.cornerRadius = 16
-        
         addressButton.addTarget(self, action: #selector(addressButtonTapped), for: .touchUpInside)
         
         scrollView.addSubview(addressButton)
@@ -156,12 +214,10 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     private func setupDateCollectionView() {
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
-        
         let dateLayout = UICollectionViewFlowLayout()
         dateLayout.scrollDirection = .horizontal
         dateCollectionView.setCollectionViewLayout(dateLayout, animated: false)
         dateCollectionView.showsHorizontalScrollIndicator = false
-        
         dateCollectionView.register(DateCell.self, forCellWithReuseIdentifier: "DateCell")
         
         scrollView.addSubview(dateCollectionView)
@@ -176,12 +232,10 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     private func setupTimeCollectionView() {
         timeCollectionView.dataSource = self
         timeCollectionView.delegate = self
-        
         let timeLayout = UICollectionViewFlowLayout()
         timeLayout.scrollDirection = .horizontal
         timeCollectionView.setCollectionViewLayout(timeLayout, animated: false)
         timeCollectionView.showsHorizontalScrollIndicator = false
-        
         timeCollectionView.register(TimeCell.self, forCellWithReuseIdentifier: "TimeCell")
         
         scrollView.addSubview(timeCollectionView)
@@ -193,13 +247,78 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         }
     }
     
+    private func setupTextView() {
+        textView.delegate = self
+        textView.text = "Как добраться и когда вам позвонить"
+        textView.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        textView.showsVerticalScrollIndicator = false
+        textView.textContainerInset = .init(top: 18, left: 12, bottom: 18, right: 47)
+        textView.layer.cornerRadius = 16
+        textView.isScrollEnabled = false
+    
+        scrollView.addSubview(textView)
+        
+        textView.snp.makeConstraints { make in
+            make.top.equalTo(timeCollectionView.snp.bottom).offset(14)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(56)
+        }
+    }
+    
+    private func setupClearButton() {
+        clearButton.isHidden = true
+        clearButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        
+        view.addSubview(clearButton)
+        
+        clearButton.snp.makeConstraints { make in
+            make.centerY.equalTo(textView.snp.centerY)
+            make.trailing.equalTo(textView.snp.trailing).offset(-12)
+            make.size.equalTo(16)
+        }
+    }
+    
+    private func setupCountLabel() {
+        countLabel.text = "Можно написать 150 символов"
+        countLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        
+        scrollView.addSubview(countLabel)
+        
+        countLabel.snp.makeConstraints { make in
+            make.top.equalTo(textView.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(28)
+            make.bottom.equalTo(scrollView.snp.bottom)
+            make.height.equalTo(18)
+        }
+    }
+    
+    private func setupReadyButton() {
+        readyButton.setTitle("Готово", for: .normal)
+        readyButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        readyButton.layer.cornerRadius = 12
+        readyButton.layer.shadowColor = UIColor.black.cgColor
+        readyButton.layer.shadowOpacity = 0.1
+        readyButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        readyButton.layer.shadowRadius = 4
+        readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
+        
+        view.addSubview(readyButton)
+            
+        readyButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(60)
+            make.width.equalTo(84)
+            make.height.equalTo(44)
+        }
+    }
+    
     private func setupDeliveryButton() {
         view.addSubview(deliveryButton)
         
         deliveryButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-24)
         }
     }
     
