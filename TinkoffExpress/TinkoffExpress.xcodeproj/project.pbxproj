@@ -13,6 +13,7 @@
 		296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */; };
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
+		298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D5BE029DC269C00C12EEE /* GenericService.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
@@ -70,6 +71,7 @@
 		296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
+		298D5BE029DC269C00C12EEE /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,6 +190,30 @@
 			path = FinelDeliveryCell;
 			sourceTree = "<group>";
 		};
+		298D5BDD29DC262800C12EEE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				298D5BDE29DC264100C12EEE /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		298D5BDE29DC264100C12EEE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				298D5BDF29DC268200C12EEE /* Services */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		298D5BDF29DC268200C12EEE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				298D5BE029DC269C00C12EEE /* GenericService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		29B3AEAC29C37E73007C763D = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				43E10B9729D2FD8D003B0EC2 /* App */,
+				298D5BDD29DC262800C12EEE /* Data */,
 				43E10B9829D2FD9C003B0EC2 /* Config */,
 				43E10B9929D2FDB1003B0EC2 /* Resources */,
 				43B7BC5C29D89F5C00685763 /* Assembly */,
@@ -746,6 +773,7 @@
 				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
 				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
 				43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */,
+				298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */,
 				296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
