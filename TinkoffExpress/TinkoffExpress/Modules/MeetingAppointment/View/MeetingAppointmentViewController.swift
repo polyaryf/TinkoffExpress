@@ -94,6 +94,9 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         super.viewWillAppear(animated)
         
         navigationItem.title = "Оформление доставки"
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
