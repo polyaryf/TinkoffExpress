@@ -96,7 +96,7 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
             make.height.equalTo(height)
         }
         
-        if height >= deliveryButton.frame.maxY - textView.frame.maxY {
+        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
             textView.deleteBackward()
         }
     }
