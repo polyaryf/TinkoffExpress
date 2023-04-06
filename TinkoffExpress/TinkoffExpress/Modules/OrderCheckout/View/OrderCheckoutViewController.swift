@@ -110,6 +110,7 @@ final class OrderCheckoutViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
         tableView.register(OrderCheckoutTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
