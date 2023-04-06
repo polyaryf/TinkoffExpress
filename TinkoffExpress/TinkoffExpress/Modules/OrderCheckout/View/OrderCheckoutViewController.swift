@@ -20,14 +20,7 @@ final class OrderCheckoutViewController: UIViewController {
     
     // MARK: Subviews
     
-    private lazy var navigationBar = {
-        let navBar = UINavigationBar(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: Int(view.frame.size.width),
-            height: 44))
-        return navBar
-    }()
+    private lazy var navigationBar: UINavigationBar = .init()
     private lazy var tableView: UITableView = {
         var table: UITableView = .init()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -99,8 +92,8 @@ final class OrderCheckoutViewController: UIViewController {
     
     private func setupConstraints() {
         navigationBar.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(44)
-            $0.left.right.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.leading.equalToSuperview()
         }
         tableView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(16)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OrderCkeckoutAssembly: Assembly {
+final class OrderCheckoutAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
         let mockService = MockOrderCheckoutService()
         let presenter = OrderCheckoutPresenter(coordinator: coordinator, service: mockService)
