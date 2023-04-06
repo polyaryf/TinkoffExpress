@@ -1,34 +1,16 @@
 //
-//  GenericService.swift
+//  TEMoyaLogger.swift
 //  TinkoffExpress
 //
-//  Created by Полина Рыфтина on 04.04.2023.
+//  Created by Полина Рыфтина on 05.04.2023.
 //
 
-import Alamofire
 import Moya
-
-open class GenericService<T: TargetType> {
-    private lazy var session: Alamofire.Session = {
-        let configuration = URLSessionConfiguration.default
-        configuration.headers = .default
-        configuration.requestCachePolicy = .reloadIgnoringCacheData
-        return Session(
-            configuration: configuration,
-            startRequestsImmediately: false
-        )
-    }()
-    
-    public lazy var dataProvider: MoyaProvider<T> = MoyaProvider<T>(
-        session: session,
-        plugins: [TEMoyaLogger()]
-    )
-}
 
 class TEMoyaLogger: PluginType {
     func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
-        if case .success(let success) = result {
-            if let request = success.request, let response = success.response {
+        if case let .success(success) = result {
+            if let response = success.response, let request = success.request {
                 log(
                     request: request,
                     response: response,
@@ -37,7 +19,7 @@ class TEMoyaLogger: PluginType {
             }
         }
     }
-    
+
     func log(
         request: URLRequest,
         response: HTTPURLResponse,
@@ -77,9 +59,9 @@ class TEMoyaLogger: PluginType {
             print("Response headers:")
             print("{")
             headers.forEach { key, value in
-            print("\t\(key): \(value)")
+                print("\t\(key): \(value)")
             }
-        print("}")
+            print("}")
         }
         print("----------")
         print("Response: \(response.statusCode)")
