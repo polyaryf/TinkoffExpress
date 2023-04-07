@@ -6,9 +6,34 @@
 //
 
 import Foundation
+import Combine
 
 protocol CartService {
     func loadItems(completion: @escaping ([Cart]?) -> Void)
+}
+
+final class RestCartService: CartService {
+    private var cancellables = Set<AnyCancellable>()
+    
+    func loadItems(completion: @escaping ([Cart]?) -> Void) {
+        let network = TEApiService()
+        network
+            .getOrders()
+            .sink { complitionn in
+                print(complitionn.hashValue)
+            }
+            receiveValue: { orders in
+                var carts: [Cart] = []
+                for order in orders {
+                    for item in order.items {
+                        carts.append(Cart(text: item.name, imageName: "kettle"))
+                    }
+                }
+                print(carts)
+                completion(carts)
+            }
+        .store(in: &cancellables)
+    }
 }
 
 final class MockCartService: CartService {

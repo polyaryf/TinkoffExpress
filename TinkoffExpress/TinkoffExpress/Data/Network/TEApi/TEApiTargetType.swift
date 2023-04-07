@@ -1,5 +1,5 @@
 //
-//  TEApiService.swift
+//  TEApiTargetType.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 05.04.2023.
@@ -7,13 +7,7 @@
 
 import Moya
 
-var TEApiProvider = MoyaProvider<TEApiService>(
-    plugins: [
-        TEMoyaLogger()
-    ]
-)
-
-enum TEApiService {
+enum TEApiTargetType {
     case test
     case getOrders
     case createOrder(request: OrderCreateRequest)
@@ -23,9 +17,9 @@ enum TEApiService {
     case getSlots
 }
 
-extension TEApiService: TargetType {
+extension TEApiTargetType: TargetType {
     var baseURL: URL {
-        URL(string: "http://185.204.0.180:8000")!
+        NetworkConstant.baseURL
     }
     
     var path: String {
@@ -33,7 +27,7 @@ extension TEApiService: TargetType {
         case .test:
             return "/"
         case .getOrders:
-            return "/oreders"
+            return "/orders"
         case .createOrder:
             return "/orders"
         case .updateOrder(_, let id):
@@ -80,29 +74,20 @@ extension TEApiService: TargetType {
                     "delivery_slot": request.deliverySlot,
                     "items": request.items,
                     "comment": request.comment,
-                    "status": request.status
+                    "status": request.status as Any
                 ],
                 encoding: JSONEncoding.default
             )
         case .updateOrder(let request, _):
-            return .requestParameters(
-                parameters: [
-                    "point": request.address,
-                    "payment_method": request.paymentMethod,
-                    "delivery_slot": request.deliverySlot,
-                    "comment": request.comment,
-                    "status": request.status
-                ],
-                encoding: JSONEncoding.default
-            )
+            return .requestJSONEncodable(request)
         case .getAddresses:
             return .requestPlain
         case .searchAddresses(let request):
             return .requestParameters(
                 parameters: [
-                    "address": request.address,
-                    "lat": request.lat,
-                    "lon": request.lon
+                    "address": request.address as Any,
+                    "lat": request.lat as Any,
+                    "lon": request.lon as Any
                 ],
                 encoding: JSONEncoding.default
             )

@@ -7,8 +7,14 @@
 
 import Foundation
 
-struct AddressSearchRequest {
+struct AddressSearchRequest: Codable {
     let address: String?
     let lat: Float?
     let lon: Float?
+    
+    enum AddressSearchCodingKeys: String, CodingKey {
+        case address = "point"
+        case lat
+        case lon
+    }
 }

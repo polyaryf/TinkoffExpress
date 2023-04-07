@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order {
+struct Order: Codable {
     let address: Address
     let paymentMethod: PaymentMethod
     let deliverySlot: TimeSlot

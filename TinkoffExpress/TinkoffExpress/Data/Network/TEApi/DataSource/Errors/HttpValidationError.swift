@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct HttpValidationError {
+struct HttpValidationError: Codable {
     var detail: [ValidationError]?
 }

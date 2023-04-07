@@ -5,11 +5,11 @@
 //  Created by Полина Рыфтина on 04.04.2023.
 //
 
-enum PaymentMethodType: String {
+enum PaymentMethodType: String, Codable {
     case CARD
     case CASH
 }
 
-struct PaymentMethod {
-    let type: PaymentMethodType.RawValue
+struct PaymentMethod: Codable {
+    let type: PaymentMethodType
 }

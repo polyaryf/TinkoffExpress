@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ValidationError {
+struct ValidationError: Codable {
     let location: String
     let message: String
     let type: String

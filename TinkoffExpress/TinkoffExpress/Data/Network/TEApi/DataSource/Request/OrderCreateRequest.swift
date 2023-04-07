@@ -7,11 +7,20 @@
 
 import Foundation
 
-struct OrderCreateRequest {
+struct OrderCreateRequest: Codable {
     let address: Address
     let paymentMethod: PaymentMethod
     let deliverySlot: TimeSlot
     let items: [Item]
     let comment: String
     let status: String?
+    
+    enum OrderCreateCodingKeys: String, CodingKey {
+        case address = "point"
+        case paymentMethod = "payment_method"
+        case deliverySlot = "delivery_slot"
+        case items
+        case comment
+        case status
+    }
 }
