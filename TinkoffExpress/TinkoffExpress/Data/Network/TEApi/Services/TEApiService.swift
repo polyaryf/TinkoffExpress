@@ -5,27 +5,54 @@
 //  Created by Полина Рыфтина on 07.04.2023.
 //
 
-import Combine
 import Foundation
 
 class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
-    func test() -> Future<Bool, HttpClientError> {
-        perform(target: .test)
+    func test(
+        completion: @escaping (Result<Bool, HttpClientError>) -> Void
+    ) {
+        perform(
+            target: .test,
+            completion: completion
+        )
     }
     
-    func getOrders() -> Future<[Order], HttpClientError> {
-        performAndDecode(target: .getOrders)
+    func getOrders(
+        completion: @escaping (Result<[Order], HttpClientError>) -> Void
+    ) {
+        performAndDecode(
+            target: .getOrders,
+            completion: completion
+        )
     }
     
-    func createOrder(reqest: OrderCreateRequest) -> Future<Bool, HttpClientError> {
-        perform(target: .createOrder(request: reqest))
+    func createOrder(
+        reqest: OrderCreateRequest,
+        completion: @escaping (Result<Bool, HttpClientError>) -> Void
+    ) {
+        perform(
+            target: .createOrder(request: reqest),
+            completion: completion
+        )
     }
     
-    func updateOrder(request: OrderUpdateRequest, orderId: Int) -> Future<Bool, HttpClientError> {
-        perform(target: .updateOrder(request: request, orderId: orderId))
+    func updateOrder(
+        request: OrderUpdateRequest,
+        orderId: Int,
+        completion: @escaping (Result<Bool, HttpClientError>) -> Void
+    ) {
+        perform(
+            target: .updateOrder(request: request, orderId: orderId),
+            completion: completion
+        )
     }
     
-    func getSlots() -> Future<[TimeSlot], HttpClientError> {
-        performAndDecode(target: .getSlots)
+    func getSlots(
+        completion: @escaping (Result<[TimeSlot], HttpClientError>) -> Void
+    ) {
+        performAndDecode(
+            target: .getSlots,
+            completion: completion
+        )
     }
 }

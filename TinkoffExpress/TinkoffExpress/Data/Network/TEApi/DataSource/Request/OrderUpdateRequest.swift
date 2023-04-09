@@ -7,12 +7,12 @@
 
 struct OrderUpdateRequest: Codable {
     let address: Address?
-    let paymentMethod: PaymentMethod?
+    let paymentMethod: String?
     let deliverySlot: TimeSlot?
     let comment: String?
     let status: String?
     
-    enum OrderUpdateCodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case address = "point"
         case paymentMethod = "payment_method"
         case deliverySlot = "delivery_slot"

@@ -11,4 +11,10 @@ struct TimeSlot: Codable {
     let date: String
     let timeFrom: String
     let timeTo: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case date
+        case timeFrom = "time_from"
+        case timeTo = "time_to"
+    }
 }

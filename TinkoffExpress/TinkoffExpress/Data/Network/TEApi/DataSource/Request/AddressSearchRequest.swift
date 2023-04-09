@@ -12,7 +12,7 @@ struct AddressSearchRequest: Codable {
     let lat: Float?
     let lon: Float?
     
-    enum AddressSearchCodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case address = "point"
         case lat
         case lon

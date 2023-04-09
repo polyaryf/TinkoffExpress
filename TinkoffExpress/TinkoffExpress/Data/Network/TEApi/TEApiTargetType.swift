@@ -67,30 +67,13 @@ extension TEApiTargetType: TargetType {
         case .getOrders:
             return .requestPlain
         case .createOrder(let request):
-            return .requestParameters(
-                parameters: [
-                    "point": request.address,
-                    "payment_method": request.paymentMethod,
-                    "delivery_slot": request.deliverySlot,
-                    "items": request.items,
-                    "comment": request.comment,
-                    "status": request.status as Any
-                ],
-                encoding: JSONEncoding.default
-            )
+            return .requestJSONEncodable(request)
         case .updateOrder(let request, _):
             return .requestJSONEncodable(request)
         case .getAddresses:
             return .requestPlain
         case .searchAddresses(let request):
-            return .requestParameters(
-                parameters: [
-                    "address": request.address as Any,
-                    "lat": request.lat as Any,
-                    "lon": request.lon as Any
-                ],
-                encoding: JSONEncoding.default
-            )
+            return .requestJSONEncodable(request)
         case .getSlots:
             return .requestPlain
         }
