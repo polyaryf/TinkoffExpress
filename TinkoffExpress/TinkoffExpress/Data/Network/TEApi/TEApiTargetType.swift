@@ -12,14 +12,12 @@ enum TEApiTargetType {
     case getOrders
     case createOrder(request: OrderCreateRequest)
     case updateOrder(request: OrderUpdateRequest, orderId: Int)
-    case getAddresses
-    case searchAddresses(request: AddressSearchRequest)
     case getSlots
 }
 
 extension TEApiTargetType: TargetType {
     var baseURL: URL {
-        NetworkConstant.baseURL
+        NetworkConstant.baseTEApiURL
     }
     
     var path: String {
@@ -32,10 +30,6 @@ extension TEApiTargetType: TargetType {
             return "/orders"
         case .updateOrder(_, let id):
             return "/orders/\(id)"
-        case .getAddresses:
-            return "/addresses/search"
-        case .searchAddresses:
-            return "/addresses/my"
         case .getSlots:
             return "/slots"
         }
@@ -51,10 +45,6 @@ extension TEApiTargetType: TargetType {
             return .post
         case .updateOrder:
             return .put
-        case .getAddresses:
-            return .get
-        case .searchAddresses:
-            return .get
         case .getSlots:
             return .get
         }
@@ -69,10 +59,6 @@ extension TEApiTargetType: TargetType {
         case .createOrder(let request):
             return .requestJSONEncodable(request)
         case .updateOrder(let request, _):
-            return .requestJSONEncodable(request)
-        case .getAddresses:
-            return .requestPlain
-        case .searchAddresses(let request):
             return .requestJSONEncodable(request)
         case .getSlots:
             return .requestPlain

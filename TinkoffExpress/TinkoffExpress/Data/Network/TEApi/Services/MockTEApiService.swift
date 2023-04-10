@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockTEApiService: TEApiServiceProtocol {
+class MockTEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     func test(
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     ) {
@@ -40,7 +40,7 @@ class MockTEApiService: TEApiServiceProtocol {
                     comment: "Позвонить за полчаса",
                     status: "NEW",
                     id: 1)
-                ]
+            ]
             completion(.success(result))
         }
     }

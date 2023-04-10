@@ -5,13 +5,13 @@
 //  Created by Полина Рыфтина on 07.04.2023.
 //
 
-import Foundation
-
-class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
+class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
+    private let service = GenericService<TEApiTargetType>()
+    
     func test(
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     ) {
-        perform(
+        service.perform(
             target: .test,
             completion: completion
         )
@@ -20,7 +20,7 @@ class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
     func getOrders(
         completion: @escaping (Result<[Order], HttpClientError>) -> Void
     ) {
-        performAndDecode(
+        service.performAndDecode(
             target: .getOrders,
             completion: completion
         )
@@ -30,7 +30,7 @@ class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
         reqest: OrderCreateRequest,
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     ) {
-        perform(
+        service.perform(
             target: .createOrder(request: reqest),
             completion: completion
         )
@@ -41,7 +41,7 @@ class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
         orderId: Int,
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     ) {
-        perform(
+        service.perform(
             target: .updateOrder(request: request, orderId: orderId),
             completion: completion
         )
@@ -50,7 +50,7 @@ class TEApiService: GenericService<TEApiTargetType>, TEApiServiceProtocol {
     func getSlots(
         completion: @escaping (Result<[TimeSlot], HttpClientError>) -> Void
     ) {
-        performAndDecode(
+        service.performAndDecode(
             target: .getSlots,
             completion: completion
         )
