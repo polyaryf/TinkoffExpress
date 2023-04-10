@@ -9,19 +9,6 @@ import Alamofire
 import Foundation
 import Moya
 
-private struct ErrorDto: Decodable {
-    let error: String
-
-    static func getErrorFromData(_ responseData: Data) -> String? {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let errorDto: ErrorDto? = try? decoder.decode(
-            ErrorDto.self, from: responseData
-        )
-        return errorDto?.error
-    }
-}
-
 public class HttpClientError: NSError {
     public enum HttpClientErrorType {
         case unknown
@@ -117,5 +104,18 @@ public class HttpClientError: NSError {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private struct ErrorDto: Decodable {
+    let error: String
+
+    static func getErrorFromData(_ responseData: Data) -> String? {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let errorDto: ErrorDto? = try? decoder.decode(
+            ErrorDto.self, from: responseData
+        )
+        return errorDto?.error
     }
 }
