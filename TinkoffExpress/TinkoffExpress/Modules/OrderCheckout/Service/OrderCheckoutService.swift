@@ -7,6 +7,19 @@
 
 import Foundation
 
-protocol OrderCheckoutService {}
+protocol OrderCheckoutService {
+    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void)
+}
 
-class MockOrderCheckoutService: OrderCheckoutService {}
+class MockOrderCheckoutService: OrderCheckoutService {
+    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void) {
+        let items: [OrderCheckout] = [
+            .init(
+                whatWillBeDelivered: "Посылку",
+                deliveryWhen: "Завтра с 10:00 до 12:00",
+                deliveryWhere: "Ивангород, ул. Гагарина, д. 1",
+                paymentMethod: "Картой при получении")
+        ]
+        completion(items)
+    }
+}

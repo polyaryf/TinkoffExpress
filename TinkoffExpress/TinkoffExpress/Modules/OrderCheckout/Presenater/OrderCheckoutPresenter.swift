@@ -8,7 +8,9 @@
 import UIKit
 
 protocol OrderCheckoutPresenterProtocol {
+    func viewDidLoad()
     func checkoutButtonTapped()
+    func backButtonTapped()
 }
 
 class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
@@ -25,15 +27,32 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         self.service = service
     }
     
+    // MARK: Life Cycle
+    
+    func viewDidLoad() {
+        service?.loadItems { [weak self] items in
+            guard let self = self else { return }
+            self.view?.items = items ?? []
+        }
+    }
+
     // MARK: Events
     
     func checkoutButtonTapped() {
         showFinalDelivery()
     }
     
+    func backButtonTapped() {
+        showMeetingAppointment()
+    }
+    
     // MARK: Navigation
     
     private func showFinalDelivery() {
-        // TODO: coordinator?.move(FinalDeliveryAssembly(), with: .push)
+        coordinator?.move(FinalDeliveryAssembly(), with: .push)
+    }
+    
+    private func showMeetingAppointment() {
+        // TODO: coordinator?.move(MeetingAppointmentAssembly(), with: .pop)
     }
 }
