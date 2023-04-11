@@ -23,6 +23,3 @@ class MockOrderCheckoutService: OrderCheckoutService {
         completion(items)
     }
 }
-
-class MockOrderCheckoutService: OrderCheckoutService {}
-

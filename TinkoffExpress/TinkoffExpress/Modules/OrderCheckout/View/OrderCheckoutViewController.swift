@@ -13,7 +13,6 @@ final class OrderCheckoutViewController: UIViewController {
     
     private var orderCheckoutPresenter: OrderCheckoutPresenterProtocol
     
-
     // MARK: Properties
     
     // TODO: change model
