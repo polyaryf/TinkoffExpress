@@ -35,7 +35,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             self.view?.items = items ?? []
         }
     }
-    
+
     // MARK: Events
     
     func checkoutButtonTapped() {
