@@ -14,6 +14,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
+        label.textColor = UIColor(named: "title.cell.orderCheckout.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -30,18 +31,20 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
+        label.textColor = UIColor(named: "primaryText.cell.orderCheckout.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var secondaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 13)
+        label.textColor = UIColor(named: "secondaryText.cell.orderCheckout.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private lazy var cellImageView: UIImageView = {
         var imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: 56, height: 56)))
-        imageView.image = UIImage(systemName: "square.and.arrow.up.circle.fill")
+        imageView.image = UIImage(named: "cart")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -118,36 +121,35 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     
     private func whatWillBeDeliveredCellConsrtaints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(28)
+            $0.top.equalTo(contentView)
             $0.left.equalTo(contentView)
-            $0.bottom.equalTo(contentView.snp.top).offset(60)
+            $0.bottom.equalTo(contentView.snp.top).offset(24)
         }
         cellImageView.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(72)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(21)
+            $0.centerY.equalTo(primaryText)
             $0.width.equalTo(40)
             $0.height.equalTo(40)
         }
         primaryText.snp.makeConstraints {
-            $0.left.equalTo(cellImageView.snp.right).offset(16)
-            $0.top.equalTo(contentView).offset(82)
+            $0.left.equalTo(contentView).offset(16 + 40)
         }
     }
     
     private func deliveryCellConsrtaints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(28)
+            $0.top.equalTo(contentView)
             $0.left.equalTo(contentView)
-            $0.bottom.equalTo(contentView.snp.top).offset(60)
+            $0.bottom.equalTo(contentView.snp.top).offset(24)
         }
         editButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel)
+            $0.top.equalTo(contentView)
             $0.right.equalTo(contentView)
-            $0.bottom.equalTo(contentView.snp.top).offset(60)
             $0.height.equalTo(titleLabel)
         }
         primaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
-            $0.top.equalTo(contentView).offset(89)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(21)
         }
         secondaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
@@ -157,13 +159,13 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     
     private func paymentCellConsrtaints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView).offset(28)
+            $0.top.equalTo(contentView)
             $0.left.equalTo(contentView)
-            $0.bottom.equalTo(contentView.snp.top).offset(60)
+            $0.bottom.equalTo(contentView.snp.top).offset(24)
         }
         primaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
-            $0.top.equalTo(contentView).offset(89)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(21)
         }
     }
     

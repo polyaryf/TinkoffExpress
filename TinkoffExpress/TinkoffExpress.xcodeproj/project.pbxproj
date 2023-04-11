@@ -42,6 +42,13 @@
 		29F42F5229E075C800D9D8F1 /* TEApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5129E075C800D9D8F1 /* TEApiService.swift */; };
 		29F42F5429E0778500D9D8F1 /* MockTEApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */; };
 		29F42F5629E0816500D9D8F1 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */; };
+		29F89C7929DB1CBA009325EE /* OrderCheckoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C7829DB1CBA009325EE /* OrderCheckoutPresenter.swift */; };
+		29F89C7C29DB1D55009325EE /* OrderCheckoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C7B29DB1D55009325EE /* OrderCheckoutService.swift */; };
+		29F89C7F29DB21D4009325EE /* OrderCheckoutAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C7E29DB21D4009325EE /* OrderCheckoutAssembly.swift */; };
+		29F89C8229DB2584009325EE /* FinalDeliveryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */; };
+		29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */; };
+		29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */; };
+		29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */; };
 		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
 		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
@@ -127,6 +134,13 @@
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		29F89C7829DB1CBA009325EE /* OrderCheckoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutPresenter.swift; sourceTree = "<group>"; };
+		29F89C7B29DB1D55009325EE /* OrderCheckoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutService.swift; sourceTree = "<group>"; };
+		29F89C7E29DB21D4009325EE /* OrderCheckoutAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutAssembly.swift; sourceTree = "<group>"; };
+		29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryPresenter.swift; sourceTree = "<group>"; };
+		29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryService.swift; sourceTree = "<group>"; };
+		29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryAssembly.swift; sourceTree = "<group>"; };
+		29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
 		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
@@ -191,6 +205,10 @@
 		2926F3CF29D7099D00938AA1 /* OrderCheckout */ = {
 			isa = PBXGroup;
 			children = (
+				29F89C8929DB5D6A009325EE /* Model */,
+				29F89C7D29DB21AF009325EE /* Assembly */,
+				29F89C7A29DB1D45009325EE /* Service */,
+				29F89C7729DB1C98009325EE /* Presenater */,
 				2926F3D829D70C3D00938AA1 /* View */,
 			);
 			path = OrderCheckout;
@@ -217,6 +235,9 @@
 		296CA91829D973060048FE9D /* FinalDelivery */ = {
 			isa = PBXGroup;
 			children = (
+				29F89C8629DB279E009325EE /* Assembly */,
+				29F89C8329DB268E009325EE /* Service */,
+				29F89C8029DB2565009325EE /*  Presenter */,
 				296CA91929D973220048FE9D /* View */,
 			);
 			path = FinalDelivery;
@@ -449,6 +470,60 @@
 				29F42F4F29E05EED00D9D8F1 /* HttpClientError.swift */,
 			);
 			path = Errors;
+		29F89C7729DB1C98009325EE /* Presenater */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C7829DB1CBA009325EE /* OrderCheckoutPresenter.swift */,
+			);
+			path = Presenater;
+			sourceTree = "<group>";
+		};
+		29F89C7A29DB1D45009325EE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C7B29DB1D55009325EE /* OrderCheckoutService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		29F89C7D29DB21AF009325EE /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C7E29DB21D4009325EE /* OrderCheckoutAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		29F89C8029DB2565009325EE /*  Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */,
+			);
+			path = " Presenter";
+			sourceTree = "<group>";
+		};
+		29F89C8329DB268E009325EE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		29F89C8629DB279E009325EE /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		29F89C8929DB5D6A009325EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		43B7BC5C29D89F5C00685763 /* Assembly */ = {
@@ -943,6 +1018,8 @@
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
+				29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */,
+				29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */,
 				43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */,
 				2993B75429DC59E5008833F7 /* OrderUpdateRequest.swift in Sources */,
 				29AD3EEF29E4824400983F24 /* DaDataMapper.swift in Sources */,
@@ -957,16 +1034,19 @@
 				296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */,
 				296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
+				29F89C7929DB1CBA009325EE /* OrderCheckoutPresenter.swift in Sources */,
 				579251A229D4318A00BD5C28 /* Button+Configuration.swift in Sources */,
 				579251A929D4318A00BD5C28 /* ActivityIndicatorView.swift in Sources */,
 				43D78F8B29DAAE800044840D /* CartPresenter.swift in Sources */,
 				29AD3EF129E4884300983F24 /* DaDataApiService.swift in Sources */,
 				43D78F8329DAAE800044840D /* DeliveryAssembly.swift in Sources */,
 				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
+				29F89C8229DB2584009325EE /* FinalDeliveryPresenter.swift in Sources */,
 				43D78F8E29DAAE800044840D /* CartCell.swift in Sources */,
 				29AD3EEC29E4815A00983F24 /* DaDataAddress.swift in Sources */,
 				2993B75E29DC5AA9008833F7 /* ValidationError.swift in Sources */,
 				43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */,
+				29F89C7F29DB21D4009325EE /* OrderCheckoutAssembly.swift in Sources */,
 				43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */,
 				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
@@ -976,6 +1056,7 @@
 				2993B75C29DC5A8C008833F7 /* TimeSlot.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
+				29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */,
 				43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */,
 				43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */,
 				43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */,
@@ -988,6 +1069,7 @@
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
 				29AD3EDF29E4462900983F24 /* SuggestionResponse.swift in Sources */,
 				29F42F4D29E0590600D9D8F1 /* GenericService.swift in Sources */,
+				29F89C7C29DB1D55009325EE /* OrderCheckoutService.swift in Sources */,
 				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
 				43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */,
