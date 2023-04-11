@@ -7,7 +7,11 @@
 
 import UIKit
 import SnapKit
-
+// Предлагаю тут сделать название CartViewController
+protocol ICartViewController {
+    func showItems(items: [Cart])
+}
+// Тут сделать название: CartViewControllerImplementation
 final class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: Dependencies
     
@@ -45,7 +49,7 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         cartPresenter.viewDidLoad()
-        
+
         setupTitleLabel()
         setupTrashButton()
         setupCountLabel()
@@ -229,5 +233,12 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 36, height: 72)
+    }
+}
+
+extension CartViewController: ICartViewController {
+    func showItems(items: [Cart]) {
+        self.items = items
+        collectionView.reloadData()
     }
 }

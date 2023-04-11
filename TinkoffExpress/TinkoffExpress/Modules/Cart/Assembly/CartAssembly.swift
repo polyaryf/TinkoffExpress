@@ -9,7 +9,8 @@ import UIKit
 
 final class CartAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
-        let restService = RestCartService()
+        let network = TEApiService() as TEOrderApiProtocol
+        let restService = RestCartService(networkService: network)
         let presenter = CartPresenter(coordinator: coordinator, service: restService)
         let viewController = CartViewController(cartPresenter: presenter)
         presenter.view = viewController

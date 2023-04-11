@@ -6,37 +6,37 @@
 //
 
 import Foundation
-import Combine
 
 protocol CartService {
-    func loadItems(completion: @escaping ([Cart]?) -> Void)
+    func loadItems(completion: @escaping (Result<[Cart], Error>) -> Void)
 }
 
 final class RestCartService: CartService {
-    private var cancellables = Set<AnyCancellable>()
+    // MARK: Dependencies
     
-    func loadItems(completion: @escaping ([Cart]?) -> Void) {
-        let network = TEApiService()
-        network
-            .getOrders()
-            .sink { complitionn in
-                print(complitionn.hashValue)
+    private let networkService: TEOrderApiProtocol
+    
+    // MARK: Init
+    
+    init(networkService: TEOrderApiProtocol) {
+        self.networkService = networkService
+    }
+    
+    func loadItems(completion: @escaping (Result<[Cart], Error>) -> Void) {
+        networkService.getOrders { result in
+            let newResult = result.map { orders in
+                orders
+                    .flatMap(\.items)
+                    .map { Cart(text: "\($0.name)", imageName: "kettle") }
             }
-            receiveValue: { orders in
-                var carts: [Cart] = []
-                for order in orders {
-                    for item in order.items {
-                        carts.append(Cart(text: item.name, imageName: "kettle"))
-                    }
-                }
-                print(carts)
-                completion(carts)
-            }
-        .store(in: &cancellables)
+            .mapError { $0 as Error }
+            
+            completion(newResult)
+        }
     }
 }
 
-final class MockCartService: CartService {
+final class MockCartService {
     func loadItems(completion: @escaping ([Cart]?) -> Void) {
         let items: [Cart] = [
             .init(text: "Чайник электрический Xiaomi Mi Smart Kettle RU EAC White", imageName: "kettle"),

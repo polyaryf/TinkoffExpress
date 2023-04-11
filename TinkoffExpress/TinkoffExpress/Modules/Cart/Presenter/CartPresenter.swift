@@ -18,9 +18,9 @@ final class CartPresenter: CartPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: CartViewController?
-    private var coordinator: Coordinator?
-    private var service: CartService?
-
+    private let coordinator: Coordinator
+    private let service: CartService
+    
     // MARK: Init
     init(coordinator: Coordinator, service: CartService) {
         self.coordinator = coordinator
@@ -30,9 +30,16 @@ final class CartPresenter: CartPresenterProtocol {
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
+        service.loadItems { [weak self] result in
             guard let self = self else { return }
-            self.view?.items = items ?? []
+            switch result {
+            case .success(let carts):
+                self.view?.showItems(items: carts)
+            case .failure:
+                // TODO: добавить обработку ошибки UI-элементом
+//               self.view.showError()
+                break
+            }
         }
     }
     
@@ -42,6 +49,9 @@ final class CartPresenter: CartPresenterProtocol {
         showDelivery()
     }
     
+    // TODO: убрать эту покраску кнопки из presenter
+    // можно воспользоваться нашей готовой кнопкой
+    /// просто добавить в конфиг нужный размер, краситься она там сама будет
     func checkoutButtonTouchDown(with button: UIButton) {
         button.backgroundColor = UIColor(named: "yellowButtonPressedColor")
     }
@@ -53,6 +63,6 @@ final class CartPresenter: CartPresenterProtocol {
     // MARK: Navigation
     
     private func showDelivery() {
-        coordinator?.move(DeliveryAssembly(), with: .present)
+        coordinator.move(DeliveryAssembly(), with: .present)
     }
 }
