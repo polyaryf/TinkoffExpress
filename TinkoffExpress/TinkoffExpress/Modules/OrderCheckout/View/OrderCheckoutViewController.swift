@@ -11,7 +11,7 @@ import SnapKit
 final class OrderCheckoutViewController: UIViewController {
     // MARK: Dependencies
     
-    private var orderCheckoutPresenter: OrderCheckoutPresenterProtocol
+    private let orderCheckoutPresenter: OrderCheckoutPresenterProtocol
     
     // MARK: Subviews
     
@@ -96,7 +96,7 @@ final class OrderCheckoutViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = OrderCheckoutTableViewCell()
