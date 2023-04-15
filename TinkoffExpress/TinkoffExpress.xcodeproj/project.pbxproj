@@ -14,6 +14,7 @@
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
 		298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D5BE029DC269C00C12EEE /* GenericService.swift */; };
+		299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
@@ -68,7 +69,6 @@
 		579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519729D4318A00BD5C28 /* TEColors.swift */; };
 		579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519829D4318A00BD5C28 /* Extension+UIColor.swift */; };
 		579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */; };
-		7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +79,7 @@
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
 		298D5BE029DC269C00C12EEE /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
+		299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputViewController.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		29F89C8429DB26A1009325EE /* FinalDeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryService.swift; sourceTree = "<group>"; };
 		29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryAssembly.swift; sourceTree = "<group>"; };
 		29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
-		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
 		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7311FC193D287317414284BD /* Pods_TinkoffExpress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +234,22 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		299F73B829E9C3C8001A5235 /* AddressInput */ = {
+			isa = PBXGroup;
+			children = (
+				299F73BB29E9C41F001A5235 /* View */,
+			);
+			path = AddressInput;
+			sourceTree = "<group>";
+		};
+		299F73BB29E9C41F001A5235 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		29B3AEAC29C37E73007C763D = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +257,6 @@
 				29B3AECD29C388C0007C763D /* .swiftlint.yml */,
 				29B3AEB729C37E73007C763D /* TinkoffExpress */,
 				5E746E02A0EE7E044421EF3D /* Pods */,
-				6038A1AEB29DBFABAF64BFFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -522,6 +536,7 @@
 		43E10B9A29D2FDCD003B0EC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				299F73B829E9C3C8001A5235 /* AddressInput */,
 				43D78F7729DAAE800044840D /* Cart */,
 				43D78F6A29DAAE800044840D /* Delivery */,
 				43D78F9029DAB3690044840D /* Onboarding */,
@@ -664,14 +679,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		6038A1AEB29DBFABAF64BFFC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -809,6 +816,7 @@
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
+				299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */,
 				29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */,
 				29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */,
 				43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */,
