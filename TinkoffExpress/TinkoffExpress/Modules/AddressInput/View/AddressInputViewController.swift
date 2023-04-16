@@ -51,7 +51,7 @@ class AddressInputViewController: UIViewController {
         setupInputTextView()
         setupTableView()
         setupDoneButtonView()
-        inputTextView.enablesReturnKeyAutomatically = true
+        setupKeyboard()
     }
     
     private func setupViewHierarchy() {
@@ -120,16 +120,56 @@ class AddressInputViewController: UIViewController {
         doneButton.titleLabel?.font = .systemFont(ofSize: 15)
     }
     
-    // MARK: Action
+    private func setupKeyboard() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
     
-    @objc private func keyboardWillShow(notification: Notification) {}
+    // MARK: Keyboard
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        let keyboardHeight = keyboardFrame.size.height
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            doneButton.snp.remakeConstraints {
+                $0.bottom.equalToSuperview().offset(-(keyboardHeight + 16))
+                $0.trailing.equalToSuperview().offset(-16)
+                $0.height.equalTo(44)
+                $0.width.equalTo(84)
+            }
+            view.layoutSubviews()
+        }
+    }
 
-    @objc private func keyboardWillHide(notification: Notification) {}
+    @objc private func keyboardWillHide(notification: Notification) {
+        UIView.animate(withDuration: 0.5) { [self] in
+            doneButton.snp.remakeConstraints {
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
+                $0.trailing.equalToSuperview().offset(-16)
+                $0.height.equalTo(44)
+                $0.width.equalTo(84)
+            }
+            view.layoutSubviews()
+        }
+    }
 }
 
 extension AddressInputViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
