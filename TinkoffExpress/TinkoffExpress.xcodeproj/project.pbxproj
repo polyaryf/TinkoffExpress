@@ -13,7 +13,10 @@
 		296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */; };
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
+		2982428229EC214400B02C06 /* FadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428129EC214400B02C06 /* FadingLabel.swift */; };
 		298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D5BE029DC269C00C12EEE /* GenericService.swift */; };
+		29996B1129EAFEB4003A1B13 /* AddressInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29996B1029EAFEB4003A1B13 /* AddressInputPresenter.swift */; };
+		29996B1429EAFEF9003A1B13 /* AddressInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29996B1329EAFEF9003A1B13 /* AddressInputCell.swift */; };
 		299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */; };
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
@@ -69,6 +72,7 @@
 		579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519729D4318A00BD5C28 /* TEColors.swift */; };
 		579251AB29D4318A00BD5C28 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519829D4318A00BD5C28 /* Extension+UIColor.swift */; };
 		579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */; };
+		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,7 +82,10 @@
 		296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
+		2982428129EC214400B02C06 /* FadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingLabel.swift; sourceTree = "<group>"; };
 		298D5BE029DC269C00C12EEE /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
+		29996B1029EAFEB4003A1B13 /* AddressInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputPresenter.swift; sourceTree = "<group>"; };
+		29996B1329EAFEF9003A1B13 /* AddressInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputCell.swift; sourceTree = "<group>"; };
 		299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputViewController.swift; sourceTree = "<group>"; };
 		29B3AEB829C37E73007C763D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29B3AEC129C37E74007C763D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,8 +143,9 @@
 		5792519729D4318A00BD5C28 /* TEColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEColors.swift; sourceTree = "<group>"; };
 		5792519829D4318A00BD5C28 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		5792519929D4318A00BD5C28 /* UIColor+Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Dynamic.swift"; sourceTree = "<group>"; };
-		A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
-		A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
+		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
+		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
+		DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,10 +243,35 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		29996B1229EAFEDA003A1B13 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				29996B1029EAFEB4003A1B13 /* AddressInputPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		29996B1529EB2649003A1B13 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				29996B1329EAFEF9003A1B13 /* AddressInputCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		29996B1629EB28D4003A1B13 /* FadingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				2982428129EC214400B02C06 /* FadingLabel.swift */,
+			);
+			path = FadingLabel;
+			sourceTree = "<group>";
+		};
 		299F73B829E9C3C8001A5235 /* AddressInput */ = {
 			isa = PBXGroup;
 			children = (
 				299F73BB29E9C41F001A5235 /* View */,
+				29996B1229EAFEDA003A1B13 /* Presenter */,
 			);
 			path = AddressInput;
 			sourceTree = "<group>";
@@ -246,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */,
+				29996B1529EB2649003A1B13 /* TableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +292,7 @@
 				29B3AECD29C388C0007C763D /* .swiftlint.yml */,
 				29B3AEB729C37E73007C763D /* TinkoffExpress */,
 				5E746E02A0EE7E044421EF3D /* Pods */,
+				FCD39DD480D0CE6F01A04C59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -623,6 +659,7 @@
 		5792518A29D4318A00BD5C28 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29996B1629EB28D4003A1B13 /* FadingLabel */,
 				5792518B29D4318A00BD5C28 /* Button */,
 				5792519429D4318A00BD5C28 /* ActivityIndicator */,
 			);
@@ -673,10 +710,18 @@
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */,
-				A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */,
+				8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */,
+				AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FCD39DD480D0CE6F01A04C59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,12 +731,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29B3AEC929C37E74007C763D /* Build configuration list for PBXNativeTarget "TinkoffExpress" */;
 			buildPhases = (
-				C90D121D53AA32BD554E088A /* [CP] Check Pods Manifest.lock */,
+				66AA8677AAF66783EB0C88A0 /* [CP] Check Pods Manifest.lock */,
 				29B3AECC29C38824007C763D /* SwiftLint */,
 				29B3AEB129C37E73007C763D /* Sources */,
 				29B3AEB229C37E73007C763D /* Frameworks */,
 				29B3AEB329C37E73007C763D /* Resources */,
-				8C8B5386CA8C5FF46CA09306 /* [CP] Embed Pods Frameworks */,
+				C4986CF1233A56662161E006 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -766,24 +811,7 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
-		8C8B5386CA8C5FF46CA09306 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C90D121D53AA32BD554E088A /* [CP] Check Pods Manifest.lock */ = {
+		66AA8677AAF66783EB0C88A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -805,6 +833,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C4986CF1233A56662161E006 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -816,6 +861,7 @@
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
+				2982428229EC214400B02C06 /* FadingLabel.swift in Sources */,
 				299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */,
 				29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */,
 				29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */,
@@ -839,6 +885,7 @@
 				43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */,
 				29F89C7F29DB21D4009325EE /* OrderCheckoutAssembly.swift in Sources */,
 				43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */,
+				29996B1429EAFEF9003A1B13 /* AddressInputCell.swift in Sources */,
 				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
 				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
@@ -867,6 +914,7 @@
 				43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */,
 				298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */,
 				296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */,
+				29996B1129EAFEB4003A1B13 /* AddressInputPresenter.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
@@ -994,7 +1042,7 @@
 		};
 		29B3AECA29C37E74007C763D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A27094E78D315B8B1DEF6FB1 /* Pods-TinkoffExpress.debug.xcconfig */;
+			baseConfigurationReference = 8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1026,7 +1074,7 @@
 		};
 		29B3AECB29C37E74007C763D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A03902622883B7CC64F5CF94 /* Pods-TinkoffExpress.release.xcconfig */;
+			baseConfigurationReference = AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
