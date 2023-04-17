@@ -1,5 +1,5 @@
 //
-//  Order.swift
+//  TEApiOrder.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 04.04.2023.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Order: Codable {
-    let address: Address
+struct TEApiOrder: Codable {
+    let address: TEApiAddress
     let paymentMethod: String
-    let deliverySlot: TimeSlot
-    let items: [Item]
+    let deliverySlot: TEApiTimeSlot
+    let items: [TEApiItem]
     let comment: String
     let status: String
     let id: Int

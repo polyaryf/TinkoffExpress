@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TimeSlot: Codable {
+struct TEApiTimeSlot: Codable {
     let date: String
     let timeFrom: String
     let timeTo: String

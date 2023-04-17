@@ -14,11 +14,12 @@
 		296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */; };
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
-		2993B75029DC5982008833F7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B74F29DC5982008833F7 /* Order.swift */; };
+		2982428629ED377100B02C06 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428529ED377100B02C06 /* HttpClientError.swift */; };
+		2993B75029DC5982008833F7 /* TEApiOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B74F29DC5982008833F7 /* TEApiOrder.swift */; };
 		2993B75229DC59D6008833F7 /* OrderCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75129DC59D6008833F7 /* OrderCreateRequest.swift */; };
 		2993B75429DC59E5008833F7 /* OrderUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75329DC59E5008833F7 /* OrderUpdateRequest.swift */; };
-		2993B75829DC5A0D008833F7 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75729DC5A0D008833F7 /* Address.swift */; };
-		2993B75C29DC5A8C008833F7 /* TimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75B29DC5A8C008833F7 /* TimeSlot.swift */; };
+		2993B75829DC5A0D008833F7 /* TEApiAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75729DC5A0D008833F7 /* TEApiAddress.swift */; };
+		2993B75C29DC5A8C008833F7 /* TEApiTimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75B29DC5A8C008833F7 /* TEApiTimeSlot.swift */; };
 		2993B75E29DC5AA9008833F7 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75D29DC5AA9008833F7 /* ValidationError.swift */; };
 		2993B76229DC6044008833F7 /* HttpValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B76129DC6044008833F7 /* HttpValidationError.swift */; };
 		29AD3ED629E441F200983F24 /* DaDataApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3ED529E441F200983F24 /* DaDataApiTargetType.swift */; };
@@ -34,11 +35,10 @@
 		29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3AEB829C37E73007C763D /* AppDelegate.swift */; };
 		29B3AEC229C37E74007C763D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AEC129C37E74007C763D /* Assets.xcassets */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
-		29D38B2B29DCDCA0000BD85D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D38B2A29DCDCA0000BD85D /* Item.swift */; };
+		29D38B2B29DCDCA0000BD85D /* TEApiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D38B2A29DCDCA0000BD85D /* TEApiItem.swift */; };
 		29D38B2D29DCDF05000BD85D /* TEApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D38B2C29DCDF05000BD85D /* TEApiTargetType.swift */; };
 		29D38B2F29DCE07B000BD85D /* TEMoyaLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D38B2E29DCE07B000BD85D /* TEMoyaLogger.swift */; };
 		29F42F4D29E0590600D9D8F1 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F4C29E0590600D9D8F1 /* GenericService.swift */; };
-		29F42F5029E05EED00D9D8F1 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F4F29E05EED00D9D8F1 /* HttpClientError.swift */; };
 		29F42F5229E075C800D9D8F1 /* TEApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5129E075C800D9D8F1 /* TEApiService.swift */; };
 		29F42F5429E0778500D9D8F1 /* MockTEApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */; };
 		29F42F5629E0816500D9D8F1 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */; };
@@ -104,11 +104,12 @@
 		296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
-		2993B74F29DC5982008833F7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		2982428529ED377100B02C06 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
+		2993B74F29DC5982008833F7 /* TEApiOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrder.swift; sourceTree = "<group>"; };
 		2993B75129DC59D6008833F7 /* OrderCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCreateRequest.swift; sourceTree = "<group>"; };
 		2993B75329DC59E5008833F7 /* OrderUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderUpdateRequest.swift; sourceTree = "<group>"; };
-		2993B75729DC5A0D008833F7 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		2993B75B29DC5A8C008833F7 /* TimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlot.swift; sourceTree = "<group>"; };
+		2993B75729DC5A0D008833F7 /* TEApiAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiAddress.swift; sourceTree = "<group>"; };
+		2993B75B29DC5A8C008833F7 /* TEApiTimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiTimeSlot.swift; sourceTree = "<group>"; };
 		2993B75D29DC5AA9008833F7 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		2993B76129DC6044008833F7 /* HttpValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpValidationError.swift; sourceTree = "<group>"; };
 		29AD3ED529E441F200983F24 /* DaDataApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaDataApiTargetType.swift; sourceTree = "<group>"; };
@@ -126,11 +127,10 @@
 		29B3AEC629C37E74007C763D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		29D38B2A29DCDCA0000BD85D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		29D38B2A29DCDCA0000BD85D /* TEApiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiItem.swift; sourceTree = "<group>"; };
 		29D38B2C29DCDF05000BD85D /* TEApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiTargetType.swift; sourceTree = "<group>"; };
 		29D38B2E29DCE07B000BD85D /* TEMoyaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEMoyaLogger.swift; sourceTree = "<group>"; };
 		29F42F4C29E0590600D9D8F1 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
-		29F42F4F29E05EED00D9D8F1 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
@@ -261,6 +261,14 @@
 			path = FinelDeliveryCell;
 			sourceTree = "<group>";
 		};
+		2982428429ED374F00B02C06 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				2982428529ED377100B02C06 /* HttpClientError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		298D5BDD29DC262800C12EEE /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,7 +283,7 @@
 				29F42F4C29E0590600D9D8F1 /* GenericService.swift */,
 				29AD3ED329E30BEC00983F24 /* Constant */,
 				29AD3ED229E30BE000983F24 /* Log */,
-				29F42F4E29E05ED900D9D8F1 /* Errors */,
+				2982428429ED374F00B02C06 /* Error */,
 				29AD3ED429E4414200983F24 /* DaDataApi */,
 				29D38B2229DCD817000BD85D /* TEApi */,
 			);
@@ -447,10 +455,10 @@
 		29D38B2629DCD8AB000BD85D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2993B74F29DC5982008833F7 /* Order.swift */,
-				2993B75729DC5A0D008833F7 /* Address.swift */,
-				2993B75B29DC5A8C008833F7 /* TimeSlot.swift */,
-				29D38B2A29DCDCA0000BD85D /* Item.swift */,
+				2993B74F29DC5982008833F7 /* TEApiOrder.swift */,
+				2993B75729DC5A0D008833F7 /* TEApiAddress.swift */,
+				2993B75B29DC5A8C008833F7 /* TEApiTimeSlot.swift */,
+				29D38B2A29DCDCA0000BD85D /* TEApiItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -464,12 +472,6 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		29F42F4E29E05ED900D9D8F1 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				29F42F4F29E05EED00D9D8F1 /* HttpClientError.swift */,
-			);
-			path = Errors;
 		29F89C7729DB1C98009325EE /* Presenater */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,6 +1029,7 @@
 				43D78FA329DAB3690044840D /* OnboardingService.swift in Sources */,
 				579251A529D4318A00BD5C28 /* Button.Configuration+Extensions.swift in Sources */,
 				29AD3EE129E4466400983F24 /* SuggestionsResponse.swift in Sources */,
+				2982428629ED377100B02C06 /* HttpClientError.swift in Sources */,
 				29AD3EE429E47DE300983F24 /* TEOrderApiProtocol.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
 				29AD3ED629E441F200983F24 /* DaDataApiTargetType.swift in Sources */,
@@ -1050,10 +1053,10 @@
 				43D78F8929DAAE800044840D /* DeliveryService.swift in Sources */,
 				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
-				29D38B2B29DCDCA0000BD85D /* Item.swift in Sources */,
+				29D38B2B29DCDCA0000BD85D /* TEApiItem.swift in Sources */,
 				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
-				2993B75C29DC5A8C008833F7 /* TimeSlot.swift in Sources */,
+				2993B75C29DC5A8C008833F7 /* TEApiTimeSlot.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
 				29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */,
@@ -1063,7 +1066,7 @@
 				294F839129DEECBC00B603B4 /* TESlotApiProtocol.swift in Sources */,
 				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
 				29AD3EE929E4805900983F24 /* DaDataAddressesProtocol.swift in Sources */,
-				2993B75029DC5982008833F7 /* Order.swift in Sources */,
+				2993B75029DC5982008833F7 /* TEApiOrder.swift in Sources */,
 				43D78FA229DAB3690044840D /* OnboardingCell.swift in Sources */,
 				43D78F8C29DAAE800044840D /* Cart.swift in Sources */,
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
@@ -1087,14 +1090,12 @@
 				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
 				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
 				43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */,
-				298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */,
 				296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */,
 				2993B75229DC59D6008833F7 /* OrderCreateRequest.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
 				29B3AEB929C37E73007C763D /* AppDelegate.swift in Sources */,
 				2993B76229DC6044008833F7 /* HttpValidationError.swift in Sources */,
-				2993B75829DC5A0D008833F7 /* Address.swift in Sources */,
-				29F42F5029E05EED00D9D8F1 /* HttpClientError.swift in Sources */,
+				2993B75829DC5A0D008833F7 /* TEApiAddress.swift in Sources */,
 				29D38B2F29DCE07B000BD85D /* TEMoyaLogger.swift in Sources */,
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
