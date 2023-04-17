@@ -7,7 +7,7 @@
 
 protocol TEOrderApiProtocol {
     func getOrders(
-        completion: @escaping (Result<[Order], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiOrder], HttpClientError>) -> Void
     )
     
     func createOrder(
@@ -16,7 +16,8 @@ protocol TEOrderApiProtocol {
     )
     
     func updateOrder(
-        request: OrderUpdateRequest, orderId: Int,
+        request: OrderUpdateRequest,
+        orderId: Int,
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     )
 }

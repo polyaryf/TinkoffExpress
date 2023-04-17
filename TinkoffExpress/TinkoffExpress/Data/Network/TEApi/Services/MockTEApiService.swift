@@ -17,18 +17,18 @@ class MockTEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     }
     
     func getOrders(
-        completion: @escaping (Result<[Order], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiOrder], HttpClientError>) -> Void
     ) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let result = [
-                Order.init(
-                    address: Address(
+                TEApiOrder.init(
+                    address: TEApiAddress(
                         address: "Казань, ул.Кремлевская, 35",
                         lat: 55.55,
                         lon: 100.11
                     ),
                     paymentMethod: "CARD",
-                    deliverySlot: TimeSlot(
+                    deliverySlot: TEApiTimeSlot(
                         date: "03.05.2023",
                         timeFrom: "12:10",
                         timeTo: "13:50"
@@ -65,13 +65,13 @@ class MockTEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     }
     
     func getSlots(
-        completion: @escaping (Result<[TimeSlot], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiTimeSlot], HttpClientError>) -> Void
     ) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let result = [
-                TimeSlot(date: "2023-04-26", timeFrom: "12:00", timeTo: "14:00"),
-                TimeSlot(date: "2023-04-27", timeFrom: "14:00", timeTo: "16:00"),
-                TimeSlot(date: "2023-04-28", timeFrom: "10:00", timeTo: "12:00")
+                TEApiTimeSlot(date: "2023-04-26", timeFrom: "12:00", timeTo: "14:00"),
+                TEApiTimeSlot(date: "2023-04-27", timeFrom: "14:00", timeTo: "16:00"),
+                TEApiTimeSlot(date: "2023-04-28", timeFrom: "10:00", timeTo: "12:00")
             ]
             completion(.success(result))
         }

@@ -8,10 +8,10 @@
 import Foundation
 
 struct OrderCreateRequest: Codable {
-    let address: Address
+    let address: TEApiAddress
     let paymentMethod: String
-    let deliverySlot: TimeSlot
-    let items: [Item]
+    let deliverySlot: TEApiTimeSlot
+    let items: [TEApiItem]
     let comment: String
     let status: String?
     

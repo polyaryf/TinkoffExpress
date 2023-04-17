@@ -6,9 +6,9 @@
 //
 
 struct OrderUpdateRequest: Codable {
-    let address: Address?
+    let address: TEApiAddress?
     let paymentMethod: String?
-    let deliverySlot: TimeSlot?
+    let deliverySlot: TEApiTimeSlot?
     let comment: String?
     let status: String?
     

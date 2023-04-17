@@ -7,7 +7,7 @@
 
 import Foundation
 
-// swiftlint:disable all
+// swiftlint:disable force_unwrapping
 enum NetworkConstant {
     static let baseTEApiURL = URL(string: "http://185.204.0.180:8000")!
     static let baseDaDataApiURL = URL(string: "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address")!

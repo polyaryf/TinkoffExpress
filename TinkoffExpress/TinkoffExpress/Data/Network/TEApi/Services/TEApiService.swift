@@ -18,7 +18,7 @@ class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     }
     
     func getOrders(
-        completion: @escaping (Result<[Order], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiOrder], HttpClientError>) -> Void
     ) {
         service.performAndDecode(
             target: .getOrders,
@@ -48,7 +48,7 @@ class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     }
     
     func getSlots(
-        completion: @escaping (Result<[TimeSlot], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiTimeSlot], HttpClientError>) -> Void
     ) {
         service.performAndDecode(
             target: .getSlots,

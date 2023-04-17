@@ -7,6 +7,6 @@
 
 protocol TESlotApiProtocol {
     func getSlots(
-        completion: @escaping (Result<[TimeSlot], HttpClientError>) -> Void
+        completion: @escaping (Result<[TEApiTimeSlot], HttpClientError>) -> Void
     )
 }
