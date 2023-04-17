@@ -13,7 +13,7 @@ class AddressInputCell: UITableViewCell {
     private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
-        label.textColor = UIColor(named: "primaryText.cell.orderCheckout.color")
+        label.textColor = UIColor(named: "primaryText.cell.addressInput.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -25,6 +25,7 @@ class AddressInputCell: UITableViewCell {
             height: 16)
         )
         label.font = .systemFont(ofSize: 13)
+        label.textColor = UIColor(named: "secondaryText.cell.addressInput.color")
         return label
     }()
     

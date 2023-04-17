@@ -14,7 +14,10 @@
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
 		2982428229EC214400B02C06 /* FadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428129EC214400B02C06 /* FadingLabel.swift */; };
+		2982428929ED3F7E00B02C06 /* InputAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428829ED3F7E00B02C06 /* InputAddress.swift */; };
+		2982428C29ED400800B02C06 /* AddressInputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428B29ED400800B02C06 /* AddressInputService.swift */; };
 		298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D5BE029DC269C00C12EEE /* GenericService.swift */; };
+		2996122829ED7C2E0032D3BA /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2996122729ED7C2E0032D3BA /* TextView.swift */; };
 		29996B1129EAFEB4003A1B13 /* AddressInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29996B1029EAFEB4003A1B13 /* AddressInputPresenter.swift */; };
 		29996B1429EAFEF9003A1B13 /* AddressInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29996B1329EAFEF9003A1B13 /* AddressInputCell.swift */; };
 		299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */; };
@@ -83,7 +86,10 @@
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
 		2982428129EC214400B02C06 /* FadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingLabel.swift; sourceTree = "<group>"; };
+		2982428829ED3F7E00B02C06 /* InputAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAddress.swift; sourceTree = "<group>"; };
+		2982428B29ED400800B02C06 /* AddressInputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputService.swift; sourceTree = "<group>"; };
 		298D5BE029DC269C00C12EEE /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
+		2996122729ED7C2E0032D3BA /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		29996B1029EAFEB4003A1B13 /* AddressInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputPresenter.swift; sourceTree = "<group>"; };
 		29996B1329EAFEF9003A1B13 /* AddressInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputCell.swift; sourceTree = "<group>"; };
 		299F73B929E9C3ED001A5235 /* AddressInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +225,22 @@
 			path = FinelDeliveryCell;
 			sourceTree = "<group>";
 		};
+		2982428729ED3EE900B02C06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2982428829ED3F7E00B02C06 /* InputAddress.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2982428A29ED3FE800B02C06 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2982428B29ED400800B02C06 /* AddressInputService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		298D5BDD29DC262800C12EEE /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +263,14 @@
 				298D5BE029DC269C00C12EEE /* GenericService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2996122629ED7C180032D3BA /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				2996122729ED7C2E0032D3BA /* TextView.swift */,
+			);
+			path = TextView;
 			sourceTree = "<group>";
 		};
 		29996B1229EAFEDA003A1B13 /* Presenter */ = {
@@ -270,8 +300,10 @@
 		299F73B829E9C3C8001A5235 /* AddressInput */ = {
 			isa = PBXGroup;
 			children = (
+				2982428729ED3EE900B02C06 /* Model */,
 				299F73BB29E9C41F001A5235 /* View */,
 				29996B1229EAFEDA003A1B13 /* Presenter */,
+				2982428A29ED3FE800B02C06 /* Service */,
 			);
 			path = AddressInput;
 			sourceTree = "<group>";
@@ -659,6 +691,7 @@
 		5792518A29D4318A00BD5C28 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2996122629ED7C180032D3BA /* TextView */,
 				29996B1629EB28D4003A1B13 /* FadingLabel */,
 				5792518B29D4318A00BD5C28 /* Button */,
 				5792519429D4318A00BD5C28 /* ActivityIndicator */,
@@ -860,6 +893,7 @@
 				43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */,
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
+				2982428929ED3F7E00B02C06 /* InputAddress.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
 				2982428229EC214400B02C06 /* FadingLabel.swift in Sources */,
 				299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */,
@@ -901,6 +935,8 @@
 				43D78F8C29DAAE800044840D /* Cart.swift in Sources */,
 				2926F3D529D7099D00938AA1 /* OrderCheckoutTableViewCell.swift in Sources */,
 				29F89C7C29DB1D55009325EE /* OrderCheckoutService.swift in Sources */,
+				2996122829ED7C2E0032D3BA /* TextView.swift in Sources */,
+				2982428C29ED400800B02C06 /* AddressInputService.swift in Sources */,
 				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
 				43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */,
