@@ -92,6 +92,7 @@ class AddressInputViewController: UIViewController {
         
         tableView.register(AddressInputCell.self, forCellReuseIdentifier: "addressInputCell")
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
     }
     
     private func setupInputTextView() {
