@@ -1087,6 +1087,7 @@
 				5792519F29D4318A00BD5C28 /* UIColor+Highlight.swift in Sources */,
 				579251A829D4318A00BD5C28 /* Button.swift in Sources */,
 				43D78F9F29DAB3690044840D /* Onboarding.swift in Sources */,
+				298D5BE129DC269C00C12EEE /* GenericService.swift in Sources */,
 				296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */,
 				2993B75229DC59D6008833F7 /* OrderCreateRequest.swift in Sources */,
 				5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */,
