@@ -35,6 +35,7 @@ class TextView: UITextView {
             return
         }
         viewSizeDidChange()
+        checkPlaceholder()
         
         if checkTime + 1 < DispatchTime.now() {
             textDidChange()
