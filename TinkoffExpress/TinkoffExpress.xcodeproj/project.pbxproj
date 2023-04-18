@@ -39,6 +39,7 @@
 		2976556429EDBBD4002BEC00 /* DaDataApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554929EDBBD4002BEC00 /* DaDataApiService.swift */; };
 		2976556729EDBE7E002BEC00 /* AddressInputAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976556629EDBE7E002BEC00 /* AddressInputAsembly.swift */; };
 		2976556A29EDDDA3002BEC00 /* AddressInputMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976556929EDDDA3002BEC00 /* AddressInputMapper.swift */; };
+		2976556C29EE9C3B002BEC00 /* TextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976556B29EE9C3B002BEC00 /* TextView+Extension.swift */; };
 		2982428229EC214400B02C06 /* FadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428129EC214400B02C06 /* FadingLabel.swift */; };
 		2982428929ED3F7E00B02C06 /* InputAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428829ED3F7E00B02C06 /* InputAddress.swift */; };
 		2982428C29ED400800B02C06 /* AddressInputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428B29ED400800B02C06 /* AddressInputService.swift */; };
@@ -136,6 +137,7 @@
 		2976554929EDBBD4002BEC00 /* DaDataApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataApiService.swift; sourceTree = "<group>"; };
 		2976556629EDBE7E002BEC00 /* AddressInputAsembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputAsembly.swift; sourceTree = "<group>"; };
 		2976556929EDDDA3002BEC00 /* AddressInputMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputMapper.swift; sourceTree = "<group>"; };
+		2976556B29EE9C3B002BEC00 /* TextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+Extension.swift"; sourceTree = "<group>"; };
 		2982428129EC214400B02C06 /* FadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingLabel.swift; sourceTree = "<group>"; };
 		2982428829ED3F7E00B02C06 /* InputAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAddress.swift; sourceTree = "<group>"; };
 		2982428B29ED400800B02C06 /* AddressInputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputService.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 		2976554429EDBBD4002BEC00 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2976554929EDBBD4002BEC00 /* DaDataApiService.swift */,
 				2976554529EDBBD4002BEC00 /* Abstract */,
 			);
 			path = Services;
@@ -437,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				2976554629EDBBD4002BEC00 /* DaDataAddressesProtocol.swift */,
-				2976554929EDBBD4002BEC00 /* DaDataApiService.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				2996122729ED7C2E0032D3BA /* TextView.swift */,
+				2976556B29EE9C3B002BEC00 /* TextView+Extension.swift */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -1109,6 +1112,7 @@
 				2982428929ED3F7E00B02C06 /* InputAddress.swift in Sources */,
 				2976555029EDBBD4002BEC00 /* ValidationError.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
+				2976556C29EE9C3B002BEC00 /* TextView+Extension.swift in Sources */,
 				2982428229EC214400B02C06 /* FadingLabel.swift in Sources */,
 				299F73BA29E9C3ED001A5235 /* AddressInputViewController.swift in Sources */,
 				29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */,
