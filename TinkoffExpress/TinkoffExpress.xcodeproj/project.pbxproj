@@ -33,12 +33,12 @@
 		2976555C29EDBBD4002BEC00 /* SuggestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976553C29EDBBD4002BEC00 /* SuggestionResponse.swift */; };
 		2976555D29EDBBD4002BEC00 /* SuggestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976553D29EDBBD4002BEC00 /* SuggestionsResponse.swift */; };
 		2976555E29EDBBD4002BEC00 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976553E29EDBBD4002BEC00 /* DataResponse.swift */; };
-		2976555F29EDBBD4002BEC00 /* DaDataAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554029EDBBD4002BEC00 /* DaDataAddress.swift */; };
 		2976556029EDBBD4002BEC00 /* AddressSuggestionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554229EDBBD4002BEC00 /* AddressSuggestionRequest.swift */; };
 		2976556129EDBBD4002BEC00 /* DaDataApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554329EDBBD4002BEC00 /* DaDataApiTargetType.swift */; };
 		2976556229EDBBD4002BEC00 /* DaDataAddressesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554629EDBBD4002BEC00 /* DaDataAddressesProtocol.swift */; };
-		2976556329EDBBD4002BEC00 /* DaDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554829EDBBD4002BEC00 /* DaDataMapper.swift */; };
 		2976556429EDBBD4002BEC00 /* DaDataApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976554929EDBBD4002BEC00 /* DaDataApiService.swift */; };
+		2976556729EDBE7E002BEC00 /* AddressInputAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976556629EDBE7E002BEC00 /* AddressInputAsembly.swift */; };
+		2976556A29EDDDA3002BEC00 /* AddressInputMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976556929EDDDA3002BEC00 /* AddressInputMapper.swift */; };
 		2982428229EC214400B02C06 /* FadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428129EC214400B02C06 /* FadingLabel.swift */; };
 		2982428929ED3F7E00B02C06 /* InputAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428829ED3F7E00B02C06 /* InputAddress.swift */; };
 		2982428C29ED400800B02C06 /* AddressInputService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428B29ED400800B02C06 /* AddressInputService.swift */; };
@@ -130,12 +130,12 @@
 		2976553C29EDBBD4002BEC00 /* SuggestionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionResponse.swift; sourceTree = "<group>"; };
 		2976553D29EDBBD4002BEC00 /* SuggestionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsResponse.swift; sourceTree = "<group>"; };
 		2976553E29EDBBD4002BEC00 /* DataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
-		2976554029EDBBD4002BEC00 /* DaDataAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataAddress.swift; sourceTree = "<group>"; };
 		2976554229EDBBD4002BEC00 /* AddressSuggestionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSuggestionRequest.swift; sourceTree = "<group>"; };
 		2976554329EDBBD4002BEC00 /* DaDataApiTargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataApiTargetType.swift; sourceTree = "<group>"; };
 		2976554629EDBBD4002BEC00 /* DaDataAddressesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataAddressesProtocol.swift; sourceTree = "<group>"; };
-		2976554829EDBBD4002BEC00 /* DaDataMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataMapper.swift; sourceTree = "<group>"; };
 		2976554929EDBBD4002BEC00 /* DaDataApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataApiService.swift; sourceTree = "<group>"; };
+		2976556629EDBE7E002BEC00 /* AddressInputAsembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputAsembly.swift; sourceTree = "<group>"; };
+		2976556929EDDDA3002BEC00 /* AddressInputMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputMapper.swift; sourceTree = "<group>"; };
 		2982428129EC214400B02C06 /* FadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingLabel.swift; sourceTree = "<group>"; };
 		2982428829ED3F7E00B02C06 /* InputAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAddress.swift; sourceTree = "<group>"; };
 		2982428B29ED400800B02C06 /* AddressInputService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressInputService.swift; sourceTree = "<group>"; };
@@ -402,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				2976553B29EDBBD4002BEC00 /* Responses */,
-				2976553F29EDBBD4002BEC00 /* Model */,
 				2976554129EDBBD4002BEC00 /* Request */,
 			);
 			path = DataSource;
@@ -418,14 +417,6 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		2976553F29EDBBD4002BEC00 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2976554029EDBBD4002BEC00 /* DaDataAddress.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		2976554129EDBBD4002BEC00 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,8 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				2976554529EDBBD4002BEC00 /* Abstract */,
-				2976554729EDBBD4002BEC00 /* Mapper */,
-				2976554929EDBBD4002BEC00 /* DaDataApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -448,14 +437,23 @@
 			isa = PBXGroup;
 			children = (
 				2976554629EDBBD4002BEC00 /* DaDataAddressesProtocol.swift */,
+				2976554929EDBBD4002BEC00 /* DaDataApiService.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
 		};
-		2976554729EDBBD4002BEC00 /* Mapper */ = {
+		2976556529EDBE64002BEC00 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				2976554829EDBBD4002BEC00 /* DaDataMapper.swift */,
+				2976556629EDBE7E002BEC00 /* AddressInputAsembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		2976556829EDDD91002BEC00 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				2976556929EDDDA3002BEC00 /* AddressInputMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -471,6 +469,7 @@
 		2982428A29ED3FE800B02C06 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2976556829EDDD91002BEC00 /* Mapper */,
 				2982428B29ED400800B02C06 /* AddressInputService.swift */,
 			);
 			path = Service;
@@ -511,6 +510,7 @@
 		299F73B829E9C3C8001A5235 /* AddressInput */ = {
 			isa = PBXGroup;
 			children = (
+				2976556529EDBE64002BEC00 /* Assembly */,
 				2982428729ED3EE900B02C06 /* Model */,
 				299F73BB29E9C41F001A5235 /* View */,
 				29996B1229EAFEDA003A1B13 /* Presenter */,
@@ -1103,7 +1103,6 @@
 			files = (
 				2976556129EDBBD4002BEC00 /* DaDataApiTargetType.swift in Sources */,
 				2976554A29EDBBD4002BEC00 /* TEApiTimeSlot.swift in Sources */,
-				2976555F29EDBBD4002BEC00 /* DaDataAddress.swift in Sources */,
 				43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */,
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
 				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
@@ -1124,6 +1123,7 @@
 				43D78FA029DAB3690044840D /* OnboardingViewController.swift in Sources */,
 				296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */,
 				2976555929EDBBD4002BEC00 /* TEMoyaLogger.swift in Sources */,
+				2976556729EDBE7E002BEC00 /* AddressInputAsembly.swift in Sources */,
 				296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */,
 				579251AA29D4318A00BD5C28 /* TEColors.swift in Sources */,
 				29F89C7929DB1CBA009325EE /* OrderCheckoutPresenter.swift in Sources */,
@@ -1135,7 +1135,6 @@
 				43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */,
 				2976555B29EDBBD4002BEC00 /* HttpClientError.swift in Sources */,
 				29F89C8229DB2584009325EE /* FinalDeliveryPresenter.swift in Sources */,
-				2976556329EDBBD4002BEC00 /* DaDataMapper.swift in Sources */,
 				43D78F8E29DAAE800044840D /* CartCell.swift in Sources */,
 				43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */,
 				29F89C7F29DB21D4009325EE /* OrderCheckoutAssembly.swift in Sources */,
@@ -1191,6 +1190,7 @@
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				2976554F29EDBBD4002BEC00 /* OrderCreateRequest.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
+				2976556A29EDDDA3002BEC00 /* AddressInputMapper.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
