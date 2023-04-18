@@ -1,5 +1,5 @@
 //
-//  TextView+Extention.swift
+//  TextView+Extension.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 18.04.2023.
