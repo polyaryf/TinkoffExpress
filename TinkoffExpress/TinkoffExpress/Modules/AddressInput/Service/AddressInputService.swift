@@ -45,15 +45,15 @@ final class RestAddressInputService: AddressInputService {
 final class MockAddressInputService: AddressInputService {
     let mockAddresses: [InputAddress] = [
         .init(
-            street: "ул. Новотушинская, 1",
+            firstLine: "ул. Новотушинская, 1",
             wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
         ),
         .init(
-            street: "ул. Новотушинская, 1",
+            firstLine: "ул. Новотушинская, 1",
             wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
         ),
         .init(
-            street: "ул. Новотушинская, 1",
+            firstLine: "ул. Новотушинская, 1",
             wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
         )
     ]

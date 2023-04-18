@@ -13,18 +13,18 @@ final class AddressInputMapper {
         
         guard let street = data.street else {
             return InputAddress(
-                street: suggestion.value ?? "",
+                firstLine: suggestion.value ?? "",
                 wholeAddress: changeString(string: suggestion.unrestrictedValue)
             )
         }
         guard let house = data.house else {
             return InputAddress(
-                street: street,
+                firstLine: street,
                 wholeAddress: suggestion.value ?? ""
             )
         }
         return InputAddress(
-            street: street + ", \(house)",
+            firstLine: street + ", \(house)",
             wholeAddress: suggestion.value ?? ""
         )
     }

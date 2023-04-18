@@ -13,7 +13,6 @@ class AddressInputCell: UITableViewCell {
     private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
-        label.textColor = UIColor(named: "primaryText.cell.addressInput.color")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,11 +20,10 @@ class AddressInputCell: UITableViewCell {
         var label = FadingLabel.init(frame: CGRect(
             x: 0,
             y: 0,
-            width: 319,
+            width: contentView.frame.width,
             height: 16)
         )
         label.font = .systemFont(ofSize: 13)
-        label.textColor = UIColor(named: "secondaryText.cell.addressInput.color")
         return label
     }()
     
@@ -50,25 +48,33 @@ class AddressInputCell: UITableViewCell {
     func setSecondaryText(_ text: String) {
         secondaryText.text = text
     }
-    
+
     // MARK: Private
     
     private func setupView() {
         contentView.addSubview(primaryText)
         contentView.addSubview(secondaryText)
+        
         setupConstraints()
+        setupColors()
+    }
+    
+    private func setupColors() {
+        contentView.backgroundColor = UIColor(named: "background.addressInput.color")
+        primaryText.textColor = UIColor(named: "primaryText.cell.addressInput.color")
+        secondaryText.textColor = UIColor(named: "secondaryText.cell.addressInput.color")
     }
     
     private func setupConstraints() {
         primaryText.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().offset(-14)
         }
         secondaryText.snp.makeConstraints {
             $0.top.equalTo(primaryText.snp.bottom).offset(4)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().offset(-14)
         }
     }
 }

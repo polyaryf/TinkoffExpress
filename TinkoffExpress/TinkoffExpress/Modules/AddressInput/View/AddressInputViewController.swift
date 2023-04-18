@@ -18,8 +18,7 @@ class AddressInputViewController: UIViewController {
     private lazy var cancelButton: UIButton = {
         var button = UIButton.init(type: .system)
         button.setTitle("Отмена", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.titleLabel?.tintColor = UIColor(named: "blue.addressInput.color")
+        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -43,16 +42,19 @@ class AddressInputViewController: UIViewController {
     private lazy var doneButton: UIButton = {
         var button = UIButton.init()
         button.setTitle("Готово", for: .normal)
+        button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     private lazy var errorLabel: UILabel = {
         var label = UILabel.init()
+        label.isHidden = true
+        label.text = "Мы не знаем этого адреса"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // MARK: Dependencies
+    // MARK: Dependency
     
     private var presenter: AddressInputPresenterProtocol
     
@@ -77,7 +79,6 @@ class AddressInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
         setupView()
     }
     
@@ -86,9 +87,10 @@ class AddressInputViewController: UIViewController {
     private func setupView() {
         setupViewHierarchy()
         setupConstraints()
+        setupColors()
+        setupFonts()
         setupTableView()
         setupInputTextView()
-        setupErrorLable()
         setupDoneButtonView()
         setupKeyboard()
         
@@ -118,15 +120,14 @@ class AddressInputViewController: UIViewController {
         clearInputTextButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.bottom.equalToSuperview().offset(-20)
-            $0.leading.equalToSuperview().offset(331)
-            $0.trailing.equalToSuperview().offset(-12)
+            $0.trailing.equalTo(view).offset(-28)
             $0.height.equalTo(16)
             $0.width.equalTo(16)
         }
         tableView.snp.makeConstraints {
             $0.top.equalTo(inputTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(28)
-            $0.trailing.equalToSuperview().offset(-28)
+            $0.leading.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().offset(-14)
             $0.bottom.equalToSuperview()
         }
         doneButton.snp.makeConstraints {
@@ -142,35 +143,45 @@ class AddressInputViewController: UIViewController {
         }
     }
     
+    private func setupColors() {
+        view.backgroundColor = UIColor(named: "background.addressInput.color")
+        tableView.backgroundColor = UIColor(named: "background.addressInput.color")
+        cancelButton.titleLabel?.tintColor = UIColor(named: "blue.addressInput.color")
+        inputTextView.tintColor = UIColor(named: "blue.addressInput.color")
+        inputTextView.backgroundColor = UIColor(named: "inputTextView.addressInput.color")
+        inputTextView.textColor = UIColor(named: "inputText.addressInput.color")
+        errorLabel.textColor = UIColor(named: "errorText.addressInput.color")
+        doneButton.backgroundColor = UIColor(named: "blue.addressInput.color")
+    }
+    
+    private func setupFonts() {
+        inputTextView.font = .systemFont(ofSize: 17)
+        errorLabel.font = .systemFont(ofSize: 15)
+        doneButton.titleLabel?.font = .systemFont(ofSize: 15)
+        cancelButton.titleLabel?.font = .systemFont(ofSize: 17)
+    }
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.register(AddressInputCell.self, forCellReuseIdentifier: "addressInputCell")
+        tableView.allowsSelection = true
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
     }
     
     private func setupInputTextView() {
+        inputTextView.setPlaceholder()
         inputTextView.showsVerticalScrollIndicator = false
-        inputTextView.backgroundColor = UIColor(named: "inputTextView.addressInput.color")
-        inputTextView.textColor = UIColor(named: "inputText.addressInput.color")
+        inputTextView.layer.cornerRadius = 16
+        inputTextView.clipsToBounds = true
         inputTextView.textContainerInset = UIEdgeInsets(
             top: 18,
             left: 14,
             bottom: 18,
             right: 28
         )
-        inputTextView.layer.cornerRadius = 16
-        inputTextView.clipsToBounds = true
-        inputTextView.font = .systemFont(ofSize: 17)
-    }
-    
-    private func setupErrorLable() {
-        errorLabel.isHidden = true
-        errorLabel.text = "Мы не знаем этого адреса"
-        errorLabel.textColor = UIColor(named: "errorText.addressInput.color")
-        errorLabel.font = .systemFont(ofSize: 15)
     }
     
     private func setupDoneButtonView() {
@@ -182,8 +193,6 @@ class AddressInputViewController: UIViewController {
             bottom: 13,
             right: 18
         )
-        doneButton.titleLabel?.font = .systemFont(ofSize: 15)
-        doneButton.backgroundColor = UIColor(named: "blue.addressInput.color")
     }
     
     private func setupKeyboard() {
@@ -205,8 +214,20 @@ class AddressInputViewController: UIViewController {
     
     @objc func clearInputTextButtonTapped() {
         inputTextView.text = ""
+        textViewSizeDidChange()
+        
+        errorLabel.isHidden = true
+        
         address = []
         tableView.reloadData()
+    }
+    
+    @objc func doneButtonTapped() {
+        presenter.doneButtonTapped()
+    }
+    
+    @objc func cancelButtonTapped() {
+        presenter.doneButtonTapped()
     }
     
     // MARK: Keyboard
@@ -251,7 +272,7 @@ extension AddressInputViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AddressInputCell()
         let currentAddress = address[indexPath.row]
-        cell.setPrimaryText(currentAddress.street)
+        cell.setPrimaryText(currentAddress.firstLine)
         cell.setSecondaryText(currentAddress.wholeAddress)
         return cell
     }
@@ -259,47 +280,62 @@ extension AddressInputViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         52
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        inputTextView.text = address[indexPath.row].wholeAddress
+    }
 }
 
 // MARK: - AddressInputViewControllerProtocol
 
 extension AddressInputViewController: AddressInputViewControllerProtocol {
     func showAddresses(addresses: [InputAddress]) {
-        self.address += addresses
+        errorLabel.isHidden = true
+        
+        self.address = addresses
         tableView.reloadData()
     }
     
     func showErrorLabel() {
         errorLabel.isHidden = false
+        
+        address = []
+        tableView.reloadData()
     }
 }
 
 // MARK: - Handling TextView
 
 extension AddressInputViewController {
-    func trackTextViewChanges() {
-        inputTextView.textDidChangeHandler = { [self] in
-            guard let inputText = inputTextView.text else { return }
-            presenter.viewDidLoad(input: inputText)
+    private func trackTextViewChanges() {
+        inputTextView.textDidChangeHandler = { [weak self] in
+            guard let self = self else { return }
+            guard let inputText = self.inputTextView.text else { return }
+            self.presenter.viewDidLoad(input: inputText)
         }
         
-        inputTextView.viewSizeDidChangeHandler = { [self] in
-            let height = inputTextView.sizeThatFits(
-                CGSize(
-                    width: inputTextView.frame.width - 0.5,
-                    height: CGFloat.leastNonzeroMagnitude
-                )
-            ).height
+        inputTextView.viewSizeDidChangeHandler = { [weak self] in
+            self?.textViewSizeDidChange()
+        }
+    }
+    
+    private func textViewSizeDidChange() {
+        inputTextView.checkPlaceholder()
+        let height = inputTextView.sizeThatFits(
+            CGSize(
+                width: inputTextView.frame.width - 0.5,
+                height: CGFloat.leastNonzeroMagnitude
+            )
+        ).height
 
-            inputTextView.snp.updateConstraints {
-                $0.height.equalTo(height)
-            }
-            
-            let paddingClearInputTextButton = (height - 16) / 2
-            clearInputTextButton.snp.updateConstraints {
-                $0.top.equalToSuperview().offset(paddingClearInputTextButton)
-                $0.bottom.equalToSuperview().offset(-paddingClearInputTextButton)
-            }
+        inputTextView.snp.updateConstraints {
+            $0.height.equalTo(height)
+        }
+        
+        let paddingClearInputTextButton = (height - 16) / 2
+        clearInputTextButton.snp.updateConstraints {
+            $0.top.equalToSuperview().offset(paddingClearInputTextButton)
+            $0.bottom.equalToSuperview().offset(-paddingClearInputTextButton)
         }
     }
 }

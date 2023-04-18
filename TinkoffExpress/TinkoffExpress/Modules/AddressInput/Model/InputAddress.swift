@@ -8,6 +8,6 @@
 import Foundation
 
 struct InputAddress {
-    let street: String
+    let firstLine: String
     let wholeAddress: String
 }
