@@ -14,17 +14,47 @@ protocol AddressInputService {
     )
 }
 
+final class RestAddressInputService: AddressInputService {
+    // MARK: Dependency
+    private let networkService: DaDataApiService
+    private let mapper: AddressInputMapper
+    
+    // MARK: Init
+    
+    init(networkService: DaDataApiService, mapper: AddressInputMapper) {
+        self.networkService = networkService
+        self.mapper = mapper
+    }
+    
+    func loadAddresses(with text: String, completion: @escaping (Result<[InputAddress], Error>) -> Void) {
+        networkService.getAddresses(
+            request: AddressSuggestionRequest(query: text, language: "")
+        ) { [ weak self] result in
+            let newResult = result.map { suggestionsResponse in
+                suggestionsResponse.suggestions.compactMap { suggestion in
+                    self?.mapper.toInputAddress(from: suggestion)
+                }
+            }
+            .mapError { $0 as Error }
+            
+            completion(newResult)
+        }
+    }
+}
+
 final class MockAddressInputService: AddressInputService {
-    let mockAddresses1: [InputAddress] = [
+    let mockAddresses: [InputAddress] = [
         .init(
             street: "ул. Новотушинская, 1",
             wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
-        )
-    ]
-    let mockAddresses2: [InputAddress] = [
+        ),
         .init(
-            street: "ул. Кремлевская, 1",
-            wholeAddress: "Респ. Татарстан., г. Казань, ул. Кремлевская, 1"
+            street: "ул. Новотушинская, 1",
+            wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
+        ),
+        .init(
+            street: "ул. Новотушинская, 1",
+            wholeAddress: "Московская обл., г. Красногорск, деревня Путилково, ул. Новотушинская, 1"
         )
     ]
     
@@ -32,10 +62,6 @@ final class MockAddressInputService: AddressInputService {
         with text: String,
         completion: @escaping (Result<[InputAddress], Error>) -> Void
     ) {
-        if !text.isEmpty {
-            completion(.success(mockAddresses1))
-        } else if text.isEmpty {
-            completion(.success(mockAddresses2))
-        }
+        completion(.success(mockAddresses))
     }
 }
