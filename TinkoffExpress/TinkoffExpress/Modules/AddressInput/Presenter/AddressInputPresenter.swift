@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AddressInputPresenterProtocol {
-    func viewDidLoad(input text: String)
+    func viewDidChangeText(input text: String)
     func doneButtonTapped()
     func cancelButtonTapped()
 }
@@ -27,9 +27,7 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
         self.service = service
     }
     
-    // MARK: Life Cycle
-    
-    func viewDidLoad(input text: String) {
+    func viewDidChangeText(input text: String) {
         service.loadAddresses(with: text) { [weak self] result in
             guard let self = self else { return }
             switch result {

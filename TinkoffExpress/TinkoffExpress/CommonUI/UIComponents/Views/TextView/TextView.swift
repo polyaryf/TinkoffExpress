@@ -12,7 +12,7 @@ class TextView: UITextView {
     
     var textDidChangeHandler: (() -> Void)?
     var viewSizeDidChangeHandler: (() -> Void)?
-    var checkTime = DispatchTime.now()
+    var timer: Timer?
     
     // MARK: Init
 
@@ -37,10 +37,13 @@ class TextView: UITextView {
         viewSizeDidChange()
         checkPlaceholder()
         
-        if checkTime + 1 < DispatchTime.now() {
-            textDidChange()
-            checkTime = DispatchTime.now()
-        }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 1,
+            repeats: false,
+            block: { [weak self] timer in
+            self?.textDidChange()
+        })
     }
 
     func textDidChange() {

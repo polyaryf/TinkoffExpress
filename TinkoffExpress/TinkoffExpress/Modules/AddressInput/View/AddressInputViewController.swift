@@ -234,30 +234,36 @@ class AddressInputViewController: UIViewController {
     
     @objc private func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo,
-        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+        let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
+        else { return }
         
         let keyboardHeight = keyboardFrame.size.height
-        
-        UIView.animate(withDuration: 0.5) { [self] in
+         
+        UIView.animate(withDuration: duration ) { [self] in
             doneButton.snp.remakeConstraints {
                 $0.bottom.equalToSuperview().offset(-(keyboardHeight + 16))
                 $0.trailing.equalToSuperview().offset(-16)
                 $0.height.equalTo(44)
                 $0.width.equalTo(84)
             }
-            view.layoutSubviews()
+            view.layoutIfNeeded()
         }
     }
 
     @objc private func keyboardWillHide(notification: Notification) {
-        UIView.animate(withDuration: 0.5) { [self] in
+        guard let userInfo = notification.userInfo,
+        let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
+        else { return }
+        
+        UIView.animate(withDuration: duration ) { [self] in
             doneButton.snp.remakeConstraints {
                 $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
                 $0.trailing.equalToSuperview().offset(-16)
                 $0.height.equalTo(44)
                 $0.width.equalTo(84)
             }
-            view.layoutSubviews()
+            view.layoutIfNeeded()
         }
     }
 }
@@ -283,6 +289,7 @@ extension AddressInputViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputTextView.text = address[indexPath.row].wholeAddress
+        textViewSizeDidChange()
     }
 }
 
@@ -311,7 +318,7 @@ extension AddressInputViewController {
         inputTextView.textDidChangeHandler = { [weak self] in
             guard let self = self else { return }
             guard let inputText = self.inputTextView.text else { return }
-            self.presenter.viewDidLoad(input: inputText)
+            self.presenter.viewDidChangeText(input: inputText)
         }
         
         inputTextView.viewSizeDidChangeHandler = { [weak self] in
