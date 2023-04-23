@@ -10,5 +10,4 @@ import Foundation
 enum TypeOfNaviation {
     case push
     case present
-    case set
 }
