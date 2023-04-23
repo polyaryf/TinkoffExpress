@@ -237,7 +237,7 @@
 			children = (
 				29F89C8629DB279E009325EE /* Assembly */,
 				29F89C8329DB268E009325EE /* Service */,
-				29F89C8029DB2565009325EE /*  Presenter */,
+				29F89C8029DB2565009325EE /* Presenter */,
 				296CA91929D973220048FE9D /* View */,
 			);
 			path = FinalDelivery;
@@ -496,12 +496,12 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
-		29F89C8029DB2565009325EE /*  Presenter */ = {
+		29F89C8029DB2565009325EE /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				29F89C8129DB2584009325EE /* FinalDeliveryPresenter.swift */,
 			);
-			path = " Presenter";
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		29F89C8329DB268E009325EE /* Service */ = {
