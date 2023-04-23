@@ -73,6 +73,13 @@
 		43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9929DAB3690044840D /* OnboardingHeaderView.swift */; };
 		43D78FA229DAB3690044840D /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9A29DAB3690044840D /* OnboardingCell.swift */; };
 		43D78FA329DAB3690044840D /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F9C29DAB3690044840D /* OnboardingService.swift */; };
+		43D8BF7729F5BD94009889AD /* MeetingAppointmentAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF6C29F5BD94009889AD /* MeetingAppointmentAssembly.swift */; };
+		43D8BF7829F5BD94009889AD /* MeetingAppointmentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF6E29F5BD94009889AD /* MeetingAppointmentPresenter.swift */; };
+		43D8BF7929F5BD94009889AD /* MeetingAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7029F5BD94009889AD /* MeetingAppointment.swift */; };
+		43D8BF7A29F5BD94009889AD /* MeetingAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7229F5BD94009889AD /* MeetingAppointmentViewController.swift */; };
+		43D8BF7B29F5BD94009889AD /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7329F5BD94009889AD /* DateCell.swift */; };
+		43D8BF7C29F5BD94009889AD /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7429F5BD94009889AD /* TimeCell.swift */; };
+		43D8BF7D29F5BD94009889AD /* MeetingAppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7629F5BD94009889AD /* MeetingAppointmentService.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -166,6 +173,13 @@
 		43D78F9929DAB3690044840D /* OnboardingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingHeaderView.swift; sourceTree = "<group>"; };
 		43D78F9A29DAB3690044840D /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		43D78F9C29DAB3690044840D /* OnboardingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
+		43D8BF6C29F5BD94009889AD /* MeetingAppointmentAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentAssembly.swift; sourceTree = "<group>"; };
+		43D8BF6E29F5BD94009889AD /* MeetingAppointmentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentPresenter.swift; sourceTree = "<group>"; };
+		43D8BF7029F5BD94009889AD /* MeetingAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointment.swift; sourceTree = "<group>"; };
+		43D8BF7229F5BD94009889AD /* MeetingAppointmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentViewController.swift; sourceTree = "<group>"; };
+		43D8BF7329F5BD94009889AD /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		43D8BF7429F5BD94009889AD /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
+		43D8BF7629F5BD94009889AD /* MeetingAppointmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentService.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -705,6 +719,60 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		43D8BF6A29F5BD94009889AD /* MeetingAppointment */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF6B29F5BD94009889AD /* Assembly */,
+				43D8BF6D29F5BD94009889AD /* Presenter */,
+				43D8BF6F29F5BD94009889AD /* Model */,
+				43D8BF7129F5BD94009889AD /* View */,
+				43D8BF7529F5BD94009889AD /* Service */,
+			);
+			path = MeetingAppointment;
+			sourceTree = "<group>";
+		};
+		43D8BF6B29F5BD94009889AD /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF6C29F5BD94009889AD /* MeetingAppointmentAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43D8BF6D29F5BD94009889AD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF6E29F5BD94009889AD /* MeetingAppointmentPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43D8BF6F29F5BD94009889AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF7029F5BD94009889AD /* MeetingAppointment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43D8BF7129F5BD94009889AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF7229F5BD94009889AD /* MeetingAppointmentViewController.swift */,
+				43D8BF7329F5BD94009889AD /* DateCell.swift */,
+				43D8BF7429F5BD94009889AD /* TimeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43D8BF7529F5BD94009889AD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43D8BF7629F5BD94009889AD /* MeetingAppointmentService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		43E10B9729D2FD8D003B0EC2 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +804,7 @@
 				43D78F7729DAAE800044840D /* Cart */,
 				43D78F6A29DAAE800044840D /* Delivery */,
 				43D78F9029DAB3690044840D /* Onboarding */,
+				43D8BF6A29F5BD94009889AD /* MeetingAppointment */,
 				296CA91829D973060048FE9D /* FinalDelivery */,
 				2926F3CF29D7099D00938AA1 /* OrderCheckout */,
 			);
@@ -1032,6 +1101,7 @@
 				2982428629ED377100B02C06 /* HttpClientError.swift in Sources */,
 				29AD3EE429E47DE300983F24 /* TEOrderApiProtocol.swift in Sources */,
 				5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */,
+				43D8BF7A29F5BD94009889AD /* MeetingAppointmentViewController.swift in Sources */,
 				29AD3ED629E441F200983F24 /* DaDataApiTargetType.swift in Sources */,
 				43D78FA029DAB3690044840D /* OnboardingViewController.swift in Sources */,
 				296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */,
@@ -1047,6 +1117,7 @@
 				29F89C8229DB2584009325EE /* FinalDeliveryPresenter.swift in Sources */,
 				43D78F8E29DAAE800044840D /* CartCell.swift in Sources */,
 				29AD3EEC29E4815A00983F24 /* DaDataAddress.swift in Sources */,
+				43D8BF7D29F5BD94009889AD /* MeetingAppointmentService.swift in Sources */,
 				2993B75E29DC5AA9008833F7 /* ValidationError.swift in Sources */,
 				43D78F9E29DAB3690044840D /* OnboardingPresenter.swift in Sources */,
 				29F89C7F29DB21D4009325EE /* OrderCheckoutAssembly.swift in Sources */,
@@ -1058,12 +1129,15 @@
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
 				2993B75C29DC5A8C008833F7 /* TEApiTimeSlot.swift in Sources */,
 				579251A429D4318A00BD5C28 /* Button.CornerStyle+Extensions.swift in Sources */,
+				43D8BF7829F5BD94009889AD /* MeetingAppointmentPresenter.swift in Sources */,
 				579251A129D4318A00BD5C28 /* Theme.swift in Sources */,
 				29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */,
 				43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */,
 				43D78F8D29DAAE800044840D /* CartViewController.swift in Sources */,
+				43D8BF7C29F5BD94009889AD /* TimeCell.swift in Sources */,
 				43D78F8629DAAE800044840D /* DeliveryCell.swift in Sources */,
 				294F839129DEECBC00B603B4 /* TESlotApiProtocol.swift in Sources */,
+				43D8BF7929F5BD94009889AD /* MeetingAppointment.swift in Sources */,
 				579251A029D4318A00BD5C28 /* HSBAColor+Highlight.swift in Sources */,
 				29AD3EE929E4805900983F24 /* DaDataAddressesProtocol.swift in Sources */,
 				2993B75029DC5982008833F7 /* TEApiOrder.swift in Sources */,
@@ -1084,6 +1158,7 @@
 				43D78F8529DAAE800044840D /* Delivery.swift in Sources */,
 				29AD3EDD29E443DE00983F24 /* DataResponse.swift in Sources */,
 				579251A329D4318A00BD5C28 /* Button.InteractiveColor+Extensions.swift in Sources */,
+				43D8BF7729F5BD94009889AD /* MeetingAppointmentAssembly.swift in Sources */,
 				5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */,
 				29D38B2D29DCDF05000BD85D /* TEApiTargetType.swift in Sources */,
 				43D78F8829DAAE800044840D /* DeliveryViewController.swift in Sources */,
@@ -1097,6 +1172,7 @@
 				2993B76229DC6044008833F7 /* HttpValidationError.swift in Sources */,
 				2993B75829DC5A0D008833F7 /* TEApiAddress.swift in Sources */,
 				29D38B2F29DCE07B000BD85D /* TEMoyaLogger.swift in Sources */,
+				43D8BF7B29F5BD94009889AD /* DateCell.swift in Sources */,
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
