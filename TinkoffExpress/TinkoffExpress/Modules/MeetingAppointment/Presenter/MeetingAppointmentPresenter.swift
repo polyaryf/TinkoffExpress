@@ -36,7 +36,6 @@ protocol MeetingAppointmentPresenterProtocol {
 
 class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Dependencies
-
     weak var view: MeetingAppointmentViewController?
     private var coordinator: Coordinator?
     private var service: MeetingAppointmentService?
@@ -48,7 +47,6 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     }
     
     // MARK: Life Cycle
-    
     func viewDidLoad() {
         service?.loadDates(completion: { [ weak self ] dates in
             guard let self else { return }
@@ -62,7 +60,6 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     }
     
     // MARK: Events
-    
     func addressButtonTapped() {
         showSearch()
     }
@@ -96,19 +93,14 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
             make.height.equalTo(height)
         }
         
-        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
+        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 40 {
             textView.deleteBackward()
         }
     }
     
     func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton) {
         clearButton.isHidden = false
-        
-        if textView.textColor == UIColor(named: "textViewPlaceholderColor") {
-            textView.text = ""
-            textView.textColor = UIColor(named: "textColor")
-        }
-        
+        view?.changeTextView(textView)
         countLabel.isHidden = false
         countLabel.text = "Осталось \(150 - textView.text.count) символов"
     }

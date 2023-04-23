@@ -14,7 +14,7 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     private var meetingAppointmentPresenter: MeetingAppointmentPresenterProtocol?
     
     // MARK: Properties
-
+    
     private var keyboardHeight: CGFloat = 0
     var dates: [MeetingAppointmentDate] = []
     var times: [MeetingAppointmentTime] = []
@@ -53,7 +53,6 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         super.init(nibName: nil, bundle: nil)
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -64,7 +63,6 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         super.viewDidLoad()
         
         meetingAppointmentPresenter?.viewDidLoad()
-        
         setupScrollView()
         setupAddressButton()
         setupDateCollectionView()
@@ -75,7 +73,6 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         setupReadyButton()
         setupDeliveryButton()
         setupColors()
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow(notification:)),
@@ -134,6 +131,13 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         meetingAppointmentPresenter?.textViewDidBeginEditing(with: textView, countLabel, clearButton)
+    }
+    
+    func changeTextView(_ textView: UITextView) {
+        if textView.textColor == UIColor(named: "textViewPlaceholderColor") {
+            textView.text = ""
+            textView.textColor = UIColor(named: "textColor")
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
