@@ -43,6 +43,6 @@ final class OnboardingPresenter: OnboardingPresenterProtocol {
     // MARK: Navigation
     
     private func showMeetingAppointment() {
-        // TODO: coordinator?.move(MeetingAppointmentAssembly(), with: .push)
+        coordinator?.move(MeetingAppointmentAssembly(), with: .push)
     }
 }
