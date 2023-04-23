@@ -46,4 +46,3 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
         coordinator?.move(OrderCheckoutAssembly(), with: .push)
     }
 }
-
