@@ -12,7 +12,6 @@ class TextView: UITextView {
     
     var textDidChangeHandler: (() -> Void)?
     var viewSizeDidChangeHandler: (() -> Void)?
-    var timer: Timer?
     
     // MARK: Init
 
@@ -36,14 +35,12 @@ class TextView: UITextView {
         }
         viewSizeDidChange()
         checkPlaceholder()
+        checkClearTextButton()
+        textDidChange()
         
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(
-            withTimeInterval: 1,
-            repeats: false,
-            block: { [weak self] timer in
-            self?.textDidChange()
-        })
+        if text.count > 100 {
+            self.deleteBackward()
+        }
     }
 
     func textDidChange() {
