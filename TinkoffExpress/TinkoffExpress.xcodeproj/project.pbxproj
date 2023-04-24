@@ -281,6 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */,
+            );
+            path = Model;
+            sourceTree = "<group>";
+        };
 		2982428429ED374F00B02C06 /* Error */ = {
 			isa = PBXGroup;
 			children = (
