@@ -43,7 +43,6 @@ open class FadingLabel: UILabel {
                 gradient.startPoint = CGPoint(x: 0.8, y: 0.5)
                 gradient.endPoint = CGPoint(x: 0.99, y: 0.5)
                 layer.mask = gradient
-                removeEllipsis()
                 return
             }
             
