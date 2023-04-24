@@ -68,13 +68,13 @@ class AddressInputCell: UITableViewCell {
     private func setupConstraints() {
         primaryText.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().offset(-14)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
         secondaryText.snp.makeConstraints {
             $0.top.equalTo(primaryText.snp.bottom).offset(4)
-            $0.leading.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().offset(-14)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
     }
 }

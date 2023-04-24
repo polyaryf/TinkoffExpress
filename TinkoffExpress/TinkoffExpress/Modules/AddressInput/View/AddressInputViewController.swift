@@ -27,13 +27,6 @@ class AddressInputViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
-    private lazy var clearInputTextButton: UIButton = {
-        var button = UIButton.init()
-        button.setImage(UIImage(named: "x.cross.addressInput"), for: .normal)
-        button.addTarget(self, action: #selector(clearInputTextButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     private lazy var tableView: UITableView = {
         var table = UITableView.init()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +37,7 @@ class AddressInputViewController: UIViewController {
         button.setTitle("Готово", for: .normal)
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
     private lazy var errorLabel: UILabel = {
@@ -103,12 +97,11 @@ class AddressInputViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(doneButton)
         view.addSubview(errorLabel)
-        inputTextView.addSubview(clearInputTextButton)
     }
     
     private func setupConstraints() {
         cancelButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalToSuperview().offset(18)
             $0.leading.equalToSuperview().offset(16)
         }
         inputTextView.snp.makeConstraints {
@@ -117,17 +110,10 @@ class AddressInputViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(56)
         }
-        clearInputTextButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-20)
-            $0.trailing.equalTo(view).offset(-28)
-            $0.height.equalTo(16)
-            $0.width.equalTo(16)
-        }
         tableView.snp.makeConstraints {
             $0.top.equalTo(inputTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().offset(-14)
+            $0.leading.equalToSuperview().offset(28)
+            $0.trailing.equalToSuperview().offset(-28)
             $0.bottom.equalToSuperview()
         }
         doneButton.snp.makeConstraints {
@@ -172,6 +158,10 @@ class AddressInputViewController: UIViewController {
     }
     
     private func setupInputTextView() {
+        inputTextView.setClearButton(superViewSize: view.frame)
+        guard let clearButton = inputTextView.viewWithTag(111) as? UIButton else { return }
+        clearButton.addTarget(self, action: #selector(clearInputTextButtonTapped), for: .touchUpInside)
+       
         inputTextView.setPlaceholder()
         inputTextView.showsVerticalScrollIndicator = false
         inputTextView.layer.cornerRadius = 16
@@ -248,6 +238,7 @@ class AddressInputViewController: UIViewController {
                 $0.width.equalTo(84)
             }
             view.layoutIfNeeded()
+            doneButton.isHidden = false
         }
     }
 
@@ -257,6 +248,7 @@ class AddressInputViewController: UIViewController {
         else { return }
         
         UIView.animate(withDuration: duration ) { [self] in
+            doneButton.isHidden = true
             doneButton.snp.remakeConstraints {
                 $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
                 $0.trailing.equalToSuperview().offset(-16)
@@ -340,7 +332,8 @@ extension AddressInputViewController {
         }
         
         let paddingClearInputTextButton = (height - 16) / 2
-        clearInputTextButton.snp.updateConstraints {
+        guard let clearButton = inputTextView.viewWithTag(111) else { return }
+        clearButton.snp.updateConstraints {
             $0.top.equalToSuperview().offset(paddingClearInputTextButton)
             $0.bottom.equalToSuperview().offset(-paddingClearInputTextButton)
         }
