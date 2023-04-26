@@ -119,7 +119,6 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
             make.top.equalTo(titleLabel.snp.bottom).offset(32)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.width.equalTo(79)
             make.height.equalTo(26)
         }
     }
