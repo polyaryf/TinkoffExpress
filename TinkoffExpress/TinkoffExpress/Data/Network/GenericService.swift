@@ -26,7 +26,6 @@ class GenericService<T: TargetType> {
     
     public init() {}
     
-    // swiftlint:disable:next function_body_length
     public func performAndDecode<R: Decodable>(
         target: T,
         completion: @escaping (Result<R, HttpClientError>) -> Void
