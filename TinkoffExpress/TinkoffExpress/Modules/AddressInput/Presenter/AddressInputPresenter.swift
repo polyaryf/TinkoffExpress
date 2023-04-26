@@ -34,14 +34,14 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
         timer = Timer.scheduledTimer(
             withTimeInterval: 0.5,
             repeats: false,
-            block: { [weak self] timer in
+            block: { [weak self] _ in
                 self?.service.loadAddresses(with: text) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
                     case .success(let addresses):
-                        view?.showAddresses(addresses: addresses)
+                        self.view?.showAddresses(addresses: addresses)
                     case .failure:
-                        view?.showErrorLabel()
+                        self.view?.showErrorLabel()
                     }
                 }
             }
