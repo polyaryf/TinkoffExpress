@@ -14,24 +14,19 @@ protocol AddressInputViewControllerProtocol: UIViewController {
 
 class AddressInputViewController: UIViewController {
     // MARK: Subviews
-    
-    private lazy var cancelButton: UIButton = {
-        var button = UIButton.init(type: .system)
-        button.setTitle("Отмена", for: .normal)
-        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+
     private lazy var inputTextView: TextView = {
         var textView = TextView.init()
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+
     private lazy var tableView: UITableView = {
         var table = UITableView.init()
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
+
     private lazy var doneButton: UIButton = {
         var button = UIButton.init()
         button.setTitle("Готово", for: .normal)
@@ -40,6 +35,7 @@ class AddressInputViewController: UIViewController {
         button.isHidden = true
         return button
     }()
+
     private lazy var errorLabel: UILabel = {
         var label = UILabel.init()
         label.isHidden = true
@@ -84,6 +80,7 @@ class AddressInputViewController: UIViewController {
     // MARK: Initial Configuration
     
     private func setupView() {
+        setupNavigationItem()
         setupViewHierarchy()
         setupConstraints()
         setupColors()
@@ -95,9 +92,17 @@ class AddressInputViewController: UIViewController {
         
         trackTextViewChanges()
     }
+
+    private func setupNavigationItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Отмена",
+            style: .plain,
+            target: self,
+            action: #selector(cancelButtonTapped)
+        )
+    }
     
     private func setupViewHierarchy() {
-        view.addSubview(cancelButton)
         view.addSubview(inputTextView)
         view.addSubview(tableView)
         view.addSubview(doneButton)
@@ -105,12 +110,8 @@ class AddressInputViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        cancelButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(18)
-            $0.leading.equalToSuperview().offset(16)
-        }
         inputTextView.snp.makeConstraints {
-            $0.top.equalTo(cancelButton.snp.bottom).offset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(56)
@@ -137,7 +138,6 @@ class AddressInputViewController: UIViewController {
     private func setupColors() {
         view.backgroundColor = UIColor(named: "background.addressInput.color")
         tableView.backgroundColor = UIColor(named: "background.addressInput.color")
-        cancelButton.titleLabel?.tintColor = UIColor(named: "blue.addressInput.color")
         inputTextView.tintColor = UIColor(named: "blue.addressInput.color")
         inputTextView.backgroundColor = UIColor(named: "inputTextView.addressInput.color")
         inputTextView.textColor = UIColor(named: "inputText.addressInput.color")
@@ -149,7 +149,6 @@ class AddressInputViewController: UIViewController {
         inputTextView.font = .systemFont(ofSize: 17)
         errorLabel.font = .systemFont(ofSize: 15)
         doneButton.titleLabel?.font = .systemFont(ofSize: 15)
-        cancelButton.titleLabel?.font = .systemFont(ofSize: 17)
     }
     
     private func setupTableView() {
