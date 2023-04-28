@@ -88,7 +88,7 @@ final class FinalDeliveryViewController: UIViewController {
     
     private func setupConstraints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(44)
+            $0.top.equalToSuperview().inset(44)
             $0.left.right.equalToSuperview().inset(16)
         }
         tableView.snp.makeConstraints {

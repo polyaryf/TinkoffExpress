@@ -14,6 +14,7 @@
 		296CA91B29D9733C0048FE9D /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */; };
 		296CA91E29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */; };
 		296CA92029D9748C0048FE9D /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */; };
+		2974FCDA29FBD5AD00281A3E /* FinalDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974FCD929FBD5AD00281A3E /* FinalDelivery.swift */; };
 		2982428629ED377100B02C06 /* HttpClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982428529ED377100B02C06 /* HttpClientError.swift */; };
 		2993B75029DC5982008833F7 /* TEApiOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B74F29DC5982008833F7 /* TEApiOrder.swift */; };
 		2993B75229DC59D6008833F7 /* OrderCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993B75129DC59D6008833F7 /* OrderCreateRequest.swift */; };
@@ -111,7 +112,7 @@
 		296CA91A29D9733C0048FE9D /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		296CA91D29D9743E0048FE9D /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		296CA91F29D9748C0048FE9D /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
-		298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDelivery.swift; sourceTree = "<group>"; };
+		2974FCD929FBD5AD00281A3E /* FinalDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalDelivery.swift; sourceTree = "<group>"; };
 		2982428529ED377100B02C06 /* HttpClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientError.swift; sourceTree = "<group>"; };
 		2993B74F29DC5982008833F7 /* TEApiOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrder.swift; sourceTree = "<group>"; };
 		2993B75129DC59D6008833F7 /* OrderCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCreateRequest.swift; sourceTree = "<group>"; };
@@ -253,7 +254,7 @@
 				298D5BDA29DC1C6C00C12EEE /* Model */,
 				29F89C8629DB279E009325EE /* Assembly */,
 				29F89C8329DB268E009325EE /* Service */,
-				29F89C8029DB2565009325EE /*  Presenter */,
+				29F89C8029DB2565009325EE /* Presenter */,
 				296CA91929D973220048FE9D /* View */,
 			);
 			path = FinalDelivery;
@@ -277,20 +278,20 @@
 			path = FinelDeliveryCell;
 			sourceTree = "<group>";
 		};
-		298D5BDA29DC1C6C00C12EEE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				298D5BDB29DC1C8600C12EEE /* FinalDelivery.swift */,
-            );
-            path = Model;
-            sourceTree = "<group>";
-        };
 		2982428429ED374F00B02C06 /* Error */ = {
 			isa = PBXGroup;
 			children = (
 				2982428529ED377100B02C06 /* HttpClientError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		298D5BDA29DC1C6C00C12EEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2974FCD929FBD5AD00281A3E /* FinalDelivery.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		298D5BDD29DC262800C12EEE /* Data */ = {
@@ -1135,6 +1136,7 @@
 				43D78F8429DAAE800044840D /* DeliveryPresenter.swift in Sources */,
 				2926F3D429D7099D00938AA1 /* OrderCheckoutCellType.swift in Sources */,
 				29D38B2B29DCDCA0000BD85D /* TEApiItem.swift in Sources */,
+				2974FCDA29FBD5AD00281A3E /* FinalDelivery.swift in Sources */,
 				5792519D29D4318A00BD5C28 /* HSBAColor+UIColor.swift in Sources */,
 				579251A629D4318A00BD5C28 /* Button+ContentSize.swift in Sources */,
 				2993B75C29DC5A8C008833F7 /* TEApiTimeSlot.swift in Sources */,
@@ -1159,7 +1161,6 @@
 				29F89C7C29DB1D55009325EE /* OrderCheckoutService.swift in Sources */,
 				43D78F8729DAAE800044840D /* DeliveryHeaderView.swift in Sources */,
 				2926F3D629D7099D00938AA1 /* OrderCheckoutViewController.swift in Sources */,
-				298D5BDC29DC1C8600C12EEE /* FinalDelivery.swift in Sources */,
 				43D78F8A29DAAE800044840D /* CartAssembly.swift in Sources */,
 				29AD3ED929E4436600983F24 /* AddressSuggestionRequest.swift in Sources */,
 				29F42F5629E0816500D9D8F1 /* NetworkConstant.swift in Sources */,
