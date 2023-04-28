@@ -182,7 +182,7 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Navigation
     
     private func showSearch() {
-        // TODO: coordinator?.moveToSearch()
+        coordinator?.move(AddressInputAssembly(), with: .present)
     }
     
     private func showOrderCheckout() {

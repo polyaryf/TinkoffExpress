@@ -70,6 +70,11 @@ class AddressInputViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        inputTextView.becomeFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -217,7 +222,7 @@ class AddressInputViewController: UIViewController {
     }
     
     @objc func cancelButtonTapped() {
-        presenter.doneButtonTapped()
+        presenter.cancelButtonTapped()
     }
     
     // MARK: Keyboard

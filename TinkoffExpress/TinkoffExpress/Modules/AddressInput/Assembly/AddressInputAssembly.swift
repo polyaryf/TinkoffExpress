@@ -1,5 +1,5 @@
 //
-//  AddressInputAsembly.swift
+//  AddressInputAssembly.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 17.04.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddressInputAsembly: Assembly {
+final class AddressInputAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
         let mockService = MockAddressInputService()
         let restservice = RestAddressInputService(

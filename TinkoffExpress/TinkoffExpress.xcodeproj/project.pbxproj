@@ -57,7 +57,7 @@
 		29C392B429F9809A0041F569 /* DaDataAddressesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921629F980990041F569 /* DaDataAddressesProtocol.swift */; };
 		29C392B529F9809A0041F569 /* DaDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921829F980990041F569 /* DaDataMapper.swift */; };
 		29C392B629F9809A0041F569 /* DaDataApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921929F980990041F569 /* DaDataApiService.swift */; };
-		29C392B729F9809A0041F569 /* AddressInputAsembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921D29F980990041F569 /* AddressInputAsembly.swift */; };
+		29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921D29F980990041F569 /* AddressInputAssembly.swift */; };
 		29C392B829F9809A0041F569 /* AddressInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3921F29F980990041F569 /* AddressInputPresenter.swift */; };
 		29C392B929F9809A0041F569 /* InputAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3922129F980990041F569 /* InputAddress.swift */; };
 		29C392BA29F9809A0041F569 /* AddressInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3922329F980990041F569 /* AddressInputViewController.swift */; };
@@ -167,7 +167,7 @@
 		29C3921629F980990041F569 /* DaDataAddressesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataAddressesProtocol.swift; sourceTree = "<group>"; };
 		29C3921829F980990041F569 /* DaDataMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataMapper.swift; sourceTree = "<group>"; };
 		29C3921929F980990041F569 /* DaDataApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaDataApiService.swift; sourceTree = "<group>"; };
-		29C3921D29F980990041F569 /* AddressInputAsembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInputAsembly.swift; sourceTree = "<group>"; };
+		29C3921D29F980990041F569 /* AddressInputAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInputAssembly.swift; sourceTree = "<group>"; };
 		29C3921F29F980990041F569 /* AddressInputPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInputPresenter.swift; sourceTree = "<group>"; };
 		29C3922129F980990041F569 /* InputAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAddress.swift; sourceTree = "<group>"; };
 		29C3922329F980990041F569 /* AddressInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInputViewController.swift; sourceTree = "<group>"; };
@@ -640,7 +640,7 @@
 		29C3921C29F980990041F569 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				29C3921D29F980990041F569 /* AddressInputAsembly.swift */,
+				29C3921D29F980990041F569 /* AddressInputAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -1164,7 +1164,6 @@
 /* Begin PBXShellScriptBuildPhase section */
 		29B3AECC29C38824007C763D /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1255,7 +1254,7 @@
 				29C392BF29F9809A0041F569 /* MeetingAppointmentPresenter.swift in Sources */,
 				29C3929929F9809A0041F569 /* TEColors.swift in Sources */,
 				29C392CA29F9809A0041F569 /* FinalDeliveryService.swift in Sources */,
-				29C392B729F9809A0041F569 /* AddressInputAsembly.swift in Sources */,
+				29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */,
 				29C392AD29F9809A0041F569 /* HttpClientError.swift in Sources */,
 				29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */,
 				29C392D929F9809A0041F569 /* DeliveryAssembly.swift in Sources */,

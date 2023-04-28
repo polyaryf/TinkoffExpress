@@ -50,5 +50,7 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
     
     func doneButtonTapped() {}
     
-    func cancelButtonTapped() {}
+    func cancelButtonTapped() {
+        view?.dismiss(animated: true, completion: nil)
+    }
 }
