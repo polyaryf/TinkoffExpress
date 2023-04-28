@@ -50,7 +50,7 @@
 		29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8729DB27B1009325EE /* FinalDeliveryAssembly.swift */; };
 		29F89C8B29DB5D7B009325EE /* OrderCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */; };
 		43B7BC5729D89EDD00685763 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5629D89EDD00685763 /* Coordinator.swift */; };
-		43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */; };
+		43B7BC5929D89EF000685763 /* TypeOfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5829D89EF000685763 /* TypeOfNavigation.swift */; };
 		43B7BC5B29D89F5600685763 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B7BC5A29D89F5600685763 /* Assembly.swift */; };
 		43D78F4329DAAA500044840D /* TEActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */; };
 		43D78F8329DAAE800044840D /* DeliveryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D78F6C29DAAE800044840D /* DeliveryAssembly.swift */; };
@@ -80,6 +80,7 @@
 		43D8BF7B29F5BD94009889AD /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7329F5BD94009889AD /* DateCell.swift */; };
 		43D8BF7C29F5BD94009889AD /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7429F5BD94009889AD /* TimeCell.swift */; };
 		43D8BF7D29F5BD94009889AD /* MeetingAppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D8BF7629F5BD94009889AD /* MeetingAppointmentService.swift */; };
+		43E5596729FBD6D70076A84B /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5596629FBD6D70076A84B /* TabBarItem.swift */; };
 		5792517B29D4308900BD5C28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517A29D4308900BD5C28 /* SceneDelegate.swift */; };
 		5792519A29D4318A00BD5C28 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792517F29D4318A00BD5C28 /* UIView+Utils.swift */; };
 		5792519B29D4318A00BD5C28 /* ShadowAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5792518229D4318A00BD5C28 /* ShadowAvailable.swift */; };
@@ -150,7 +151,7 @@
 		29F89C8A29DB5D7B009325EE /* OrderCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
 		3E324B477F9FFDD8C719D73D /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B7BC5629D89EDD00685763 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
+		43B7BC5829D89EF000685763 /* TypeOfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfNavigation.swift; sourceTree = "<group>"; };
 		43B7BC5A29D89F5600685763 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		43D78F4229DAAA500044840D /* TEActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEActivityIndicatorView.swift; sourceTree = "<group>"; };
 		43D78F6C29DAAE800044840D /* DeliveryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAssembly.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		43D8BF7329F5BD94009889AD /* DateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		43D8BF7429F5BD94009889AD /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
 		43D8BF7629F5BD94009889AD /* MeetingAppointmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentService.swift; sourceTree = "<group>"; };
+		43E5596629FBD6D70076A84B /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		5792517A29D4308900BD5C28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5792517F29D4318A00BD5C28 /* UIView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		5792518229D4318A00BD5C28 /* ShadowAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowAvailable.swift; sourceTree = "<group>"; };
@@ -823,7 +825,8 @@
 			isa = PBXGroup;
 			children = (
 				43B7BC5629D89EDD00685763 /* Coordinator.swift */,
-				43B7BC5829D89EF000685763 /* TypeOfNaviation.swift */,
+				43B7BC5829D89EF000685763 /* TypeOfNavigation.swift */,
+				43E5596629FBD6D70076A84B /* TabBarItem.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1087,7 +1090,7 @@
 			files = (
 				43D78FA129DAB3690044840D /* OnboardingHeaderView.swift in Sources */,
 				43D78F9D29DAB3690044840D /* OnboardingAssembly.swift in Sources */,
-				43B7BC5929D89EF000685763 /* TypeOfNaviation.swift in Sources */,
+				43B7BC5929D89EF000685763 /* TypeOfNavigation.swift in Sources */,
 				43D78F8F29DAAE800044840D /* CartService.swift in Sources */,
 				29F89C8529DB26A1009325EE /* FinalDeliveryService.swift in Sources */,
 				29F89C8829DB27B1009325EE /* FinalDeliveryAssembly.swift in Sources */,
@@ -1176,6 +1179,7 @@
 				579251AC29D4318A00BD5C28 /* UIColor+Dynamic.swift in Sources */,
 				5792519C29D4318A00BD5C28 /* HSBAColor.swift in Sources */,
 				5792519E29D4318A00BD5C28 /* HighlightSettings.swift in Sources */,
+				43E5596729FBD6D70076A84B /* TabBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
