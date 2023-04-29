@@ -7,9 +7,10 @@
 
 import UIKit
 
-protocol AddressInputViewControllerProtocol: UIViewController {
+protocol AddressInputViewControllerProtocol: AnyObject {
     func showAddresses(addresses: [InputAddress])
     func showErrorLabel()
+    func closeView()
 }
 
 class AddressInputViewController: UIViewController {
@@ -304,6 +305,10 @@ extension AddressInputViewController: AddressInputViewControllerProtocol {
         
         address = []
         tableView.reloadData()
+    }
+
+    func closeView() {
+        dismiss(animated: true)
     }
 }
 

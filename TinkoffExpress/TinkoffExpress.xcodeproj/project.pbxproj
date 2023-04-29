@@ -111,6 +111,7 @@
 		29C392EB29F9809A0041F569 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928129F9809A0041F569 /* Assembly.swift */; };
 		29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928329F9809A0041F569 /* AppDelegate.swift */; };
 		29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928429F9809A0041F569 /* SceneDelegate.swift */; };
+		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +228,7 @@
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentRouter.swift; sourceTree = "<group>"; };
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -698,6 +700,7 @@
 		29C3922A29F980990041F569 /* MeetingAppointment */ = {
 			isa = PBXGroup;
 			children = (
+				57D54A1529FD9277006C3A2C /* Router */,
 				29C3922B29F980990041F569 /* Assembly */,
 				29C3922D29F980990041F569 /* Presenter */,
 				29C3922F29F980990041F569 /* Model */,
@@ -1076,6 +1079,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		57D54A1529FD9277006C3A2C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		5E746E02A0EE7E044421EF3D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1287,6 +1298,7 @@
 				29C392A329F9809A0041F569 /* HttpValidationError.swift in Sources */,
 				29C392D629F9809A0041F569 /* CartViewController.swift in Sources */,
 				29C3928729F9809A0041F569 /* HSBAColor.swift in Sources */,
+				57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */,
 				29C3929829F9809A0041F569 /* ActivityIndicatorView.swift in Sources */,
 				29C392DA29F9809A0041F569 /* DeliveryPresenter.swift in Sources */,
 				29C3928629F9809A0041F569 /* ShadowAvailable.swift in Sources */,

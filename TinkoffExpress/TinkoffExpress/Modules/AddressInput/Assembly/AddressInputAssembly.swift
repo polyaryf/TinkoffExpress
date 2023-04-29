@@ -7,14 +7,20 @@
 
 import UIKit
 
-final class AddressInputAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol IAddressInputAssembly {
+    func createAddressInputView() -> UIViewController
+}
+
+final class AddressInputAssembly: IAddressInputAssembly {
+    func createAddressInputView() -> UIViewController {
         let mockService = MockAddressInputService()
-        let restservice = RestAddressInputService(
+
+        let restService = RestAddressInputService(
             networkService: DaDataApiService(),
             mapper: AddressInputMapper()
         )
-        let presenter = AddressInputPresenter(coordinator: coordinator, service: mockService)
+
+        let presenter = AddressInputPresenter(service: mockService)
         let viewController = AddressInputViewController(presenter: presenter)
         presenter.view = viewController
         return viewController

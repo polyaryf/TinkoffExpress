@@ -17,15 +17,13 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
     // MARK: Dependencies
         
     weak var view: AddressInputViewControllerProtocol?
-    private let coordinator: Coordinator
     private let service: AddressInputService
     
     var timer: Timer?
     
     // MARK: Init
     
-    init(coordinator: Coordinator, service: AddressInputService) {
-        self.coordinator = coordinator
+    init(service: AddressInputService) {
         self.service = service
     }
     
@@ -51,6 +49,6 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
     func doneButtonTapped() {}
     
     func cancelButtonTapped() {
-        view?.dismiss(animated: true, completion: nil)
+        view?.closeView()
     }
 }
