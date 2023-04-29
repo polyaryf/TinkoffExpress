@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol IAddressInputModuleOutput: AnyObject {
+    func addressInputModule(didCompleteWith addressInput: String)
+}
+
 protocol AddressInputPresenterProtocol {
     func viewDidChangeText(input text: String)
     func doneButtonTapped()
@@ -17,16 +21,23 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
     // MARK: Dependencies
         
     weak var view: AddressInputViewControllerProtocol?
+    private weak var output: IAddressInputModuleOutput?
     private let service: AddressInputService
-    
-    var timer: Timer?
-    
+
+    // MARK: State
+
+    private var timer: Timer?
+    private var inputText = ""
+
     // MARK: Init
     
-    init(service: AddressInputService) {
+    init(service: AddressInputService, output: IAddressInputModuleOutput) {
         self.service = service
+        self.output = output
     }
-    
+
+    // MARK: AddressInputPresenterProtocol
+
     func viewDidChangeText(input text: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(
@@ -46,7 +57,10 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
         )
     }
     
-    func doneButtonTapped() {}
+    func doneButtonTapped() {
+        output?.addressInputModule(didCompleteWith: inputText)
+        view?.closeView()
+    }
     
     func cancelButtonTapped() {
         view?.closeView()

@@ -8,11 +8,11 @@
 import UIKit
 
 protocol IAddressInputAssembly {
-    func createAddressInputView() -> UIViewController
+    func createAddressInputView(output: IAddressInputModuleOutput) -> UIViewController
 }
 
 final class AddressInputAssembly: IAddressInputAssembly {
-    func createAddressInputView() -> UIViewController {
+    func createAddressInputView(output: IAddressInputModuleOutput) -> UIViewController {
         let mockService = MockAddressInputService()
 
         let restService = RestAddressInputService(
@@ -20,7 +20,7 @@ final class AddressInputAssembly: IAddressInputAssembly {
             mapper: AddressInputMapper()
         )
 
-        let presenter = AddressInputPresenter(service: mockService)
+        let presenter = AddressInputPresenter(service: mockService, output: output)
         let viewController = AddressInputViewController(presenter: presenter)
         presenter.view = viewController
         return viewController

@@ -186,10 +186,18 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Navigation
     
     private func showSearch() {
-        router.openAddressInput()
+        router.openAddressInput(output: self)
     }
     
     private func showOrderCheckout() {
         // TODO: router.showOrderCheckout()
+    }
+}
+
+// MARK: - IAddressInputModuleOutput
+
+extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
+    func addressInputModule(didCompleteWith addressInput: String) {
+        // TODO: Handle adressInput
     }
 }

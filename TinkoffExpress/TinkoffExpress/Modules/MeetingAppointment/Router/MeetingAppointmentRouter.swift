@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IMeetingAppointmentRouter {
-    func openAddressInput()
+    func openAddressInput(output: IAddressInputModuleOutput)
 }
 
 final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
@@ -25,11 +25,9 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
 
     // MARK: IMeetingAppointmentRouter
 
-    func openAddressInput() {
-        let addressInputView = addressInputAssembly.createAddressInputView()
+    func openAddressInput(output: IAddressInputModuleOutput) {
+        let addressInputView = addressInputAssembly.createAddressInputView(output: output)
         let navigationController = UINavigationController(rootViewController: addressInputView)
         transitionHandler?.present(navigationController, animated: true)
     }
 }
-
-
