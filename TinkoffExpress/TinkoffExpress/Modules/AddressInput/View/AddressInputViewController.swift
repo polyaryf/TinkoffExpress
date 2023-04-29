@@ -285,8 +285,10 @@ extension AddressInputViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        inputTextView.text = address[indexPath.row].wholeAddress
+        let text = address[indexPath.row].wholeAddress
+        inputTextView.text = text
         textViewSizeDidChange()
+        presenter.viewDidChangeText(input: text)
     }
 }
 

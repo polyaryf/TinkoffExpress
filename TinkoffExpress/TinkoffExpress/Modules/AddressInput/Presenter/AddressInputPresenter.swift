@@ -39,7 +39,10 @@ class AddressInputPresenter: AddressInputPresenterProtocol {
     // MARK: AddressInputPresenterProtocol
 
     func viewDidChangeText(input text: String) {
+        inputText = text
+
         timer?.invalidate()
+
         timer = Timer.scheduledTimer(
             withTimeInterval: 0.5,
             repeats: false,
