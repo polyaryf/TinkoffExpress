@@ -10,9 +10,16 @@ import UIKit
 final class MeetingAppointmentAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
         let mockService = MockMeetingAppointmentService()
-        let presenter = MeetingAppointmentPresenter(coordinator: coordinator, service: mockService)
+        let router = MeetingAppointmentRouter(addressInputAssembly: AddressInputAssembly())
+
+        let presenter = MeetingAppointmentPresenter(
+            router: router,
+            service: mockService
+        )
+
         let viewController = MeetingAppointmentViewController(meetingAppointmentPresenter: presenter)
         presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

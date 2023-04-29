@@ -36,30 +36,34 @@ protocol MeetingAppointmentPresenterProtocol {
 
 class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Dependencies
+
     weak var view: MeetingAppointmentViewController?
-    private var coordinator: Coordinator?
-    private var service: MeetingAppointmentService?
+    private let router: IMeetingAppointmentRouter
+    private let service: MeetingAppointmentService
 
     // MARK: Init
-    init(coordinator: Coordinator, service: MeetingAppointmentService) {
-        self.coordinator = coordinator
+
+    init(router: IMeetingAppointmentRouter, service: MeetingAppointmentService) {
+        self.router = router
         self.service = service
     }
     
     // MARK: Life Cycle
+
     func viewDidLoad() {
-        service?.loadDates(completion: { [ weak self ] dates in
+        service.loadDates { [weak self] dates in
             guard let self else { return }
             self.view?.dates = dates ?? []
-        })
+        }
         
-        service?.loadTimes(completion: { [ weak self ] times in
+        service.loadTimes { [weak self] times in
             guard let self else { return }
             self.view?.times = times ?? []
-        })
+        }
     }
     
     // MARK: Events
+
     func addressButtonTapped() {
         showSearch()
     }
@@ -182,10 +186,18 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Navigation
     
     private func showSearch() {
-        // TODO: coordinator?.moveToSearch()
+        router.openAddressInput(output: self)
     }
     
     private func showOrderCheckout() {
-        // TODO: coordinator?.moveToOrderCheckout
+        // TODO: router.showOrderCheckout()
+    }
+}
+
+// MARK: - IAddressInputModuleOutput
+
+extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
+    func addressInputModule(didCompleteWith addressInput: String) {
+        // TODO: Handle adressInput
     }
 }
