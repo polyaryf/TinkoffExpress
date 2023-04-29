@@ -1,5 +1,8 @@
 name: merge request
 
+on:
+  pull_request:
+
 jobs:
   swiftlint:
     runs-on: ubuntu-latest
