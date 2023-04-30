@@ -811,7 +811,7 @@
 		29C3924329F980990041F569 /* OrderCheckout */ = {
 			isa = PBXGroup;
 			children = (
-				29C3924429F980990041F569 /* Presenater */,
+				29C3924429F980990041F569 /* Presenter */,
 				29C3924629F980990041F569 /* Assembly */,
 				29C3924929F980990041F569 /* Model */,
 				29C3924B29F980990041F569 /* View */,
@@ -820,12 +820,12 @@
 			path = OrderCheckout;
 			sourceTree = "<group>";
 		};
-		29C3924429F980990041F569 /* Presenater */ = {
+		29C3924429F980990041F569 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				29C3924529F980990041F569 /* OrderCheckoutPresenter.swift */,
 			);
-			path = Presenater;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		29C3924629F980990041F569 /* Assembly */ = {
