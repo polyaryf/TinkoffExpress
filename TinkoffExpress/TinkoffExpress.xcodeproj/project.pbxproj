@@ -111,6 +111,7 @@
 		29C392EB29F9809A0041F569 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928129F9809A0041F569 /* Assembly.swift */; };
 		29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928329F9809A0041F569 /* AppDelegate.swift */; };
 		29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928429F9809A0041F569 /* SceneDelegate.swift */; };
+		29C93E4729FEB2D400EBFB23 /* FinalDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
@@ -223,6 +224,7 @@
 		29C3928129F9809A0041F569 /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		29C3928329F9809A0041F569 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29C3928429F9809A0041F569 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDelivery.swift; sourceTree = "<group>"; };
 		29D38B2A29DCDCA0000BD85D /* TEApiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiItem.swift; sourceTree = "<group>"; };
 		29D38B2E29DCE07B000BD85D /* TEMoyaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEMoyaLogger.swift; sourceTree = "<group>"; };
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 			isa = PBXGroup;
 			children = (
 				29C3923829F980990041F569 /* Assembly */,
+				29C93E4529FEB2D400EBFB23 /* Model */,
 				29C3923A29F980990041F569 /* Presenter */,
 				29C3923C29F980990041F569 /* View */,
 				29C3924129F980990041F569 /* Service */,
@@ -1079,6 +1082,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		29C93E4529FEB2D400EBFB23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		57D54A1529FD9277006C3A2C /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,6 +1260,7 @@
 				29C3928D29F9809A0041F569 /* TextView+Extension.swift in Sources */,
 				29C392B629F9809A0041F569 /* DaDataApiService.swift in Sources */,
 				29C3929529F9809A0041F569 /* Button.Style+Extensions.swift in Sources */,
+				29C93E4729FEB2D400EBFB23 /* FinalDelivery.swift in Sources */,
 				29C392E529F9809A0041F569 /* OnboardingCell.swift in Sources */,
 				29C392D529F9809A0041F569 /* Cart.swift in Sources */,
 				29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */,
