@@ -1,0 +1,14 @@
+name: merge request
+
+on:
+  pull_request:
+
+jobs:
+  swiftlint:
+    runs-on: ubuntu-latest
+    container: ghcr.io/realm/swiftlint:0.47.0
+    steps:
+      - uses: actions/checkout@v3
+      - name: Swiftlint Run
+        working-directory: TinkoffExpress
+        run: swiftlint --quiet

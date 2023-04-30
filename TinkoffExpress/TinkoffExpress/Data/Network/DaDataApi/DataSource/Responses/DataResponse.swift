@@ -18,13 +18,13 @@ struct DataResponse: Codable {
     let geoLon: String?
     
     private enum CodingKeys: String, CodingKey {
-        case country = "data.country"
-        case region = "data.region"
-        case city = "data.city"
-        case street = "data.street"
-        case house = "data.house"
-        case flat = "data.flat"
-        case geoLat = "data.geo_lat"
-        case geoLon = "data.geo_lon"
+        case country = "country"
+        case region = "region_with_type"
+        case city = "city_with_type"
+        case street = "street_with_type"
+        case house = "house"
+        case flat = "flat_with_type"
+        case geoLat = "geo_lat"
+        case geoLon = "geo_lon"
     }
 }
