@@ -12,12 +12,17 @@ final class FinalDeliveryViewController: UIViewController {
     
     private var finalDeliveryPresenter: FinalDeliveryPresenterProtocol
     
+    // MARK: Properties
+    
+    lazy var item: FinalDelivery = .init(_where: "", when: "", what: "")
+
     // MARK: Subviews
     
     private lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Заказ оформлен"
+        label.textColor = UIColor(named: "title.finalDelivery.color")
         label.font = .boldSystemFont(ofSize: 30)
         return label
     }()
@@ -68,7 +73,7 @@ final class FinalDeliveryViewController: UIViewController {
     // MARK: Initial Configuration
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "background.finalDelivery.color")
         
         setupViewHierarchy()
         setupConstraints()
@@ -83,7 +88,7 @@ final class FinalDeliveryViewController: UIViewController {
     
     private func setupConstraints() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(44)
+            $0.top.equalToSuperview().inset(44)
             $0.left.right.equalToSuperview().inset(16)
         }
         tableView.snp.makeConstraints {
@@ -99,6 +104,7 @@ final class FinalDeliveryViewController: UIViewController {
     
     private func setUpTable() {
         tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(named: "background.finalDelivery.color")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(FinalDeliveryTableViewCell.self, forCellReuseIdentifier: "cell")
