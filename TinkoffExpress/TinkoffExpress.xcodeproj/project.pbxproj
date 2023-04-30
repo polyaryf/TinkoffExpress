@@ -112,6 +112,12 @@
 		29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928329F9809A0041F569 /* AppDelegate.swift */; };
 		29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928429F9809A0041F569 /* SceneDelegate.swift */; };
 		29C93E4729FEB2D400EBFB23 /* FinalDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */; };
+		29C93E4E29FEBD6600EBFB23 /* ABTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E4D29FEBD6600EBFB23 /* ABTestViewController.swift */; };
+		29C93E5129FEBFDF00EBFB23 /* ABInputAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5029FEBFDF00EBFB23 /* ABInputAddress.swift */; };
+		29C93E5629FED85500EBFB23 /* ABTextViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5529FED85500EBFB23 /* ABTextViewType.swift */; };
+		29C93E5929FEE3D000EBFB23 /* ABTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5829FEE3D000EBFB23 /* ABTestPresenter.swift */; };
+		29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5B29FEEA9800EBFB23 /* ABTestAssembly.swift */; };
+		29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5D29FF033300EBFB23 /* ABTestView.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
@@ -225,6 +231,12 @@
 		29C3928329F9809A0041F569 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29C3928429F9809A0041F569 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDelivery.swift; sourceTree = "<group>"; };
+		29C93E4D29FEBD6600EBFB23 /* ABTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestViewController.swift; sourceTree = "<group>"; };
+		29C93E5029FEBFDF00EBFB23 /* ABInputAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABInputAddress.swift; sourceTree = "<group>"; };
+		29C93E5529FED85500EBFB23 /* ABTextViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTextViewType.swift; sourceTree = "<group>"; };
+		29C93E5829FEE3D000EBFB23 /* ABTestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestPresenter.swift; sourceTree = "<group>"; };
+		29C93E5B29FEEA9800EBFB23 /* ABTestAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestAssembly.swift; sourceTree = "<group>"; };
+		29C93E5D29FF033300EBFB23 /* ABTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestView.swift; sourceTree = "<group>"; };
 		29D38B2A29DCDCA0000BD85D /* TEApiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiItem.swift; sourceTree = "<group>"; };
 		29D38B2E29DCE07B000BD85D /* TEMoyaLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEMoyaLogger.swift; sourceTree = "<group>"; };
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
@@ -618,6 +630,7 @@
 		29C3921A29F980990041F569 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				29C93E4B29FEBD4600EBFB23 /* ABTest */,
 				29C3921B29F980990041F569 /* AddressInput */,
 				29C3922A29F980990041F569 /* MeetingAppointment */,
 				29C3923729F980990041F569 /* FinalDelivery */,
@@ -1090,6 +1103,59 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		29C93E4B29FEBD4600EBFB23 /* ABTest */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5A29FEE86A00EBFB23 /* Assembly */,
+				29C93E4F29FEBFCA00EBFB23 /* Model */,
+				29C93E4C29FEBD5400EBFB23 /* View */,
+				29C93E5729FEE3A900EBFB23 /* Presenter */,
+			);
+			path = ABTest;
+			sourceTree = "<group>";
+		};
+		29C93E4C29FEBD5400EBFB23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5D29FF033300EBFB23 /* ABTestView.swift */,
+				29C93E4D29FEBD6600EBFB23 /* ABTestViewController.swift */,
+				29C93E5429FED83500EBFB23 /* ABTextViewType */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		29C93E4F29FEBFCA00EBFB23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5029FEBFDF00EBFB23 /* ABInputAddress.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		29C93E5429FED83500EBFB23 /* ABTextViewType */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5529FED85500EBFB23 /* ABTextViewType.swift */,
+			);
+			path = ABTextViewType;
+			sourceTree = "<group>";
+		};
+		29C93E5729FEE3A900EBFB23 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5829FEE3D000EBFB23 /* ABTestPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		29C93E5A29FEE86A00EBFB23 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				29C93E5B29FEEA9800EBFB23 /* ABTestAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		57D54A1529FD9277006C3A2C /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1251,6 +1317,7 @@
 				29C392D029F9809A0041F569 /* OrderCheckoutTableViewCell.swift in Sources */,
 				29C3929B29F9809A0041F569 /* UIColor+Dynamic.swift in Sources */,
 				29C392B329F9809A0041F569 /* DaDataApiTargetType.swift in Sources */,
+				29C93E5929FEE3D000EBFB23 /* ABTestPresenter.swift in Sources */,
 				29C392DF29F9809A0041F569 /* DeliveryService.swift in Sources */,
 				29C3929429F9809A0041F569 /* Button+ContentSize.swift in Sources */,
 				29C392CC29F9809A0041F569 /* OrderCkeckoutAssembly.swift in Sources */,
@@ -1282,6 +1349,7 @@
 				29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */,
 				29C392D929F9809A0041F569 /* DeliveryAssembly.swift in Sources */,
 				29C392D229F9809A0041F569 /* OrderCheckoutService.swift in Sources */,
+				29C93E5129FEBFDF00EBFB23 /* ABInputAddress.swift in Sources */,
 				29C392B229F9809A0041F569 /* AddressSuggestionRequest.swift in Sources */,
 				29C392B129F9809A0041F569 /* DaDataAddress.swift in Sources */,
 				29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */,
@@ -1304,6 +1372,7 @@
 				29C3929E29F9809A0041F569 /* TEApiItem.swift in Sources */,
 				29C392E229F9809A0041F569 /* Onboarding.swift in Sources */,
 				29C392BA29F9809A0041F569 /* AddressInputViewController.swift in Sources */,
+				29C93E4E29FEBD6600EBFB23 /* ABTestViewController.swift in Sources */,
 				29C3929029F9809A0041F569 /* Button+Configuration.swift in Sources */,
 				29C392AA29F9809A0041F569 /* GenericService.swift in Sources */,
 				29C392C429F9809A0041F569 /* MeetingAppointmentService.swift in Sources */,
@@ -1321,6 +1390,7 @@
 				29C3929F29F9809A0041F569 /* TEApiOrder.swift in Sources */,
 				29C392A729F9809A0041F569 /* TEApiService.swift in Sources */,
 				29C3928929F9809A0041F569 /* HighlightSettings.swift in Sources */,
+				29C93E5629FED85500EBFB23 /* ABTextViewType.swift in Sources */,
 				29C3929C29F9809A0041F569 /* TEApiTimeSlot.swift in Sources */,
 				29C392C129F9809A0041F569 /* MeetingAppointmentViewController.swift in Sources */,
 				29C392C929F9809A0041F569 /* FinalDeliveryCellType.swift in Sources */,
@@ -1331,6 +1401,7 @@
 				29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */,
 				29C3928B29F9809A0041F569 /* HSBAColor+Highlight.swift in Sources */,
 				29C392D329F9809A0041F569 /* CartAssembly.swift in Sources */,
+				29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */,
 				29C392B929F9809A0041F569 /* InputAddress.swift in Sources */,
 				29C392A029F9809A0041F569 /* OrderUpdateRequest.swift in Sources */,
 				29C392CD29F9809A0041F569 /* OrderCheckoutAssembly.swift in Sources */,
@@ -1352,6 +1423,7 @@
 				29C3929A29F9809A0041F569 /* Extension+UIColor.swift in Sources */,
 				29C392E029F9809A0041F569 /* OnboardingAssembly.swift in Sources */,
 				29C392A929F9809A0041F569 /* NetworkConstant.swift in Sources */,
+				29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
