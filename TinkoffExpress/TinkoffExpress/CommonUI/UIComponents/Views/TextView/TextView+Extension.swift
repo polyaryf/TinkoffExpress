@@ -35,9 +35,9 @@ extension TextView {
         clearTextButton?.isHidden = self.text.isEmpty
     }
     
-    func setPlaceholder() {
+    func setPlaceholder(with text: String) {
         let placeholderLabel = UILabel()
-        placeholderLabel.text = "Адрес"
+        placeholderLabel.text = text
         placeholderLabel.font = UIFont.systemFont(ofSize: 17)
         placeholderLabel.sizeToFit()
         placeholderLabel.tag = 222

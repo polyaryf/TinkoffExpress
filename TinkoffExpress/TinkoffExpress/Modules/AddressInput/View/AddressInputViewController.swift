@@ -167,7 +167,7 @@ class AddressInputViewController: UIViewController {
         guard let clearButton = inputTextView.viewWithTag(111) as? UIButton else { return }
         clearButton.addTarget(self, action: #selector(clearInputTextButtonTapped), for: .touchUpInside)
        
-        inputTextView.setPlaceholder()
+        inputTextView.setPlaceholder(with: "Адрес")
         inputTextView.showsVerticalScrollIndicator = false
         inputTextView.layer.cornerRadius = 16
         inputTextView.clipsToBounds = true
