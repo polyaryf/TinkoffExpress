@@ -31,6 +31,7 @@ final class ABTestViewController: UIViewController {
             country: "",
             region: "",
             street: "",
+            house: "",
             settlement: "",
             postalСode: "")
         self.presenter = presenter
@@ -101,6 +102,24 @@ final class ABTestViewController: UIViewController {
         )
     }
     
+    private func setAddress(with type: ABTestType, from textField: TextField) {
+        let text = textField.text ?? ""
+        switch type {
+        case .country:
+            address.country = text
+        case .region:
+            address.region = text
+        case .street:
+            address.street = text
+        case .house:
+            address.house = text
+        case .settlement:
+            address.settlement = text
+        case .postalCode:
+            address.postalСode = text
+        }
+    }
+    
     // MARK: Action
     
     @objc func cancelButtonTapped() {
@@ -108,7 +127,13 @@ final class ABTestViewController: UIViewController {
     }
     
     @objc func doneButtonTapped() {
-        presenter.doneButtonTapped()
+        guard let textField = mainView.currentTextField else { return }
+        let type = mainView.getTextFieldType(for: textField)
+        setAddress(with: type, from: textField)
+        guard mainView.nextViewBecomeFirstResponder(after: textField) else {
+            presenter.doneButtonTapped(with: address)
+            return
+        }
     }
     
     // MARK: Keyboard
@@ -120,6 +145,9 @@ final class ABTestViewController: UIViewController {
         else { return }
         
         let keyboardHeight = keyboardFrame.size.height
+        var contentInset: UIEdgeInsets = mainView.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        mainView.scrollView.contentInset = contentInset
          
         UIView.animate(withDuration: duration) { [self] in
             mainView.doneButton.isHidden = false
@@ -138,6 +166,9 @@ final class ABTestViewController: UIViewController {
         let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
         else { return }
         
+        let contentInset = UIEdgeInsets.zero
+        mainView.scrollView.contentInset = contentInset
+        
         UIView.animate(withDuration: duration) { [self] in
             mainView.doneButton.isHidden = true
             mainView.doneButton.snp.remakeConstraints {
@@ -150,6 +181,8 @@ final class ABTestViewController: UIViewController {
         }
     }
 }
+
+// MARK: - ABTestViewControllerProtocol
 
 extension ABTestViewController: ABTestViewControllerProtocol {
     func closeABTestView() {

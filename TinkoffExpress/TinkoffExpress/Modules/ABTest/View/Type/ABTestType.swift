@@ -1,5 +1,5 @@
 //
-//  ABTextCellType.swift
+//  ABTestType.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 30.04.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ABTextCellType {
+enum ABTestType {
     case country
     case region
     case street

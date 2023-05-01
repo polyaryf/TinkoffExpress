@@ -8,9 +8,10 @@
 import Foundation
 
 struct ABInputAddress {
-    let country: String
-    let region: String
-    let street: String
-    let settlement: String
-    let postalСode: String
+    var country: String
+    var region: String
+    var street: String
+    var house: String
+    var settlement: String
+    var postalСode: String
 }

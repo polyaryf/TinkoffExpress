@@ -10,12 +10,19 @@ import UIKit
 final class ABTestView: UIView {
     // MARK: Subviews
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ABTestTableViewCell.self, forCellReuseIdentifier: "abtest")
-        tableView.separatorStyle = .none
-        return tableView
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .onDrag
+        return scrollView
+    }()
+    
+    private lazy var containerView = UIView()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        return stackView
     }()
     
     lazy var doneButton: UIButton = {
@@ -36,14 +43,16 @@ final class ABTestView: UIView {
         return button
     }()
     
+    // MARK: State
+    
+    var currentTextField: TextField?
+    
     // MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupView()
-        tableView.dataSource = self
-        tableView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -55,19 +64,28 @@ final class ABTestView: UIView {
     private func setupView() {
         setupViewHierarchy()
         setupConstraints()
+        setStackView()
     }
     
     private func setupViewHierarchy() {
-        self.addSubview(tableView)
+        addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        containerView.addSubview(stackView)
         self.addSubview(doneButton)
     }
     
     private func setupConstraints() {
-        tableView.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
+        }
+        containerView.snp.makeConstraints {
+            $0.edges.width.equalToSuperview()
+        }
+        stackView.snp.makeConstraints {
+            $0.edges.width.equalToSuperview().inset(16)
         }
         doneButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-16)
@@ -77,42 +95,95 @@ final class ABTestView: UIView {
         }
     }
     
-    private func setupCell(for cell: ABTestTableViewCell, with type: ABTextCellType) {
-        switch type {
-        case .country:
-            cell.setPlaceholder(with: "Страна")
-        case .region:
-            cell.setPlaceholder(with: "Регион")
-        case .street:
-            cell.setPlaceholder(with: "Улица")
-        case .house:
-            cell.setPlaceholder(with: "Строение/корпус")
-        case .settlement:
-            cell.setPlaceholder(with: "Населенный пункт")
-        case .postalCode:
-            cell.setPlaceholder(with: "Индекс")
+    func nextViewBecomeFirstResponder(after textField: UITextField) -> Bool {
+        let arrangedSubviews = stackView.arrangedSubviews
+        if let index = arrangedSubviews.firstIndex(of: textField) {
+            if index == 5 {
+                arrangedSubviews[5].becomeFirstResponder()
+                return false
+            }
+            arrangedSubviews[index + 1].becomeFirstResponder()
+            return true
         }
-    }
-}
-
-// MARK: - UITableViewDataSource, UITableViewDelegate
-
-extension ABTestView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        return false
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ABTestTableViewCell()
-        switch indexPath.row {
-        case 0: setupCell(for: cell, with: .country)
-        case 1: setupCell(for: cell, with: .region)
-        case 2: setupCell(for: cell, with: .street)
-        case 3: setupCell(for: cell, with: .house)
-        case 4: setupCell(for: cell, with: .settlement)
-        case 5: setupCell(for: cell, with: .postalCode)
-        default: cell.setPlaceholder(with: "extra cell")
+    private func setStackView() {
+        [
+            createTextField(with: .country),
+            createTextField(with: .region),
+            createTextField(with: .street),
+            createTextField(with: .house),
+            createTextField(with: .settlement),
+            createTextField(with: .postalCode)
+        ]
+            .forEach {
+                stackView.addArrangedSubview($0)
+            }
+        stackView.spacing = 16
+    }
+    
+    private func createTextField(with type: ABTestType) -> TextField {
+        let textField = TextField()
+        textField.modifyClearButtonWithImage(
+            image: UIImage(named: "x.cross.addressInput")
+        )
+        textField.tintColor = UIColor(named: "blue.color")
+        textField.backgroundColor = UIColor(named: "inputTextView.abtest.color")
+        textField.textColor = UIColor(named: "inputText.abtest.color")
+        textField.font = .systemFont(ofSize: 17)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.layer.cornerRadius = 16
+        textField.clipsToBounds = true
+        textField.delegate = self
+        
+        switch type {
+        case .country:
+            textField.placeholder = "Страна"
+            textField.returnKeyType = .next
+        case .region:
+            textField.placeholder = "Регион"
+            textField.returnKeyType = .next
+        case .street:
+            textField.placeholder = "Улица"
+            textField.returnKeyType = .next
+        case .house:
+            textField.placeholder = "Строение/корпус"
+            textField.returnKeyType = .next
+        case .settlement:
+            textField.placeholder = "Населенный пункт"
+            textField.returnKeyType = .next
+        case .postalCode:
+            textField.placeholder = "Индекс"
+            textField.returnKeyType = .done
         }
-        return cell
+        return textField
+    }
+    
+    func checkDoneButton() {
+        if currentTextField === stackView.arrangedSubviews.last {
+            doneButton.setTitle("Готово", for: .normal)
+        } else {
+            doneButton.setTitle("Далее", for: .normal)
+        }
+    }
+    
+    func getTextFieldType(for textField: TextField) -> ABTestType {
+        let textFields = stackView.arrangedSubviews.compactMap {
+            $0 as? TextField
+        }
+        if textField === textFields[0] {
+            return .country
+        } else if textField === textFields[1] {
+            return .region
+        } else if textField === textFields[2] {
+            return .street
+        } else if textField === textFields[3] {
+            return .house
+        } else if textField === textFields[2] {
+            return .settlement
+        } else {
+            return .postalCode
+        }
     }
 }
