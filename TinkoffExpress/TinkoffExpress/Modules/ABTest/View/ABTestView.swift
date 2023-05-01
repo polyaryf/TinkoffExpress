@@ -46,7 +46,7 @@ final class ABTestView: UIView {
     
     lazy var doneButton: UIButton = {
         var button = UIButton.init()
-        button.backgroundColor = UIColor(named: "blue.addressInput.color")
+        button.backgroundColor = UIColor(named: "blue.color")
         button.setTitle("Готово", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -144,9 +144,9 @@ final class ABTestView: UIView {
     
     private func setupTextView(textView: TextView, with type: ABTextViewType) {
         textView.textContainer.maximumNumberOfLines = 1
-        textView.tintColor = UIColor(named: "blue.addressInput.color")
-        textView.backgroundColor = UIColor(named: "inputTextView.addressInput.color")
-        textView.textColor = UIColor(named: "inputText.addressInput.color")
+        textView.tintColor = UIColor(named: "blue.color")
+        textView.backgroundColor = UIColor(named: "inputTextView.abtest.color")
+        textView.textColor = UIColor(named: "inputText.abtest.color")
         textView.font = .systemFont(ofSize: 17)
         textView.showsVerticalScrollIndicator = false
         textView.layer.cornerRadius = 16

@@ -89,13 +89,13 @@ final class ABTestViewController: UIViewController {
     
     private func setupTextView(textView: TextView, with type: ABTextViewType) {
         trackTextViewChanges(at: textView)
+        // TODO: fix size
         textView.setClearButton(
             superViewSize: CGRect(
                 origin: .zero,
                 size: CGSize(width: 343, height: 56)
             )
         )
-        // TODO: ask about this issue
         guard let clearButton = textView.subviews.last as? UIButton else { return }
         clearButton.addTarget(
             self,
