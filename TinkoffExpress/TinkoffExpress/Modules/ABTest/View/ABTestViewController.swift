@@ -22,7 +22,7 @@ final class ABTestViewController: UIViewController {
     
     // MARK: Dependency
     
-    private var presenter: ABTestPresenterProtocol
+    private let presenter: ABTestPresenterProtocol
     
     // MARK: Init
         
