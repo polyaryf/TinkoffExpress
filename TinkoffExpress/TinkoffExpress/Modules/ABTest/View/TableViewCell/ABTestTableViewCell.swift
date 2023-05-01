@@ -8,6 +8,8 @@
 import UIKit
 
 final class ABTestTableViewCell: UITableViewCell {
+    // MARK: Subview
+    
     private lazy var textField: TextField = {
         let textField = TextField()
         textField.modifyClearButtonWithImage(
@@ -35,16 +37,20 @@ final class ABTestTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Private
+    
     private func setupView() {
         contentView.addSubview(textField)
         
         textField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-16)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
         }
     }
+    
+    // MARK: Public
     
     func setPlaceholder(with text: String) {
         textField.placeholder = text

@@ -8,6 +8,8 @@
 import UIKit
 
 final class ABTestView: UIView {
+    // MARK: Subviews
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +36,8 @@ final class ABTestView: UIView {
         return button
     }()
     
+    // MARK: Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -45,6 +49,8 @@ final class ABTestView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Private
     
     private func setupView() {
         setupViewHierarchy()
@@ -89,6 +95,8 @@ final class ABTestView: UIView {
     }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension ABTestView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         6
@@ -103,7 +111,7 @@ extension ABTestView: UITableViewDataSource, UITableViewDelegate {
         case 3: setupCell(for: cell, with: .house)
         case 4: setupCell(for: cell, with: .settlement)
         case 5: setupCell(for: cell, with: .postalCode)
-        default: cell.setPlaceholder(with: "dddd")
+        default: cell.setPlaceholder(with: "extra cell")
         }
         return cell
     }
