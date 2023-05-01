@@ -1,5 +1,5 @@
 //
-//  ABTextViewType.swift
+//  ABTextCellType.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 30.04.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ABTextViewType {
+enum ABTextCellType {
     case country
     case region
     case street

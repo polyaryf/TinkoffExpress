@@ -8,46 +8,18 @@
 import UIKit
 
 final class ABTestView: UIView {
-    lazy var countryTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    lazy var regionTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    lazy var streetTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    lazy var houseTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    lazy var settlementTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-    
-    lazy var postalСodeTextView: TextView = {
-        let textView = TextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ABTestTableViewCell.self, forCellReuseIdentifier: "abtest")
+        tableView.separatorStyle = .none
+        return tableView
     }()
     
     lazy var doneButton: UIButton = {
         var button = UIButton.init()
         button.backgroundColor = UIColor(named: "blue.color")
-        button.setTitle("Готово", for: .normal)
+        button.setTitle("Далее", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 12
@@ -66,6 +38,8 @@ final class ABTestView: UIView {
         super.init(frame: frame)
         
         setupView()
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -73,57 +47,21 @@ final class ABTestView: UIView {
     }
     
     private func setupView() {
-        setupTextViews()
         setupViewHierarchy()
         setupConstraints()
     }
     
     private func setupViewHierarchy() {
-        self.addSubview(countryTextView)
-        self.addSubview(regionTextView)
-        self.addSubview(streetTextView)
-        self.addSubview(houseTextView)
-        self.addSubview(settlementTextView)
-        self.addSubview(postalСodeTextView)
+        self.addSubview(tableView)
         self.addSubview(doneButton)
     }
     
     private func setupConstraints() {
-        countryTextView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
-        }
-        regionTextView.snp.makeConstraints {
-            $0.top.equalTo(countryTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
-        }
-        streetTextView.snp.makeConstraints {
-            $0.top.equalTo(regionTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
-        }
-        houseTextView.snp.makeConstraints {
-            $0.top.equalTo(streetTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
-        }
-        settlementTextView.snp.makeConstraints {
-            $0.top.equalTo(houseTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
-        }
-        postalСodeTextView.snp.makeConstraints {
-            $0.top.equalTo(settlementTextView.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(56)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview()
         }
         doneButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-16)
@@ -133,43 +71,40 @@ final class ABTestView: UIView {
         }
     }
     
-    private func setupTextViews() {
-        setupTextView(textView: countryTextView, with: .country)
-        setupTextView(textView: regionTextView, with: .region)
-        setupTextView(textView: streetTextView, with: .street)
-        setupTextView(textView: houseTextView, with: .house)
-        setupTextView(textView: settlementTextView, with: .settlement)
-        setupTextView(textView: postalСodeTextView, with: .postalCode)
-    }
-    
-    private func setupTextView(textView: TextView, with type: ABTextViewType) {
-        textView.textContainer.maximumNumberOfLines = 1
-        textView.tintColor = UIColor(named: "blue.color")
-        textView.backgroundColor = UIColor(named: "inputTextView.abtest.color")
-        textView.textColor = UIColor(named: "inputText.abtest.color")
-        textView.font = .systemFont(ofSize: 17)
-        textView.showsVerticalScrollIndicator = false
-        textView.layer.cornerRadius = 16
-        textView.clipsToBounds = true
-        textView.textContainerInset = UIEdgeInsets(
-            top: 18,
-            left: 14,
-            bottom: 18,
-            right: 28
-        )
+    private func setupCell(for cell: ABTestTableViewCell, with type: ABTextCellType) {
         switch type {
         case .country:
-            textView.setPlaceholder(with: "Страна")
+            cell.setPlaceholder(with: "Страна")
         case .region:
-            textView.setPlaceholder(with: "Регион")
+            cell.setPlaceholder(with: "Регион")
         case .street:
-            textView.setPlaceholder(with: "Улица")
+            cell.setPlaceholder(with: "Улица")
         case .house:
-            textView.setPlaceholder(with: "Строение/корпус")
+            cell.setPlaceholder(with: "Строение/корпус")
         case .settlement:
-            textView.setPlaceholder(with: "Населенный пункт")
+            cell.setPlaceholder(with: "Населенный пункт")
         case .postalCode:
-            textView.setPlaceholder(with: "Индекс")
+            cell.setPlaceholder(with: "Индекс")
         }
+    }
+}
+
+extension ABTestView: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ABTestTableViewCell()
+        switch indexPath.row {
+        case 0: setupCell(for: cell, with: .country)
+        case 1: setupCell(for: cell, with: .region)
+        case 2: setupCell(for: cell, with: .street)
+        case 3: setupCell(for: cell, with: .house)
+        case 4: setupCell(for: cell, with: .settlement)
+        case 5: setupCell(for: cell, with: .postalCode)
+        default: cell.setPlaceholder(with: "dddd")
+        }
+        return cell
     }
 }

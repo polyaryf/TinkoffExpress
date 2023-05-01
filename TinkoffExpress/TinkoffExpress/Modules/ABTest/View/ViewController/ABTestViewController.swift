@@ -48,6 +48,7 @@ final class ABTestViewController: UIViewController {
         
         self.view = mainView
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -65,7 +66,6 @@ final class ABTestViewController: UIViewController {
         
         setupNavigationItem()
         setupKeyboard()
-        setupTextViews()
         addDoneButtonTarget()
     }
     
@@ -75,32 +75,6 @@ final class ABTestViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(cancelButtonTapped)
-        )
-    }
-    
-    private func setupTextViews() {
-        setupTextView(textView: mainView.countryTextView, with: .country)
-        setupTextView(textView: mainView.regionTextView, with: .region)
-        setupTextView(textView: mainView.streetTextView, with: .street)
-        setupTextView(textView: mainView.houseTextView, with: .house)
-        setupTextView(textView: mainView.settlementTextView, with: .settlement)
-        setupTextView(textView: mainView.postalСodeTextView, with: .postalCode)
-    }
-    
-    private func setupTextView(textView: TextView, with type: ABTextViewType) {
-        trackTextViewChanges(at: textView)
-        // TODO: fix size
-        textView.setClearButton(
-            superViewSize: CGRect(
-                origin: .zero,
-                size: CGSize(width: 343, height: 56)
-            )
-        )
-        guard let clearButton = textView.subviews.last as? UIButton else { return }
-        clearButton.addTarget(
-            self,
-            action: #selector(clearButtonTapped(_:)),
-            for: .touchUpInside
         )
     }
     
@@ -128,15 +102,6 @@ final class ABTestViewController: UIViewController {
     }
     
     // MARK: Action
-    
-    @objc func clearButtonTapped(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        guard let textView = button.superview as? TextView else { return }
-        textView.text = ""
-        
-        textView.checkPlaceholder()
-        textView.checkClearTextButton()
-    }
     
     @objc func cancelButtonTapped() {
         presenter.cancelButtonTapped()
@@ -189,14 +154,5 @@ final class ABTestViewController: UIViewController {
 extension ABTestViewController: ABTestViewControllerProtocol {
     func closeABTestView() {
         self.dismiss(animated: true)
-    }
-}
-
-extension ABTestViewController {
-    private func trackTextViewChanges(at view: TextView) {
-        view.textDidChangeHandler = { [weak self] in
-            guard let self = self else { return }
-            guard let inputText = view.text else { return }
-        }
     }
 }
