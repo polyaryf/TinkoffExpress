@@ -8,12 +8,15 @@
 import UIKit
 
 protocol IABTestAssembly {
-    func createABTestView() -> UIViewController
+    func createABTestView(output: IABTestModuleOutput) -> UIViewController
 }
 
 final class ABTestAssembly: IABTestAssembly {
-    func createABTestView() -> UIViewController {
-        let presenter = ABTestPresenter()
+    func createABTestView(output: IABTestModuleOutput) -> UIViewController {
+        let networkService = DaDataApiService()
+        let service = RestABTestService(networkService: networkService)
+        let helper = ABTestHelper()
+        let presenter = ABTestPresenter(service: service, output: output, helper: helper)
         let view = ABTestViewController(presenter: presenter)
         presenter.view = view
         return view
