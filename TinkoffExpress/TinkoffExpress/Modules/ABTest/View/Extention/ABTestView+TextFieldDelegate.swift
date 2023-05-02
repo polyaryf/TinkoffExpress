@@ -9,11 +9,16 @@ import UIKit
 
 extension ABTestView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nextViewBecomeFirstResponder(after: textField)
+        guard isAddressValid else { return false }
+        return nextViewBecomeFirstResponder(after: textField)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         currentTextField = textField as? TextField
         checkDoneButton()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        setAddress(with: getType(for: textField), from: textField)
     }
 }

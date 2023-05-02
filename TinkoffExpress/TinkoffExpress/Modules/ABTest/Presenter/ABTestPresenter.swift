@@ -9,7 +9,7 @@ import UIKit
 
 protocol ABTestPresenterProtocol {
     func cancelButtonTapped()
-    func doneButtonTapped(with address: ABInputAddress)
+    func doneButtonTapped(with address: ABInputAddress?)
 }
 
 class ABTestPresenter: ABTestPresenterProtocol {
@@ -23,7 +23,8 @@ class ABTestPresenter: ABTestPresenterProtocol {
         view?.closeABTestView()
     }
     
-    func doneButtonTapped(with address: ABInputAddress) {
+    func doneButtonTapped(with address: ABInputAddress?) {
+        guard let address else { return }
         print(address)
         view?.closeABTestView()
     }

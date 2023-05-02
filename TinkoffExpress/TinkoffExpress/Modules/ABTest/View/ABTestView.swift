@@ -46,12 +46,22 @@ final class ABTestView: UIView {
     // MARK: State
     
     var currentTextField: TextField?
+    var address: ABInputAddress
+    var isAddressValid: Bool
     
     // MARK: Init
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        self.address = ABInputAddress(
+            country: "",
+            region: "",
+            street: "",
+            house: "",
+            settlement: "",
+            postalСode: "")
+        self.isAddressValid = false
         
+        super.init(frame: frame)
         setupView()
     }
     
@@ -95,19 +105,6 @@ final class ABTestView: UIView {
         }
     }
     
-    func nextViewBecomeFirstResponder(after textField: UITextField) -> Bool {
-        let arrangedSubviews = stackView.arrangedSubviews
-        if let index = arrangedSubviews.firstIndex(of: textField) {
-            if index == 5 {
-                arrangedSubviews[5].becomeFirstResponder()
-                return false
-            }
-            arrangedSubviews[index + 1].becomeFirstResponder()
-            return true
-        }
-        return false
-    }
-    
     private func setStackView() {
         [
             createTextField(with: .country),
@@ -136,6 +133,11 @@ final class ABTestView: UIView {
         textField.layer.cornerRadius = 16
         textField.clipsToBounds = true
         textField.delegate = self
+        textField.addTarget(
+            self,
+            action: #selector(self.textFieldDidChange(_:)),
+            for: UIControl.Event.editingChanged
+        )
         
         switch type {
         case .country:
@@ -160,15 +162,88 @@ final class ABTestView: UIView {
         return textField
     }
     
-    func checkDoneButton() {
-        if currentTextField === stackView.arrangedSubviews.last {
-            doneButton.setTitle("Готово", for: .normal)
+    // MARK: Validation
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if isValid(at: textField) {
+            textField.textColor = UIColor(named: "inputText.abtest.color")
+            isAddressValid = true
         } else {
-            doneButton.setTitle("Далее", for: .normal)
+            textField.textColor = .red
+            isAddressValid = false
         }
     }
     
-    func getTextFieldType(for textField: TextField) -> ABTestType {
+    private func isValid(at textField: UITextField) -> Bool {
+        let type = getType(for: textField)
+        guard let text = textField.text, !text.isEmpty else {
+            return false
+        }
+        switch type {
+        case .country:
+            return isValidCharOnly(with: text)
+        case .region:
+            return isValidCharOnly(with: text)
+        case .street:
+            return true
+        case .house:
+            return true
+        case .settlement:
+            return true
+        case .postalCode:
+            return isValidNundersOnly(with: text)
+        }
+    }
+    
+    private func isValidCharOnly(with text: String) -> Bool {
+        let set = CharacterSet(charactersIn: text)
+        let digitsCharacters = CharacterSet(charactersIn: "0123456789")
+        let decimalRange = text.rangeOfCharacter(from: digitsCharacters)
+        return !(decimalRange != nil)
+    }
+    
+    private func isValidNundersOnly(with text: String) -> Bool {
+        let set = CharacterSet(charactersIn: text)
+        let digitsCharacters = CharacterSet(charactersIn: "0123456789")
+        let characterSet = CharacterSet(charactersIn: text)
+        return digitsCharacters.isSuperset(of: characterSet)
+    }
+    
+    // MARK: Public
+    
+    func nextViewBecomeFirstResponder(after textField: UITextField) -> Bool {
+        let arrangedSubviews = stackView.arrangedSubviews
+        if let index = arrangedSubviews.firstIndex(of: textField) {
+            setAddress(with: getType(for: textField), from: textField)
+            if index == 5 {
+                arrangedSubviews[5].becomeFirstResponder()
+                return false
+            }
+            arrangedSubviews[index + 1].becomeFirstResponder()
+            return true
+        }
+        return false
+    }
+    
+    func setAddress(with type: ABTestType, from textField: UITextField) {
+        let text = textField.text ?? ""
+        switch type {
+        case .country:
+            address.country = text
+        case .region:
+            address.region = text
+        case .street:
+            address.street = text
+        case .house:
+            address.house = text
+        case .settlement:
+            address.settlement = text
+        case .postalCode:
+            address.postalСode = text
+        }
+    }
+    
+    func getType(for textField: UITextField) -> ABTestType {
         let textFields = stackView.arrangedSubviews.compactMap {
             $0 as? TextField
         }
@@ -180,10 +255,18 @@ final class ABTestView: UIView {
             return .street
         } else if textField === textFields[3] {
             return .house
-        } else if textField === textFields[2] {
+        } else if textField === textFields[4] {
             return .settlement
         } else {
             return .postalCode
+        }
+    }
+    
+    func checkDoneButton() {
+        if currentTextField === stackView.arrangedSubviews.last {
+            doneButton.setTitle("Готово", for: .normal)
+        } else {
+            doneButton.setTitle("Далее", for: .normal)
         }
     }
 }

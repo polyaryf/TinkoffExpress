@@ -18,22 +18,17 @@ final class ABTestViewController: UIViewController {
       
     // MARK: State
     
-    var address: ABInputAddress
+    var address: ABInputAddress?
     
     // MARK: Dependency
     
     private let presenter: ABTestPresenterProtocol
-    
+
     // MARK: Init
         
-    init(presenter: ABTestPresenterProtocol) {
-        self.address = ABInputAddress(
-            country: "",
-            region: "",
-            street: "",
-            house: "",
-            settlement: "",
-            postalСode: "")
+    init(
+        presenter: ABTestPresenterProtocol
+    ) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -52,6 +47,8 @@ final class ABTestViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        mainView.stackView.arrangedSubviews[0].becomeFirstResponder()
     }
     
     override func viewDidLoad() {
@@ -102,24 +99,6 @@ final class ABTestViewController: UIViewController {
         )
     }
     
-    private func setAddress(with type: ABTestType, from textField: TextField) {
-        let text = textField.text ?? ""
-        switch type {
-        case .country:
-            address.country = text
-        case .region:
-            address.region = text
-        case .street:
-            address.street = text
-        case .house:
-            address.house = text
-        case .settlement:
-            address.settlement = text
-        case .postalCode:
-            address.postalСode = text
-        }
-    }
-    
     // MARK: Action
     
     @objc func cancelButtonTapped() {
@@ -128,9 +107,9 @@ final class ABTestViewController: UIViewController {
     
     @objc func doneButtonTapped() {
         guard let textField = mainView.currentTextField else { return }
-        let type = mainView.getTextFieldType(for: textField)
-        setAddress(with: type, from: textField)
+        guard mainView.isAddressValid else { return }
         guard mainView.nextViewBecomeFirstResponder(after: textField) else {
+            address = mainView.address
             presenter.doneButtonTapped(with: address)
             return
         }
