@@ -190,7 +190,7 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     }
     
     private func showOrderCheckout() {
-        // TODO: router.showOrderCheckout()
+        router.openOrderCheckout()
     }
 }
 
