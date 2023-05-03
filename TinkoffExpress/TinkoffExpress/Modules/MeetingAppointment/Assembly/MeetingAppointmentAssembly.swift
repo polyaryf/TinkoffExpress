@@ -12,7 +12,8 @@ final class MeetingAppointmentAssembly: Assembly {
         let mockService = MockMeetingAppointmentService()
         let router = MeetingAppointmentRouter(
             addressInputAssembly: AddressInputAssembly(),
-            abTestAssembly: ABTestAssembly()
+            abTestAssembly: ABTestAssembly(),
+            orderCheckoutAssembly: OrderCheckoutAssembly()
         )
 
         let presenter = MeetingAppointmentPresenter(

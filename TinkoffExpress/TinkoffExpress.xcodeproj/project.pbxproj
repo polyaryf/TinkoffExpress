@@ -82,7 +82,6 @@
 		29C392C929F9809A0041F569 /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924029F980990041F569 /* FinalDeliveryCellType.swift */; };
 		29C392CA29F9809A0041F569 /* FinalDeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924229F980990041F569 /* FinalDeliveryService.swift */; };
 		29C392CB29F9809A0041F569 /* OrderCheckoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924529F980990041F569 /* OrderCheckoutPresenter.swift */; };
-		29C392CC29F9809A0041F569 /* OrderCkeckoutAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924729F980990041F569 /* OrderCkeckoutAssembly.swift */; };
 		29C392CD29F9809A0041F569 /* OrderCheckoutAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924829F980990041F569 /* OrderCheckoutAssembly.swift */; };
 		29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924A29F980990041F569 /* OrderCheckout.swift */; };
 		29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924D29F980990041F569 /* OrderCheckoutCellType.swift */; };
@@ -211,7 +210,6 @@
 		29C3924029F980990041F569 /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
 		29C3924229F980990041F569 /* FinalDeliveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryService.swift; sourceTree = "<group>"; };
 		29C3924529F980990041F569 /* OrderCheckoutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutPresenter.swift; sourceTree = "<group>"; };
-		29C3924729F980990041F569 /* OrderCkeckoutAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCkeckoutAssembly.swift; sourceTree = "<group>"; };
 		29C3924829F980990041F569 /* OrderCheckoutAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutAssembly.swift; sourceTree = "<group>"; };
 		29C3924A29F980990041F569 /* OrderCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
 		29C3924D29F980990041F569 /* OrderCheckoutCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutCellType.swift; sourceTree = "<group>"; };
@@ -901,7 +899,6 @@
 		29C3924629F980990041F569 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				29C3924729F980990041F569 /* OrderCkeckoutAssembly.swift */,
 				29C3924829F980990041F569 /* OrderCheckoutAssembly.swift */,
 			);
 			path = Assembly;
@@ -1433,7 +1430,6 @@
 				29C93E5929FEE3D000EBFB23 /* ABTestPresenter.swift in Sources */,
 				29C392DF29F9809A0041F569 /* DeliveryService.swift in Sources */,
 				29C3929429F9809A0041F569 /* Button+ContentSize.swift in Sources */,
-				29C392CC29F9809A0041F569 /* OrderCkeckoutAssembly.swift in Sources */,
 				29C3928A29F9809A0041F569 /* UIColor+Highlight.swift in Sources */,
 				29C392C529F9809A0041F569 /* FinalDeliveryAssembly.swift in Sources */,
 				29C392E629F9809A0041F569 /* OnboardingService.swift in Sources */,

@@ -17,20 +17,18 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: OrderCheckoutViewController?
-    private var coordinator: Coordinator?
-    private var service: OrderCheckoutService?
+    private let service: OrderCheckoutService
     
     // MARK: Init
     
-    init(coordinator: Coordinator, service: OrderCheckoutService) {
-        self.coordinator = coordinator
+    init(service: OrderCheckoutService) {
         self.service = service
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
+        service.loadItems { [weak self] items in
             guard let self = self else { return }
             self.view?.items = items ?? []
         }
@@ -39,7 +37,33 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Events
     
     func checkoutButtonTapped() {
-        showFinalDelivery()
+        //let request = mapper.toOrderCreateRequset(output.getOrderDetail())
+
+        let request = OrderCreateRequest(
+            address: TEApiAddress(address: "", lat: 0, lon: 0),
+            paymentMethod: "CARD",
+            deliverySlot: TEApiTimeSlot(date: "", timeFrom: "", timeTo: ""),
+            items: [],
+            comment: "",
+            status: ""
+        )
+
+        view?.startButtonLoading()
+
+        service.createOrder(with: request) { [weak self] result in
+            switch result {
+            case .success(let flag):
+                if flag {
+                    self?.view?.stopButtonLoading()
+                    self?.showFinalDelivery()
+                } else {
+                    self?.view?.stopButtonLoading()
+                }
+
+            case .failure:
+                self?.view?.stopButtonLoading()
+            }
+        }
     }
     
     func backButtonTapped() {
@@ -48,11 +72,11 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     
     // MARK: Navigation
     
-    private func showFinalDelivery() {
-        coordinator?.move(FinalDeliveryAssembly(), with: .push)
-    }
-    
     private func showMeetingAppointment() {
         // TODO: coordinator?.move(MeetingAppointmentAssembly(), with: .pop)
+    }
+    
+    private func showFinalDelivery() {
+        // TODO: coordinator?.move(FinalDelivery(), with: .set)
     }
 }

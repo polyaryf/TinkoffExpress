@@ -7,10 +7,16 @@
 
 import UIKit
 
-final class OrderCheckoutAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol IOrderCheckoutAssembly {
+    func createOrderCheckoutView() -> UIViewController
+}
+
+final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
+    func createOrderCheckoutView() -> UIViewController {
+        let networkService = TEApiService()
         let mockService = MockOrderCheckoutService()
-        let presenter = OrderCheckoutPresenter(coordinator: coordinator, service: mockService)
+        let restService = RestOrderCheckoutService(networkService: networkService)
+        let presenter = OrderCheckoutPresenter(service: restService)
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
         presenter.view = viewController
         return viewController

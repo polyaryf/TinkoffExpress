@@ -43,6 +43,6 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     // MARK: Navigation
     
     private func showOrderCheckout() {
-        coordinator?.move(OrderCheckoutAssembly(), with: .push)
+        // TODO: Add navigation to OrderCheckout
     }
 }
