@@ -14,7 +14,7 @@ final class FinalDeliveryViewController: UIViewController {
     
     // MARK: Properties
     
-    lazy var item: FinalDelivery = .init(_where: "", when: "", what: "")
+    lazy var item: FinalDelivery = .init(where: "", when: "", what: "")
 
     // MARK: Subviews
     

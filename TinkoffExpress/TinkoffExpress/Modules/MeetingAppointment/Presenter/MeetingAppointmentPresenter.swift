@@ -186,7 +186,9 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Navigation
     
     private func showSearch() {
-        router.openAddressInput(output: self)
+        // TODO: сделать смену открытия экрана
+//        router.openAddressInput(output: self)
+        router.openABtest(output: self)
     }
     
     private func showOrderCheckout() {
@@ -198,6 +200,13 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
 
 extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
     func addressInputModule(didCompleteWith addressInput: String) {
+        // TODO: Handle adressInput
+    }
+}
+
+extension MeetingAppointmentPresenter: IABTestModuleOutput {
+    func abTestModule(didCompleteWith addressInput: String) {
+        print(addressInput)
         // TODO: Handle adressInput
     }
 }
