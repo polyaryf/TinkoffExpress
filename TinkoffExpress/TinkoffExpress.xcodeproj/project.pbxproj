@@ -106,8 +106,6 @@
 		29C392E529F9809A0041F569 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3927529F980990041F569 /* OnboardingCell.swift */; };
 		29C392E629F9809A0041F569 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3927729F980990041F569 /* OnboardingService.swift */; };
 		29C392E729F9809A0041F569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C3927929F980990041F569 /* Assets.xcassets */; };
-		29C392E829F9809A0041F569 /* TypeOfNaviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3927C29F980990041F569 /* TypeOfNaviation.swift */; };
-		29C392E929F9809A0041F569 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3927D29F980990041F569 /* Coordinator.swift */; };
 		29C392EB29F9809A0041F569 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928129F9809A0041F569 /* Assembly.swift */; };
 		29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928329F9809A0041F569 /* AppDelegate.swift */; };
 		29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928429F9809A0041F569 /* SceneDelegate.swift */; };
@@ -118,6 +116,9 @@
 		43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490D2A029D2D002424CE /* MyOrdersCell.swift */; };
 		43EF49152A029D2D002424CE /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */; };
 		43EF49162A029D2D002424CE /* MyOrdersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49102A029D2D002424CE /* MyOrdersService.swift */; };
+		43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF491F2A029EC1002424CE /* TabBarItem.swift */; };
+		43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49202A029EC1002424CE /* TypeOfNavigation.swift */; };
+		43EF49242A029EC1002424CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49212A029EC1002424CE /* Coordinator.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
@@ -224,8 +225,6 @@
 		29C3927529F980990041F569 /* OnboardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		29C3927729F980990041F569 /* OnboardingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		29C3927929F980990041F569 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		29C3927C29F980990041F569 /* TypeOfNaviation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeOfNaviation.swift; sourceTree = "<group>"; };
-		29C3927D29F980990041F569 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		29C3927F29F980990041F569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C3928129F9809A0041F569 /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		29C3928329F9809A0041F569 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +241,9 @@
 		43EF490D2A029D2D002424CE /* MyOrdersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
 		43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		43EF49102A029D2D002424CE /* MyOrdersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersService.swift; sourceTree = "<group>"; };
+		43EF491F2A029EC1002424CE /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		43EF49202A029EC1002424CE /* TypeOfNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeOfNavigation.swift; sourceTree = "<group>"; };
+		43EF49212A029EC1002424CE /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentRouter.swift; sourceTree = "<group>"; };
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
@@ -1056,18 +1058,9 @@
 		29C3927A29F980990041F569 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				29C3927B29F980990041F569 /* Coordinator */,
+				43EF491E2A029EC1002424CE /* Coordinator */,
 			);
 			path = Flows;
-			sourceTree = "<group>";
-		};
-		29C3927B29F980990041F569 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				29C3927C29F980990041F569 /* TypeOfNaviation.swift */,
-				29C3927D29F980990041F569 /* Coordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		29C3927E29F980990041F569 /* Config */ = {
@@ -1154,6 +1147,16 @@
 				43EF49102A029D2D002424CE /* MyOrdersService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		43EF491E2A029EC1002424CE /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				43EF491F2A029EC1002424CE /* TabBarItem.swift */,
+				43EF49202A029EC1002424CE /* TypeOfNavigation.swift */,
+				43EF49212A029EC1002424CE /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		57D54A1529FD9277006C3A2C /* Router */ = {
@@ -1363,7 +1366,6 @@
 				29C392C229F9809A0041F569 /* DateCell.swift in Sources */,
 				29C392AE29F9809A0041F569 /* SuggestionResponse.swift in Sources */,
 				29C392B029F9809A0041F569 /* DataResponse.swift in Sources */,
-				29C392E829F9809A0041F569 /* TypeOfNaviation.swift in Sources */,
 				29C392A829F9809A0041F569 /* MockTEApiService.swift in Sources */,
 				29C392C729F9809A0041F569 /* FinalDeliveryViewController.swift in Sources */,
 				29C392E329F9809A0041F569 /* OnboardingViewController.swift in Sources */,
@@ -1391,18 +1393,20 @@
 				29C3928829F9809A0041F569 /* HSBAColor+UIColor.swift in Sources */,
 				29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */,
 				29C3929F29F9809A0041F569 /* TEApiOrder.swift in Sources */,
+				43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */,
 				29C392A729F9809A0041F569 /* TEApiService.swift in Sources */,
 				29C3928929F9809A0041F569 /* HighlightSettings.swift in Sources */,
 				29C3929C29F9809A0041F569 /* TEApiTimeSlot.swift in Sources */,
 				29C392C129F9809A0041F569 /* MeetingAppointmentViewController.swift in Sources */,
 				29C392C929F9809A0041F569 /* FinalDeliveryCellType.swift in Sources */,
-				29C392E929F9809A0041F569 /* Coordinator.swift in Sources */,
 				29C392BE29F9809A0041F569 /* MeetingAppointmentAssembly.swift in Sources */,
 				29C392A629F9809A0041F569 /* TESlotApiProtocol.swift in Sources */,
 				29C392D829F9809A0041F569 /* CartService.swift in Sources */,
 				29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */,
+				43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */,
 				29C3928B29F9809A0041F569 /* HSBAColor+Highlight.swift in Sources */,
 				29C392D329F9809A0041F569 /* CartAssembly.swift in Sources */,
+				43EF49242A029EC1002424CE /* Coordinator.swift in Sources */,
 				29C392B929F9809A0041F569 /* InputAddress.swift in Sources */,
 				29C392A029F9809A0041F569 /* OrderUpdateRequest.swift in Sources */,
 				29C392CD29F9809A0041F569 /* OrderCheckoutAssembly.swift in Sources */,
