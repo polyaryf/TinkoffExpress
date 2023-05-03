@@ -111,11 +111,6 @@ final class OrderCheckoutViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "arrow.back"),
-            style: .plain,
-            target: nil,
-            action: #selector(backButtonTapped))
         navigationItem.title = "Оформление товара"
     }
     
