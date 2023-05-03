@@ -38,6 +38,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     
     func checkoutButtonTapped() {
         //let request = mapper.toOrderCreateRequset(output.getOrderDetail())
+
         let request = OrderCreateRequest(
             address: TEApiAddress(address: "", lat: 0, lon: 0),
             paymentMethod: "CARD",
@@ -46,20 +47,21 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             comment: "",
             status: ""
         )
+
         view?.startButtonLoading()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
-            self?.service.createOrder(with: request) {  result in
-                switch result {
-                case .success(let flag):
-                    if flag {
-                        self?.view?.stopButtonLoading()
-                        self?.showFinalDelivery()
-                    } else {
-                        self?.view?.stopButtonLoading()
-                    }
-                    
-                case .failure: self?.view?.stopButtonLoading()
+
+        service.createOrder(with: request) { [weak self] result in
+            switch result {
+            case .success(let flag):
+                if flag {
+                    self?.view?.stopButtonLoading()
+                    self?.showFinalDelivery()
+                } else {
+                    self?.view?.stopButtonLoading()
                 }
+
+            case .failure:
+                self?.view?.stopButtonLoading()
             }
         }
     }

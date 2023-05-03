@@ -30,9 +30,7 @@ final class RestOrderCheckoutService: OrderCheckoutService {
         completion: @escaping (Result<Bool, Error>) -> Void
     ) {
         networkService.createOrder(reqest: request) { result in
-            let newResult = result
-                .map { $0 }
-                .mapError { $0 as Error }
+            let newResult = result.mapError { $0 as Error }
             completion(newResult)
         }
     }
