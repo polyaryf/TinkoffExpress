@@ -9,6 +9,7 @@ import UIKit
 
 protocol IMeetingAppointmentRouter {
     func openAddressInput(output: IAddressInputModuleOutput)
+    func openABtest(output: IABTestModuleOutput)
 }
 
 final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
@@ -16,11 +17,16 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
 
     weak var transitionHandler: UIViewController?
     private let addressInputAssembly: IAddressInputAssembly
+    private let abTestAssembly: IABTestAssembly
 
     // MARK: Init
 
-    init(addressInputAssembly: IAddressInputAssembly) {
+    init(
+        addressInputAssembly: IAddressInputAssembly,
+        abTestAssembly: IABTestAssembly
+    ) {
         self.addressInputAssembly = addressInputAssembly
+        self.abTestAssembly = abTestAssembly
     }
 
     // MARK: IMeetingAppointmentRouter
@@ -28,6 +34,12 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
     func openAddressInput(output: IAddressInputModuleOutput) {
         let addressInputView = addressInputAssembly.createAddressInputView(output: output)
         let navigationController = UINavigationController(rootViewController: addressInputView)
+        transitionHandler?.present(navigationController, animated: true)
+    }
+    
+    func openABtest(output: IABTestModuleOutput) {
+        let abTestView = abTestAssembly.createABTestView(output: output)
+        let navigationController = UINavigationController(rootViewController: abTestView)
         transitionHandler?.present(navigationController, animated: true)
     }
 }

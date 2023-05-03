@@ -14,7 +14,7 @@ protocol FinalDeliveryService {
 class MockFinalDeliveryService: FinalDeliveryService {
     func loadItem(completion: @escaping (FinalDelivery?) -> Void) {
         let item: FinalDelivery = .init(
-            _where: "Ивангород, ул. Гагарина, д. 1",
+            where: "Ивангород, ул. Гагарина, д. 1",
             when: "Завтра с 10:00 до 12:00",
             what: "Посылку")
         completion(item)

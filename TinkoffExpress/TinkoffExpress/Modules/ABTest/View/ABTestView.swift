@@ -169,7 +169,7 @@ final class ABTestView: UIView {
             textField.textColor = UIColor(named: "inputText.abtest.color")
             isAddressValid = true
         } else {
-            textField.textColor = .red
+            textField.textColor = UIColor(named: "red.abtest.color")
             isAddressValid = false
         }
     }
@@ -180,15 +180,9 @@ final class ABTestView: UIView {
             return false
         }
         switch type {
-        case .country:
+        case .country, .region:
             return isValidCharOnly(with: text)
-        case .region:
-            return isValidCharOnly(with: text)
-        case .street:
-            return true
-        case .house:
-            return true
-        case .settlement:
+        case .street, .house, .settlement:
             return true
         case .postalCode:
             return isValidNundersOnly(with: text)

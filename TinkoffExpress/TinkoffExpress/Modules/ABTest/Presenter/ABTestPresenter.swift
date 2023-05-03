@@ -33,19 +33,6 @@ class ABTestPresenter: ABTestPresenterProtocol {
         self.output = output
     }
     
-    private func viewWillDisappear(input abAddress: ABInputAddress) {
-        let text = abAddress.stringRepresentation
-        self.service.loadAddress(with: text) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let address):
-                self.output?.abTestModule(didCompleteWith: address)
-            case .failure:
-                break
-            }
-        }
-    }
-    
     // MARK: ABTestPresenterProtocol
     
     func cancelButtonTapped() {
@@ -54,7 +41,8 @@ class ABTestPresenter: ABTestPresenterProtocol {
     
     func doneButtonTapped(with address: ABInputAddress?) {
         guard let address else { return }
-        viewWillDisappear(input: address)
+        let text = address.stringRepresentation
+        output?.abTestModule(didCompleteWith: text)
         view?.closeABTestView()
     }
 }
