@@ -55,6 +55,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupView()
+        contentView.backgroundColor = UIColor(named: "backgroundColor.orderCheckout")
     }
     
     required init?(coder: NSCoder) {

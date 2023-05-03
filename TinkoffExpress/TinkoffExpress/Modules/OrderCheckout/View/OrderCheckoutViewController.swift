@@ -20,7 +20,6 @@ final class OrderCheckoutViewController: UIViewController {
     
     // MARK: Subviews
     
-    private lazy var navigationBar: UINavigationBar = .init()
     private lazy var tableView: UITableView = {
         var table: UITableView = .init()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +44,7 @@ final class OrderCheckoutViewController: UIViewController {
     
     init(orderCheckoutPresenter: OrderCheckoutPresenterProtocol) {
         self.orderCheckoutPresenter = orderCheckoutPresenter
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -81,23 +81,18 @@ final class OrderCheckoutViewController: UIViewController {
         setupViewHierarchy()
         setupConstraints()
         setUpTable()
-        setupNavBar()
+        setupNavigationItem()
     }
     
     private func setupViewHierarchy() {
-        view.addSubview(navigationBar)
         view.addSubview(tableView)
         view.addSubview(checkoutButton)
     }
     
     private func setupConstraints() {
-        navigationBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.leading.equalToSuperview()
-        }
         tableView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(16)
-            $0.top.equalTo(navigationBar.snp.bottom).offset(28)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(28)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         checkoutButton.snp.makeConstraints {
@@ -111,29 +106,27 @@ final class OrderCheckoutViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
+        tableView.backgroundColor = UIColor(named: "backgroundColor.orderCheckout")
         tableView.register(OrderCheckoutTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    private func setupNavBar() {
-        let navItem = UINavigationItem(title: "Оформление товара")
-        let backItem = UIBarButtonItem(
+    private func setupNavigationItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "arrow.back"),
             style: .plain,
             target: nil,
             action: #selector(backButtonTapped))
-        navItem.leftBarButtonItem = backItem
-        navigationBar.setItems([navItem], animated: false)
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(named: "backgroundColor.orderCheckout")
-        appearance.titleTextAttributes = [
-            .foregroundColor: UIColor(named: "title.navBar.orderCheckout.color") ?? UIColor.black
-        ]
-        appearance.shadowColor = .clear
-        
-        navigationBar.standardAppearance = appearance
-        navigationBar.compactAppearance = appearance
-        navigationBar.scrollEdgeAppearance = appearance
+        navigationItem.title = "Оформление товара"
+    }
+    
+    // MARK: Button animation
+    
+    func startButtonLoading() {
+        checkoutButton.startLoading()
+    }
+    
+    func stopButtonLoading() {
+        checkoutButton.stopLoading()
     }
 }
 
