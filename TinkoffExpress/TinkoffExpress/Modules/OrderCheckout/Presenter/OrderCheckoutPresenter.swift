@@ -21,9 +21,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     
     // MARK: Init
     
-    init(
-        service: OrderCheckoutService
-    ) {
+    init(service: OrderCheckoutService) {
         self.service = service
     }
     
