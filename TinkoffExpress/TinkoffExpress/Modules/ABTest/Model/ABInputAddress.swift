@@ -15,3 +15,28 @@ struct ABInputAddress {
     var settlement: String
     var postalСode: String
 }
+
+extension ABInputAddress {
+    var stringRepresentation: String {
+        var result = ""
+        if !self.country.isEmpty {
+            result += "\(self.country) "
+        }
+        if !self.region.isEmpty {
+            result += "\(self.region) "
+        }
+        if !self.street.isEmpty {
+            result += "\(self.street) "
+        }
+        if !self.house.isEmpty {
+            result += "\(self.house) "
+        }
+        if !self.settlement.isEmpty {
+            result += "\(self.settlement) "
+        }
+        if !self.postalСode.isEmpty {
+            result += "\(self.postalСode) "
+        }
+        return result
+    }
+}

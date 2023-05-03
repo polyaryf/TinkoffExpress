@@ -19,7 +19,7 @@ final class ABTestView: UIView {
     
     private lazy var containerView = UIView()
     
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
@@ -120,7 +120,7 @@ final class ABTestView: UIView {
         stackView.spacing = 16
     }
     
-    private func createTextField(with type: ABTestType) -> TextField {
+    private func createTextField(with type: ABTestFieldType) -> TextField {
         let textField = TextField()
         textField.modifyClearButtonWithImage(
             image: UIImage(named: "x.cross.addressInput")
@@ -164,7 +164,7 @@ final class ABTestView: UIView {
     
     // MARK: Validation
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange(_ textField: UITextField) {
         if isValid(at: textField) {
             textField.textColor = UIColor(named: "inputText.abtest.color")
             isAddressValid = true
@@ -196,14 +196,12 @@ final class ABTestView: UIView {
     }
     
     private func isValidCharOnly(with text: String) -> Bool {
-        let set = CharacterSet(charactersIn: text)
         let digitsCharacters = CharacterSet(charactersIn: "0123456789")
         let decimalRange = text.rangeOfCharacter(from: digitsCharacters)
         return !(decimalRange != nil)
     }
     
     private func isValidNundersOnly(with text: String) -> Bool {
-        let set = CharacterSet(charactersIn: text)
         let digitsCharacters = CharacterSet(charactersIn: "0123456789")
         let characterSet = CharacterSet(charactersIn: text)
         return digitsCharacters.isSuperset(of: characterSet)
@@ -225,7 +223,7 @@ final class ABTestView: UIView {
         return false
     }
     
-    func setAddress(with type: ABTestType, from textField: UITextField) {
+    func setAddress(with type: ABTestFieldType, from textField: UITextField) {
         let text = textField.text ?? ""
         switch type {
         case .country:
@@ -243,7 +241,7 @@ final class ABTestView: UIView {
         }
     }
     
-    func getType(for textField: UITextField) -> ABTestType {
+    func getType(for textField: UITextField) -> ABTestFieldType {
         let textFields = stackView.arrangedSubviews.compactMap {
             $0 as? TextField
         }

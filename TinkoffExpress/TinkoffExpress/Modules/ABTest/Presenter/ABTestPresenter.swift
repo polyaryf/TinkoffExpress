@@ -22,22 +22,19 @@ class ABTestPresenter: ABTestPresenterProtocol {
     weak var view: ABTestViewControllerProtocol?
     private weak var output: IABTestModuleOutput?
     private let service: ABTestService
-    private let helper: ABTestHelper
     
     // MARK: Init
     
     init(
         service: ABTestService,
-        output: IABTestModuleOutput,
-        helper: ABTestHelper
+        output: IABTestModuleOutput
     ) {
         self.service = service
         self.output = output
-        self.helper = helper
     }
     
     private func viewWillDisappear(input abAddress: ABInputAddress) {
-        let text = helper.toString(from: abAddress)
+        let text = abAddress.stringRepresentation
         self.service.loadAddress(with: text) { [weak self] result in
             guard let self = self else { return }
             switch result {

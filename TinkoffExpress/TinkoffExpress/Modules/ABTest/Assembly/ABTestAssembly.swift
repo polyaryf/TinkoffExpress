@@ -15,12 +15,9 @@ final class ABTestAssembly: IABTestAssembly {
     func createABTestView(output: IABTestModuleOutput) -> UIViewController {
         let networkService = DaDataApiService()
         let service = RestABTestService(networkService: networkService)
-        let helper = ABTestHelper()
-        let presenter = ABTestPresenter(service: service, output: output, helper: helper)
+        let presenter = ABTestPresenter(service: service, output: output)
         let view = ABTestViewController(presenter: presenter)
         presenter.view = view
         return view
     }
 }
-
-

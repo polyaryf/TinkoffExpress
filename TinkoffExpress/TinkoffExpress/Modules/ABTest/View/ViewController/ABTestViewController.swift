@@ -40,15 +40,7 @@ final class ABTestViewController: UIViewController {
     
     // MARK: Lifecycle
     override func loadView() {
-        super.loadView()
-        
         self.view = mainView
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mainView.stackView.arrangedSubviews[0].becomeFirstResponder()
     }
     
     override func viewDidLoad() {

@@ -1,5 +1,5 @@
 //
-//  ABTestType.swift
+//  ABTestFieldType.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 30.04.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ABTestType {
+enum ABTestFieldType {
     case country
     case region
     case street
