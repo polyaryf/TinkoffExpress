@@ -112,6 +112,12 @@
 		29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928329F9809A0041F569 /* AppDelegate.swift */; };
 		29C392ED29F9809A0041F569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3928429F9809A0041F569 /* SceneDelegate.swift */; };
 		29C93E4729FEB2D400EBFB23 /* FinalDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E4629FEB2D400EBFB23 /* FinalDelivery.swift */; };
+		43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */; };
+		43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */; };
+		43EF49132A029D2D002424CE /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490B2A029D2D002424CE /* MyOrders.swift */; };
+		43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490D2A029D2D002424CE /* MyOrdersCell.swift */; };
+		43EF49152A029D2D002424CE /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */; };
+		43EF49162A029D2D002424CE /* MyOrdersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49102A029D2D002424CE /* MyOrdersService.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 /* End PBXBuildFile section */
@@ -230,6 +236,12 @@
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersAssembly.swift; sourceTree = "<group>"; };
+		43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersPresenter.swift; sourceTree = "<group>"; };
+		43EF490B2A029D2D002424CE /* MyOrders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
+		43EF490D2A029D2D002424CE /* MyOrdersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
+		43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
+		43EF49102A029D2D002424CE /* MyOrdersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersService.swift; sourceTree = "<group>"; };
 		57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentRouter.swift; sourceTree = "<group>"; };
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
@@ -618,6 +630,7 @@
 		29C3921A29F980990041F569 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				43EF49052A029D2D002424CE /* MyOrders */,
 				29C3921B29F980990041F569 /* AddressInput */,
 				29C3922A29F980990041F569 /* MeetingAppointment */,
 				29C3923729F980990041F569 /* FinalDelivery */,
@@ -1090,6 +1103,59 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		43EF49052A029D2D002424CE /* MyOrders */ = {
+			isa = PBXGroup;
+			children = (
+				43EF49062A029D2D002424CE /* Assembly */,
+				43EF49082A029D2D002424CE /* Presenter */,
+				43EF490A2A029D2D002424CE /* Model */,
+				43EF490C2A029D2D002424CE /* View */,
+				43EF490F2A029D2D002424CE /* Service */,
+			);
+			path = MyOrders;
+			sourceTree = "<group>";
+		};
+		43EF49062A029D2D002424CE /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		43EF49082A029D2D002424CE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		43EF490A2A029D2D002424CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43EF490B2A029D2D002424CE /* MyOrders.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43EF490C2A029D2D002424CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43EF490D2A029D2D002424CE /* MyOrdersCell.swift */,
+				43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43EF490F2A029D2D002424CE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				43EF49102A029D2D002424CE /* MyOrdersService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		57D54A1529FD9277006C3A2C /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1257,6 +1323,7 @@
 				29C3928A29F9809A0041F569 /* UIColor+Highlight.swift in Sources */,
 				29C392C529F9809A0041F569 /* FinalDeliveryAssembly.swift in Sources */,
 				29C392E629F9809A0041F569 /* OnboardingService.swift in Sources */,
+				43EF49132A029D2D002424CE /* MyOrders.swift in Sources */,
 				29C3928D29F9809A0041F569 /* TextView+Extension.swift in Sources */,
 				29C392B629F9809A0041F569 /* DaDataApiService.swift in Sources */,
 				29C3929529F9809A0041F569 /* Button.Style+Extensions.swift in Sources */,
@@ -1270,12 +1337,15 @@
 				29C392B829F9809A0041F569 /* AddressInputPresenter.swift in Sources */,
 				29C392B429F9809A0041F569 /* DaDataAddressesProtocol.swift in Sources */,
 				29C392E129F9809A0041F569 /* OnboardingPresenter.swift in Sources */,
+				43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */,
 				29C392DC29F9809A0041F569 /* DeliveryCell.swift in Sources */,
 				29C392D429F9809A0041F569 /* CartPresenter.swift in Sources */,
+				43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */,
 				29C3928C29F9809A0041F569 /* Theme.swift in Sources */,
 				29C3929D29F9809A0041F569 /* TEApiAddress.swift in Sources */,
 				29C392BF29F9809A0041F569 /* MeetingAppointmentPresenter.swift in Sources */,
 				29C3929929F9809A0041F569 /* TEColors.swift in Sources */,
+				43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */,
 				29C392CA29F9809A0041F569 /* FinalDeliveryService.swift in Sources */,
 				29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */,
 				29C392AD29F9809A0041F569 /* HttpClientError.swift in Sources */,
@@ -1289,6 +1359,7 @@
 				29C392DE29F9809A0041F569 /* DeliveryViewController.swift in Sources */,
 				29C3929629F9809A0041F569 /* Button.swift in Sources */,
 				29C392AF29F9809A0041F569 /* SuggestionsResponse.swift in Sources */,
+				43EF49152A029D2D002424CE /* MyOrdersViewController.swift in Sources */,
 				29C392C229F9809A0041F569 /* DateCell.swift in Sources */,
 				29C392AE29F9809A0041F569 /* SuggestionResponse.swift in Sources */,
 				29C392B029F9809A0041F569 /* DataResponse.swift in Sources */,
@@ -1311,6 +1382,7 @@
 				29C392D629F9809A0041F569 /* CartViewController.swift in Sources */,
 				29C3928729F9809A0041F569 /* HSBAColor.swift in Sources */,
 				57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */,
+				43EF49162A029D2D002424CE /* MyOrdersService.swift in Sources */,
 				29C3929829F9809A0041F569 /* ActivityIndicatorView.swift in Sources */,
 				29C392DA29F9809A0041F569 /* DeliveryPresenter.swift in Sources */,
 				29C3928629F9809A0041F569 /* ShadowAvailable.swift in Sources */,
