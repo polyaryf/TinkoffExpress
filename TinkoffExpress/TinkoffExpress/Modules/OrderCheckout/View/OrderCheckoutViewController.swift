@@ -15,8 +15,7 @@ final class OrderCheckoutViewController: UIViewController {
     
     // MARK: Properties
     
-    // TODO: change model
-    lazy var items: [OrderCheckout] = []
+    var item = OrderCheckout()
     
     // MARK: Subviews
     
@@ -131,14 +130,14 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = OrderCheckoutTableViewCell()
         if indexPath.section == 0 {
             cell.setType(.whatWillBeDelivered)
-            cell.setPrimaryText(items[0].whatWillBeDelivered)
+            cell.setPrimaryText(item.whatWillBeDelivered)
         } else if indexPath.section == 1 {
             cell.setType(.delivery)
-            cell.setPrimaryText(items[0].deliveryWhen)
-            cell.setSecondaryText(items[0].deliveryWhere)
+            cell.setPrimaryText(item.deliveryWhen)
+            cell.setSecondaryText(item.deliveryWhere)
         } else {
             cell.setType(.payment)
-            cell.setPrimaryText(items[0].paymentMethod)
+            cell.setPrimaryText(item.paymentMethod)
         }
         return cell
     }

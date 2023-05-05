@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol IOrderCheckoutModuleOutput: AnyObject {
+    func orderCheckout(didCompleteWith orderData: OrderCheckout)
+}
+
 protocol OrderCheckoutPresenterProtocol {
     func viewDidLoad()
     func checkoutButtonTapped()
@@ -19,19 +23,23 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     weak var view: OrderCheckoutViewController?
     private let service: OrderCheckoutService
     
+    // MARK: State
+    
+    private var item: OrderCheckout?
+    
     // MARK: Init
     
-    init(service: OrderCheckoutService) {
+    init(
+        service: OrderCheckoutService
+    ) {
         self.service = service
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service.loadItems { [weak self] items in
-            guard let self = self else { return }
-            self.view?.items = items ?? []
-        }
+        guard let item else { return }
+        view?.item = item
     }
 
     // MARK: Events
@@ -77,6 +85,13 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func showFinalDelivery() {
-        // TODO: coordinator?.move(FinalDelivery(), with: .set)
+        // TODO: add output add move to FinalDelivery with set
+//        output?.orderCheckout(didCompleteWith: item)
+    }
+}
+
+extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
+    func meetingAppointment(didCompleteWith orderData: OrderCheckout) {
+        self.item = orderData
     }
 }

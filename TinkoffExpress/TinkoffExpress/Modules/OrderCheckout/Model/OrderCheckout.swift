@@ -12,4 +12,18 @@ struct OrderCheckout {
     let deliveryWhen: String
     let deliveryWhere: String
     let paymentMethod: String
+    
+    init() {
+        self.whatWillBeDelivered = "whatWillBeDelivered"
+        self.deliveryWhen = "deliveryWhen"
+        self.deliveryWhere = "deliveryWhere"
+        self.paymentMethod = "paymentMethod"
+    }
+    
+    init(whatWillBeDelivered: String, deliveryWhen: String, deliveryWhere: String, paymentMethod: String) {
+        self.whatWillBeDelivered = whatWillBeDelivered
+        self.deliveryWhen = deliveryWhen
+        self.deliveryWhere = deliveryWhere
+        self.paymentMethod = paymentMethod
+    }
 }

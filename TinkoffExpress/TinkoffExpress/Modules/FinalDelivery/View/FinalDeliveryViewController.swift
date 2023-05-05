@@ -10,11 +10,11 @@ import UIKit
 final class FinalDeliveryViewController: UIViewController {
     // MARK: Dependencies
     
-    private var finalDeliveryPresenter: FinalDeliveryPresenterProtocol
+    private var presenter: FinalDeliveryPresenterProtocol
     
     // MARK: Properties
     
-    lazy var item: FinalDelivery = .init(where: "", when: "", what: "")
+    lazy var item = FinalDelivery()
 
     // MARK: Subviews
     
@@ -46,8 +46,9 @@ final class FinalDeliveryViewController: UIViewController {
     
     // MARK: Init
     
-    init(finalDeliveryPresenter: FinalDeliveryPresenterProtocol) {
-        self.finalDeliveryPresenter = finalDeliveryPresenter
+    init(presenter: FinalDeliveryPresenterProtocol) {
+        self.presenter = presenter
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,12 +63,13 @@ final class FinalDeliveryViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        presenter.viewDidLoad()
     }
     
     // MARK: Actions
     
     private func okButtonTapped() {
-        finalDeliveryPresenter.okButtonTapped()
+        presenter.okButtonTapped()
     }
     
     // MARK: Initial Configuration
@@ -117,13 +119,13 @@ extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = FinalDeliveryTableViewCell()
         if indexPath.section == 0 {
             cell.setType(._where)
-            cell.setPrimaryText("Ивангород, ул. Гагарина, д. 1")
+            cell.setPrimaryText(item.where)
         } else if indexPath.section == 1 {
             cell.setType(.when)
-            cell.setPrimaryText("Завтра с 10:00 до 12:00")
+            cell.setPrimaryText(item.when)
         } else {
             cell.setType(.what)
-            cell.setPrimaryText("Посылку")
+            cell.setPrimaryText(item.what)
         }
         return cell
     }

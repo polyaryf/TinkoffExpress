@@ -8,24 +8,25 @@
 import UIKit
 
 protocol FinalDeliveryPresenterProtocol {
+    func viewDidLoad()
     func okButtonTapped()
 }
 
 class FinalDeliveryPresenter: FinalDeliveryPresenterProtocol {
-    // MARK: Dependencies
+    // MARK: Dependency
     
     weak var view: FinalDeliveryViewController?
-    private var coordinator: Coordinator?
-    private var service: FinalDeliveryService?
     
-    // MARK: Init
+    // MARK: State
     
-    init(coordinator: Coordinator, service: FinalDeliveryService) {
-        self.coordinator = coordinator
-        self.service = service
+    private var item: FinalDelivery?
+    
+    // MARK: FinalDeliveryPresenterProtocol
+    
+    func viewDidLoad() {
+        guard let item else { return }
+        view?.item = item
     }
-    
-    // MARK: Events
     
     func okButtonTapped() {
         showCart()
@@ -34,6 +35,16 @@ class FinalDeliveryPresenter: FinalDeliveryPresenterProtocol {
     // MARK: Navigation
     
     private func showCart() {
-        coordinator?.move(CartAssembly(), with: .push)
+        // TODO: move to start
+    }
+}
+
+extension FinalDeliveryPresenter: IOrderCheckoutModuleOutput {
+    func orderCheckout(didCompleteWith orderData: OrderCheckout) {
+        let finalItem = FinalDelivery(
+            where: orderData.deliveryWhere,
+            when: orderData.deliveryWhen,
+            what: orderData.whatWillBeDelivered)
+        self.item = finalItem
     }
 }

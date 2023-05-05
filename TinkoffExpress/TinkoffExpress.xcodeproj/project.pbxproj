@@ -80,7 +80,6 @@
 		29C392C729F9809A0041F569 /* FinalDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3923D29F980990041F569 /* FinalDeliveryViewController.swift */; };
 		29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3923F29F980990041F569 /* FinalDeliveryTableViewCell.swift */; };
 		29C392C929F9809A0041F569 /* FinalDeliveryCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924029F980990041F569 /* FinalDeliveryCellType.swift */; };
-		29C392CA29F9809A0041F569 /* FinalDeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924229F980990041F569 /* FinalDeliveryService.swift */; };
 		29C392CB29F9809A0041F569 /* OrderCheckoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924529F980990041F569 /* OrderCheckoutPresenter.swift */; };
 		29C392CD29F9809A0041F569 /* OrderCheckoutAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924829F980990041F569 /* OrderCheckoutAssembly.swift */; };
 		29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C3924A29F980990041F569 /* OrderCheckout.swift */; };
@@ -208,7 +207,6 @@
 		29C3923D29F980990041F569 /* FinalDeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryViewController.swift; sourceTree = "<group>"; };
 		29C3923F29F980990041F569 /* FinalDeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		29C3924029F980990041F569 /* FinalDeliveryCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryCellType.swift; sourceTree = "<group>"; };
-		29C3924229F980990041F569 /* FinalDeliveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalDeliveryService.swift; sourceTree = "<group>"; };
 		29C3924529F980990041F569 /* OrderCheckoutPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutPresenter.swift; sourceTree = "<group>"; };
 		29C3924829F980990041F569 /* OrderCheckoutAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckoutAssembly.swift; sourceTree = "<group>"; };
 		29C3924A29F980990041F569 /* OrderCheckout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCheckout.swift; sourceTree = "<group>"; };
@@ -829,7 +827,6 @@
 				29C93E4529FEB2D400EBFB23 /* Model */,
 				29C3923A29F980990041F569 /* Presenter */,
 				29C3923C29F980990041F569 /* View */,
-				29C3924129F980990041F569 /* Service */,
 			);
 			path = FinalDelivery;
 			sourceTree = "<group>";
@@ -866,14 +863,6 @@
 				29C3924029F980990041F569 /* FinalDeliveryCellType.swift */,
 			);
 			path = FinelDeliveryCell;
-			sourceTree = "<group>";
-		};
-		29C3924129F980990041F569 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				29C3924229F980990041F569 /* FinalDeliveryService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		29C3924329F980990041F569 /* OrderCheckout */ = {
@@ -1458,7 +1447,6 @@
 				29C392BF29F9809A0041F569 /* MeetingAppointmentPresenter.swift in Sources */,
 				29C3929929F9809A0041F569 /* TEColors.swift in Sources */,
 				43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */,
-				29C392CA29F9809A0041F569 /* FinalDeliveryService.swift in Sources */,
 				29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */,
 				29C392AD29F9809A0041F569 /* HttpClientError.swift in Sources */,
 				29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */,

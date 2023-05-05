@@ -9,7 +9,6 @@ import Foundation
 
 protocol OrderCheckoutService {
     func createOrder(with request: OrderCreateRequest, completion: @escaping (Result<Bool, Error>) -> Void)
-    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void)
 }
 
 final class RestOrderCheckoutService: OrderCheckoutService {

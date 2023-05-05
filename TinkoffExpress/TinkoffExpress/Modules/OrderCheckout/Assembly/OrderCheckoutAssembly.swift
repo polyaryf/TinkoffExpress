@@ -16,7 +16,7 @@ final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
         let networkService = TEApiService()
         let mockService = MockOrderCheckoutService()
         let restService = RestOrderCheckoutService(networkService: networkService)
-        let presenter = OrderCheckoutPresenter(service: restService)
+        let presenter = OrderCheckoutPresenter(service: mockService)
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
         presenter.view = viewController
         return viewController

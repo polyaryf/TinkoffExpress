@@ -11,4 +11,16 @@ struct FinalDelivery {
     let `where`: String
     let when: String
     let what: String
+    
+    init() {
+        self.where = ""
+        self.when = ""
+        self.what = ""
+    }
+    
+    init(where: String, when: String, what: String) {
+        self.where = `where`
+        self.when = when
+        self.what = what
+    }
 }
