@@ -10,6 +10,8 @@
 		297FF59D29FFD37D00636B01 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF59C29FFD37D00636B01 /* TextField.swift */; };
 		297FF5A22A003E5000636B01 /* ABTestView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */; };
 		297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */; };
+		29852A362A051CC8005DCF46 /* OrderCheckoutModuleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A352A051CC8005DCF46 /* OrderCheckoutModuleType.swift */; };
+		29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -121,7 +123,7 @@
 		29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5D29FF033300EBFB23 /* ABTestView.swift */; };
 		43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */; };
 		43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */; };
-		43EF49132A029D2D002424CE /* MyOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490B2A029D2D002424CE /* MyOrders.swift */; };
+		43EF49132A029D2D002424CE /* MyOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490B2A029D2D002424CE /* MyOrder.swift */; };
 		43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490D2A029D2D002424CE /* MyOrdersCell.swift */; };
 		43EF49152A029D2D002424CE /* MyOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */; };
 		43EF49162A029D2D002424CE /* MyOrdersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49102A029D2D002424CE /* MyOrdersService.swift */; };
@@ -136,6 +138,8 @@
 		297FF59C29FFD37D00636B01 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+UIScrollView.swift"; sourceTree = "<group>"; };
 		297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
+		29852A352A051CC8005DCF46 /* OrderCheckoutModuleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutModuleType.swift; sourceTree = "<group>"; };
+		29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutMapper.swift; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -255,7 +259,7 @@
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 		43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersAssembly.swift; sourceTree = "<group>"; };
 		43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersPresenter.swift; sourceTree = "<group>"; };
-		43EF490B2A029D2D002424CE /* MyOrders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrders.swift; sourceTree = "<group>"; };
+		43EF490B2A029D2D002424CE /* MyOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrder.swift; sourceTree = "<group>"; };
 		43EF490D2A029D2D002424CE /* MyOrdersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
 		43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersViewController.swift; sourceTree = "<group>"; };
 		43EF49102A029D2D002424CE /* MyOrdersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersService.swift; sourceTree = "<group>"; };
@@ -303,6 +307,22 @@
 				297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */,
 			);
 			path = Extention;
+			sourceTree = "<group>";
+		};
+		29852A342A051CB4005DCF46 /* OrderCheckoutModuleType */ = {
+			isa = PBXGroup;
+			children = (
+				29852A352A051CC8005DCF46 /* OrderCheckoutModuleType.swift */,
+			);
+			path = OrderCheckoutModuleType;
+			sourceTree = "<group>";
+		};
+		29852A392A053B55005DCF46 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -879,6 +899,7 @@
 		29C3924329F980990041F569 /* OrderCheckout */ = {
 			isa = PBXGroup;
 			children = (
+				29852A342A051CB4005DCF46 /* OrderCheckoutModuleType */,
 				29C3924429F980990041F569 /* Presenter */,
 				29C3924629F980990041F569 /* Assembly */,
 				29C3924929F980990041F569 /* Model */,
@@ -933,6 +954,7 @@
 		29C3925029F980990041F569 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				29852A392A053B55005DCF46 /* Mapper */,
 				29C3925129F980990041F569 /* OrderCheckoutService.swift */,
 			);
 			path = Service;
@@ -1234,7 +1256,7 @@
 		43EF490A2A029D2D002424CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				43EF490B2A029D2D002424CE /* MyOrders.swift */,
+				43EF490B2A029D2D002424CE /* MyOrder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1433,7 +1455,7 @@
 				29C3928A29F9809A0041F569 /* UIColor+Highlight.swift in Sources */,
 				29C392C529F9809A0041F569 /* FinalDeliveryAssembly.swift in Sources */,
 				29C392E629F9809A0041F569 /* OnboardingService.swift in Sources */,
-				43EF49132A029D2D002424CE /* MyOrders.swift in Sources */,
+				43EF49132A029D2D002424CE /* MyOrder.swift in Sources */,
 				29C3928D29F9809A0041F569 /* TextView+Extension.swift in Sources */,
 				29C392B629F9809A0041F569 /* DaDataApiService.swift in Sources */,
 				29C3929529F9809A0041F569 /* Button.Style+Extensions.swift in Sources */,
@@ -1443,6 +1465,7 @@
 				297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */,
 				29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */,
 				29C392C029F9809A0041F569 /* MeetingAppointment.swift in Sources */,
+				29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */,
 				29C392BD29F9809A0041F569 /* AddressInputMapper.swift in Sources */,
 				29C3929329F9809A0041F569 /* Button.Configuration+Extensions.swift in Sources */,
 				29C392B829F9809A0041F569 /* AddressInputPresenter.swift in Sources */,
@@ -1542,6 +1565,7 @@
 				29C392E429F9809A0041F569 /* OnboardingHeaderView.swift in Sources */,
 				29C3929A29F9809A0041F569 /* Extension+UIColor.swift in Sources */,
 				29C392E029F9809A0041F569 /* OnboardingAssembly.swift in Sources */,
+				29852A362A051CC8005DCF46 /* OrderCheckoutModuleType.swift in Sources */,
 				29C392A929F9809A0041F569 /* NetworkConstant.swift in Sources */,
 				29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */,
 			);

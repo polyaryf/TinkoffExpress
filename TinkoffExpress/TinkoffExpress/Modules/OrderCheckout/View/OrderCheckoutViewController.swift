@@ -8,6 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol IOrderCheckoutViewController: AnyObject {
+    func startButtonLoading()
+    func stopButtonLoading()
+    func set(item: OrderCheckout)
+    func showAlert()
+}
+
 final class OrderCheckoutViewController: UIViewController {
     // MARK: Dependencies
     
@@ -15,8 +22,7 @@ final class OrderCheckoutViewController: UIViewController {
     
     // MARK: Properties
     
-    // TODO: change model
-    lazy var items: [OrderCheckout] = []
+    private var item = OrderCheckout()
     
     // MARK: Subviews
     
@@ -26,12 +32,22 @@ final class OrderCheckoutViewController: UIViewController {
         return table
     }()
     private lazy var checkoutButton: Button = {
-        let config = Button.Configuration(
-            // TODO: add loc enum for strings
-            title: "Оформить",
-            style: .primaryTinkoff,
-            contentSize: .basicLarge
-        )
+        var config = Button.Configuration()
+        switch orderCheckoutPresenter.getModuleType() {
+        case .creatingOrder:
+            config = Button.Configuration(
+                title: "Оформить",
+                style: .primaryTinkoff,
+                contentSize: .basicLarge
+            )
+        case .editingOrder:
+            config = Button.Configuration(
+                title: "Отменить",
+                style: .destructive,
+                contentSize: .basicLarge
+            )
+        }
+        
         let button = Button(configuration: config) { [ weak self ] in
             guard let self else { return }
             self.checkoutButtonTapped()
@@ -113,16 +129,6 @@ final class OrderCheckoutViewController: UIViewController {
     private func setupNavigationItem() {
         navigationItem.title = "Оформление товара"
     }
-    
-    // MARK: Button animation
-    
-    func startButtonLoading() {
-        checkoutButton.startLoading()
-    }
-    
-    func stopButtonLoading() {
-        checkoutButton.stopLoading()
-    }
 }
 
 // MARK: - UITableViewDelegate
@@ -131,14 +137,14 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = OrderCheckoutTableViewCell()
         if indexPath.section == 0 {
             cell.setType(.whatWillBeDelivered)
-            cell.setPrimaryText(items[0].whatWillBeDelivered)
+            cell.setPrimaryText(item.whatWillBeDelivered)
         } else if indexPath.section == 1 {
             cell.setType(.delivery)
-            cell.setPrimaryText(items[0].deliveryWhen)
-            cell.setSecondaryText(items[0].deliveryWhere)
+            cell.setPrimaryText(item.deliveryWhen)
+            cell.setSecondaryText(item.deliveryWhere)
         } else {
             cell.setType(.payment)
-            cell.setPrimaryText(items[0].paymentMethod)
+            cell.setPrimaryText(item.paymentMethod)
         }
         return cell
     }
@@ -153,5 +159,41 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+}
+
+// MARK: - IOrderCheckoutViewController
+
+extension OrderCheckoutViewController: IOrderCheckoutViewController {
+    func startButtonLoading() {
+        checkoutButton.startLoading()
+    }
+    
+    func stopButtonLoading() {
+        checkoutButton.stopLoading()
+    }
+    
+    func set(item: OrderCheckout) {
+        self.item = item
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(
+            title: "Вы уверены, что хотите отменить доставку?",
+            message: "",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: "Да",
+            style: UIAlertAction.Style.default) { [weak self] _ in
+                self?.orderCheckoutPresenter.yesButtonAlertTapped()
+            }
+        )
+        alert.addAction(UIAlertAction(
+            title: "Нет",
+            style: UIAlertAction.Style.default,
+            handler: nil)
+        )
+        self.present(alert, animated: true, completion: nil)
     }
 }
