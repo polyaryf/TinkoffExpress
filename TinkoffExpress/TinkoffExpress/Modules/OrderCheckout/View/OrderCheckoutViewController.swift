@@ -89,6 +89,10 @@ final class OrderCheckoutViewController: UIViewController {
         orderCheckoutPresenter.backButtonTapped()
     }
     
+    @objc func editButtonTapped() {
+        orderCheckoutPresenter.editButtonTapped()
+    }
+    
     // MARK: Initial Configuration
     
     private func setupView() {
@@ -142,6 +146,7 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
             cell.setType(.delivery)
             cell.setPrimaryText(item.deliveryWhen)
             cell.setSecondaryText(item.deliveryWhere)
+            cell.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         } else {
             cell.setType(.payment)
             cell.setPrimaryText(item.paymentMethod)
@@ -187,8 +192,7 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             title: "Да",
             style: UIAlertAction.Style.default) { [weak self] _ in
                 self?.orderCheckoutPresenter.yesButtonAlertTapped()
-            }
-        )
+        })
         alert.addAction(UIAlertAction(
             title: "Нет",
             style: UIAlertAction.Style.default,

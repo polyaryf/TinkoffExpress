@@ -12,6 +12,7 @@ protocol OrderCheckoutPresenterProtocol {
     func viewDidLoad()
     func backButtonTapped()
     func checkoutButtonTapped()
+    func editButtonTapped()
     func yesButtonAlertTapped()
 }
 
@@ -60,6 +61,10 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         case .creatingOrder: creatingType()
         case .editingOrder: editingType()
         }
+    }
+    
+    func editButtonTapped() {
+        // TODO: move to meeting appointment
     }
     
     func yesButtonAlertTapped() {
