@@ -48,7 +48,7 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
     }
     
     func openOrderCheckout() {
-        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView()
+        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(withModuleType: .editingOrder)
         transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
     }
 }
