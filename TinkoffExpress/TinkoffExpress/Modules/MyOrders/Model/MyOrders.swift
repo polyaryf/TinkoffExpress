@@ -8,6 +8,7 @@
 import Foundation
 
 struct MyOrders {
+    let id: Int
     let text: String
     let description: String
     let imageName: String
