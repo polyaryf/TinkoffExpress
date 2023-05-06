@@ -147,6 +147,7 @@
 		43EF49242A029EC1002424CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49212A029EC1002424CE /* Coordinator.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
+		DE533B792A06A18C0069E653 /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -299,6 +300,7 @@
 		57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentRouter.swift; sourceTree = "<group>"; };
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
+		DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
 		DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -502,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				29C391C829F980990041F569 /* UIView+Utils.swift */,
+				DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1725,6 +1728,7 @@
 				29C392A129F9809A0041F569 /* OrderCreateRequest.swift in Sources */,
 				29C392C329F9809A0041F569 /* TimeCell.swift in Sources */,
 				29C392BC29F9809A0041F569 /* AddressInputService.swift in Sources */,
+				DE533B792A06A18C0069E653 /* UICollectionView+Utils.swift in Sources */,
 				29C3929129F9809A0041F569 /* Button.InteractiveColor+Extensions.swift in Sources */,
 				29C392DB29F9809A0041F569 /* Delivery.swift in Sources */,
 				297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */,

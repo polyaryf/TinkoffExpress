@@ -13,12 +13,6 @@ final class MeetingAppointmentViewController: UIViewController {
     
     private let presenter: MeetingAppointmentPresenterProtocol
     
-    // MARK: Properties
-    
-    private var keyboardHeight: CGFloat = 0
-    var dates: [MeetingAppointmentDate] = []
-    var times: [MeetingAppointmentTime] = []
-    
     // MARK: Subviews
     
     private lazy var scrollView: UIScrollView = {
@@ -50,7 +44,7 @@ final class MeetingAppointmentViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(DateCell.self, forCellWithReuseIdentifier: "DateCell")
+        collectionView.register(DateCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -62,7 +56,7 @@ final class MeetingAppointmentViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(TimeCell.self, forCellWithReuseIdentifier: "TimeCell")
+        collectionView.register(TimeCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -125,6 +119,12 @@ final class MeetingAppointmentViewController: UIViewController {
         }
         return button
     }()
+    
+    // MARK: State
+    
+    private var keyboardHeight: CGFloat = 0
+    var dates: [MeetingAppointmentDate] = []
+    var times: [MeetingAppointmentTime] = []
     
     // MARK: Init
     
@@ -281,16 +281,16 @@ final class MeetingAppointmentViewController: UIViewController {
     @objc private func readyButtonTapped() {
         presenter.readyButtonTapped(with: view)
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension MeetingAppointmentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == dateCollectionView {
+        switch collectionView {
+        case dateCollectionView:
             return dates.count
-        } else {
+        default:
             return times.count
         }
     }
@@ -299,27 +299,16 @@ extension MeetingAppointmentViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        if collectionView == dateCollectionView {
-            if let dateCell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "DateCell",
-                for: indexPath
-            ) as? DateCell {
-                let textDateCell = dates[indexPath.row].date
-                dateCell.setupCell(text: textDateCell)
-                return dateCell
-            }
-        } else {
-            if let timeCell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "TimeCell",
-                for: indexPath
-            ) as? TimeCell {
-                let textTimeCell = times[indexPath.row].time
-                let textDateCell = times[indexPath.row].date
-                timeCell.setupCell(timeText: textTimeCell, dateText: textDateCell)
-                return timeCell
-            }
+        switch collectionView {
+        case dateCollectionView:
+            let cell = collectionView.dequeue(DateCell.self, for: indexPath)
+            cell.setupCell(text: dates[indexPath.row].date)
+            return cell
+        default:
+            let cell = collectionView.dequeue(TimeCell.self, for: indexPath)
+            cell.setupCell(timeText: times[indexPath.row].time, dateText: times[indexPath.row].date)
+            return cell
         }
-        return UICollectionViewCell()
     }
 }
 
@@ -339,9 +328,10 @@ extension MeetingAppointmentViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        if collectionView == dateCollectionView {
+        switch collectionView {
+        case dateCollectionView:
             return CGSize(width: 77, height: 30)
-        } else {
+        default:
             return CGSize(width: 116, height: 62)
         }
     }
@@ -351,9 +341,10 @@ extension MeetingAppointmentViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        if collectionView == dateCollectionView {
+        switch collectionView {
+        case dateCollectionView:
             return 8
-        } else {
+        default:
             return 12
         }
     }
