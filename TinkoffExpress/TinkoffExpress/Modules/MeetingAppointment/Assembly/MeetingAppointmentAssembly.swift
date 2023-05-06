@@ -21,7 +21,7 @@ final class MeetingAppointmentAssembly: Assembly {
             service: mockService
         )
 
-        let viewController = MeetingAppointmentViewController(meetingAppointmentPresenter: presenter)
+        let viewController = MeetingAppointmentViewController(presenter: presenter)
         presenter.view = viewController
         router.transitionHandler = viewController
         return viewController
