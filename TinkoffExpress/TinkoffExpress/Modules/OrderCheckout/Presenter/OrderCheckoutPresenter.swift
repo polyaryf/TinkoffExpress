@@ -122,9 +122,3 @@ extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
         self.item = orderData
     }
 }
-
-extension OrderCheckoutPresenter: IMyOrdersModuleOutput {
-    func myOrders(didCompleteWith order: MyOrder) {
-        self.item = mapper.toOrderCheckout(from: order)
-    }
-}
