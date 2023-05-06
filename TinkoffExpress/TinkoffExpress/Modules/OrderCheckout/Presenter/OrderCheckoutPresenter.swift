@@ -12,16 +12,25 @@ protocol IOrderCheckoutModuleOutput: AnyObject {
 }
 
 protocol OrderCheckoutPresenterProtocol {
+    func getModuleType() -> OrderCheckoutModuleType
     func viewDidLoad()
-    func checkoutButtonTapped()
     func backButtonTapped()
+    func checkoutButtonTapped()
+    func editButtonTapped()
+    func yesButtonAlertTapped()
 }
 
 class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Dependencies
     
-    weak var view: OrderCheckoutViewController?
+    weak var view: IOrderCheckoutViewController?
     private let service: OrderCheckoutService
+    private let mapper: IOrderCheckoutMapper
+    
+    // MARK: State
+    
+    private var item: OrderCheckout?
+    private var type: OrderCheckoutModuleType
     
     // MARK: State
     
@@ -30,34 +39,54 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Init
     
     init(
-        service: OrderCheckoutService
+        service: OrderCheckoutService,
+        mapper: IOrderCheckoutMapper,
+        type: OrderCheckoutModuleType
     ) {
         self.service = service
+        self.mapper = mapper
+        self.type = type
     }
     
-    // MARK: Life Cycle
+    // MARK: OrderCheckoutPresenterProtocol
+    
+    func getModuleType() -> OrderCheckoutModuleType {
+        type
+    }
     
     func viewDidLoad() {
         guard let item else { return }
-        view?.item = item
+        view?.set(item: item)
     }
-
-    // MARK: Events
+    
+    func backButtonTapped() {
+        // TODO: return back not only to MeetingAppointment
+        showMeetingAppointment()
+    }
     
     func checkoutButtonTapped() {
-        //let request = mapper.toOrderCreateRequset(output.getOrderDetail())
-
-        let request = OrderCreateRequest(
-            address: TEApiAddress(address: "", lat: 0, lon: 0),
-            paymentMethod: "CARD",
-            deliverySlot: TEApiTimeSlot(date: "", timeFrom: "", timeTo: ""),
-            items: [],
-            comment: "",
-            status: ""
-        )
-
+        switch type {
+        case .creatingOrder: creatingType()
+        case .editingOrder: editingType()
+        }
+    }
+    
+    func editButtonTapped() {
+        // TODO: move to meeting appointment
+    }
+    
+    func yesButtonAlertTapped() {
+        service.deleteOrder()
+        // TODO: show MyOrders with preview
+    }
+    
+    // MARK: Private
+    
+    private func creatingType() {
         view?.startButtonLoading()
-
+        
+        //  TODO: добавить данные для создания запроса
+        let request = mapper.toOrderCreateRequest()
         service.createOrder(with: request) { [weak self] result in
             switch result {
             case .success(let flag):
@@ -74,8 +103,8 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         }
     }
     
-    func backButtonTapped() {
-        showMeetingAppointment()
+    private func editingType() {
+        view?.showAlert()
     }
     
     // MARK: Navigation
@@ -93,5 +122,11 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
 extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
     func meetingAppointment(didCompleteWith orderData: OrderCheckout) {
         self.item = orderData
+    }
+}
+
+extension OrderCheckoutPresenter: IMyOrdersModuleOutput {
+    func myOrders(didCompleteWith order: MyOrder) {
+        self.item = mapper.toOrderCheckout(from: order)
     }
 }

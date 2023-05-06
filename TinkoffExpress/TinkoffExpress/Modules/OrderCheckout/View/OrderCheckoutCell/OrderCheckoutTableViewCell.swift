@@ -18,16 +18,6 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var editButton: UIButton = {
-        var button = UIButton(type: .system)
-        // TODO: убрать хардкод всех надписей
-        button.setTitle("Изменить", for: .normal)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.backgroundColor = .clear
-        button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     private lazy var primaryText: UILabel = {
         var label = UILabel()
         label.font = .systemFont(ofSize: 17)
@@ -47,6 +37,15 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         imageView.image = UIImage(named: "cart")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    lazy var editButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("Изменить", for: .normal)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.backgroundColor = .clear
+        button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     // MARK: Init
