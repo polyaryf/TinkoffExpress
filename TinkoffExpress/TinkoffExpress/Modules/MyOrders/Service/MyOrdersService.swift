@@ -25,7 +25,7 @@ final class RestMyOrdersService: MyOrdersService {
     func loadItems(completion: @escaping ([MyOrder]) -> Void) {
         networkService.getOrders { result in
             let newResult = result.map { apiOrders in
-                apiOrders.compactMap { apiOrder in
+                apiOrders.map { apiOrder in
                     MyOrder(
                         id: apiOrder.id,
                         text: "Доставка",
