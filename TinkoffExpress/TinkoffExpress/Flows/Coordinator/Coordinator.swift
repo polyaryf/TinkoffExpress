@@ -23,7 +23,11 @@ final class AppCoordinator: Coordinator {
         guard isRootCoordinator else { return }
         self.navigationController = navigationController
         
-        setupTabBar(assemblages: [CartAssembly(), MyOrdersAssembly()])
+        setupTabBar(assemblages: [
+            CartAssembly(),
+            MyOrdersAssembly(),
+            SettingsAssembly()
+        ])
     }
     
     func move(_ assembly: Assembly, with typeOfNavigation: TypeOfNavigation) {
@@ -59,11 +63,12 @@ final class AppCoordinator: Coordinator {
         
         tabBarController.viewControllers = viewControllers
         navigationController?.setViewControllers([tabBarController], animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func getTabBarItem(with index: Int) -> UITabBarItem {
-        let titles: [String] = ["Корзина", "Мои заказы"]
-        let imageNames: [String] = ["cartTabBarItemImage", "myOrdersTabBarItemImage"]
+        let titles: [String] = ["Корзина", "Мои заказы", "Настройки"]
+        let imageNames: [String] = ["cartTabBarItemImage", "myOrdersTabBarItemImage", "myOrdersTabBarItemImage"]
         return UITabBarItem(title: titles[index], image: UIImage(named: imageNames[index]), tag: index)
     }
 }
