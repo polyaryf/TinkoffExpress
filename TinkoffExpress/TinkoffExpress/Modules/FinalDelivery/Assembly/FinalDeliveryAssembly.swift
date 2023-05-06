@@ -13,8 +13,8 @@ protocol IFinalDelivaryAssembly {
 
 final class FinalDeliveryAssembly: IFinalDelivaryAssembly {
     func createFinalDeliveryView(with model: FinalDelivery) -> UIViewController {
-        let presenter = FinalDeliveryPresenter(item: model)
-        let viewController = FinalDeliveryViewController(presenter: presenter)
+        let presenter = FinalDeliveryPresenter()
+        let viewController = FinalDeliveryViewController(item: model, presenter: presenter)
         presenter.view = viewController
         return viewController
     }

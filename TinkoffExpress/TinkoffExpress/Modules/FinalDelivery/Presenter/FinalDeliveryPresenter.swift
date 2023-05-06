@@ -17,21 +17,9 @@ class FinalDeliveryPresenter: FinalDeliveryPresenterProtocol {
     
     weak var view: IFinalDeliveryViewController?
     
-    // MARK: State
-    
-    private let item: FinalDelivery
-    
-    // MARK: Init
-    
-    init(item: FinalDelivery) {
-        self.item = item
-    }
-    
     // MARK: FinalDeliveryPresenterProtocol
     
-    func viewDidLoad() {
-        view?.setItem(with: item)
-    }
+    func viewDidLoad() {}
     
     func okButtonTapped() {
         view?.closeView()

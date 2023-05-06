@@ -9,7 +9,6 @@ import UIKit
 
 protocol IFinalDeliveryViewController: AnyObject {
     func closeView()
-    func setItem(with item: FinalDelivery)
 }
 
 final class FinalDeliveryViewController: UIViewController {
@@ -19,7 +18,7 @@ final class FinalDeliveryViewController: UIViewController {
     
     // MARK: State
     
-    private var item = FinalDelivery()
+    private let item: FinalDelivery
 
     // MARK: Subviews
     
@@ -52,7 +51,11 @@ final class FinalDeliveryViewController: UIViewController {
     
     // MARK: Init
     
-    init(presenter: FinalDeliveryPresenterProtocol) {
+    init(
+        item: FinalDelivery,
+        presenter: FinalDeliveryPresenterProtocol
+    ) {
+        self.item = item
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -154,9 +157,5 @@ extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSourc
 extension FinalDeliveryViewController: IFinalDeliveryViewController {
     func closeView() {
         self.dismiss(animated: true)
-    }
-    
-    func setItem(with item: FinalDelivery) {
-        self.item = item
     }
 }
