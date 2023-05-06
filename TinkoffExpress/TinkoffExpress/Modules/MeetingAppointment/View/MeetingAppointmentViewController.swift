@@ -122,7 +122,6 @@ final class MeetingAppointmentViewController: UIViewController {
     
     // MARK: State
     
-    private var keyboardHeight: CGFloat = 0
     var dates: [MeetingAppointmentDate] = []
     var times: [MeetingAppointmentTime] = []
     
@@ -260,18 +259,32 @@ final class MeetingAppointmentViewController: UIViewController {
     }
     
     @objc private func keyboardWillShow(notification: Notification) {
-        presenter.keyboardWillShow(
-            with: notification,
-            &keyboardHeight,
-            view,
-            textView,
-            scrollView,
-            readyButton
-        )
+        guard let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        let contentInsets = keyboardFrame.size.height + readyButton.bounds.height + 32
+        scrollView.contentInset.bottom = contentInsets
+        scrollView.verticalScrollIndicatorInsets.bottom = contentInsets
+        scrollView.scrollRectToVisible(textView.frame, animated: true)
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            readyButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-(keyboardFrame.size.height + 16))
+            }
+            view.layoutIfNeeded()
+        }
     }
     
     @objc private func keyboardWillHide(notification: Notification) {
-        presenter.keyboardWillHide(with: notification, view, scrollView, readyButton)
+        scrollView.contentInset.bottom = 0
+        scrollView.verticalScrollIndicatorInsets.bottom = 0
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            readyButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(60)
+            }
+            view.layoutIfNeeded()
+        }
     }
     
     @objc private func clearButtonTapped() {

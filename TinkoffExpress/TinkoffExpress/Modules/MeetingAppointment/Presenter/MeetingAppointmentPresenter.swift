@@ -20,21 +20,6 @@ protocol MeetingAppointmentPresenterProtocol {
     func textViewDidChange(with textView: UITextView, _ countLabel: UILabel, _ deliveryButton: Button)
     func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
     func textViewDidEndEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
-    // swiftlint:disable:next function_parameter_count
-    func keyboardWillShow(
-        with notification: Notification,
-        _ keyboardHeight: inout CGFloat,
-        _ view: UIView,
-        _ textView: UITextView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    )
-    func keyboardWillHide(
-        with notification: Notification,
-        _ view: UIView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    )
     func clearButtonTapped(with textView: UITextView, _ countLabel: UILabel)
     func readyButtonTapped(with view: UIView)
     func deliveryButtonTapped()
@@ -124,49 +109,6 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
         if textView.text.isEmpty {
             textView.text = "Как добраться и когда вам позвонить"
             textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        }
-    }
-    // swiftlint:disable:next function_parameter_count
-    func keyboardWillShow(
-        with notification: Notification,
-        _ keyboardHeight: inout CGFloat,
-        _ view: UIView,
-        _ textView: UITextView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    ) {
-        guard let userInfo = notification.userInfo,
-        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        
-        keyboardHeight = keyboardFrame.size.height + readyButton.bounds.height + 32
-        
-        scrollView.contentInset.bottom = keyboardHeight
-        scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight
-        
-        scrollView.scrollRectToVisible(textView.frame, animated: true)
-        
-        UIView.animate(withDuration: 0.5) {
-            readyButton.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(-(keyboardFrame.size.height + 16))
-            }
-            view.layoutSubviews()
-        }
-    }
-    
-    func keyboardWillHide(
-        with notification: Notification,
-        _ view: UIView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    ) {
-        scrollView.contentInset.bottom = 0
-        scrollView.verticalScrollIndicatorInsets.bottom = 0
-        
-        UIView.animate(withDuration: 0.5) {
-            readyButton.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(60)
-            }
-            view.layoutSubviews()
         }
     }
     
