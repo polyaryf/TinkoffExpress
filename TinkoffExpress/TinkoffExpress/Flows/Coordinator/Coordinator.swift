@@ -23,11 +23,7 @@ final class AppCoordinator: Coordinator {
         guard isRootCoordinator else { return }
         self.navigationController = navigationController
         
-        setupTabBar(assemblages: [
-            CartAssembly(),
-            MyOrdersAssembly(),
-            SettingsAssembly()
-        ])
+        setupTabBar()
     }
     
     func move(_ assembly: Assembly, with typeOfNavigation: TypeOfNavigation) {
@@ -50,16 +46,24 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    private func setupTabBar(assemblages: [Assembly]) {
+    private func setupTabBar() {
         let tabBarController = UITabBarController()
         var viewControllers: [UIViewController] = []
         
-        for i in 0..<assemblages.count {
-            let vc = assemblages[i].createViewController(coordinator: self)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.tabBarItem = getTabBarItem(with: i)
-            viewControllers.append(navController)
-        }
+        let cartController = UINavigationController(
+            rootViewController: CartAssembly().createViewController(coordinator: self)
+        )
+        let myOrdersController = UINavigationController(rootViewController: MyOrdersAssembly().createMyOrdersView())
+        let settingsController = UINavigationController(
+            rootViewController: SettingsAssembly().createViewController(coordinator: self)
+        )
+        cartController.tabBarItem = getTabBarItem(with: 0)
+        myOrdersController.tabBarItem = getTabBarItem(with: 1)
+        settingsController.tabBarItem = getTabBarItem(with: 2)
+        
+        viewControllers.append(cartController)
+        viewControllers.append(myOrdersController)
+        viewControllers.append(settingsController)
         
         tabBarController.viewControllers = viewControllers
         navigationController?.setViewControllers([tabBarController], animated: true)
