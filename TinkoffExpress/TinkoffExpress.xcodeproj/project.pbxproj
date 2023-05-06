@@ -121,6 +121,12 @@
 		29C93E5929FEE3D000EBFB23 /* ABTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5829FEE3D000EBFB23 /* ABTestPresenter.swift */; };
 		29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5B29FEEA9800EBFB23 /* ABTestAssembly.swift */; };
 		29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5D29FF033300EBFB23 /* ABTestView.swift */; };
+		439B5E082A065765001764B0 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E072A065765001764B0 /* SettingsAssembly.swift */; };
+		439B5E0A2A0657A9001764B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E092A0657A9001764B0 /* Settings.swift */; };
+		439B5E0C2A0657BD001764B0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E0B2A0657BD001764B0 /* SettingsViewController.swift */; };
+		439B5E0E2A0657C8001764B0 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E0D2A0657C8001764B0 /* SettingsPresenter.swift */; };
+		439B5E102A0657E5001764B0 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E0F2A0657E5001764B0 /* SettingsService.swift */; };
+		439B5E122A066B57001764B0 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E112A066B57001764B0 /* SettingsCell.swift */; };
 		43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */; };
 		43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */; };
 		43EF49132A029D2D002424CE /* MyOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF490B2A029D2D002424CE /* MyOrder.swift */; };
@@ -257,6 +263,12 @@
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		439B5E072A065765001764B0 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
+		439B5E092A0657A9001764B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		439B5E0B2A0657BD001764B0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		439B5E0D2A0657C8001764B0 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		439B5E0F2A0657E5001764B0 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		439B5E112A066B57001764B0 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		43EF49072A029D2D002424CE /* MyOrdersAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersAssembly.swift; sourceTree = "<group>"; };
 		43EF49092A029D2D002424CE /* MyOrdersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersPresenter.swift; sourceTree = "<group>"; };
 		43EF490B2A029D2D002424CE /* MyOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrder.swift; sourceTree = "<group>"; };
@@ -704,6 +716,7 @@
 		29C3921A29F980990041F569 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				439B5E002A0656EA001764B0 /* Settings */,
 				29C93E4B29FEBD4600EBFB23 /* ABTest */,
 				43EF49052A029D2D002424CE /* MyOrders */,
 				29C3921B29F980990041F569 /* AddressInput */,
@@ -1225,6 +1238,59 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		439B5E002A0656EA001764B0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E012A0656F0001764B0 /* Assembly */,
+				439B5E052A06570D001764B0 /* Model */,
+				439B5E042A065708001764B0 /* View */,
+				439B5E032A0656FD001764B0 /* Presenter */,
+				439B5E022A0656F5001764B0 /* Service */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		439B5E012A0656F0001764B0 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E072A065765001764B0 /* SettingsAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		439B5E022A0656F5001764B0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E0F2A0657E5001764B0 /* SettingsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		439B5E032A0656FD001764B0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E0D2A0657C8001764B0 /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		439B5E042A065708001764B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E112A066B57001764B0 /* SettingsCell.swift */,
+				439B5E0B2A0657BD001764B0 /* SettingsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		439B5E052A06570D001764B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				439B5E092A0657A9001764B0 /* Settings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		43EF49052A029D2D002424CE /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1462,6 +1528,7 @@
 				29C93E4729FEB2D400EBFB23 /* FinalDelivery.swift in Sources */,
 				29C392E529F9809A0041F569 /* OnboardingCell.swift in Sources */,
 				29C392D529F9809A0041F569 /* Cart.swift in Sources */,
+				439B5E082A065765001764B0 /* SettingsAssembly.swift in Sources */,
 				297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */,
 				29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */,
 				29C392C029F9809A0041F569 /* MeetingAppointment.swift in Sources */,
@@ -1501,6 +1568,8 @@
 				29C392B029F9809A0041F569 /* DataResponse.swift in Sources */,
 				29C392A829F9809A0041F569 /* MockTEApiService.swift in Sources */,
 				29C392C729F9809A0041F569 /* FinalDeliveryViewController.swift in Sources */,
+				439B5E0E2A0657C8001764B0 /* SettingsPresenter.swift in Sources */,
+				439B5E122A066B57001764B0 /* SettingsCell.swift in Sources */,
 				29C392E329F9809A0041F569 /* OnboardingViewController.swift in Sources */,
 				29C392A229F9809A0041F569 /* ValidationError.swift in Sources */,
 				29C392AB29F9809A0041F569 /* TEMoyaLogger.swift in Sources */,
@@ -1520,6 +1589,7 @@
 				29C3928729F9809A0041F569 /* HSBAColor.swift in Sources */,
 				57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */,
 				43EF49162A029D2D002424CE /* MyOrdersService.swift in Sources */,
+				439B5E0A2A0657A9001764B0 /* Settings.swift in Sources */,
 				29C3929829F9809A0041F569 /* ActivityIndicatorView.swift in Sources */,
 				29C392DA29F9809A0041F569 /* DeliveryPresenter.swift in Sources */,
 				29C3928629F9809A0041F569 /* ShadowAvailable.swift in Sources */,
@@ -1534,10 +1604,12 @@
 				29C93E5629FED85500EBFB23 /* ABTestFieldType.swift in Sources */,
 				29C3929C29F9809A0041F569 /* TEApiTimeSlot.swift in Sources */,
 				29C392C129F9809A0041F569 /* MeetingAppointmentViewController.swift in Sources */,
+				439B5E0C2A0657BD001764B0 /* SettingsViewController.swift in Sources */,
 				29C392C929F9809A0041F569 /* FinalDeliveryCellType.swift in Sources */,
 				29C392BE29F9809A0041F569 /* MeetingAppointmentAssembly.swift in Sources */,
 				29C392A629F9809A0041F569 /* TESlotApiProtocol.swift in Sources */,
 				29C392D829F9809A0041F569 /* CartService.swift in Sources */,
+				439B5E102A0657E5001764B0 /* SettingsService.swift in Sources */,
 				29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */,
 				43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */,
 				29C3928B29F9809A0041F569 /* HSBAColor+Highlight.swift in Sources */,
