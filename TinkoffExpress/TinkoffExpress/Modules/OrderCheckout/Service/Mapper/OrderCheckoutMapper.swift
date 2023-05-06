@@ -10,6 +10,7 @@ import Foundation
 protocol IOrderCheckoutMapper {
     func toOrderCheckout(from model: MyOrder) -> OrderCheckout
     func toOrderCreateRequest() -> OrderCreateRequest
+    func toFinalDelivery(from model: OrderCheckout) -> FinalDelivery
 }
 
 final class OrderCheckoutMapper: IOrderCheckoutMapper {
@@ -32,6 +33,14 @@ final class OrderCheckoutMapper: IOrderCheckoutMapper {
             items: [],
             comment: "",
             status: ""
+        )
+    }
+    
+    func toFinalDelivery(from model: OrderCheckout) -> FinalDelivery {
+        FinalDelivery(
+            where: model.deliveryWhere,
+            when: model.deliveryWhen,
+            what: "Посылку"
         )
     }
 }

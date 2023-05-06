@@ -16,14 +16,17 @@ final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
         let networkService = TEApiService()
         let mockService = MockOrderCheckoutService()
         let restService = RestOrderCheckoutService(networkService: networkService)
+        let router = OrderCheckoutRouter(finalDeliveryAssembly: FinalDeliveryAssembly())
         let mapper = OrderCheckoutMapper()
         let presenter = OrderCheckoutPresenter(
+            router: router,
             service: restService,
             mapper: mapper,
             type: type
         )
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
         presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

@@ -20,6 +20,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: IOrderCheckoutViewController?
+    private let router: IOrderCheckoutRouter
     private let service: OrderCheckoutService
     private let mapper: IOrderCheckoutMapper
     
@@ -31,13 +32,16 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Init
     
     init(
+        router: IOrderCheckoutRouter,
         service: OrderCheckoutService,
         mapper: IOrderCheckoutMapper,
         type: OrderCheckoutModuleType
     ) {
+        self.router = router
         self.service = service
         self.mapper = mapper
         self.type = type
+        self.item = OrderCheckout.init()
     }
     
     // MARK: OrderCheckoutPresenterProtocol
@@ -106,7 +110,16 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func showFinalDelivery() {
-        // TODO: coordinator?.move(FinalDelivery(), with: .set)
+        guard let item else { return }
+        router.openFinalDelivery(with: mapper.toFinalDelivery(from: item))
+    }
+}
+
+// MARK: - IMeetingAppointmentModuleOutput, IMyOrdersModuleOutput
+
+extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
+    func meetingAppointment(didCompleteWith orderData: OrderCheckout) {
+        self.item = orderData
     }
 }
 

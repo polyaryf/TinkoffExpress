@@ -48,7 +48,7 @@ final class OrderCheckoutViewController: UIViewController {
             )
         }
         
-        let button = Button(configuration: config) { [ weak self ] in
+        let button = Button(configuration: config) { [weak self] in
             guard let self else { return }
             self.checkoutButtonTapped()
         }

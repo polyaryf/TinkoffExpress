@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol IMeetingAppointmentModuleOutput: AnyObject {
+    /// тут подставила пока модельку следующего экрана
+    /// но лучше передавать введенные данные, которые я потом на своем экране будут парсить
+    func meetingAppointment(didCompleteWith orderData: OrderCheckout)
+}
+
 protocol MeetingAppointmentPresenterProtocol {
     func viewDidLoad()
     func addressButtonTapped()
@@ -43,7 +49,10 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
 
     // MARK: Init
 
-    init(router: IMeetingAppointmentRouter, service: MeetingAppointmentService) {
+    init(
+        router: IMeetingAppointmentRouter,
+        service: MeetingAppointmentService
+    ) {
         self.router = router
         self.service = service
     }
@@ -192,11 +201,12 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     }
     
     private func showOrderCheckout() {
+//        output?.meetingAppointment(didCompleteWith: OrderCheckout())
         router.openOrderCheckout()
     }
 }
 
-// MARK: - IAddressInputModuleOutput
+// MARK: - IAddressInputModuleOutput, IABTestModuleOutput
 
 extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
     func addressInputModule(didCompleteWith addressInput: String) {

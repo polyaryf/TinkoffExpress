@@ -7,11 +7,14 @@
 
 import UIKit
 
-final class FinalDeliveryAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
-        let mockService = MockFinalDeliveryService()
-        let presenter = FinalDeliveryPresenter(coordinator: coordinator, service: mockService)
-        let viewController = FinalDeliveryViewController(finalDeliveryPresenter: presenter)
+protocol IFinalDelivaryAssembly {
+    func createFinalDeliveryView(with model: FinalDelivery) -> UIViewController
+}
+
+final class FinalDeliveryAssembly: IFinalDelivaryAssembly {
+    func createFinalDeliveryView(with model: FinalDelivery) -> UIViewController {
+        let presenter = FinalDeliveryPresenter()
+        let viewController = FinalDeliveryViewController(item: model, presenter: presenter)
         presenter.view = viewController
         return viewController
     }

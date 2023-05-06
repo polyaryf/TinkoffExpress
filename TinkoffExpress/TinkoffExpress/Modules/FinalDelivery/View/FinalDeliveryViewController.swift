@@ -7,14 +7,18 @@
 
 import UIKit
 
+protocol IFinalDeliveryViewController: AnyObject {
+    func closeView()
+}
+
 final class FinalDeliveryViewController: UIViewController {
     // MARK: Dependencies
     
-    private var finalDeliveryPresenter: FinalDeliveryPresenterProtocol
+    private var presenter: FinalDeliveryPresenterProtocol
     
-    // MARK: Properties
+    // MARK: State
     
-    lazy var item: FinalDelivery = .init(where: "", when: "", what: "")
+    private let item: FinalDelivery
 
     // MARK: Subviews
     
@@ -33,21 +37,27 @@ final class FinalDeliveryViewController: UIViewController {
     }()
     private lazy var okButton: Button = {
         let config = Button.Configuration(
-            // TODO: add loc enum for strings
             title: "Хорошо",
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )
-        // TODO: add action
-        let button = Button(configuration: config, action: nil)
+        let button = Button(configuration: config) { [weak self] in
+            guard let self else { return }
+            self.okButtonTapped()
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     // MARK: Init
     
-    init(finalDeliveryPresenter: FinalDeliveryPresenterProtocol) {
-        self.finalDeliveryPresenter = finalDeliveryPresenter
+    init(
+        item: FinalDelivery,
+        presenter: FinalDeliveryPresenterProtocol
+    ) {
+        self.item = item
+        self.presenter = presenter
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,12 +72,13 @@ final class FinalDeliveryViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        presenter.viewDidLoad()
     }
     
     // MARK: Actions
     
     private func okButtonTapped() {
-        finalDeliveryPresenter.okButtonTapped()
+        presenter.okButtonTapped()
     }
     
     // MARK: Initial Configuration
@@ -112,18 +123,19 @@ final class FinalDeliveryViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FinalDeliveryTableViewCell()
         if indexPath.section == 0 {
             cell.setType(._where)
-            cell.setPrimaryText("Ивангород, ул. Гагарина, д. 1")
+            cell.setPrimaryText(item.where)
         } else if indexPath.section == 1 {
             cell.setType(.when)
-            cell.setPrimaryText("Завтра с 10:00 до 12:00")
+            cell.setPrimaryText(item.when)
         } else {
             cell.setType(.what)
-            cell.setPrimaryText("Посылку")
+            cell.setPrimaryText(item.what)
         }
         return cell
     }
@@ -137,5 +149,13 @@ extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         56
+    }
+}
+
+// MARK: - IFinalDeliveryViewController
+
+extension FinalDeliveryViewController: IFinalDeliveryViewController {
+    func closeView() {
+        self.dismiss(animated: true)
     }
 }

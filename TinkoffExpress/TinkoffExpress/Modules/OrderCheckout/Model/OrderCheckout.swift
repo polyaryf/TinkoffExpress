@@ -14,10 +14,10 @@ struct OrderCheckout {
     let paymentMethod: String
     
     init() {
-        self.whatWillBeDelivered = ""
-        self.deliveryWhen = ""
-        self.deliveryWhere = ""
-        self.paymentMethod = "CARD"
+        self.whatWillBeDelivered = "whatWillBeDelivered"
+        self.deliveryWhen = "deliveryWhen"
+        self.deliveryWhere = "deliveryWhere"
+        self.paymentMethod = "paymentMethod"
     }
     
     init(whatWillBeDelivered: String, deliveryWhen: String, deliveryWhere: String, paymentMethod: String) {
