@@ -15,36 +15,25 @@ protocol FinalDeliveryPresenterProtocol {
 class FinalDeliveryPresenter: FinalDeliveryPresenterProtocol {
     // MARK: Dependency
     
-    weak var view: FinalDeliveryViewController?
+    weak var view: IFinalDeliveryViewController?
     
     // MARK: State
     
-    private var item: FinalDelivery?
+    private let item: FinalDelivery
+    
+    // MARK: Init
+    
+    init(item: FinalDelivery) {
+        self.item = item
+    }
     
     // MARK: FinalDeliveryPresenterProtocol
     
     func viewDidLoad() {
-        guard let item else { return }
-        view?.item = item
+        view?.setItem(with: item)
     }
     
     func okButtonTapped() {
-        showCart()
-    }
-    
-    // MARK: Navigation
-    
-    private func showCart() {
-        // TODO: move to start
-    }
-}
-
-extension FinalDeliveryPresenter: IOrderCheckoutModuleOutput {
-    func orderCheckout(didCompleteWith orderData: OrderCheckout) {
-        let finalItem = FinalDelivery(
-            where: orderData.deliveryWhere,
-            when: orderData.deliveryWhen,
-            what: orderData.whatWillBeDelivered)
-        self.item = finalItem
+        view?.closeView()
     }
 }

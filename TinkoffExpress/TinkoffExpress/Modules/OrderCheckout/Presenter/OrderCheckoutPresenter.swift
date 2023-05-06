@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol IOrderCheckoutModuleOutput: AnyObject {
-    func orderCheckout(didCompleteWith orderData: OrderCheckout)
-}
-
 protocol OrderCheckoutPresenterProtocol {
     func getModuleType() -> OrderCheckoutModuleType
     func viewDidLoad()
@@ -24,6 +20,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: IOrderCheckoutViewController?
+    private let router: IOrderCheckoutRouter
     private let service: OrderCheckoutService
     private let mapper: IOrderCheckoutMapper
     
@@ -32,20 +29,19 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     private var item: OrderCheckout?
     private var type: OrderCheckoutModuleType
     
-    // MARK: State
-    
-    private var item: OrderCheckout?
-    
     // MARK: Init
     
     init(
+        router: IOrderCheckoutRouter,
         service: OrderCheckoutService,
         mapper: IOrderCheckoutMapper,
         type: OrderCheckoutModuleType
     ) {
+        self.router = router
         self.service = service
         self.mapper = mapper
         self.type = type
+        self.item = OrderCheckout.init()
     }
     
     // MARK: OrderCheckoutPresenterProtocol
@@ -92,6 +88,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             case .success(let flag):
                 if flag {
                     self?.view?.stopButtonLoading()
+                    print("fffff")
                     self?.showFinalDelivery()
                 } else {
                     self?.view?.stopButtonLoading()
@@ -114,8 +111,8 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func showFinalDelivery() {
-        // TODO: add output add move to FinalDelivery with set
-//        output?.orderCheckout(didCompleteWith: item)
+        guard let item else { return }
+        router.openFinalDelivery(with: mapper.toFinalDelivery(from: item))
     }
 }
 

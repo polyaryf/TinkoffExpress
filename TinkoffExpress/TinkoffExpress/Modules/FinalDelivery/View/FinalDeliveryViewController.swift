@@ -7,14 +7,19 @@
 
 import UIKit
 
+protocol IFinalDeliveryViewController: AnyObject {
+    func closeView()
+    func setItem(with item: FinalDelivery)
+}
+
 final class FinalDeliveryViewController: UIViewController {
     // MARK: Dependencies
     
     private var presenter: FinalDeliveryPresenterProtocol
     
-    // MARK: Properties
+    // MARK: State
     
-    lazy var item = FinalDelivery()
+    private var item = FinalDelivery()
 
     // MARK: Subviews
     
@@ -33,13 +38,14 @@ final class FinalDeliveryViewController: UIViewController {
     }()
     private lazy var okButton: Button = {
         let config = Button.Configuration(
-            // TODO: add loc enum for strings
             title: "Хорошо",
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )
-        // TODO: add action
-        let button = Button(configuration: config, action: nil)
+        let button = Button(configuration: config) { [weak self] in
+            guard let self else { return }
+            self.okButtonTapped()
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -114,6 +120,7 @@ final class FinalDeliveryViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FinalDeliveryTableViewCell()
@@ -139,5 +146,17 @@ extension FinalDeliveryViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         56
+    }
+}
+
+// MARK: - IFinalDeliveryViewController
+
+extension FinalDeliveryViewController: IFinalDeliveryViewController {
+    func closeView() {
+        self.dismiss(animated: true)
+    }
+    
+    func setItem(with item: FinalDelivery) {
+        self.item = item
     }
 }
