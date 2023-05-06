@@ -12,7 +12,7 @@ protocol IOrderCheckoutViewController: AnyObject {
     func startButtonLoading()
     func stopButtonLoading()
     func set(item: OrderCheckout)
-    func showAlert()
+    func showCancelAlert(with title: String)
 }
 
 final class OrderCheckoutViewController: UIViewController {
@@ -89,8 +89,12 @@ final class OrderCheckoutViewController: UIViewController {
         orderCheckoutPresenter.backButtonTapped()
     }
     
-    @objc func editButtonTapped() {
+    @objc func deliveryEditButtonTapped() {
         orderCheckoutPresenter.editButtonTapped()
+    }
+    
+    @objc func paymentMethodEditButtonTapped() {
+        showPaymentMethodAlert()
     }
     
     // MARK: Initial Configuration
@@ -123,6 +127,7 @@ final class OrderCheckoutViewController: UIViewController {
     
     private func setUpTable() {
         tableView.separatorStyle = .none
+        tableView.delaysContentTouches = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
@@ -133,9 +138,36 @@ final class OrderCheckoutViewController: UIViewController {
     private func setupNavigationItem() {
         navigationItem.title = "Оформление товара"
     }
+    
+    private func showPaymentMethodAlert() {
+        let alert = UIAlertController(
+            title: "Способ оплаты",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        alert.addAction(UIAlertAction(
+            title: "Картой при получении",
+            style: UIAlertAction.Style.default) { [weak self] _ in
+                self?.item.paymentMethod = "Картой при получении"
+                self?.tableView.reloadData()
+        })
+        alert.addAction(UIAlertAction(
+            title: "Наличными курьеру",
+            style: UIAlertAction.Style.default) { [weak self] _ in
+                self?.item.paymentMethod = "Наличными курьеру"
+                self?.tableView.reloadData()
+        })
+        alert.addAction(UIAlertAction(
+            title: "Отмена",
+            style: UIAlertAction.Style.cancel,
+            handler: nil)
+        )
+        self.present(alert, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
+
 extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = OrderCheckoutTableViewCell()
@@ -146,10 +178,11 @@ extension OrderCheckoutViewController: UITableViewDelegate, UITableViewDataSourc
             cell.setType(.delivery)
             cell.setPrimaryText(item.deliveryWhen)
             cell.setSecondaryText(item.deliveryWhere)
-            cell.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+            cell.editButton.addTarget(self, action: #selector(deliveryEditButtonTapped), for: .touchUpInside)
         } else {
             cell.setType(.payment)
             cell.setPrimaryText(item.paymentMethod)
+            cell.editButton.addTarget(self, action: #selector(paymentMethodEditButtonTapped), for: .touchUpInside)
         }
         return cell
     }
@@ -182,9 +215,9 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
         self.item = item
     }
     
-    func showAlert() {
+    func showCancelAlert(with title: String) {
         let alert = UIAlertController(
-            title: "Вы уверены, что хотите отменить доставку?",
+            title: title,
             message: "",
             preferredStyle: .alert
         )
