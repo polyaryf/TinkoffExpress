@@ -8,8 +8,18 @@
 import Foundation
 
 protocol OrderCheckoutService {
-    func createOrder(with request: OrderCreateRequest, completion: @escaping (Result<Bool, Error>) -> Void)
-    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void)
+    func createOrder(
+        with request: OrderCreateRequest,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
+    
+    func updateOrder(
+        id: Int,
+        with request: OrderUpdateRequest,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
+    
+    func deleteOrder()
 }
 
 final class RestOrderCheckoutService: OrderCheckoutService {
@@ -35,31 +45,30 @@ final class RestOrderCheckoutService: OrderCheckoutService {
         }
     }
     
-    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void) {
-        let items: [OrderCheckout] = [
-            .init(
-                whatWillBeDelivered: "Посылку",
-                deliveryWhen: "Завтра с 10:00 до 12:00",
-                deliveryWhere: "Ивангород, ул. Гагарина, д. 1",
-                paymentMethod: "Картой при получении")
-        ]
-        completion(items)
+    func updateOrder(
+        id: Int,
+        with request: OrderUpdateRequest,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        networkService.updateOrder(request: request, orderId: id) { result in
+            let newResult = result.mapError { $0 as Error }
+            completion(newResult)
+        }
+    }
+    
+    func deleteOrder() {
+        // TODO: запрос на сервер для удаления заказа
     }
 }
 
 class MockOrderCheckoutService: OrderCheckoutService {
+    func updateOrder(id: Int, with request: OrderUpdateRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
+        completion(.success(true))
+    }
+    
     func createOrder(with request: OrderCreateRequest, completion: @escaping (Result<Bool, Error>) -> Void) {
         completion(.success(true))
     }
     
-    func loadItems(completion: @escaping ([OrderCheckout]?) -> Void) {
-        let items: [OrderCheckout] = [
-            .init(
-                whatWillBeDelivered: "Посылку",
-                deliveryWhen: "Завтра с 10:00 до 12:00",
-                deliveryWhere: "Ивангород, ул. Гагарина, д. 1",
-                paymentMethod: "Картой при получении")
-        ]
-        completion(items)
-    }
+    func deleteOrder() {}
 }

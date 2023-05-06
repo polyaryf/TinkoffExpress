@@ -7,9 +7,13 @@
 
 import Foundation
 
+protocol IMyOrdersModuleOutput: AnyObject {
+    func myOrders(didCompleteWith order: MyOrder)
+}
+
 protocol MyOrdersPresenterProtocol {
     func viewDidLoad()
-    func didSelectItemAt()
+    func didSelect(item: MyOrder)
 }
 
 final class MyOrdersPresenter: MyOrdersPresenterProtocol {
@@ -20,7 +24,11 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     private var service: MyOrdersService?
     
     // MARK: Init
-    init(coordinator: Coordinator, service: MyOrdersService) {
+    
+    init(
+        coordinator: Coordinator,
+        service: MyOrdersService
+    ) {
         self.coordinator = coordinator
         self.service = service
     }
@@ -36,7 +44,9 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     
     // MARK: Events
     
-    func didSelectItemAt() {
+    func didSelect(item: MyOrder) {
+        // TODO: add output
+//        output?.myOrders(didCompleteWith order: item)
         showOrderCheckout()
     }
     

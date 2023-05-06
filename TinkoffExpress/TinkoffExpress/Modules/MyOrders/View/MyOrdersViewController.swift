@@ -15,7 +15,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: Properties
     
-    lazy var items: [MyOrders] = []
+    lazy var items: [MyOrder] = []
     
     // MARK: Subviews
     
@@ -53,7 +53,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     // MARK: Actions
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        myOrdersPresenter.didSelectItemAt()
+        myOrdersPresenter.didSelect(item: items[indexPath.row])
     }
     
     // MARK: Setup Colors
