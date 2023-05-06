@@ -8,10 +8,10 @@
 import Foundation
 
 protocol MyOrdersService {
-    func loadItems(completion: @escaping ([MyOrder]?) -> Void)
+    func loadItems(completion: @escaping ([MyOrder]) -> Void)
 }
 
-final class RestMyOrdersService {
+final class RestMyOrdersService: MyOrdersService {
     // MARK: Dependency
     
     private let networkService: TEApiService
@@ -22,17 +22,21 @@ final class RestMyOrdersService {
         self.networkService = networkService
     }
     
-    func loadItems(completion: @escaping ([MyOrder]?) -> Void) {
+    func loadItems(completion: @escaping ([MyOrder]) -> Void) {
         networkService.getOrders { result in
             let newResult = result.map { apiOrders in
                 apiOrders.map { apiOrder in
                     MyOrder(
                         id: apiOrder.id,
                         text: "Доставка",
-                        description: apiOrder.deliverySlot.date ,
-                        imageName: "myOrdersDeliveryImage")
+                        description: "\(apiOrder.deliverySlot.date) с \(apiOrder.deliverySlot.timeFrom) до \(apiOrder.deliverySlot.timeTo)",
+                        imageName: "myOrdersDeliveryImage",
+                        address: apiOrder.address.address,
+                        paymentMethod: apiOrder.paymentMethod
+                    )
                 }
             }
+            
             switch newResult {
             case .success(let orders): completion(orders)
             case .failure: completion([])
@@ -42,11 +46,8 @@ final class RestMyOrdersService {
 }
 
 final class MockMyOrdersService: MyOrdersService {
-    func loadItems(completion: @escaping ([MyOrder]?) -> Void) {
-        let items: [MyOrder] = [
-            .init(id: 1, text: "Доставка", description: "Завтра, с 10:00 до 12:00", imageName: "myOrdersDeliveryImage"),
-            .init(id: 2, text: "Доставка", description: "Завтра, с 10:00 до 12:00", imageName: "myOrdersDeliveryImage")
-        ]
+    func loadItems(completion: @escaping ([MyOrder]) -> Void) {
+        let items: [MyOrder] = []
         completion(items)
     }
 }

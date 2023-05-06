@@ -15,7 +15,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: Properties
     
-    lazy var items: [MyOrder] = []
+    private var items: [MyOrder] = []
     
     // MARK: Subviews
     
@@ -38,16 +38,16 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myOrdersPresenter.viewDidLoad()
-        
+        setupNavigationBar()
         setupCollectionView()
         setupColors()
+        
+        myOrdersPresenter.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.title = "Мои заказы"
+    func updateView(with items: [MyOrder]) {
+        self.items = items
+        collectionView.reloadData()
     }
     
     // MARK: Actions
@@ -64,6 +64,11 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: Setup Subviews
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Мои заказы"
+        navigationItem.backButtonTitle = ""
+    }
     
     private func setupCollectionView() {
         collectionView.dataSource = self
