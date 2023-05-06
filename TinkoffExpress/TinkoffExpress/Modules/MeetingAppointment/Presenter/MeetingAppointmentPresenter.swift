@@ -60,14 +60,8 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     // MARK: Life Cycle
 
     func viewDidLoad() {
-        service.loadDates { [weak self] dates in
-            guard let self else { return }
-            self.view?.dates = dates ?? []
-        }
-        
-        service.loadTimes { [weak self] times in
-            guard let self else { return }
-            self.view?.times = times ?? []
+        service.loadSlots(forDate: Date()) { result in
+            print("DEBUG: \(result)")
         }
     }
     

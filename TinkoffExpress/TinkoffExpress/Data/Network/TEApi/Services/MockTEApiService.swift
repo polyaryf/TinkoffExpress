@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockTEApiService: TEOrderApiProtocol, TESlotApiProtocol {
+class MockTEApiService: TEOrderApiProtocol {
     func test(
         completion: @escaping (Result<Bool, HttpClientError>) -> Void
     ) {

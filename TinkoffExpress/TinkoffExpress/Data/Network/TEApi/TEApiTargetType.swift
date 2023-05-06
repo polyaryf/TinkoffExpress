@@ -12,7 +12,7 @@ enum TEApiTargetType {
     case getOrders
     case createOrder(request: OrderCreateRequest)
     case updateOrder(request: OrderUpdateRequest, orderId: Int)
-    case getSlots
+    case getSlots(date: String)
 }
 
 extension TEApiTargetType: TargetType {
@@ -60,8 +60,8 @@ extension TEApiTargetType: TargetType {
             return .requestJSONEncodable(request)
         case .updateOrder(let request, _):
             return .requestJSONEncodable(request)
-        case .getSlots:
-            return .requestPlain
+        case let .getSlots(date):
+            return .requestParameters(parameters: ["d": date], encoding: URLEncoding.queryString)
         }
     }
     

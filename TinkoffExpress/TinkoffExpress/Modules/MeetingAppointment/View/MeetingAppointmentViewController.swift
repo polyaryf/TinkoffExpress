@@ -98,17 +98,6 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        dateCollectionView.selectItem(
-            at: IndexPath(item: 0, section: 0),
-            animated: false,
-            scrollPosition: .centeredHorizontally
-        )
-        timeCollectionView.selectItem(
-            at: IndexPath(item: 0, section: 0),
-            animated: false,
-            scrollPosition: .centeredHorizontally
-        )
     }
     
     // MARK: Actions
