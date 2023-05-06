@@ -45,13 +45,13 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
 
     weak var view: MeetingAppointmentViewController?
     private let router: IMeetingAppointmentRouter
-    private let service: MeetingAppointmentService
+    private let service: IMeetingAppointmentService
 
     // MARK: Init
 
     init(
         router: IMeetingAppointmentRouter,
-        service: MeetingAppointmentService
+        service: IMeetingAppointmentService
     ) {
         self.router = router
         self.service = service

@@ -1,5 +1,5 @@
 //
-//  MeetingAppointmentService.swift
+//  IMeetingAppointmentService.swift
 //  TinkoffExpress
 //
 //  Created by zedsbook on 03.04.2023.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol MeetingAppointmentService {
+protocol IMeetingAppointmentService {
     func loadDates(completion: @escaping ([MeetingAppointmentDate]?) -> Void)
     func loadTimes(completion: @escaping ([MeetingAppointmentTime]?) -> Void)
 }
 
-final class MockMeetingAppointmentService: MeetingAppointmentService {
+final class MeetingAppointmentService: IMeetingAppointmentService {
     func loadDates(completion: @escaping ([MeetingAppointmentDate]?) -> Void) {
         let dates: [MeetingAppointmentDate] = [
             .init(date: "Сегодня"),
