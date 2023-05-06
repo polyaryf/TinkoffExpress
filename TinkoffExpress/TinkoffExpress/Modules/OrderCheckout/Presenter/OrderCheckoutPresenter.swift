@@ -127,3 +127,9 @@ extension OrderCheckoutPresenter: IMyOrdersModuleOutput {
         self.item = mapper.toOrderCheckout(from: order)
     }
 }
+
+extension OrderCheckoutPresenter: IMyOrdersModuleOutput {
+    func myOrders(didCompleteWith order: MyOrder) {
+        self.item = mapper.toOrderCheckout(from: order)
+    }
+}
