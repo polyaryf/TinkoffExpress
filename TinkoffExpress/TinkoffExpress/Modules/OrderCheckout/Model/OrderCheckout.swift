@@ -9,9 +9,9 @@ import Foundation
 
 struct OrderCheckout {
     let whatWillBeDelivered: String
-    let deliveryWhen: String
-    let deliveryWhere: String
-    let paymentMethod: String
+    var deliveryWhen: String
+    var deliveryWhere: String
+    var paymentMethod: String
     
     init() {
         self.whatWillBeDelivered = "whatWillBeDelivered"

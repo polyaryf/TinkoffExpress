@@ -100,7 +100,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func editingType() {
-        view?.showAlert()
+        view?.showCancelAlert(with: "Вы уверены, что хотите отменить доставку?")
     }
     
     // MARK: Navigation

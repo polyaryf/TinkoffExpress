@@ -110,6 +110,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     
     private func setupPaymentCellView() {
         contentView.addSubview(titleLabel)
+        contentView.addSubview(editButton)
         contentView.addSubview(primaryText)
         
         paymentCellConsrtaints()
@@ -162,6 +163,11 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
             $0.top.equalTo(contentView)
             $0.left.equalTo(contentView)
             $0.bottom.equalTo(contentView.snp.top).offset(24)
+        }
+        editButton.snp.makeConstraints {
+            $0.top.equalTo(contentView)
+            $0.right.equalTo(contentView)
+            $0.height.equalTo(titleLabel)
         }
         primaryText.snp.makeConstraints {
             $0.left.equalTo(contentView)
