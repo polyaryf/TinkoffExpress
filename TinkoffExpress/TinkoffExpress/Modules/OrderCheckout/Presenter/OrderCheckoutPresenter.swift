@@ -88,7 +88,6 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             case .success(let flag):
                 if flag {
                     self?.view?.stopButtonLoading()
-                    print("fffff")
                     self?.showFinalDelivery()
                 } else {
                     self?.view?.stopButtonLoading()
@@ -116,15 +115,11 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
 }
 
+// MARK: - IMeetingAppointmentModuleOutput, IMyOrdersModuleOutput
+
 extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
     func meetingAppointment(didCompleteWith orderData: OrderCheckout) {
         self.item = orderData
-    }
-}
-
-extension OrderCheckoutPresenter: IMyOrdersModuleOutput {
-    func myOrders(didCompleteWith order: MyOrder) {
-        self.item = mapper.toOrderCheckout(from: order)
     }
 }
 
