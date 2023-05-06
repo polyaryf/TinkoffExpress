@@ -17,11 +17,6 @@ protocol MeetingAppointmentPresenterProtocol {
     func viewDidLoad()
     func addressButtonTapped()
     func didSelectItemAt(with collectionView: UICollectionView, and indexPath: IndexPath)
-    func textViewDidChange(with textView: UITextView, _ countLabel: UILabel, _ deliveryButton: Button)
-    func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
-    func textViewDidEndEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
-    func clearButtonTapped(with textView: UITextView, _ countLabel: UILabel)
-    func readyButtonTapped(with view: UIView)
     func deliveryButtonTapped()
 }
 
@@ -67,61 +62,6 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
         }
-    }
-    
-    func textViewDidChange(with textView: UITextView, _ countLabel: UILabel, _ deliveryButton: Button) {
-        if textView.text.count > 150 {
-            textView.deleteBackward()
-        } else {
-            countLabel.text = "Осталось \(150 - textView.text.count) символов"
-        }
-        
-        let height = min(deliveryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
-            width: textView.frame.width,
-            height: CGFloat.greatestFiniteMagnitude
-        )).height)
-        
-        textView.snp.updateConstraints { make in
-            make.height.equalTo(height)
-        }
-        
-        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
-            textView.deleteBackward()
-        }
-    }
-    
-    func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton) {
-        clearButton.isHidden = false
-        view?.changeTextView(textView)
-        countLabel.isHidden = false
-        countLabel.text = "Осталось \(150 - textView.text.count) символов"
-    }
-    
-    func textViewDidEndEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton) {
-        clearButton.isHidden = true
-        
-        if textView.text.count == 150 {
-            countLabel.isHidden = true
-        } else {
-            countLabel.text = "Можно написать \(150 - textView.text.count) символов"
-        }
-        
-        if textView.text.isEmpty {
-            textView.text = "Как добраться и когда вам позвонить"
-            textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        }
-    }
-    
-    func clearButtonTapped(with textView: UITextView, _ countLabel: UILabel) {
-        textView.text = ""
-        countLabel.text = "Осталось 150 символов"
-        textView.snp.updateConstraints { make in
-            make.height.equalTo(56)
-        }
-    }
-    
-    func readyButtonTapped(with view: UIView) {
-        view.endEditing(true)
     }
     
     func deliveryButtonTapped() {
