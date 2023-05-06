@@ -8,29 +8,21 @@
 import UIKit
 
 protocol IMyOrdersAssembly {
-    func createMyOrdersView(coordinator: Coordinator, output: IMyOrdersModuleOutput) -> UIViewController
+    func createMyOrdersView() -> UIViewController
 }
 
-final class MyOrdersAssembly: IMyOrdersAssembly, Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
-        let mockService = MockMyOrdersService()
+final class MyOrdersAssembly: IMyOrdersAssembly {
+    func createMyOrdersView() -> UIViewController {
+        let network = TEApiService()
+        let restService = RestMyOrdersService(networkService: network)
+        let router = MyOrdersRouter(orderCheckoutAssembly: OrderCheckoutAssembly())
         let presenter = MyOrdersPresenter(
-            coordinator: coordinator,
-            service: mockService
+            router: router,
+            service: restService
         )
         let viewController = MyOrdersViewController(myOrdersPresenter: presenter)
         presenter.view = viewController
-        return viewController
-    }
-    
-    func createMyOrdersView(coordinator: Coordinator, output: IMyOrdersModuleOutput) -> UIViewController {
-        let mockService = MockMyOrdersService()
-        let presenter = MyOrdersPresenter(
-            coordinator: coordinator,
-            service: mockService
-        )
-        let viewController = MyOrdersViewController(myOrdersPresenter: presenter)
-        presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

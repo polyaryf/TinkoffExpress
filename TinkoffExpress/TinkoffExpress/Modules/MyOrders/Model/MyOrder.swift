@@ -12,4 +12,6 @@ struct MyOrder {
     let text: String
     let description: String
     let imageName: String
+    let address: String
+    let paymentMethod: String
 }

@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol IMyOrdersModuleOutput: AnyObject {
-    func myOrders(didCompleteWith order: MyOrder)
-}
-
 protocol MyOrdersPresenterProtocol {
     func viewDidLoad()
     func didSelect(item: MyOrder)
@@ -20,39 +16,31 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: MyOrdersViewController?
-    private var coordinator: Coordinator?
-    private var service: MyOrdersService?
+    private let router: IMyOrdersRouter
+    private let service: MyOrdersService
     
     // MARK: Init
     
     init(
-        coordinator: Coordinator,
+        router: IMyOrdersRouter,
         service: MyOrdersService
     ) {
-        self.coordinator = coordinator
+        self.router = router
         self.service = service
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
+        service.loadItems { [weak self] items in
             guard let self = self else { return }
-            self.view?.items = items ?? []
+            self.view?.updateView(with: items)
         }
     }
     
     // MARK: Events
     
     func didSelect(item: MyOrder) {
-        // TODO: add output
-//        output?.myOrders(didCompleteWith order: item)
-        showOrderCheckout()
-    }
-    
-    // MARK: Navigation
-    
-    private func showOrderCheckout() {
-        // TODO: Add navigation to OrderCheckout
+        router.openOrderCheckout(with: OrderCheckout.from(model: item))
     }
 }
