@@ -202,7 +202,7 @@ class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
     
     private func showOrderCheckout() {
 //        output?.meetingAppointment(didCompleteWith: OrderCheckout())
-        router.openOrderCheckout()
+        router.openOrderCheckout(with: OrderCheckout())
     }
 }
 

@@ -26,7 +26,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     
     // MARK: State
     
-    private var item: OrderCheckout?
+    private var item: OrderCheckout
     private var type: OrderCheckoutModuleType
     
     // MARK: Init
@@ -35,13 +35,14 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         router: IOrderCheckoutRouter,
         service: OrderCheckoutService,
         mapper: IOrderCheckoutMapper,
-        type: OrderCheckoutModuleType
+        type: OrderCheckoutModuleType,
+        item: OrderCheckout
     ) {
         self.router = router
         self.service = service
         self.mapper = mapper
         self.type = type
-        self.item = OrderCheckout.init()
+        self.item = item
     }
     
     // MARK: OrderCheckoutPresenterProtocol
@@ -51,7 +52,6 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     func viewDidLoad() {
-        guard let item else { return }
         view?.set(item: item)
     }
     
@@ -110,7 +110,6 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func showFinalDelivery() {
-        guard let item else { return }
         router.openFinalDelivery(with: mapper.toFinalDelivery(from: item))
     }
 }

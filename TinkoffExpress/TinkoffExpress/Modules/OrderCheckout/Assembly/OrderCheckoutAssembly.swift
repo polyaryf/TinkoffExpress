@@ -8,11 +8,17 @@
 import UIKit
 
 protocol IOrderCheckoutAssembly {
-    func createOrderCheckoutView(withModuleType type: OrderCheckoutModuleType) -> UIViewController
+    func createOrderCheckoutView(
+        withModuleType type: OrderCheckoutModuleType,
+        with model: OrderCheckout
+    ) -> UIViewController
 }
 
 final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
-    func createOrderCheckoutView(withModuleType type: OrderCheckoutModuleType) -> UIViewController {
+    func createOrderCheckoutView(
+        withModuleType type: OrderCheckoutModuleType,
+        with model: OrderCheckout
+    ) -> UIViewController {
         let networkService = TEApiService()
         let mockService = MockOrderCheckoutService()
         let restService = RestOrderCheckoutService(networkService: networkService)
@@ -22,7 +28,8 @@ final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
             router: router,
             service: restService,
             mapper: mapper,
-            type: type
+            type: type,
+            item: model
         )
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
         presenter.view = viewController
