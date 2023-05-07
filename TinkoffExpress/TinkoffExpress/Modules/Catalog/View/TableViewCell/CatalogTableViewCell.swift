@@ -177,9 +177,9 @@ final class CatalogTableViewCell: UITableViewCell {
     
     // MARK: Public
     
-    func set(title: String, price: String, image: String) {
+    func set(title: String, price: Int, image: String) {
         titleLabel.text = title
-        priceLabel.text = price
+        priceLabel.text = "\(price) ₽"
         productImage.image = UIImage(named: "\(image)")
     }
     

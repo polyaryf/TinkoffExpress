@@ -10,6 +10,6 @@ import Foundation
 struct Product {
     let id = UUID()
     let title: String
-    let price: String
+    let price: Int
     let image: String
 }

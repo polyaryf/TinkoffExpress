@@ -91,13 +91,14 @@ extension CatalogViewController: UITableViewDataSource {
             withIdentifier: "productCell",
             for: indexPath
         ) as? CatalogTableViewCell {
+            let product = products[indexPath.row]
             cell.selectionStyle = .none
             cell.set(
-                title: products[indexPath.row].title,
-                price: products[indexPath.row].price,
-                image: products[indexPath.row].image
+                title: product.title,
+                price: product.price,
+                image: product.image
             )
-            
+        
             cell.onCounterDidChange { counter in
                 // presenter.viewDidChangeCounterOfItem(at: index)
             }
