@@ -57,10 +57,13 @@ final class AppCoordinator: Coordinator {
         let settingsController = UINavigationController(
             rootViewController: SettingsAssembly().createViewController(coordinator: self)
         )
-        cartController.tabBarItem = getTabBarItem(with: 0)
-        myOrdersController.tabBarItem = getTabBarItem(with: 1)
-        settingsController.tabBarItem = getTabBarItem(with: 2)
+        let catalogController = UINavigationController(rootViewController: CatalogAssembly().createCatalogView())
+        catalogController.tabBarItem = getTabBarItem(with: 0)
+        cartController.tabBarItem = getTabBarItem(with: 1)
+        myOrdersController.tabBarItem = getTabBarItem(with: 2)
+        settingsController.tabBarItem = getTabBarItem(with: 3)
         
+        viewControllers.append(catalogController)
         viewControllers.append(cartController)
         viewControllers.append(myOrdersController)
         viewControllers.append(settingsController)
@@ -71,8 +74,11 @@ final class AppCoordinator: Coordinator {
     }
     
     private func getTabBarItem(with index: Int) -> UITabBarItem {
-        let titles: [String] = ["Корзина", "Мои заказы", "Настройки"]
-        let imageNames: [String] = ["cartTabBarItemImage", "myOrdersTabBarItemImage", "myOrdersTabBarItemImage"]
+        let titles: [String] = ["Каталог", "Корзина", "Мои заказы", "Настройки"]
+        let imageNames: [String] = ["catalogTabBarItemImage", "cartTabBarItemImage", "myOrdersTabBarItemImage"]
+        if index == 3 {
+            return UITabBarItem(title: titles[index], image: UIImage(systemName: "gear"), tag: index)
+        }
         return UITabBarItem(title: titles[index], image: UIImage(named: imageNames[index]), tag: index)
     }
 }
