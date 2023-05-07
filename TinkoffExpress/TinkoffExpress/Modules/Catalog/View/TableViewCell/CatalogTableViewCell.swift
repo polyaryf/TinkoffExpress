@@ -15,13 +15,13 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var productImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .white
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.text = "Title"
         return label
     }()
@@ -36,7 +36,11 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var counterLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "0"
+        label.textAlignment = .center
+        label.text = "\(counter)"
+        if counter == 0 {
+            label.isHidden = true
+        }
         return label
     }()
     
@@ -44,6 +48,7 @@ final class CatalogTableViewCell: UITableViewCell {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(increaseCounter), for: .touchUpInside)
         return button
     }()
     
@@ -51,8 +56,21 @@ final class CatalogTableViewCell: UITableViewCell {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(decreaseCounter), for: .touchUpInside)
+
+        if counter == 0 {
+            button.isHidden = true
+        }
         return button
     }()
+    
+    // MARK: Callbacks
+
+    private var onCounterDidChangeAction: ((Int) -> Void)?
+    
+    // MARK: State
+    
+    private var counter: Int = 0
     
     // MARK: Init
     
@@ -122,25 +140,73 @@ final class CatalogTableViewCell: UITableViewCell {
             $0.height.equalTo(100)
             $0.width.equalTo(100)
         }
+        counterLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.right.equalToSuperview().offset(-18)
+            $0.width.equalTo(25)
+        }
+        plusButton.snp.makeConstraints {
+            $0.bottom.equalTo(counterLabel.snp.top).offset(-(counterLabel.frame.height + 10))
+            $0.right.equalToSuperview().offset(-16)
+            $0.width.equalTo(30)
+            $0.height.equalTo(30)
+        }
+        minusButton.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-16)
+            $0.top.equalTo(counterLabel.snp.bottom).offset((counterLabel.frame.height + 10))
+            $0.width.equalTo(30)
+            $0.height.equalTo(30)
+        }
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(productImage.snp.top)
             $0.left.equalTo(productImage.snp.right).offset(16)
+            $0.right.equalTo(minusButton.snp.left).offset(-10)
         }
         priceLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(16)
             $0.left.equalTo(productImage.snp.right).offset(16)
         }
-        plusButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().offset(-16)
+    }
+    
+    // MARK: Update View
+    
+    private func updateView() {
+        counterLabel.text = "\(counter)"
+        
+        if counter > 0 {
+            minusButton.isHidden = false
+            counterLabel.isHidden = false
+        } else {
+            minusButton.isHidden = true
+            counterLabel.isHidden = true
         }
-        counterLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalTo(plusButton.snp.left).offset(-(plusButton.frame.width + 10))
+    }
+    
+    // MARK: Public
+    
+    func set(title: String, price: String, image: String) {
+        titleLabel.text = title
+        priceLabel.text = price
+        productImage.image = UIImage(named: "\(image)")
+    }
+    
+    func onCounterDidChange(_ action: @escaping (Int) -> Void) {
+        onCounterDidChangeAction = action
+    }
+    
+    @objc private func increaseCounter() {
+        counter += 1
+        
+        onCounterDidChangeAction?(counter)
+        updateView()
+    }
+    
+    @objc private func decreaseCounter() {
+        if counter == 0 {
+            return
         }
-        minusButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.right.equalTo(counterLabel.snp.left).offset(-(counterLabel.frame.width + 10))
-        }
+        counter -= 1
+        onCounterDidChangeAction?(counter)
+        updateView()
     }
 }

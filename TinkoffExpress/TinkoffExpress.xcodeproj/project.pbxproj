@@ -11,6 +11,8 @@
 		29328F942A07B566001CE5AA /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */; };
 		29328F982A07B68A001CE5AA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F972A07B68A001CE5AA /* Product.swift */; };
 		29328F9B2A07BCB9001CE5AA /* CatalogAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */; };
+		29328F9E2A07CFC4001CE5AA /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */; };
+		29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328FA02A07D01F001CE5AA /* CatalogService.swift */; };
 		297FF59D29FFD37D00636B01 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF59C29FFD37D00636B01 /* TextField.swift */; };
 		297FF5A22A003E5000636B01 /* ABTestView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */; };
 		297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */; };
@@ -150,6 +152,8 @@
 		29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		29328F972A07B68A001CE5AA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogAssembly.swift; sourceTree = "<group>"; };
+		29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		29328FA02A07D01F001CE5AA /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 		297FF59C29FFD37D00636B01 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+UIScrollView.swift"; sourceTree = "<group>"; };
 		297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 				29328F992A07BCA7001CE5AA /* Assembly */,
 				29328F962A07B67C001CE5AA /* Model */,
 				29328F952A07B671001CE5AA /* View */,
+				29328F9C2A07CFAD001CE5AA /* Presenter */,
+				29328F9F2A07D00C001CE5AA /* Service */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -347,6 +353,22 @@
 				29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		29328F9C2A07CFAD001CE5AA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		29328F9F2A07D00C001CE5AA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				29328FA02A07D01F001CE5AA /* CatalogService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		297FF59B29FFC17800636B01 /* ViewController */ = {
@@ -1677,6 +1699,7 @@
 				29C392BE29F9809A0041F569 /* MeetingAppointmentAssembly.swift in Sources */,
 				29C392A629F9809A0041F569 /* TESlotApiProtocol.swift in Sources */,
 				29C392D829F9809A0041F569 /* CartService.swift in Sources */,
+				29328F9E2A07CFC4001CE5AA /* CatalogPresenter.swift in Sources */,
 				439B5E102A0657E5001764B0 /* SettingsService.swift in Sources */,
 				29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */,
 				43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */,
@@ -1703,6 +1726,7 @@
 				297FF5A22A003E5000636B01 /* ABTestView+UIScrollView.swift in Sources */,
 				29C392A529F9809A0041F569 /* TEOrderApiProtocol.swift in Sources */,
 				29C392E429F9809A0041F569 /* OnboardingHeaderView.swift in Sources */,
+				29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */,
 				29C3929A29F9809A0041F569 /* Extension+UIColor.swift in Sources */,
 				29C392E029F9809A0041F569 /* OnboardingAssembly.swift in Sources */,
 				29852A362A051CC8005DCF46 /* OrderCheckoutModuleType.swift in Sources */,

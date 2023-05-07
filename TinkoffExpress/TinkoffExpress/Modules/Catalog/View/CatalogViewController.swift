@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol ICatalogViewController: AnyObject {}
+protocol ICatalogViewController: AnyObject {
+    func setProducts(with products: [Product])
+}
 
 final class CatalogViewController: UIViewController {
     private lazy var tableView: UITableView = {
@@ -23,10 +25,33 @@ final class CatalogViewController: UIViewController {
         return table
     }()
     
+    // MARK: State
+    
+    private var products: [Product] = []
+    
+    // MARK: Dependency
+    
+    private let presenter: ICatalogPresenter
+    
+    // MARK: Init
+    
+    init(presenter: ICatalogPresenter) {
+        self.presenter = presenter
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        presenter.viewDidLoad()
     }
     
     // MARK: Setup view
@@ -59,7 +84,7 @@ final class CatalogViewController: UIViewController {
 
 extension CatalogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,6 +93,16 @@ extension CatalogViewController: UITableViewDataSource {
             for: indexPath
         ) as? CatalogTableViewCell {
             cell.selectionStyle = .none
+            cell.set(
+                title: products[indexPath.row].title,
+                price: products[indexPath.row].price,
+                image: products[indexPath.row].image
+            )
+            
+            cell.onCounterDidChange { counter in
+                // presenter.viewDidChangeCounterOfItem(at: index)
+            }
+            
             return cell
         } else {
             return UITableViewCell()
@@ -83,4 +118,9 @@ extension CatalogViewController: UITableViewDelegate {
 
 // MARK: - ICatalogViewController
 
-extension CatalogViewController: ICatalogViewController {}
+extension CatalogViewController: ICatalogViewController {
+    func setProducts(with products: [Product]) {
+        self.products = products
+        tableView.reloadData()
+    }
+}

@@ -13,7 +13,10 @@ protocol ICatalogAssembly {
 
 final class CatalogAssembly: ICatalogAssembly {
     func createCatalogView() -> UIViewController {
-        let view = CatalogViewController()
+        let mockService = MockCatalogService()
+        let presenter = CatalogPresenter(service: mockService)
+        let view = CatalogViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
 }
