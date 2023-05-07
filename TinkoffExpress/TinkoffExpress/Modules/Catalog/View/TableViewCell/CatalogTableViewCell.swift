@@ -15,6 +15,7 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var productImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -96,7 +97,6 @@ final class CatalogTableViewCell: UITableViewCell {
     private func setupView() {
         setupViewHierarchy()
         setupContentView()
-        setupImageView()
         setupConstraints()
     }
     
@@ -120,13 +120,6 @@ final class CatalogTableViewCell: UITableViewCell {
         containerView.addSubview(plusButton)
         containerView.addSubview(counterLabel)
         containerView.addSubview(minusButton)
-    }
-    
-    private func setupImageView() {
-        let sizeImageView = CGRect(x: 0, y: 0, width: 100, height: 100)
-        productImage.frame = sizeImageView
-        productImage.layer.cornerRadius = productImage.bounds.size.width / 2
-        productImage.clipsToBounds = true
     }
     
     private func setupConstraints() {

@@ -57,20 +57,19 @@ final class CatalogViewController: UIViewController {
     // MARK: Setup view
     
     private func setupView() {
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        
         setupNavigationItem()
-        setupViewHierarchy()
-        setupConstraints()
+        setupTableView()
     }
     
     private func setupNavigationItem() {
         navigationItem.title = "Каталог"
     }
     
-    private func setupViewHierarchy() {
+    private func setupTableView() {
         view.addSubview(tableView)
-    }
-    
-    private func setupConstraints() {
+   
         tableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.trailing.equalToSuperview()
