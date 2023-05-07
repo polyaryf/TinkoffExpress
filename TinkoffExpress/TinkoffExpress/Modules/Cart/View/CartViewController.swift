@@ -18,8 +18,6 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     lazy var items: [Cart] = []
     
     // MARK: Subviews
-    private lazy var titleLabel = UILabel()
-    private lazy var trashButton = UIButton()
     private lazy var countLabel = UILabel()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var finalView = UIView()
@@ -46,8 +44,7 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         
         cartPresenter.viewDidLoad()
         
-        setupTitleLabel()
-        setupTrashButton()
+        setupNavigationItem()
         setupCountLabel()
         setupCollectionView()
         setupFinalView()
@@ -72,7 +69,6 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     
     private func setupColors() {
         view.backgroundColor = UIColor(named: "backgroundColor")
-        titleLabel.textColor = UIColor(named: "textColor")
         countLabel.textColor = UIColor(named: "textColor")
         collectionView.backgroundColor = UIColor(named: "backgroundColor")
         finalView.backgroundColor = UIColor(named: "finalViewColor")
@@ -82,31 +78,14 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Setup Subviews
     
-    private func setupTitleLabel() {
-        titleLabel.text = "Корзина"
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        
-        view.addSubview(titleLabel)
-        
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(56)
-            make.width.equalTo(71)
-            make.height.equalTo(20)
-        }
-    }
-    
-    private func setupTrashButton() {
-        trashButton.setImage(UIImage(named: "trash"), for: .normal)
-        
-        view.addSubview(trashButton)
-        
-        trashButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(56)
-            make.trailing.equalToSuperview().offset(-16)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
-        }
+    private func setupNavigationItem() {
+        navigationItem.title = "Корзина"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "trash"),
+            style: .done,
+            target: self,
+            action: nil
+        )
     }
     
     private func setupCountLabel() {
@@ -116,7 +95,7 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         view.addSubview(countLabel)
         
         countLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(32)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(26)
