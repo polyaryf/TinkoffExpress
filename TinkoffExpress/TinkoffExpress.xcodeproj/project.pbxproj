@@ -14,6 +14,7 @@
 		29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */; };
 		29852A3F2A0672CD005DCF46 /* OrderCheckoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */; };
 		29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A452A068735005DCF46 /* MyOrdersRouter.swift */; };
+		29852A482A06AFD3005DCF46 /* TinkoffExpressWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A472A06AFD3005DCF46 /* TinkoffExpressWindow.swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -149,6 +150,7 @@
 		29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutMapper.swift; sourceTree = "<group>"; };
 		29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutRouter.swift; sourceTree = "<group>"; };
 		29852A452A068735005DCF46 /* MyOrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersRouter.swift; sourceTree = "<group>"; };
+		29852A472A06AFD3005DCF46 /* TinkoffExpressWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffExpressWindow.swift; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 			children = (
 				29C3928329F9809A0041F569 /* AppDelegate.swift */,
 				29C3928429F9809A0041F569 /* SceneDelegate.swift */,
+				29852A472A06AFD3005DCF46 /* TinkoffExpressWindow.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1625,6 +1628,7 @@
 				29C392CF29F9809A0041F569 /* OrderCheckoutCellType.swift in Sources */,
 				43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */,
 				29C3928B29F9809A0041F569 /* HSBAColor+Highlight.swift in Sources */,
+				29852A482A06AFD3005DCF46 /* TinkoffExpressWindow.swift in Sources */,
 				29C392D329F9809A0041F569 /* CartAssembly.swift in Sources */,
 				29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */,
 				43EF49242A029EC1002424CE /* Coordinator.swift in Sources */,
@@ -1780,7 +1784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72SVK4HY2X;
+				DEVELOPMENT_TEAM = ZA8S3A839R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1793,7 +1797,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinkoff.TinkoffExpress;
+				PRODUCT_BUNDLE_IDENTIFIER = p.com.tinkoff.TinkoffExpress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1812,7 +1816,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72SVK4HY2X;
+				DEVELOPMENT_TEAM = ZA8S3A839R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1825,7 +1829,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tinkoff.TinkoffExpress;
+				PRODUCT_BUNDLE_IDENTIFIER = p.com.tinkoff.TinkoffExpress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
