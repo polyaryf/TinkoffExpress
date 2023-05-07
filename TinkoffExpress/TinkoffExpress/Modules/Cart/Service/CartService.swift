@@ -8,32 +8,26 @@
 import Foundation
 import Combine
 
-protocol CartService {
-    func loadItems(completion: @escaping ([Cart]?) -> Void)
+protocol ICartService {
+    var currentProductsPublisher: AnyPublisher<[Product], Never> { get }
+    
+    func add(product: Product)
+    func remove(product: Product)
+    func removeAllProducts()
 }
 
-final class RestCartService: CartService {
-    private var cancellables = Set<AnyCancellable>()
+final class CartServic: ICartService {
+    var currentProductsPublisher: AnyPublisher<[Product], Never> { fatalError() }
     
-    func loadItems(completion: @escaping ([Cart]?) -> Void) {
-//        let network = TEApiService()
-//        network
-//            .getOrders()
-//            .sink { complitionn in
-//                print(complitionn.hashValue)
-//            }
-//            receiveValue: { orders in
-//                var carts: [Cart] = []
-//                for order in orders {
-//                    for item in order.items {
-//                        carts.append(Cart(text: item.name, imageName: "kettle"))
-//                    }
-//                }
-//                print(carts)
-//                completion(carts)
-//            }
-//        .store(in: &cancellables)
-    }
+    func add(product: Product) {}
+    
+    func remove(product: Product) {}
+    
+    func removeAllProducts() {}
+}
+
+protocol CartService {
+    func loadItems(completion: @escaping ([Cart]?) -> Void)
 }
 
 final class MockCartService: CartService {

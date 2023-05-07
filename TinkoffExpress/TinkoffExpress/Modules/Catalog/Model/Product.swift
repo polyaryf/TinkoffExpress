@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Product {
-    let id = UUID()
+struct Product: Equatable {
+    let productId: String = UUID().uuidString
+    let productTypeId: String
     let title: String
     let price: Int
     let image: String
