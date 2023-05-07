@@ -65,8 +65,6 @@ final class MeetingAppointmentViewController: UIViewController {
     private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(named: "textViewButtonColor")
-        textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        textView.text = "Как добраться и когда вам позвонить"
         textView.font = .systemFont(ofSize: 17, weight: .regular)
         textView.showsVerticalScrollIndicator = false
         textView.textContainerInset = .init(top: 18, left: 12, bottom: 18, right: 47)
@@ -74,6 +72,14 @@ final class MeetingAppointmentViewController: UIViewController {
         textView.isScrollEnabled = false
         textView.delegate = self
         return textView
+    }()
+    
+    private lazy var textPlaceholderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Как добраться и когда вам позвонить"
+        label.textColor = UIColor(named: "textViewPlaceholderColor")
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        return label
     }()
     
     private lazy var clearButton: UIButton = {
@@ -88,7 +94,6 @@ final class MeetingAppointmentViewController: UIViewController {
     private lazy var countLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "textColor")
-        label.text = "Можно написать 150 символов"
         label.font = .systemFont(ofSize: 15, weight: .regular)
         return label
     }()
@@ -103,7 +108,7 @@ final class MeetingAppointmentViewController: UIViewController {
         button.layer.shadowOpacity = 0.1
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
         button.layer.shadowRadius = 4
-        button.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(hideKeyboard), for: .touchUpInside)
         return button
     }()
     
@@ -145,6 +150,7 @@ final class MeetingAppointmentViewController: UIViewController {
         setupViewsHierarchy()
         setupConstraints()
         setupKeyboardObservation()
+        updateTextViewAccessories()
         presenter.viewDidLoad()
     }
 
@@ -161,6 +167,7 @@ final class MeetingAppointmentViewController: UIViewController {
         scrollView.addSubview(dateCollectionView)
         scrollView.addSubview(timeCollectionView)
         scrollView.addSubview(textView)
+        textView.addSubview(textPlaceholderLabel)
         view.addSubview(clearButton)
         scrollView.addSubview(countLabel)
         view.addSubview(readyButton)
@@ -197,6 +204,11 @@ final class MeetingAppointmentViewController: UIViewController {
             make.top.equalTo(timeCollectionView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
+        }
+        
+        textPlaceholderLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(top: .zero, left: 12, bottom: .zero, right: 47))
         }
         
         clearButton.snp.makeConstraints { make in
@@ -251,13 +263,6 @@ final class MeetingAppointmentViewController: UIViewController {
         presenter.deliveryButtonTapped()
     }
     
-    func changeTextView(_ textView: UITextView) {
-        if textView.textColor == UIColor(named: "textViewPlaceholderColor") {
-            textView.text = ""
-            textView.textColor = UIColor(named: "textColor")
-        }
-    }
-    
     @objc private func keyboardWillShow(notification: Notification) {
         guard let userInfo = notification.userInfo,
             let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
@@ -289,14 +294,27 @@ final class MeetingAppointmentViewController: UIViewController {
     
     @objc private func clearButtonTapped() {
         textView.text = ""
-        countLabel.text = "Осталось 150 символов"
         textView.snp.updateConstraints { make in
             make.height.equalTo(56)
         }
     }
     
-    @objc private func readyButtonTapped() {
+    @objc private func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    // MARK: Helpers
+
+    private func updateTextViewAccessories() {
+        if textView.isFirstResponder || textView.hasText {
+            countLabel.text = "Осталось \(.maxTextViewContentLength - textView.text.count) символов"
+        } else {
+            countLabel.text = "Можно написать \(Int.maxTextViewContentLength) символов"
+        }
+        
+        textPlaceholderLabel.isHidden = textView.isFirstResponder || textView.hasText
+
+        clearButton.isHidden = textView.isFirstResponder
     }
 }
 
@@ -378,11 +396,13 @@ extension MeetingAppointmentViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITextViewDelegate
 
 extension MeetingAppointmentViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        updateTextViewAccessories()
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
-        if textView.text.count > 150 {
+        if textView.text.count > .maxTextViewContentLength {
             textView.deleteBackward()
-        } else {
-            countLabel.text = "Осталось \(150 - textView.text.count) символов"
         }
         
         let height = min(deliveryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
@@ -397,27 +417,17 @@ extension MeetingAppointmentViewController: UITextViewDelegate {
         if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
             textView.deleteBackward()
         }
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        clearButton.isHidden = false
-        changeTextView(textView)
-        countLabel.isHidden = false
-        countLabel.text = "Осталось \(150 - textView.text.count) символов"
+        
+        updateTextViewAccessories()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        clearButton.isHidden = true
-        
-        if textView.text.count == 150 {
-            countLabel.isHidden = true
-        } else {
-            countLabel.text = "Можно написать \(150 - textView.text.count) символов"
-        }
-        
-        if textView.text.isEmpty {
-            textView.text = "Как добраться и когда вам позвонить"
-            textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        }
+        updateTextViewAccessories()
     }
+}
+
+// MARK: - Constants
+
+private extension Int {
+    static let maxTextViewContentLength = 150
 }
