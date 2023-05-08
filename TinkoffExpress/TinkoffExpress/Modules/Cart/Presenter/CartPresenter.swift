@@ -18,22 +18,23 @@ final class CartPresenter: CartPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: CartViewController?
-    private var coordinator: Coordinator?
-    private var service: CartService?
+    private let service: ICartService
+    
+    private var products: [CartProduct] = []
 
     // MARK: Init
-    init(coordinator: Coordinator, service: CartService) {
-        self.coordinator = coordinator
+    
+    init(service: ICartService) {
         self.service = service
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
-            guard let self = self else { return }
-            self.view?.items = items ?? []
-        }
+        products = service.getAll()
+        view?.setItems(with: products.map { cartProduct in
+            Cart(text: cartProduct.product.title, imageName: cartProduct.product.image, count: "\(cartProduct.counter)")
+        })
     }
     
     // MARK: Events
@@ -53,6 +54,6 @@ final class CartPresenter: CartPresenterProtocol {
     // MARK: Navigation
     
     private func showDelivery() {
-        coordinator?.move(DeliveryAssembly(), with: .present)
+//        coordinator?.move(DeliveryAssembly(), with: .present)
     }
 }

@@ -13,6 +13,7 @@ final class CartCell: UICollectionViewCell {
     
     private lazy var label = UILabel()
     private lazy var imageView = UIImageView()
+    private lazy var countLabel = UILabel()
     
     // MARK: Sizes
     
@@ -26,6 +27,7 @@ final class CartCell: UICollectionViewCell {
         setupContentView()
         setupImageView()
         setupLabel()
+        setupCountLabel()
         setupColors()
     }
     
@@ -53,9 +55,10 @@ final class CartCell: UICollectionViewCell {
     
     // MARK: Setup Subviews
     
-    func setupCell(text: String, imageName: String) {
+    func setupCell(text: String, imageName: String, count: String) {
         label.text = text
         imageView.image = UIImage(named: imageName)
+        countLabel.text = count
     }
     
     private func setupContentView() {
@@ -93,6 +96,17 @@ final class CartCell: UICollectionViewCell {
             make.leading.equalTo(imageView.snp.trailing).offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.centerY.equalToSuperview()
+        }
+    }
+    
+    private func setupCountLabel() {
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        countLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        contentView.addSubview(countLabel)
+        
+        countLabel.snp.makeConstraints {
+            $0.right.equalToSuperview().offset(-16)
+            $0.centerY.equalToSuperview()
         }
     }
 }

@@ -99,8 +99,8 @@ extension CatalogViewController: UITableViewDataSource {
                 image: product.image
             )
         
-            cell.onCounterDidChange { counter in
-                // presenter.viewDidChangeCounterOfItem(at: index)
+            cell.onCounterDidChange { [presenter] counter in
+                presenter.viewDidChangeCounterOfItem(at: indexPath.row, counter: counter)
             }
             
             return cell

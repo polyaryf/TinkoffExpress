@@ -10,4 +10,5 @@ import Foundation
 struct Cart {
     let text: String
     let imageName: String
+    let count: String
 }

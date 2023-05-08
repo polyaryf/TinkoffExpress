@@ -15,7 +15,7 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Properties
     
-    lazy var items: [Cart] = []
+    private var items: [Cart] = []
     
     // MARK: Subviews
     private lazy var countLabel = UILabel()
@@ -39,16 +39,31 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Life Cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         cartPresenter.viewDidLoad()
+        var totalSum = 0
+        items.forEach { cart in
+            totalSum += Int(cart.count) ?? 0
+        }
+        countLabel.text = "\(totalSum)"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         setupNavigationItem()
         setupCountLabel()
         setupCollectionView()
         setupFinalView()
         setupColors()
+    }
+    
+    func setItems(with items: [Cart]) {
+        self.items = items
+        print(items)
+        collectionView.reloadData()
     }
     
     // MARK: Actions
@@ -190,7 +205,7 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         ) as? CartCell {
             let textCell = items[indexPath.row].text
             let imageNameCell = items[indexPath.row].imageName
-            cell.setupCell(text: textCell, imageName: imageNameCell)
+            cell.setupCell(text: textCell, imageName: imageNameCell, count: items[indexPath.row].count)
             return cell
         } else {
             return UICollectionViewCell()

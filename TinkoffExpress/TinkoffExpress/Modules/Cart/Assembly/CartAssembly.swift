@@ -9,8 +9,8 @@ import UIKit
 
 final class CartAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
-        let mockService = MockCartService()
-        let presenter = CartPresenter(coordinator: coordinator, service: mockService)
+        let service = CartService.shared
+        let presenter = CartPresenter( service: service)
         let viewController = CartViewController(cartPresenter: presenter)
         presenter.view = viewController
         return viewController

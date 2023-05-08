@@ -13,6 +13,8 @@
 		29328F9B2A07BCB9001CE5AA /* CatalogAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */; };
 		29328F9E2A07CFC4001CE5AA /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */; };
 		29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328FA02A07D01F001CE5AA /* CatalogService.swift */; };
+		29475B2D2A09796100001A2A /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29475B2C2A09796100001A2A /* CartProduct.swift */; };
+		297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C871D2A07F5DD00DE110F /* CatalogProduct.swift */; };
 		297FF59D29FFD37D00636B01 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF59C29FFD37D00636B01 /* TextField.swift */; };
 		297FF5A22A003E5000636B01 /* ABTestView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */; };
 		297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */; };
@@ -154,6 +156,8 @@
 		29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogAssembly.swift; sourceTree = "<group>"; };
 		29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
 		29328FA02A07D01F001CE5AA /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
+		29475B2C2A09796100001A2A /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
+		297C871D2A07F5DD00DE110F /* CatalogProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProduct.swift; sourceTree = "<group>"; };
 		297FF59C29FFD37D00636B01 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+UIScrollView.swift"; sourceTree = "<group>"; };
 		297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				29328F972A07B68A001CE5AA /* Product.swift */,
+				297C871D2A07F5DD00DE110F /* CatalogProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 			isa = PBXGroup;
 			children = (
 				29C3925829F980990041F569 /* Cart.swift */,
+				29475B2C2A09796100001A2A /* CartProduct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1658,6 +1664,7 @@
 				439B5E0E2A0657C8001764B0 /* SettingsPresenter.swift in Sources */,
 				439B5E122A066B57001764B0 /* SettingsCell.swift in Sources */,
 				29C392E329F9809A0041F569 /* OnboardingViewController.swift in Sources */,
+				29475B2D2A09796100001A2A /* CartProduct.swift in Sources */,
 				29852A3F2A0672CD005DCF46 /* OrderCheckoutRouter.swift in Sources */,
 				29C392A229F9809A0041F569 /* ValidationError.swift in Sources */,
 				29C392AB29F9809A0041F569 /* TEMoyaLogger.swift in Sources */,
@@ -1720,6 +1727,7 @@
 				29C392BC29F9809A0041F569 /* AddressInputService.swift in Sources */,
 				29C3929129F9809A0041F569 /* Button.InteractiveColor+Extensions.swift in Sources */,
 				29C392DB29F9809A0041F569 /* Delivery.swift in Sources */,
+				297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */,
 				29C392D729F9809A0041F569 /* CartCell.swift in Sources */,
 				29C392EB29F9809A0041F569 /* Assembly.swift in Sources */,
 				29C392DD29F9809A0041F569 /* DeliveryHeaderView.swift in Sources */,

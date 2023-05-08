@@ -14,7 +14,7 @@ protocol ICatalogAssembly {
 final class CatalogAssembly: ICatalogAssembly {
     func createCatalogView() -> UIViewController {
         let mockService = MockCatalogService()
-        let presenter = CatalogPresenter(service: mockService)
+        let presenter = CatalogPresenter(service: mockService, cartService: CartService.shared)
         let view = CatalogViewController(presenter: presenter)
         presenter.view = view
         return view
