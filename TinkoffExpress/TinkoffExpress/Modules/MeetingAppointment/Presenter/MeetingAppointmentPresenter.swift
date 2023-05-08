@@ -56,7 +56,7 @@ class MeetingAppointmentPresenter {
     
     // MARK: State
     
-    private var address = ""
+    private var address = "Ивангород, ул. Гагарина, д. 1"
     private var comment = ""
     private var dateSlots: [DateSlot] = []
     private var selectedDateSlotIndex = 0
@@ -72,18 +72,7 @@ class MeetingAppointmentPresenter {
         self.service = service
     }
     
-    // MARK: Navigation
-    
-    private func showSearch() {
-        // TODO: сделать смену открытия экрана
-        //        router.openAddressInput(output: self)
-        router.openABtest(output: self)
-    }
-    
-    private func showOrderCheckout() {
-        //        output?.meetingAppointment(didCompleteWith: OrderCheckout())
-        router.openOrderCheckout()
-    }
+    // MARK: Helpers
     
     private func loadTimeSlots(for dateSlotIndex: Int) {
         dateSlots[dateSlotIndex].timeSlotsState = .loading
@@ -111,13 +100,34 @@ class MeetingAppointmentPresenter {
             case .failure where self.selectedDateSlotIndex == dateSlotIndex:
                 self.view?.showErrorAlert()
             }
+            
+            self.updatePrimaryButtonEnabled()
         }
     }
     
-    private func updatePrimaryButton() {
+    private func updatePrimaryButtonTitle() {
         let selectedDate = dateSlots[selectedDateSlotIndex].date
         let title = "Доставить \(String.localizedDate(from: selectedDate).lowercased())"
         view?.set(primaryButtonTitle: title)
+    }
+    
+    private func updatePrimaryButtonEnabled() {
+        view?.set(primaryButtonEnabled: isFormValid())
+    }
+    
+    private func isFormValid() -> Bool {
+        let isAddressValid = !address.isEmpty
+        
+        let isTimeSlotSelected: Bool = {
+            switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+            case .loaded:
+                return true
+            default:
+                return false
+            }
+        }()
+        
+        return isAddressValid && isTimeSlotSelected
     }
 }
 
@@ -128,17 +138,21 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
         dateSlots = DateSlot.defaultRange
         view?.reloadDateCollection()
         view?.selectDateSlot(at: selectedDateSlotIndex)
-        updatePrimaryButton()
+        view?.set(address: address)
+        updatePrimaryButtonTitle()
+        updatePrimaryButtonEnabled()
         
         loadTimeSlots(for: selectedDateSlotIndex)
     }
     
     func addressButtonTapped() {
-        showSearch()
+        router.openAddressInput(output: self)
+//        router.openABtest(output: self)
     }
     
     func deliveryButtonTapped() {
-        showOrderCheckout()
+        // output?.meetingAppointment(didCompleteWith: OrderCheckout())
+        router.openOrderCheckout()
     }
     
     func viewDidChange(comment: String) {
@@ -168,7 +182,8 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
             loadTimeSlots(for: selectedDateSlotIndex)
         }
         
-        updatePrimaryButton()
+        updatePrimaryButtonTitle()
+        updatePrimaryButtonEnabled()
     }
     
     func viewDidRequestNumberOfTimeSlots() -> Int {
@@ -208,7 +223,9 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
 
 extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
     func addressInputModule(didCompleteWith addressInput: String) {
-        // TODO: Handle adressInput
+        address = addressInput
+        view?.set(address: address)
+        updatePrimaryButtonEnabled()
     }
 }
 
@@ -216,8 +233,9 @@ extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
 
 extension MeetingAppointmentPresenter: IABTestModuleOutput {
     func abTestModule(didCompleteWith addressInput: String) {
-        print(addressInput)
-        // TODO: Handle adressInput
+        address = addressInput
+        view?.set(address: address)
+        updatePrimaryButtonEnabled()
     }
 }
 
@@ -275,26 +293,6 @@ private extension MeetingAppointmentPresenter.TimeSlot {
                 date: .localizedDate(from: date)
             )
         )
-    }
-}
-
-private extension MeetingAppointmentPresenter.TimeSlotState {
-    var isLoading: Bool {
-        switch self {
-        case .loading:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    var isLoaded: Bool {
-        switch self {
-        case .loaded:
-            return true
-        default:
-            return false
-        }
     }
 }
 

@@ -7,7 +7,14 @@
 
 import UIKit
 
-final class Button: UIView {    
+final class Button: UIView {
+    // MARK: Internal State
+    
+    var isEnabled: Bool {
+        get { control.isEnabled }
+        set { control.isEnabled = newValue }
+    }
+
     private(set) var configuration: Configuration
     
     // MARK: Subviews & Constraints

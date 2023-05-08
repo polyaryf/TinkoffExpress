@@ -17,6 +17,7 @@ protocol IMeetingAppointmentView: AnyObject {
     func reloadTimeCollection()
     func set(address: String)
     func set(primaryButtonTitle: String)
+    func set(primaryButtonEnabled: Bool)
     func setPrimaryButtonsTinkoffStyle()
     func setPrimaryButtonsDestructiveStyle()
     func showErrorAlert()
@@ -41,7 +42,6 @@ final class MeetingAppointmentViewController: UIViewController {
         let button = UIButton()
         button.setTitleColor(UIColor(named: "textColor"), for: .normal)
         button.backgroundColor = UIColor(named: "addressButtonColor")
-        button.setTitle("Ивангород, ул. Гагарина, д. 1", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         button.contentHorizontalAlignment = .leading
         button.contentVerticalAlignment = .center
@@ -363,6 +363,10 @@ extension MeetingAppointmentViewController: IMeetingAppointmentView {
     
     func set(primaryButtonTitle: String) {
         primaryButton.setTitle(primaryButtonTitle)
+    }
+    
+    func set(primaryButtonEnabled: Bool) {
+        primaryButton.isEnabled = primaryButtonEnabled
     }
     
     func setPrimaryButtonsTinkoffStyle() {
