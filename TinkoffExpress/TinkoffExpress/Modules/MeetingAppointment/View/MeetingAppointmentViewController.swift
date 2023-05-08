@@ -128,7 +128,7 @@ final class MeetingAppointmentViewController: UIViewController {
     
     private lazy var primaryButton: Button = {
         let configuration = Button.Configuration(
-            title: "Доставить сегодня",
+            title: "",
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )

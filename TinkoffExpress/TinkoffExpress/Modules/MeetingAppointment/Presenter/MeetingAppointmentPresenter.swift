@@ -113,6 +113,12 @@ class MeetingAppointmentPresenter {
             }
         }
     }
+    
+    private func updatePrimaryButton() {
+        let selectedDate = dateSlots[selectedDateSlotIndex].date
+        let title = "Доставить \(String.localizedDate(from: selectedDate).lowercased())"
+        view?.set(primaryButtonTitle: title)
+    }
 }
 
 // MARK: - MeetingAppointmentPresenterProtocol
@@ -122,6 +128,7 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
         dateSlots = DateSlot.defaultRange
         view?.reloadDateCollection()
         view?.selectDateSlot(at: selectedDateSlotIndex)
+        updatePrimaryButton()
         
         loadTimeSlots(for: selectedDateSlotIndex)
     }
@@ -160,6 +167,8 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
         case .initial, .failed:
             loadTimeSlots(for: selectedDateSlotIndex)
         }
+        
+        updatePrimaryButton()
     }
     
     func viewDidRequestNumberOfTimeSlots() -> Int {
