@@ -148,6 +148,7 @@
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 		DE533B792A06A18C0069E653 /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */; };
+		DE533B7B2A07DA340069E653 /* UIAlertController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533B7A2A07DA340069E653 /* UIAlertController+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,6 +302,7 @@
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
 		DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Utils.swift"; sourceTree = "<group>"; };
+		DE533B7A2A07DA340069E653 /* UIAlertController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Utils.swift"; sourceTree = "<group>"; };
 		DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinkoffExpress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -504,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				29C391C829F980990041F569 /* UIView+Utils.swift */,
+				DE533B7A2A07DA340069E653 /* UIAlertController+Utils.swift */,
 				DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */,
 			);
 			path = Extentions;
@@ -1638,6 +1641,7 @@
 				43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */,
 				29C392DC29F9809A0041F569 /* DeliveryCell.swift in Sources */,
 				29C392D429F9809A0041F569 /* CartPresenter.swift in Sources */,
+				DE533B7B2A07DA340069E653 /* UIAlertController+Utils.swift in Sources */,
 				43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */,
 				29C3928C29F9809A0041F569 /* Theme.swift in Sources */,
 				29C3929D29F9809A0041F569 /* TEApiAddress.swift in Sources */,

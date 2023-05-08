@@ -8,6 +8,20 @@
 import UIKit
 import SnapKit
 
+// swiftlint:disable file_length
+
+protocol IMeetingAppointmentView: AnyObject {
+    func reloadDateCollection()
+    func selectDateSlot(at index: Int)
+    func selectTimeSlot(at index: Int)
+    func reloadTimeCollection()
+    func set(address: String)
+    func set(primaryButtonTitle: String)
+    func setPrimaryButtonsTinkoffStyle()
+    func setPrimaryButtonsDestructiveStyle()
+    func showErrorAlert()
+}
+
 final class MeetingAppointmentViewController: UIViewController {
     // MARK: Dependencies
     
@@ -62,7 +76,7 @@ final class MeetingAppointmentViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var textView: UITextView = {
+    private lazy var commentTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(named: "textViewButtonColor")
         textView.font = .systemFont(ofSize: 17, weight: .regular)
@@ -74,7 +88,7 @@ final class MeetingAppointmentViewController: UIViewController {
         return textView
     }()
     
-    private lazy var textPlaceholderLabel: UILabel = {
+    private lazy var commentPlaceholderLabel: UILabel = {
         let label = UILabel()
         label.text = "Как добраться и когда вам позвонить"
         label.textColor = UIColor(named: "textViewPlaceholderColor")
@@ -82,7 +96,7 @@ final class MeetingAppointmentViewController: UIViewController {
         return label
     }()
     
-    private lazy var clearButton: UIButton = {
+    private lazy var clearCommentButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = UIColor(named: "clearButtonColor")
         button.isHidden = true
@@ -91,14 +105,14 @@ final class MeetingAppointmentViewController: UIViewController {
         return button
     }()
     
-    private lazy var countLabel: UILabel = {
+    private lazy var commentCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "textColor")
         label.font = .systemFont(ofSize: 15, weight: .regular)
         return label
     }()
     
-    private lazy var readyButton: UIButton = {
+    private lazy var hideKeyboardButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "readyButtonColor")
         button.setTitle("Готово", for: .normal)
@@ -112,7 +126,7 @@ final class MeetingAppointmentViewController: UIViewController {
         return button
     }()
     
-    private lazy var deliveryButton: Button = {
+    private lazy var primaryButton: Button = {
         let configuration = Button.Configuration(
             title: "Доставить сегодня",
             style: .primaryTinkoff,
@@ -124,11 +138,6 @@ final class MeetingAppointmentViewController: UIViewController {
         }
         return button
     }()
-    
-    // MARK: State
-    
-    var dates: [MeetingAppointmentDate] = []
-    var times: [MeetingAppointmentTime] = []
     
     // MARK: Init
     
@@ -145,7 +154,7 @@ final class MeetingAppointmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "titleBackgroundColor")
+        setupView()
         setupNavigationItem()
         setupViewsHierarchy()
         setupConstraints()
@@ -153,8 +162,12 @@ final class MeetingAppointmentViewController: UIViewController {
         updateTextViewAccessories()
         presenter.viewDidLoad()
     }
-
+    
     // MARK: Initial Configuration
+    
+    private func setupView() {
+        view.backgroundColor = UIColor(named: "titleBackgroundColor")
+    }
     
     private func setupNavigationItem() {
         navigationItem.title = "Оформление доставки"
@@ -166,12 +179,12 @@ final class MeetingAppointmentViewController: UIViewController {
         scrollView.addSubview(addressButton)
         scrollView.addSubview(dateCollectionView)
         scrollView.addSubview(timeCollectionView)
-        scrollView.addSubview(textView)
-        textView.addSubview(textPlaceholderLabel)
-        view.addSubview(clearButton)
-        scrollView.addSubview(countLabel)
-        view.addSubview(readyButton)
-        view.addSubview(deliveryButton)
+        scrollView.addSubview(commentTextView)
+        commentTextView.addSubview(commentPlaceholderLabel)
+        view.addSubview(clearCommentButton)
+        scrollView.addSubview(commentCountLabel)
+        view.addSubview(hideKeyboardButton)
+        view.addSubview(primaryButton)
     }
     
     private func setupConstraints() {
@@ -200,38 +213,38 @@ final class MeetingAppointmentViewController: UIViewController {
             make.height.equalTo(82)
         }
         
-        textView.snp.makeConstraints { make in
+        commentTextView.snp.makeConstraints { make in
             make.top.equalTo(timeCollectionView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
         }
         
-        textPlaceholderLabel.snp.makeConstraints { make in
+        commentPlaceholderLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(top: .zero, left: 12, bottom: .zero, right: 47))
         }
         
-        clearButton.snp.makeConstraints { make in
-            make.centerY.equalTo(textView.snp.centerY)
-            make.trailing.equalTo(textView.snp.trailing).offset(-12)
+        clearCommentButton.snp.makeConstraints { make in
+            make.centerY.equalTo(commentTextView.snp.centerY)
+            make.trailing.equalTo(commentTextView.snp.trailing).offset(-12)
             make.size.equalTo(16)
         }
         
-        countLabel.snp.makeConstraints { make in
-            make.top.equalTo(textView.snp.bottom).offset(12)
+        commentCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(commentTextView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(28)
             make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(18)
         }
         
-        readyButton.snp.makeConstraints { make in
+        hideKeyboardButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(60)
             make.width.equalTo(84)
             make.height.equalTo(44)
         }
         
-        deliveryButton.snp.makeConstraints { make in
+        primaryButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-24)
         }
@@ -267,13 +280,13 @@ final class MeetingAppointmentViewController: UIViewController {
         guard let userInfo = notification.userInfo,
             let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
-        let contentInsets = keyboardFrame.size.height + readyButton.bounds.height + 32
+        let contentInsets = keyboardFrame.size.height + hideKeyboardButton.bounds.height + 32
         scrollView.contentInset.bottom = contentInsets
         scrollView.verticalScrollIndicatorInsets.bottom = contentInsets
-        scrollView.scrollRectToVisible(textView.frame, animated: true)
+        scrollView.scrollRectToVisible(commentTextView.frame, animated: true)
         
         UIView.animate(withDuration: 0.5) { [self] in
-            readyButton.snp.updateConstraints { make in
+            hideKeyboardButton.snp.updateConstraints { make in
                 make.bottom.equalToSuperview().offset(-(keyboardFrame.size.height + 16))
             }
             view.layoutIfNeeded()
@@ -285,7 +298,7 @@ final class MeetingAppointmentViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets.bottom = 0
         
         UIView.animate(withDuration: 0.5) { [self] in
-            readyButton.snp.updateConstraints { make in
+            hideKeyboardButton.snp.updateConstraints { make in
                 make.bottom.equalToSuperview().offset(60)
             }
             view.layoutIfNeeded()
@@ -293,8 +306,8 @@ final class MeetingAppointmentViewController: UIViewController {
     }
     
     @objc private func clearButtonTapped() {
-        textView.text = ""
-        textView.snp.updateConstraints { make in
+        commentTextView.text = ""
+        commentTextView.snp.updateConstraints { make in
             make.height.equalTo(56)
         }
     }
@@ -306,15 +319,62 @@ final class MeetingAppointmentViewController: UIViewController {
     // MARK: Helpers
 
     private func updateTextViewAccessories() {
-        if textView.isFirstResponder || textView.hasText {
-            countLabel.text = "Осталось \(.maxTextViewContentLength - textView.text.count) символов"
+        if commentTextView.isFirstResponder || commentTextView.hasText {
+            commentCountLabel.text = "Осталось \(.maxTextViewContentLength - commentTextView.text.count) символов"
         } else {
-            countLabel.text = "Можно написать \(Int.maxTextViewContentLength) символов"
+            commentCountLabel.text = "Можно написать \(Int.maxTextViewContentLength) символов"
         }
         
-        textPlaceholderLabel.isHidden = textView.isFirstResponder || textView.hasText
+        commentPlaceholderLabel.isHidden = commentTextView.isFirstResponder || commentTextView.hasText
+        clearCommentButton.isHidden = !commentTextView.isFirstResponder
+    }
+}
 
-        clearButton.isHidden = textView.isFirstResponder
+// MARK: - IMeetingAppointmentView
+
+extension MeetingAppointmentViewController: IMeetingAppointmentView {
+    func reloadDateCollection() {
+        dateCollectionView.reloadData()
+    }
+    
+    func selectDateSlot(at index: Int) {
+        dateCollectionView.selectItem(
+            at: IndexPath(item: index, section: .zero),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
+    }
+    
+    func selectTimeSlot(at index: Int) {
+        timeCollectionView.selectItem(
+            at: IndexPath(item: index, section: .zero),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
+    }
+    
+    func reloadTimeCollection() {
+        timeCollectionView.reloadSections(IndexSet(integer: .zero))
+    }
+    
+    func set(address: String) {
+        addressButton.setTitle(address, for: .normal)
+    }
+    
+    func set(primaryButtonTitle: String) {
+        primaryButton.setTitle(primaryButtonTitle)
+    }
+    
+    func setPrimaryButtonsTinkoffStyle() {
+        primaryButton.setStyle(.primaryTinkoff)
+    }
+    
+    func setPrimaryButtonsDestructiveStyle() {
+        primaryButton.setStyle(.destructive)
+    }
+    
+    func showErrorAlert() {
+        present(UIAlertController.defaultErrorAlert(), animated: true)
     }
 }
 
@@ -324,9 +384,9 @@ extension MeetingAppointmentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case dateCollectionView:
-            return dates.count
+            return presenter.viewDidRequestNumberOfDateSlots()
         default:
-            return times.count
+            return presenter.viewDidRequestNumberOfTimeSlots()
         }
     }
     
@@ -336,12 +396,14 @@ extension MeetingAppointmentViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch collectionView {
         case dateCollectionView:
+            let model = presenter.viewDidRequestDateSlot(at: indexPath.row)
             let cell = collectionView.dequeue(DateCell.self, for: indexPath)
-            cell.setupCell(text: dates[indexPath.row].date)
+            cell.setupCell(text: model.date)
             return cell
         default:
+            let model = presenter.viewDidRequestTimeSlot(at: indexPath.row)
             let cell = collectionView.dequeue(TimeCell.self, for: indexPath)
-            cell.setupCell(timeText: times[indexPath.row].time, dateText: times[indexPath.row].date)
+            cell.setupCell(timeText: model.time, dateText: model.date)
             return cell
         }
     }
@@ -351,7 +413,23 @@ extension MeetingAppointmentViewController: UICollectionViewDataSource {
 
 extension MeetingAppointmentViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.didSelectItemAt(with: collectionView, and: indexPath)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        switch collectionView {
+        case dateCollectionView:
+            presenter.viewDidSelectDateSlot(at: indexPath.row)
+        default:
+            presenter.viewDidSelectTimeSlot(at: indexPath.row)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        switch collectionView {
+        case dateCollectionView:
+            return true
+        default:
+            return presenter.viewShouldSelectTimeSlot(at: indexPath.row)
+        }
     }
 }
 
@@ -405,7 +483,7 @@ extension MeetingAppointmentViewController: UITextViewDelegate {
             textView.deleteBackward()
         }
         
-        let height = min(deliveryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
+        let height = min(primaryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
             width: textView.frame.width,
             height: CGFloat.greatestFiniteMagnitude
         )).height)
@@ -414,7 +492,7 @@ extension MeetingAppointmentViewController: UITextViewDelegate {
             make.height.equalTo(height)
         }
         
-        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
+        if height >= primaryButton.frame.maxY - textView.frame.maxY - 50 {
             textView.deleteBackward()
         }
         
@@ -423,6 +501,7 @@ extension MeetingAppointmentViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         updateTextViewAccessories()
+        presenter.viewDidChange(comment: textView.text)
     }
 }
 
