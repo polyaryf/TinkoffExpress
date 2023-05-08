@@ -7,16 +7,10 @@
 
 import UIKit
 
-protocol IMeetingAppointmentModuleOutput: AnyObject {
-    /// тут подставила пока модельку следующего экрана
-    /// но лучше передавать введенные данные, которые я потом на своем экране будут парсить
-    func meetingAppointment(didCompleteWith orderData: OrderCheckout)
-}
-
-protocol MeetingAppointmentPresenterProtocol {
+protocol IMeetingAppointmentPresenter {
     func viewDidLoad()
-    func addressButtonTapped()
-    func deliveryButtonTapped()
+    func viewDidTapAddress()
+    func viewDidTapPrimaryButton()
     func viewDidChange(comment: String)
     func viewDidRequestNumberOfDateSlots() -> Int
     func viewDidRequestDateSlot(at index: Int) -> MeetingAppointmentDate
@@ -48,11 +42,23 @@ class MeetingAppointmentPresenter {
         case failed
     }
     
+    enum AddressSearchType {
+        case abTest
+        case daData
+    }
+    
+    enum UseCase {
+        case ordering
+        case editing
+    }
+    
     // MARK: Dependencies
     
     weak var view: IMeetingAppointmentView?
     private let router: IMeetingAppointmentRouter
     private let service: IMeetingAppointmentService
+    private let addressSearchType: AddressSearchType
+    private let useCase: UseCase
     
     // MARK: State
     
@@ -66,21 +72,25 @@ class MeetingAppointmentPresenter {
     
     init(
         router: IMeetingAppointmentRouter,
-        service: IMeetingAppointmentService
+        service: IMeetingAppointmentService,
+        addressSearchType: AddressSearchType,
+        useCase: UseCase
     ) {
         self.router = router
         self.service = service
+        self.addressSearchType = addressSearchType
+        self.useCase = useCase
     }
     
     // MARK: Helpers
     
-    private func loadTimeSlots(for dateSlotIndex: Int) {
+    private func loadTimeSlots(for dateSlotIndex: Int, animateLoadingState: Bool = true) {
         dateSlots[dateSlotIndex].timeSlotsState = .loading
         
         if selectedDateSlotIndex == dateSlotIndex {
-            view?.reloadTimeCollection()
+            view?.reloadTimeCollection(animated: animateLoadingState)
         }
-        
+
         service.loadSlots(forDate: dateSlots[dateSlotIndex].date) { [weak self] result in
             guard let self else { return }
             
@@ -92,7 +102,7 @@ class MeetingAppointmentPresenter {
                 self.dateSlots[dateSlotIndex].timeSlotsState = .loaded(slots)
                 fallthrough
             case .success where self.selectedDateSlotIndex == dateSlotIndex:
-                self.view?.reloadTimeCollection()
+                self.view?.reloadTimeCollection(animated: true)
                 self.view?.selectTimeSlot(at: selectedTimeSlotIndex)
             case .failure:
                 self.dateSlots[dateSlotIndex].timeSlotsState = .failed
@@ -100,8 +110,6 @@ class MeetingAppointmentPresenter {
             case .failure where self.selectedDateSlotIndex == dateSlotIndex:
                 self.view?.showErrorAlert()
             }
-            
-            self.updatePrimaryButtonEnabled()
         }
     }
     
@@ -109,10 +117,6 @@ class MeetingAppointmentPresenter {
         let selectedDate = dateSlots[selectedDateSlotIndex].date
         let title = "Доставить \(String.localizedDate(from: selectedDate).lowercased())"
         view?.set(primaryButtonTitle: title)
-    }
-    
-    private func updatePrimaryButtonEnabled() {
-        view?.set(primaryButtonEnabled: isFormValid())
     }
     
     private func isFormValid() -> Bool {
@@ -131,28 +135,30 @@ class MeetingAppointmentPresenter {
     }
 }
 
-// MARK: - MeetingAppointmentPresenterProtocol
+// MARK: - IMeetingAppointmentPresenter
 
-extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
+extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
     func viewDidLoad() {
         dateSlots = DateSlot.defaultRange
         view?.reloadDateCollection()
         view?.selectDateSlot(at: selectedDateSlotIndex)
         view?.set(address: address)
-        updatePrimaryButtonTitle()
-        updatePrimaryButtonEnabled()
-        
-        loadTimeSlots(for: selectedDateSlotIndex)
+        updatePrimaryButtonTitle()        
+        loadTimeSlots(for: selectedDateSlotIndex, animateLoadingState: false)
     }
     
-    func addressButtonTapped() {
-        router.openAddressInput(output: self)
-//        router.openABtest(output: self)
+    func viewDidTapAddress() {
+        switch addressSearchType {
+        case .abTest:
+            router.openABtest(output: self)
+        case .daData:
+            router.openAddressInput(output: self)
+        }
     }
     
-    func deliveryButtonTapped() {
-        // output?.meetingAppointment(didCompleteWith: OrderCheckout())
-        router.openOrderCheckout()
+    func viewDidTapPrimaryButton() {
+        guard isFormValid() else { return }
+        // TODO: route to order checkout
     }
     
     func viewDidChange(comment: String) {
@@ -174,22 +180,21 @@ extension MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
         
         switch dateSlots[selectedDateSlotIndex].timeSlotsState {
         case .loaded:
-            view?.reloadTimeCollection()
+            view?.reloadTimeCollection(animated: true)
             view?.selectTimeSlot(at: selectedTimeSlotIndex)
         case .loading:
-            view?.reloadTimeCollection()
+            view?.reloadTimeCollection(animated: true)
         case .initial, .failed:
             loadTimeSlots(for: selectedDateSlotIndex)
         }
         
         updatePrimaryButtonTitle()
-        updatePrimaryButtonEnabled()
     }
     
     func viewDidRequestNumberOfTimeSlots() -> Int {
         switch dateSlots[selectedDateSlotIndex].timeSlotsState {
         case .initial, .loading, .failed:
-            return .shimmeringCellsCount
+            return .emptyTimeSlotsCount
         case .loaded(let slots):
             return slots.count
         }
@@ -225,7 +230,6 @@ extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
     func addressInputModule(didCompleteWith addressInput: String) {
         address = addressInput
         view?.set(address: address)
-        updatePrimaryButtonEnabled()
     }
 }
 
@@ -235,11 +239,10 @@ extension MeetingAppointmentPresenter: IABTestModuleOutput {
     func abTestModule(didCompleteWith addressInput: String) {
         address = addressInput
         view?.set(address: address)
-        updatePrimaryButtonEnabled()
     }
 }
 
-// MARK: - Helpers
+// MARK: - Utils
 
 private extension MeetingAppointmentPresenter.DateSlot {
     static var defaultRange: [MeetingAppointmentPresenter.DateSlot] {
@@ -247,7 +250,8 @@ private extension MeetingAppointmentPresenter.DateSlot {
         
         return CollectionOfOne(initialSlot(from: now)) + (1 ... 14).compactMap {
             Calendar.current.date(byAdding: .day, value: $0, to: now)
-        }.map(initialSlot(from:))
+        }
+        .map(initialSlot(from:))
     }
     
     static func initialSlot(from date: Date) -> MeetingAppointmentPresenter.DateSlot {
@@ -260,11 +264,6 @@ private extension MeetingAppointmentPresenter.DateSlot {
 
 private extension String {
     static func localizedDate(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.setLocalizedDateFormatFromTemplate("d-MMMM")
-        
         let calendar = Calendar.current
         
         if calendar.isDateInToday(date) {
@@ -272,7 +271,7 @@ private extension String {
         } else if calendar.isDateInTomorrow(date) {
             return "Завтра"
         } else {
-            return formatter.string(from: date)
+            return DateFormatter.default.string(from: date)
         }
     }
 }
@@ -280,6 +279,9 @@ private extension String {
 private extension DateFormatter {
     static let `default`: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        formatter.setLocalizedDateFormatFromTemplate("d-MMMM")
         return formatter
     }()
 }
@@ -297,7 +299,7 @@ private extension MeetingAppointmentPresenter.TimeSlot {
 }
 
 private extension Int {
-    static let shimmeringCellsCount = 4
+    static let emptyTimeSlotsCount = 3
 }
 
 private extension MeetingAppointmentTime {

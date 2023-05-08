@@ -14,10 +14,9 @@ protocol IMeetingAppointmentView: AnyObject {
     func reloadDateCollection()
     func selectDateSlot(at index: Int)
     func selectTimeSlot(at index: Int)
-    func reloadTimeCollection()
+    func reloadTimeCollection(animated: Bool)
     func set(address: String)
     func set(primaryButtonTitle: String)
-    func set(primaryButtonEnabled: Bool)
     func setPrimaryButtonsTinkoffStyle()
     func setPrimaryButtonsDestructiveStyle()
     func showErrorAlert()
@@ -26,7 +25,7 @@ protocol IMeetingAppointmentView: AnyObject {
 final class MeetingAppointmentViewController: UIViewController {
     // MARK: Dependencies
     
-    private let presenter: MeetingAppointmentPresenterProtocol
+    private let presenter: IMeetingAppointmentPresenter
     
     // MARK: Subviews
     
@@ -141,7 +140,7 @@ final class MeetingAppointmentViewController: UIViewController {
     
     // MARK: Init
     
-    init(presenter: MeetingAppointmentPresenterProtocol) {
+    init(presenter: IMeetingAppointmentPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -269,11 +268,11 @@ final class MeetingAppointmentViewController: UIViewController {
     // MARK: Events
     
     @objc private func addressButtonTapped() {
-        presenter.addressButtonTapped()
+        presenter.viewDidTapAddress()
     }
     
     private func deliveryButtonTapped() {
-        presenter.deliveryButtonTapped()
+        presenter.viewDidTapPrimaryButton()
     }
     
     @objc private func keyboardWillShow(notification: Notification) {
@@ -353,8 +352,10 @@ extension MeetingAppointmentViewController: IMeetingAppointmentView {
         )
     }
     
-    func reloadTimeCollection() {
-        timeCollectionView.reloadSections(IndexSet(integer: .zero))
+    func reloadTimeCollection(animated: Bool) {
+        animated
+            ? timeCollectionView.reloadSections(IndexSet(integer: .zero))
+            : timeCollectionView.reloadData()
     }
     
     func set(address: String) {
@@ -363,10 +364,6 @@ extension MeetingAppointmentViewController: IMeetingAppointmentView {
     
     func set(primaryButtonTitle: String) {
         primaryButton.setTitle(primaryButtonTitle)
-    }
-    
-    func set(primaryButtonEnabled: Bool) {
-        primaryButton.isEnabled = primaryButtonEnabled
     }
     
     func setPrimaryButtonsTinkoffStyle() {

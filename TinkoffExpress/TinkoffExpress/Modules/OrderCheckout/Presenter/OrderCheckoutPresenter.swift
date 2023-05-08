@@ -113,11 +113,3 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         router.openFinalDelivery(with: mapper.toFinalDelivery(from: item))
     }
 }
-
-// MARK: - IMeetingAppointmentModuleOutput, IMyOrdersModuleOutput
-
-extension OrderCheckoutPresenter: IMeetingAppointmentModuleOutput {
-    func meetingAppointment(didCompleteWith orderData: OrderCheckout) {
-        self.item = orderData
-    }
-}

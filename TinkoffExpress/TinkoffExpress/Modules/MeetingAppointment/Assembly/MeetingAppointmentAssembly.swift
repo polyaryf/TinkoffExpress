@@ -18,7 +18,9 @@ final class MeetingAppointmentAssembly: Assembly {
 
         let presenter = MeetingAppointmentPresenter(
             router: router,
-            service: mockService
+            service: mockService,
+            addressSearchType: .daData,
+            useCase: .ordering
         )
 
         let viewController = MeetingAppointmentViewController(presenter: presenter)
