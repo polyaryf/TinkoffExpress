@@ -30,7 +30,6 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "1200"
         return label
     }()
     
@@ -38,10 +37,6 @@ final class CatalogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.text = "\(counter)"
-        if counter == 0 {
-            label.isHidden = true
-        }
         return label
     }()
     
@@ -58,20 +53,13 @@ final class CatalogTableViewCell: UITableViewCell {
         button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(decreaseCounter), for: .touchUpInside)
-
-        if counter == 0 {
-            button.isHidden = true
-        }
         return button
     }()
     
     // MARK: Callbacks
 
-    private var onCounterDidChangeAction: ((Int) -> Void)?
-    
-    // MARK: State
-    
-    private var counter: Int = 0
+    private var onCounterDidIncrease: (() -> Void)?
+    private var onCounterDidDecrease: (() -> Void)?
     
     // MARK: Init
     
@@ -163,7 +151,7 @@ final class CatalogTableViewCell: UITableViewCell {
     
     // MARK: Update View
     
-    private func updateView() {
+    func updateView(with counter: Int) {
         counterLabel.text = "\(counter)"
         
         if counter > 0 {
@@ -183,25 +171,21 @@ final class CatalogTableViewCell: UITableViewCell {
         productImage.image = UIImage(named: "\(image)")
     }
     
-    func onCounterDidChange(_ action: @escaping (Int) -> Void) {
-        onCounterDidChangeAction = action
+    func onCounterDidIncrease(_ action: @escaping () -> Void) {
+        onCounterDidIncrease = action
+    }
+    
+    func onCounterDidDecrease(_ action: @escaping () -> Void) {
+        onCounterDidDecrease = action
     }
     
     // MARK: Action
     
     @objc private func increaseCounter() {
-        counter += 1
-        
-        onCounterDidChangeAction?(counter)
-        updateView()
+        onCounterDidIncrease?()
     }
     
     @objc private func decreaseCounter() {
-        if counter == 0 {
-            return
-        }
-        counter -= 1
-        onCounterDidChangeAction?(counter)
-        updateView()
+        onCounterDidDecrease?()
     }
 }

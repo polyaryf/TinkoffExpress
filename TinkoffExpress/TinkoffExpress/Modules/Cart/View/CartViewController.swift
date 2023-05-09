@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol ICartViewController: AnyObject {
+    func setItems(with items: [CartItem])
+}
+
 final class CartViewController: UIViewController {
     // MARK: Subviews
     
@@ -92,13 +96,7 @@ final class CartViewController: UIViewController {
         super.viewWillAppear(animated)
         
         cartPresenter.viewDidLoad()
-        var totalCount = 0
-        var totalSum = 0
-        items.forEach { cart in
-            totalCount += Int(cart.count) ?? 0
-        }
-        countLabel.text = "\(totalCount) товаров"
-        priceLabel.text = "\(totalSum)"
+        updateView()
     }
     
     override func viewDidLoad() {
@@ -124,7 +122,7 @@ final class CartViewController: UIViewController {
             image: UIImage(named: "trash"),
             style: .done,
             target: self,
-            action: nil
+            action: #selector(deleteAll)
         )
     }
     
@@ -155,23 +153,23 @@ final class CartViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(80)
         }
-        priceLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(-38)
-            make.width.equalTo(82)
-        }
-        finalLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(46)
-            make.leading.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(-18)
-            make.width.equalTo(212)
-        }
         checkoutButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-34)
             make.width.equalTo(111)
+            make.height.equalTo(30)
+        }
+        priceLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.bottom.equalToSuperview().offset(-38)
+        }
+        finalLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(46)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-18)
         }
     }
     
@@ -187,14 +185,24 @@ final class CartViewController: UIViewController {
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTouchUpInside), for: .touchUpInside)
     }
     
-    // MARK: Public
+    // MARK: Update View
     
-    func setItems(with items: [CartItem]) {
-        self.items = items
+    private func updateView() {
+        var totalCount = 0
+        var totalSum = 0
+        items.forEach { cart in
+            totalCount += Int(cart.count) ?? 0
+            totalSum += (Int(cart.price) ?? 0) * totalCount
+        }
+        countLabel.text = "\(totalCount) товаров"
+        priceLabel.text = "\(totalSum) ₽"
         collectionView.reloadData()
     }
     
     // MARK: Actions
+    @objc private func deleteAll() {
+        cartPresenter.deleteAllItems()
+    }
     
     @objc private func checkoutButtonTapped() {
         cartPresenter.checkoutButtonTapped()
@@ -222,7 +230,15 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
             let textCell = items[indexPath.row].text
             let imageNameCell = items[indexPath.row].imageName
             let count = items[indexPath.row].count
+            
             cell.set(text: textCell, imageName: imageNameCell, count: count)
+            
+            cell.onCounterDidIncrease { [cartPresenter] in
+                cartPresenter.viewDidIncreaseCounterOfItem(at: indexPath.row)
+            }
+            cell.onCounterDidDecrease { [cartPresenter] in
+                cartPresenter.viewDidDecreaseCounterOfItem(at: indexPath.row)
+            }
             return cell
         } else {
             return UICollectionViewCell()
@@ -239,5 +255,12 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 36, height: 72)
+    }
+}
+
+extension CartViewController: ICartViewController {
+    func setItems(with items: [CartItem]) {
+        self.items = items
+        updateView()
     }
 }

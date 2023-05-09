@@ -48,20 +48,13 @@ final class CartCell: UICollectionViewCell {
         button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(decreaseCounter), for: .touchUpInside)
-
-        if counter == 0 {
-            button.isHidden = true
-        }
         return button
     }()
     
     // MARK: Callbacks
 
-    private var onCounterDidChangeAction: ((Int) -> Void)?
-    
-    // MARK: State
-    
-    private var counter: Int = 0
+    private var onCounterDidIncrease: (() -> Void)?
+    private var onCounterDidDecrease: (() -> Void)?
     
     // MARK: Init
     
@@ -145,39 +138,21 @@ final class CartCell: UICollectionViewCell {
         }
     }
     
-    func onCounterDidChange(_ action: @escaping (Int) -> Void) {
-        onCounterDidChangeAction = action
+    func onCounterDidIncrease(_ action: @escaping () -> Void) {
+        onCounterDidIncrease = action
+    }
+    
+    func onCounterDidDecrease(_ action: @escaping () -> Void) {
+        onCounterDidDecrease = action
     }
     
     // MARK: Action
     
     @objc private func increaseCounter() {
-        counter += 1
-        
-        onCounterDidChangeAction?(counter)
-        updateView()
+        onCounterDidIncrease?()
     }
     
     @objc private func decreaseCounter() {
-        if counter == 0 {
-            return
-        }
-        counter -= 1
-        onCounterDidChangeAction?(counter)
-        updateView()
-    }
-    
-    // MARK: Update View
-    
-    private func updateView() {
-        countLabel.text = "\(counter)"
-        
-        if counter > 0 {
-            minusButton.isHidden = false
-            countLabel.isHidden = false
-        } else {
-            minusButton.isHidden = true
-            countLabel.isHidden = true
-        }
+        onCounterDidDecrease?()
     }
 }
