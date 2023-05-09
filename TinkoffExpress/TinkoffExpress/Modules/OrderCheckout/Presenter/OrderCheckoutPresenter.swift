@@ -63,13 +63,17 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         case .creatingOrder:
             break
         }
-
+        
         reloadView()
     }
     
     func backButtonTapped() {
-        // TODO: return back not only to MeetingAppointment
-        showMeetingAppointment()
+        switch type {
+        case .editingOrder:
+            showMyOrders()
+        case .creatingOrder:
+            showMeetingAppointment()
+        }
     }
     
     func checkoutButtonTapped() {
@@ -84,15 +88,28 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     func yesButtonAlertTapped() {
-        service.deleteOrder()
-        // TODO: show MyOrders with preview
+        switch type {
+        case let .editingOrder(apiOrder):
+            service.delete(order: apiOrder)
+            listener.didUpdateOrderWithDelete()
+            showMyOrders()
+        case .creatingOrder:
+            break
+        }
     }
-
+    
     func viewDidSelect(paymentMethod: TEApiPaymentMethod) {
         selectedMethod = paymentMethod
         reloadView()
+        
+        switch type {
+        case .creatingOrder:
+            break
+        case .editingOrder(let order):
+            serviceUpdateRequest(with: order)
+        }
     }
-
+    
     // MARK: Private
     
     private func creatingType() {
@@ -100,38 +117,65 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         
         switch type {
         case .creatingOrder(let inputModel):
-            let request = OrderCreateRequest(
-                address: TEApiAddress(address: inputModel.address, lat: .zero, lon: .zero),
-                paymentMethod: selectedMethod.rawValue,
-                deliverySlot: inputModel.deliverySlot,
-                items: [],
-                comment: inputModel.comment,
-                status: "NEW"
-            )
-
-            service.createOrder(with: request) { [weak self] result in
-                switch result {
-                case .success(let flag):
-                    if flag {
-                        self?.listener.didCreateNewOrder()
-                        self?.view?.stopButtonLoading()
-                        self?.showFinalDelivery()
-                    } else {
-                        self?.view?.stopButtonLoading()
-                    }
-
-                case .failure:
-                    self?.view?.stopButtonLoading()
-                }
-            }
+            serviceCreateRequest(with: inputModel)
         case .editingOrder(let order):
-            // TODO: Запрос на обновление существующего заказа
-            break
+            serviceUpdateRequest(with: order)
         }
     }
     
     private func editingType() {
         view?.showCancelAlert(with: "Вы уверены, что хотите отменить доставку?")
+    }
+    
+    private func serviceCreateRequest(with inputModel: NewOrderInputModel) {
+        let request = OrderCreateRequest(
+            address: TEApiAddress(address: inputModel.address, lat: .zero, lon: .zero),
+            paymentMethod: selectedMethod.rawValue,
+            deliverySlot: inputModel.deliverySlot,
+            items: [],
+            comment: inputModel.comment,
+            status: "0"
+        )
+        
+        service.createOrder(with: request) { [weak self] result in
+            switch result {
+            case .success(let flag):
+                if flag {
+                    self?.listener.didCreateNewOrder()
+                    self?.view?.stopButtonLoading()
+                    self?.showFinalDelivery()
+                } else {
+                    self?.view?.stopButtonLoading()
+                }
+                
+            case .failure:
+                self?.view?.stopButtonLoading()
+            }
+        }
+    }
+    
+    private func serviceUpdateRequest(with order: TEApiOrder) {
+        let request = OrderUpdateRequest(
+            address: order.address,
+            paymentMethod: selectedMethod.rawValue,
+            deliverySlot: order.deliverySlot,
+            comment: order.comment,
+            status: "0"
+        )
+        service.updateOrder(
+            id: order.id,
+            with: request
+        ) { [weak self] result in
+            switch result {
+            case .success(let flag):
+                if flag {
+                    self?.listener.didUpdateOrder()
+                    self?.view?.stopButtonLoading()
+                }
+            case .failure:
+                self?.view?.stopButtonLoading()
+            }
+        }
     }
 
     private func reloadView() {
@@ -185,5 +229,9 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         case .editingOrder:
             break
         }
+    }
+    
+    private func showMyOrders() {
+        view?.closeView()
     }
 }

@@ -14,6 +14,7 @@ protocol ITEOrdersNotifier {
 protocol ITEOrdersNotificationsListener: AnyObject {
     func didCreateNewOrder()
     func didUpdateOrder()
+    func didUpdateOrderWithDelete()
 }
 
 final class TEOrdersNotificationsService {
@@ -55,5 +56,9 @@ extension TEOrdersNotificationsService: ITEOrdersNotificationsListener {
 
     func didUpdateOrder() {
         listeners.forEach { $0.listener?.didUpdateOrder() }
+    }
+    
+    func didUpdateOrderWithDelete() {
+        listeners.forEach { $0.listener?.didUpdateOrderWithDelete() }
     }
 }

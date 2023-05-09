@@ -10,12 +10,13 @@ import Foundation
 protocol MyOrdersPresenterProtocol {
     func viewDidLoad()
     func didSelect(item: MyOrder)
+    func showNotofication()
 }
 
 final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     // MARK: Dependencies
     
-    weak var view: MyOrdersViewController?
+    weak var view: IMyOrdersViewController?
     private let router: IMyOrdersRouter
     private let service: MyOrdersService
     private let formatter: ITEDateFormatter
@@ -40,6 +41,10 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     func viewDidLoad() {
         notifier.add(listener: self)
         loadItems()
+    }
+    
+    func showNotofication() {
+        view?.showNotificationView()
     }
     
     // MARK: Events
@@ -72,7 +77,6 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
             self.view?.updateView(with: orders)
         }
     }
-
 }
 
 // MARK: - ITEOrdersNotificationsListener
@@ -84,5 +88,10 @@ extension MyOrdersPresenter: ITEOrdersNotificationsListener {
 
     func didUpdateOrder() {
         loadItems()
+    }
+    
+    func didUpdateOrderWithDelete() {
+        loadItems()
+        showNotofication()
     }
 }

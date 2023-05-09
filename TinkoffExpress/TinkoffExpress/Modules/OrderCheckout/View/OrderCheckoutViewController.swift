@@ -13,6 +13,7 @@ protocol IOrderCheckoutViewController: AnyObject {
     func stopButtonLoading()
     func set(item: OrderCheckout)
     func showCancelAlert(with title: String)
+    func closeView()
 }
 
 final class OrderCheckoutViewController: UIViewController {
@@ -232,5 +233,9 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             handler: nil)
         )
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func closeView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
