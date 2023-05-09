@@ -73,9 +73,11 @@ final class CartPresenter: CartPresenterProtocol {
         if cartProducts.isEmpty {
             return
         } else {
-            
-            let items = cartProducts.map { cartProduct in
-                TEApiItem(name: cartProduct.product.title, price: cartProduct.product.price)
+            var items: [TEApiItem] = []
+            for cartProduct in cartProducts {
+                for _ in 0..<cartProduct.counter {
+                    items.append(TEApiItem(name: cartProduct.product.title, price: cartProduct.product.price))
+                }
             }
             // TODO: move to Delivery with [item]
         }
