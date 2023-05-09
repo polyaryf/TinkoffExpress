@@ -145,6 +145,7 @@
 		43EF49222A029EC1002424CE /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF491F2A029EC1002424CE /* TabBarItem.swift */; };
 		43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49202A029EC1002424CE /* TypeOfNavigation.swift */; };
 		43EF49242A029EC1002424CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EF49212A029EC1002424CE /* Coordinator.swift */; };
+		570ADBC92A0A300300665878 /* NewOrderInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ADBC82A0A300300665878 /* NewOrderInputModel.swift */; };
 		57D54A1729FD9290006C3A2C /* MeetingAppointmentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */; };
 		BFB06FB3A028EA6041F4C6C2 /* Pods_TinkoffExpress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4E832CDBCF5A6FAE1A27A1 /* Pods_TinkoffExpress.framework */; };
 		DE533B792A06A18C0069E653 /* UICollectionView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE533B782A06A18C0069E653 /* UICollectionView+Utils.swift */; };
@@ -298,6 +299,7 @@
 		43EF491F2A029EC1002424CE /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		43EF49202A029EC1002424CE /* TypeOfNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeOfNavigation.swift; sourceTree = "<group>"; };
 		43EF49212A029EC1002424CE /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		570ADBC82A0A300300665878 /* NewOrderInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderInputModel.swift; sourceTree = "<group>"; };
 		57D54A1629FD9290006C3A2C /* MeetingAppointmentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAppointmentRouter.swift; sourceTree = "<group>"; };
 		8C09A1A06FFBBD03B029C3CB /* Pods-TinkoffExpress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.debug.xcconfig"; sourceTree = "<group>"; };
 		AE71460EC8D6EE2370A8A649 /* Pods-TinkoffExpress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffExpress.release.xcconfig"; path = "Target Support Files/Pods-TinkoffExpress/Pods-TinkoffExpress.release.xcconfig"; sourceTree = "<group>"; };
@@ -1037,6 +1039,7 @@
 			isa = PBXGroup;
 			children = (
 				29C3924A29F980990041F569 /* OrderCheckout.swift */,
+				570ADBC82A0A300300665878 /* NewOrderInputModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1745,6 +1748,7 @@
 				29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */,
 				29C3929A29F9809A0041F569 /* Extension+UIColor.swift in Sources */,
 				29C392E029F9809A0041F569 /* OnboardingAssembly.swift in Sources */,
+				570ADBC92A0A300300665878 /* NewOrderInputModel.swift in Sources */,
 				29852A362A051CC8005DCF46 /* OrderCheckoutModuleType.swift in Sources */,
 				29C392A929F9809A0041F569 /* NetworkConstant.swift in Sources */,
 				29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */,

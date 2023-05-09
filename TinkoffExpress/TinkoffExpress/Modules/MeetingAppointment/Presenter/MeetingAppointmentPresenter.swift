@@ -103,7 +103,7 @@ class MeetingAppointmentPresenter {
                 fallthrough
             case .success where self.selectedDateSlotIndex == dateSlotIndex:
                 self.view?.reloadTimeCollection(animated: true)
-                self.view?.selectTimeSlot(at: selectedTimeSlotIndex)
+                self.view?.selectTimeSlot(at: self.selectedTimeSlotIndex)
             case .failure:
                 self.dateSlots[dateSlotIndex].timeSlotsState = .failed
                 fallthrough
@@ -157,8 +157,18 @@ extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
     }
     
     func viewDidTapPrimaryButton() {
-        guard isFormValid() else { return }
-        // TODO: route to order checkout
+        guard
+            isFormValid(),
+            case let .loaded(timeSlots) = dateSlots[selectedDateSlotIndex].timeSlotsState
+        else { return }
+
+        let model = NewOrderInputModel(
+            address: address,
+            slot: timeSlots[selectedTimeSlotIndex].apiTime,
+            comment: comment
+        )
+
+        router.openOrderCheckout(with: model)
     }
     
     func viewDidChange(comment: String) {
