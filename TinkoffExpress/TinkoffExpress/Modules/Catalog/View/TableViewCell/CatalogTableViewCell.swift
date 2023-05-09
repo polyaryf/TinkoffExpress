@@ -187,6 +187,8 @@ final class CatalogTableViewCell: UITableViewCell {
         onCounterDidChangeAction = action
     }
     
+    // MARK: Action
+    
     @objc private func increaseCounter() {
         counter += 1
         

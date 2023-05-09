@@ -53,7 +53,5 @@ final class CartPresenter: CartPresenterProtocol {
     
     // MARK: Navigation
     
-    private func showDelivery() {
-//        coordinator?.move(DeliveryAssembly(), with: .present)
-    }
+    private func showDelivery() {}
 }
