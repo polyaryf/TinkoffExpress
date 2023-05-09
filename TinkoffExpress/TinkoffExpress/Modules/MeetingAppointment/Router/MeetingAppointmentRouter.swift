@@ -48,12 +48,7 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
     }
     
     func openOrderCheckout(with model: NewOrderInputModel) {
-        // TODO: передать в ассемблер модель с введенными данными и запушить экран
-
-//        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
-//            withModuleType: .creatingOrder,
-//            with: model
-//        )
-//        transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
+        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(with: model)
+        transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
     }
 }

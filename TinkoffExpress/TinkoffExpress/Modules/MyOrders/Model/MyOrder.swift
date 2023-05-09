@@ -8,6 +8,7 @@
 import Foundation
 
 struct MyOrder {
+    let apiModel: TEApiOrder
     let id: Int
     let text: String
     let description: String

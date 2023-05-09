@@ -19,6 +19,7 @@ final class MeetingAppointmentAssembly: Assembly {
         let presenter = MeetingAppointmentPresenter(
             router: router,
             service: mockService,
+            dateFormatter: TEDateFormatter(),
             addressSearchType: .daData,
             useCase: .ordering
         )

@@ -18,7 +18,9 @@ final class MyOrdersAssembly: IMyOrdersAssembly {
         let router = MyOrdersRouter(orderCheckoutAssembly: OrderCheckoutAssembly())
         let presenter = MyOrdersPresenter(
             router: router,
-            service: restService
+            service: restService,
+            formatter: TEDateFormatter(),
+            notifier: TEOrdersNotificationsService.shared
         )
         let viewController = MyOrdersViewController(myOrdersPresenter: presenter)
         presenter.view = viewController

@@ -27,14 +27,3 @@ struct OrderCheckout {
         self.paymentMethod = paymentMethod
     }
 }
-
-extension OrderCheckout {
-    static func from(model: MyOrder) -> OrderCheckout {
-        OrderCheckout(
-            whatWillBeDelivered: "Посылку",
-            deliveryWhen: model.description,
-            deliveryWhere: model.address,
-            paymentMethod: model.paymentMethod
-        )
-    }
-}

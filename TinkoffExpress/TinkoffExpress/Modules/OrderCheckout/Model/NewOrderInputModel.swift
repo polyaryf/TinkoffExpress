@@ -9,6 +9,6 @@ import Foundation
 
 struct NewOrderInputModel {
     let address: String
-    let slot: TEApiTimeSlot
+    let deliverySlot: TEApiTimeSlot
     let comment: String
 }

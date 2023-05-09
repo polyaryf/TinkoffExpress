@@ -48,7 +48,7 @@ final class CatalogPresenter: ICatalogPresenter {
             .sink { [weak self] cartProducts in
                 guard let self else { return }
 
-                let newProducts = catalogProducts.map { catalogProduct in
+                let newProducts = self.catalogProducts.map { catalogProduct in
                     if let cartProduct = cartProducts.first(where: { $0.product == catalogProduct.product }) {
                         return CatalogProduct(product: catalogProduct.product, counter: cartProduct.counter)
                     }

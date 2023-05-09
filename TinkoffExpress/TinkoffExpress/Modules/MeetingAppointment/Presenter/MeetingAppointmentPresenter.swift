@@ -49,7 +49,7 @@ class MeetingAppointmentPresenter {
     
     enum UseCase {
         case ordering
-        case editing
+        case editing(MyOrder)
     }
     
     // MARK: Dependencies
@@ -57,6 +57,7 @@ class MeetingAppointmentPresenter {
     weak var view: IMeetingAppointmentView?
     private let router: IMeetingAppointmentRouter
     private let service: IMeetingAppointmentService
+    private let dateFormatter: ITEDateFormatter
     private let addressSearchType: AddressSearchType
     private let useCase: UseCase
     
@@ -73,11 +74,13 @@ class MeetingAppointmentPresenter {
     init(
         router: IMeetingAppointmentRouter,
         service: IMeetingAppointmentService,
+        dateFormatter: ITEDateFormatter,
         addressSearchType: AddressSearchType,
         useCase: UseCase
     ) {
         self.router = router
         self.service = service
+        self.dateFormatter = dateFormatter
         self.addressSearchType = addressSearchType
         self.useCase = useCase
     }
@@ -97,7 +100,11 @@ class MeetingAppointmentPresenter {
             switch result {
             case .success(let apiTimeSlots):
                 let slots = apiTimeSlots.map {
-                    TimeSlot.from(apiTimeSlot: $0, date: self.dateSlots[dateSlotIndex].date)
+                    TimeSlot.from(
+                        apiTimeSlot: $0,
+                        date: self.dateSlots[dateSlotIndex].date,
+                        formatter: self.dateFormatter
+                    )
                 }
                 self.dateSlots[dateSlotIndex].timeSlotsState = .loaded(slots)
                 fallthrough
@@ -115,7 +122,7 @@ class MeetingAppointmentPresenter {
     
     private func updatePrimaryButtonTitle() {
         let selectedDate = dateSlots[selectedDateSlotIndex].date
-        let title = "Доставить \(String.localizedDate(from: selectedDate).lowercased())"
+        let title = "Доставить \(dateFormatter.format(date: selectedDate).lowercased())"
         view?.set(primaryButtonTitle: title)
     }
     
@@ -139,7 +146,7 @@ class MeetingAppointmentPresenter {
 
 extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
     func viewDidLoad() {
-        dateSlots = DateSlot.defaultRange
+        dateSlots = DateSlot.defaultRange(formattingWith: dateFormatter)
         view?.reloadDateCollection()
         view?.selectDateSlot(at: selectedDateSlotIndex)
         view?.set(address: address)
@@ -164,7 +171,7 @@ extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
 
         let model = NewOrderInputModel(
             address: address,
-            slot: timeSlots[selectedTimeSlotIndex].apiTime,
+            deliverySlot: timeSlots[selectedTimeSlotIndex].apiTime,
             comment: comment
         )
 
@@ -255,54 +262,30 @@ extension MeetingAppointmentPresenter: IABTestModuleOutput {
 // MARK: - Utils
 
 private extension MeetingAppointmentPresenter.DateSlot {
-    static var defaultRange: [MeetingAppointmentPresenter.DateSlot] {
+    static func defaultRange(formattingWith formatter: ITEDateFormatter) -> [MeetingAppointmentPresenter.DateSlot] {
         let now = Date()
-        
-        return CollectionOfOne(initialSlot(from: now)) + (1 ... 14).compactMap {
+
+        return CollectionOfOne(slot(withDate: now, formattingWith: formatter)) + (1 ... 14).compactMap {
             Calendar.current.date(byAdding: .day, value: $0, to: now)
         }
-        .map(initialSlot(from:))
+        .map { slot(withDate: $0, formattingWith: formatter) }
     }
-    
-    static func initialSlot(from date: Date) -> MeetingAppointmentPresenter.DateSlot {
+
+    static func slot(withDate date: Date, formattingWith formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.DateSlot {
         MeetingAppointmentPresenter.DateSlot(
             date: date,
-            viewModel: MeetingAppointmentDate(date: .localizedDate(from: date))
+            viewModel: MeetingAppointmentDate(date: formatter.format(date: date))
         )
     }
 }
 
-private extension String {
-    static func localizedDate(from date: Date) -> String {
-        let calendar = Calendar.current
-        
-        if calendar.isDateInToday(date) {
-            return "Сегодня"
-        } else if calendar.isDateInTomorrow(date) {
-            return "Завтра"
-        } else {
-            return DateFormatter.default.string(from: date)
-        }
-    }
-}
-
-private extension DateFormatter {
-    static let `default`: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        formatter.setLocalizedDateFormatFromTemplate("d-MMMM")
-        return formatter
-    }()
-}
-
 private extension MeetingAppointmentPresenter.TimeSlot {
-    static func from(apiTimeSlot: TEApiTimeSlot, date: Date) -> MeetingAppointmentPresenter.TimeSlot {
+    static func from(apiTimeSlot: TEApiTimeSlot, date: Date, formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.TimeSlot {
         MeetingAppointmentPresenter.TimeSlot(
             apiTime: apiTimeSlot,
             viewModel: MeetingAppointmentTime(
                 time: "\(apiTimeSlot.timeFrom)-\(apiTimeSlot.timeTo)",
-                date: .localizedDate(from: date)
+                date: formatter.format(date: date)
             )
         )
     }

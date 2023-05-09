@@ -73,10 +73,8 @@ final class OrderCheckoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        orderCheckoutPresenter.viewDidLoad()
-
         setupView()
+        orderCheckoutPresenter.viewDidLoad()
     }
     
     // MARK: Actions
@@ -145,17 +143,18 @@ final class OrderCheckoutViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
+
         alert.addAction(UIAlertAction(
-            title: "Картой при получении",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.item.paymentMethod = "Картой при получении"
-                self?.tableView.reloadData()
+            title: TEApiPaymentMethod.card.localized,
+            style: UIAlertAction.Style.default
+        ) { [weak self] _ in
+            self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .card)
         })
         alert.addAction(UIAlertAction(
-            title: "Наличными курьеру",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.item.paymentMethod = "Наличными курьеру"
-                self?.tableView.reloadData()
+            title: TEApiPaymentMethod.cash.localized,
+            style: UIAlertAction.Style.default
+        ) { [weak self] _ in
+            self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .cash)
         })
         alert.addAction(UIAlertAction(
             title: "Отмена",
@@ -213,6 +212,7 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
     
     func set(item: OrderCheckout) {
         self.item = item
+        tableView.reloadData()
     }
     
     func showCancelAlert(with title: String) {
