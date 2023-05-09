@@ -7,216 +7,296 @@
 
 import UIKit
 
-protocol IMeetingAppointmentModuleOutput: AnyObject {
-    /// тут подставила пока модельку следующего экрана
-    /// но лучше передавать введенные данные, которые я потом на своем экране будут парсить
-    func meetingAppointment(didCompleteWith orderData: OrderCheckout)
-}
-
-protocol MeetingAppointmentPresenterProtocol {
+protocol IMeetingAppointmentPresenter {
     func viewDidLoad()
-    func addressButtonTapped()
-    func didSelectItemAt(with collectionView: UICollectionView, and indexPath: IndexPath)
-    func textViewDidChange(with textView: UITextView, _ countLabel: UILabel, _ deliveryButton: Button)
-    func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
-    func textViewDidEndEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton)
-    // swiftlint:disable:next function_parameter_count
-    func keyboardWillShow(
-        with notification: Notification,
-        _ keyboardHeight: inout CGFloat,
-        _ view: UIView,
-        _ textView: UITextView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    )
-    func keyboardWillHide(
-        with notification: Notification,
-        _ view: UIView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    )
-    func clearButtonTapped(with textView: UITextView, _ countLabel: UILabel)
-    func readyButtonTapped(with view: UIView)
-    func deliveryButtonTapped()
+    func viewDidTapAddress()
+    func viewDidTapPrimaryButton()
+    func viewDidChange(comment: String)
+    func viewDidRequestNumberOfDateSlots() -> Int
+    func viewDidRequestDateSlot(at index: Int) -> MeetingAppointmentDate
+    func viewDidSelectDateSlot(at index: Int)
+    func viewDidRequestNumberOfTimeSlots() -> Int
+    func viewDidRequestTimeSlot(at index: Int) -> MeetingAppointmentTime
+    func viewShouldSelectTimeSlot(at index: Int) -> Bool
+    func viewDidSelectTimeSlot(at index: Int)
 }
 
-class MeetingAppointmentPresenter: MeetingAppointmentPresenterProtocol {
+class MeetingAppointmentPresenter {
+    // MARK: InternalTypes
+    
+    struct DateSlot {
+        let date: Date
+        let viewModel: MeetingAppointmentDate
+        var timeSlotsState: TimeSlotState = .initial
+    }
+    
+    struct TimeSlot {
+        let apiTime: TEApiTimeSlot
+        let viewModel: MeetingAppointmentTime
+    }
+    
+    enum TimeSlotState {
+        case initial
+        case loading
+        case loaded([TimeSlot])
+        case failed
+    }
+    
+    enum AddressSearchType {
+        case abTest
+        case daData
+    }
+    
+    enum UseCase {
+        case ordering
+        case editing(MyOrder)
+    }
+    
     // MARK: Dependencies
-
-    weak var view: MeetingAppointmentViewController?
+    
+    weak var view: IMeetingAppointmentView?
     private let router: IMeetingAppointmentRouter
-    private let service: MeetingAppointmentService
-
+    private let service: IMeetingAppointmentService
+    private let dateFormatter: ITEDateFormatter
+    private let addressSearchType: AddressSearchType
+    private let useCase: UseCase
+    
+    // MARK: State
+    
+    private var address = "Ивангород, ул. Гагарина, д. 1"
+    private var comment = ""
+    private var dateSlots: [DateSlot] = []
+    private var selectedDateSlotIndex = 0
+    private var selectedTimeSlotIndex = 0
+    
     // MARK: Init
-
+    
     init(
         router: IMeetingAppointmentRouter,
-        service: MeetingAppointmentService
+        service: IMeetingAppointmentService,
+        dateFormatter: ITEDateFormatter,
+        addressSearchType: AddressSearchType,
+        useCase: UseCase
     ) {
         self.router = router
         self.service = service
+        self.dateFormatter = dateFormatter
+        self.addressSearchType = addressSearchType
+        self.useCase = useCase
     }
     
-    // MARK: Life Cycle
+    // MARK: Helpers
+    
+    private func loadTimeSlots(for dateSlotIndex: Int, animateLoadingState: Bool = true) {
+        dateSlots[dateSlotIndex].timeSlotsState = .loading
+        
+        if selectedDateSlotIndex == dateSlotIndex {
+            view?.reloadTimeCollection(animated: animateLoadingState)
+        }
 
-    func viewDidLoad() {
-        service.loadDates { [weak self] dates in
+        service.loadSlots(forDate: dateSlots[dateSlotIndex].date) { [weak self] result in
             guard let self else { return }
-            self.view?.dates = dates ?? []
-        }
-        
-        service.loadTimes { [weak self] times in
-            guard let self else { return }
-            self.view?.times = times ?? []
-        }
-    }
-    
-    // MARK: Events
-
-    func addressButtonTapped() {
-        showSearch()
-    }
-    
-    func didSelectItemAt(with collectionView: UICollectionView, and indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            if let selectedIndexPaths = collectionView.indexPathsForSelectedItems,
-            let firstSelectedIndexPath = selectedIndexPaths.first,
-            let firstSelectedCell = collectionView.cellForItem(at: firstSelectedIndexPath) {
-                firstSelectedCell.isSelected = false
-                selectedIndexPaths.forEach { collectionView.deselectItem(at: $0, animated: true) }
+            
+            switch result {
+            case .success(let apiTimeSlots):
+                let slots = apiTimeSlots.map {
+                    TimeSlot.from(
+                        apiTimeSlot: $0,
+                        date: self.dateSlots[dateSlotIndex].date,
+                        formatter: self.dateFormatter
+                    )
+                }
+                self.dateSlots[dateSlotIndex].timeSlotsState = .loaded(slots)
+                fallthrough
+            case .success where self.selectedDateSlotIndex == dateSlotIndex:
+                self.view?.reloadTimeCollection(animated: true)
+                self.view?.selectTimeSlot(at: self.selectedTimeSlotIndex)
+            case .failure:
+                self.dateSlots[dateSlotIndex].timeSlotsState = .failed
+                fallthrough
+            case .failure where self.selectedDateSlotIndex == dateSlotIndex:
+                self.view?.showErrorAlert()
             }
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
         }
     }
     
-    func textViewDidChange(with textView: UITextView, _ countLabel: UILabel, _ deliveryButton: Button) {
-        if textView.text.count > 150 {
-            textView.deleteBackward()
-        } else {
-            countLabel.text = "Осталось \(150 - textView.text.count) символов"
-        }
-        
-        let height = min(deliveryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
-            width: textView.frame.width,
-            height: CGFloat.greatestFiniteMagnitude
-        )).height)
-        
-        textView.snp.updateConstraints { make in
-            make.height.equalTo(height)
-        }
-        
-        if height >= deliveryButton.frame.maxY - textView.frame.maxY - 50 {
-            textView.deleteBackward()
-        }
+    private func updatePrimaryButtonTitle() {
+        let selectedDate = dateSlots[selectedDateSlotIndex].date
+        let title = "Доставить \(dateFormatter.format(date: selectedDate).lowercased())"
+        view?.set(primaryButtonTitle: title)
     }
     
-    func textViewDidBeginEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton) {
-        clearButton.isHidden = false
-        view?.changeTextView(textView)
-        countLabel.isHidden = false
-        countLabel.text = "Осталось \(150 - textView.text.count) символов"
-    }
-    
-    func textViewDidEndEditing(with textView: UITextView, _ countLabel: UILabel, _ clearButton: UIButton) {
-        clearButton.isHidden = true
+    private func isFormValid() -> Bool {
+        let isAddressValid = !address.isEmpty
         
-        if textView.text.count == 150 {
-            countLabel.isHidden = true
-        } else {
-            countLabel.text = "Можно написать \(150 - textView.text.count) символов"
-        }
-        
-        if textView.text.isEmpty {
-            textView.text = "Как добраться и когда вам позвонить"
-            textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        }
-    }
-    // swiftlint:disable:next function_parameter_count
-    func keyboardWillShow(
-        with notification: Notification,
-        _ keyboardHeight: inout CGFloat,
-        _ view: UIView,
-        _ textView: UITextView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    ) {
-        guard let userInfo = notification.userInfo,
-        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        
-        keyboardHeight = keyboardFrame.size.height + readyButton.bounds.height + 32
-        
-        scrollView.contentInset.bottom = keyboardHeight
-        scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight
-        
-        scrollView.scrollRectToVisible(textView.frame, animated: true)
-        
-        UIView.animate(withDuration: 0.5) {
-            readyButton.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(-(keyboardFrame.size.height + 16))
+        let isTimeSlotSelected: Bool = {
+            switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+            case .loaded:
+                return true
+            default:
+                return false
             }
-            view.layoutSubviews()
-        }
-    }
-    
-    func keyboardWillHide(
-        with notification: Notification,
-        _ view: UIView,
-        _ scrollView: UIScrollView,
-        _ readyButton: UIButton
-    ) {
-        scrollView.contentInset.bottom = 0
-        scrollView.verticalScrollIndicatorInsets.bottom = 0
+        }()
         
-        UIView.animate(withDuration: 0.5) {
-            readyButton.snp.updateConstraints { make in
-                make.bottom.equalToSuperview().offset(60)
-            }
-            view.layoutSubviews()
-        }
-    }
-    
-    func clearButtonTapped(with textView: UITextView, _ countLabel: UILabel) {
-        textView.text = ""
-        countLabel.text = "Осталось 150 символов"
-        textView.snp.updateConstraints { make in
-            make.height.equalTo(56)
-        }
-    }
-    
-    func readyButtonTapped(with view: UIView) {
-        view.endEditing(true)
-    }
-    
-    func deliveryButtonTapped() {
-        showOrderCheckout()
-    }
-    
-    // MARK: Navigation
-    
-    private func showSearch() {
-        // TODO: сделать смену открытия экрана
-//        router.openAddressInput(output: self)
-        router.openABtest(output: self)
-    }
-    
-    private func showOrderCheckout() {
-//        output?.meetingAppointment(didCompleteWith: OrderCheckout())
-        router.openOrderCheckout(with: OrderCheckout())
+        return isAddressValid && isTimeSlotSelected
     }
 }
 
-// MARK: - IAddressInputModuleOutput, IABTestModuleOutput
+// MARK: - IMeetingAppointmentPresenter
+
+extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
+    func viewDidLoad() {
+        dateSlots = DateSlot.defaultRange(formattingWith: dateFormatter)
+        view?.reloadDateCollection()
+        view?.selectDateSlot(at: selectedDateSlotIndex)
+        view?.set(address: address)
+        updatePrimaryButtonTitle()        
+        loadTimeSlots(for: selectedDateSlotIndex, animateLoadingState: false)
+    }
+    
+    func viewDidTapAddress() {
+        switch addressSearchType {
+        case .abTest:
+            router.openABtest(output: self)
+        case .daData:
+            router.openAddressInput(output: self)
+        }
+    }
+    
+    func viewDidTapPrimaryButton() {
+        guard
+            isFormValid(),
+            case let .loaded(timeSlots) = dateSlots[selectedDateSlotIndex].timeSlotsState
+        else { return }
+
+        let model = NewOrderInputModel(
+            address: address,
+            deliverySlot: timeSlots[selectedTimeSlotIndex].apiTime,
+            comment: comment
+        )
+
+        router.openOrderCheckout(with: model)
+    }
+    
+    func viewDidChange(comment: String) {
+        self.comment = comment
+    }
+    
+    func viewDidRequestNumberOfDateSlots() -> Int {
+        dateSlots.count
+    }
+    
+    func viewDidRequestDateSlot(at index: Int) -> MeetingAppointmentDate {
+        dateSlots[index].viewModel
+    }
+    
+    func viewDidSelectDateSlot(at index: Int) {
+        guard selectedDateSlotIndex != index else { return }
+        selectedDateSlotIndex = index
+        selectedTimeSlotIndex = .zero
+        
+        switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+        case .loaded:
+            view?.reloadTimeCollection(animated: true)
+            view?.selectTimeSlot(at: selectedTimeSlotIndex)
+        case .loading:
+            view?.reloadTimeCollection(animated: true)
+        case .initial, .failed:
+            loadTimeSlots(for: selectedDateSlotIndex)
+        }
+        
+        updatePrimaryButtonTitle()
+    }
+    
+    func viewDidRequestNumberOfTimeSlots() -> Int {
+        switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+        case .initial, .loading, .failed:
+            return .emptyTimeSlotsCount
+        case .loaded(let slots):
+            return slots.count
+        }
+    }
+    
+    func viewDidRequestTimeSlot(at index: Int) -> MeetingAppointmentTime {
+        switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+        case .initial, .failed, .loading:
+            return .clear
+        case .loaded(let slots):
+            return slots[index].viewModel
+        }
+    }
+    
+    func viewDidSelectTimeSlot(at index: Int) {
+        guard selectedTimeSlotIndex != index else { return }
+        selectedTimeSlotIndex = index
+    }
+    
+    func viewShouldSelectTimeSlot(at index: Int) -> Bool {
+        switch dateSlots[selectedDateSlotIndex].timeSlotsState {
+        case .loaded:
+            return true
+        case .initial, .loading, .failed:
+            return false
+        }
+    }
+}
+
+// MARK: - IAddressInputModuleOutput
 
 extension MeetingAppointmentPresenter: IAddressInputModuleOutput {
     func addressInputModule(didCompleteWith addressInput: String) {
-        // TODO: Handle adressInput
+        address = addressInput
+        view?.set(address: address)
     }
 }
 
+// MARK: - IABTestModuleOutput
+
 extension MeetingAppointmentPresenter: IABTestModuleOutput {
     func abTestModule(didCompleteWith addressInput: String) {
-        print(addressInput)
-        // TODO: Handle adressInput
+        address = addressInput
+        view?.set(address: address)
+    }
+}
+
+// MARK: - Utils
+
+private extension MeetingAppointmentPresenter.DateSlot {
+    static func defaultRange(formattingWith formatter: ITEDateFormatter) -> [MeetingAppointmentPresenter.DateSlot] {
+        let now = Date()
+
+        return CollectionOfOne(slot(withDate: now, formattingWith: formatter)) + (1 ... 14).compactMap {
+            Calendar.current.date(byAdding: .day, value: $0, to: now)
+        }
+        .map { slot(withDate: $0, formattingWith: formatter) }
+    }
+
+    static func slot(withDate date: Date, formattingWith formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.DateSlot {
+        MeetingAppointmentPresenter.DateSlot(
+            date: date,
+            viewModel: MeetingAppointmentDate(date: formatter.format(date: date))
+        )
+    }
+}
+
+private extension MeetingAppointmentPresenter.TimeSlot {
+    static func from(apiTimeSlot: TEApiTimeSlot, date: Date, formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.TimeSlot {
+        MeetingAppointmentPresenter.TimeSlot(
+            apiTime: apiTimeSlot,
+            viewModel: MeetingAppointmentTime(
+                time: "\(apiTimeSlot.timeFrom)-\(apiTimeSlot.timeTo)",
+                date: formatter.format(date: date)
+            )
+        )
+    }
+}
+
+private extension Int {
+    static let emptyTimeSlotsCount = 3
+}
+
+private extension MeetingAppointmentTime {
+    static var clear: MeetingAppointmentTime {
+        MeetingAppointmentTime(time: "", date: "")
     }
 }

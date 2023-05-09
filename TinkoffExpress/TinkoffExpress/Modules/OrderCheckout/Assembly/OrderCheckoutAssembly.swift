@@ -8,29 +8,34 @@
 import UIKit
 
 protocol IOrderCheckoutAssembly {
-    func createOrderCheckoutView(
-        withModuleType type: OrderCheckoutModuleType,
-        with model: OrderCheckout
-    ) -> UIViewController
+    func createOrderCheckoutView(with inputModel: NewOrderInputModel) -> UIViewController
+    func createOrderCheckoutView(with order: TEApiOrder) -> UIViewController
 }
 
 final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
-    func createOrderCheckoutView(
-        withModuleType type: OrderCheckoutModuleType,
-        with model: OrderCheckout
-    ) -> UIViewController {
+    func createOrderCheckoutView(with inputModel: NewOrderInputModel) -> UIViewController {
+        createView(withType: .creatingOrder(inputModel))
+    }
+
+    func createOrderCheckoutView(with order: TEApiOrder) -> UIViewController {
+        createView(withType: .editingOrder(order))
+    }
+
+    private func createView(withType type: OrderCheckoutModuleType) -> UIViewController {
         let networkService = TEApiService()
-        let mockService = MockOrderCheckoutService()
         let restService = RestOrderCheckoutService(networkService: networkService)
         let router = OrderCheckoutRouter(finalDeliveryAssembly: FinalDeliveryAssembly())
         let mapper = OrderCheckoutMapper()
+
         let presenter = OrderCheckoutPresenter(
             router: router,
             service: restService,
             mapper: mapper,
             type: type,
-            item: model
+            dateFormatter: TEDateFormatter(),
+            listener: TEOrdersNotificationsService.shared
         )
+
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
         presenter.view = viewController
         router.transitionHandler = viewController

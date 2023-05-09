@@ -9,7 +9,7 @@ import UIKit
 
 final class MeetingAppointmentAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
-        let mockService = MockMeetingAppointmentService()
+        let mockService = MeetingAppointmentService(api: TEApiService())
         let router = MeetingAppointmentRouter(
             addressInputAssembly: AddressInputAssembly(),
             abTestAssembly: ABTestAssembly(),
@@ -18,10 +18,13 @@ final class MeetingAppointmentAssembly: Assembly {
 
         let presenter = MeetingAppointmentPresenter(
             router: router,
-            service: mockService
+            service: mockService,
+            dateFormatter: TEDateFormatter(),
+            addressSearchType: .daData,
+            useCase: .ordering
         )
 
-        let viewController = MeetingAppointmentViewController(meetingAppointmentPresenter: presenter)
+        let viewController = MeetingAppointmentViewController(presenter: presenter)
         presenter.view = viewController
         router.transitionHandler = viewController
         return viewController

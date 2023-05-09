@@ -7,49 +7,141 @@
 
 import UIKit
 import SnapKit
-// swiftlint:disable:next line_length
-final class MeetingAppointmentViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
+
+// swiftlint:disable file_length
+
+protocol IMeetingAppointmentView: AnyObject {
+    func reloadDateCollection()
+    func selectDateSlot(at index: Int)
+    func selectTimeSlot(at index: Int)
+    func reloadTimeCollection(animated: Bool)
+    func set(address: String)
+    func set(primaryButtonTitle: String)
+    func setPrimaryButtonsTinkoffStyle()
+    func setPrimaryButtonsDestructiveStyle()
+    func showErrorAlert()
+}
+
+final class MeetingAppointmentViewController: UIViewController {
     // MARK: Dependencies
     
-    private var meetingAppointmentPresenter: MeetingAppointmentPresenterProtocol?
-    
-    // MARK: Properties
-    
-    private var keyboardHeight: CGFloat = 0
-    var dates: [MeetingAppointmentDate] = []
-    var times: [MeetingAppointmentTime] = []
+    private let presenter: IMeetingAppointmentPresenter
     
     // MARK: Subviews
     
-    private lazy var scrollView = UIScrollView()
-    private lazy var addressButton = UIButton()
-    private lazy var dateCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout()
-    )
-    private lazy var timeCollectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewFlowLayout()
-    )
-    private lazy var textView = UITextView()
-    private lazy var clearButton = UIButton(type: .system)
-    private lazy var countLabel = UILabel()
-    private lazy var readyButton = UIButton()
-    private lazy var deliveryButton: Button = {
-        let config = Button.Configuration(
-            title: "Доставить сегодня",
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.layer.cornerRadius = 20
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = UIColor(named: "meetingAppointmentBackgroundColor")
+        return scrollView
+    }()
+    
+    private lazy var addressButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(UIColor(named: "textColor"), for: .normal)
+        button.backgroundColor = UIColor(named: "addressButtonColor")
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        button.contentHorizontalAlignment = .leading
+        button.contentVerticalAlignment = .center
+        button.titleEdgeInsets.left = 12
+        button.titleEdgeInsets.right = 12
+        button.layer.cornerRadius = 16
+        button.addTarget(self, action: #selector(addressButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var dateCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(DateCell.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        return collectionView
+    }()
+    
+    private lazy var timeCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(TimeCell.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        return collectionView
+    }()
+    
+    private lazy var commentTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = UIColor(named: "textViewButtonColor")
+        textView.font = .systemFont(ofSize: 17, weight: .regular)
+        textView.showsVerticalScrollIndicator = false
+        textView.textContainerInset = .init(top: 18, left: 12, bottom: 18, right: 47)
+        textView.layer.cornerRadius = 16
+        textView.isScrollEnabled = false
+        textView.delegate = self
+        return textView
+    }()
+    
+    private lazy var commentPlaceholderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Как добраться и когда вам позвонить"
+        label.textColor = UIColor(named: "textViewPlaceholderColor")
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        return label
+    }()
+    
+    private lazy var clearCommentButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor(named: "clearButtonColor")
+        button.isHidden = true
+        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var commentCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(named: "textColor")
+        label.font = .systemFont(ofSize: 15, weight: .regular)
+        return label
+    }()
+    
+    private lazy var hideKeyboardButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "readyButtonColor")
+        button.setTitle("Готово", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        button.layer.cornerRadius = 12
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.1
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 4
+        button.addTarget(self, action: #selector(hideKeyboard), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var primaryButton: Button = {
+        let configuration = Button.Configuration(
+            title: "",
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )
-        let button = Button(configuration: config) { [ weak self ] in
+        let button = Button(configuration: configuration) { [ weak self ] in
             guard let self else { return }
             self.deliveryButtonTapped()
         }
         return button
     }()
     
-    init(meetingAppointmentPresenter: MeetingAppointmentPresenterProtocol) {
-        self.meetingAppointmentPresenter = meetingAppointmentPresenter
+    // MARK: Init
+    
+    init(presenter: IMeetingAppointmentPresenter) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,153 +153,44 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        meetingAppointmentPresenter?.viewDidLoad()
-        setupScrollView()
-        setupAddressButton()
-        setupDateCollectionView()
-        setupTimeCollectionView()
-        setupTextView()
-        setupClearButton()
-        setupCountLabel()
-        setupReadyButton()
-        setupDeliveryButton()
-        setupColors()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow(notification:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide(notification:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
+        setupView()
+        setupNavigationItem()
+        setupViewsHierarchy()
+        setupConstraints()
+        setupKeyboardObservation()
+        updateTextViewAccessories()
+        presenter.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.title = "Оформление доставки"
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backButton
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+    // MARK: Initial Configuration
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        dateCollectionView.selectItem(
-            at: IndexPath(item: 0, section: 0),
-            animated: false,
-            scrollPosition: .centeredHorizontally
-        )
-        timeCollectionView.selectItem(
-            at: IndexPath(item: 0, section: 0),
-            animated: false,
-            scrollPosition: .centeredHorizontally
-        )
-    }
-    
-    // MARK: Actions
-    
-    @objc private func addressButtonTapped() {
-        meetingAppointmentPresenter?.addressButtonTapped()
-    }
-    
-    private func deliveryButtonTapped() {
-        meetingAppointmentPresenter?.deliveryButtonTapped()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        meetingAppointmentPresenter?.didSelectItemAt(with: collectionView, and: indexPath)
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        meetingAppointmentPresenter?.textViewDidChange(with: textView, countLabel, deliveryButton)
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        meetingAppointmentPresenter?.textViewDidBeginEditing(with: textView, countLabel, clearButton)
-    }
-    
-    func changeTextView(_ textView: UITextView) {
-        if textView.textColor == UIColor(named: "textViewPlaceholderColor") {
-            textView.text = ""
-            textView.textColor = UIColor(named: "textColor")
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        meetingAppointmentPresenter?.textViewDidEndEditing(with: textView, countLabel, clearButton)
-    }
-    
-    @objc private func keyboardWillShow(notification: Notification) {
-        meetingAppointmentPresenter?.keyboardWillShow(
-            with: notification,
-            &keyboardHeight,
-            view,
-            textView,
-            scrollView,
-            readyButton
-        )
-    }
-    
-    @objc private func keyboardWillHide(notification: Notification) {
-        meetingAppointmentPresenter?.keyboardWillHide(with: notification, view, scrollView, readyButton)
-    }
-    
-    @objc private func clearButtonTapped() {
-        meetingAppointmentPresenter?.clearButtonTapped(with: textView, countLabel)
-    }
-    
-    @objc private func readyButtonTapped() {
-        meetingAppointmentPresenter?.readyButtonTapped(with: view)
-    }
-    
-    // MARK: Setup Colors
-    
-    private func setupColors() {
+    private func setupView() {
         view.backgroundColor = UIColor(named: "titleBackgroundColor")
-        scrollView.backgroundColor = UIColor(named: "meetingAppointmentBackgroundColor")
-        addressButton.setTitleColor(UIColor(named: "textColor"), for: .normal)
-        addressButton.backgroundColor = UIColor(named: "addressButtonColor")
-        dateCollectionView.backgroundColor = .clear
-        timeCollectionView.backgroundColor = .clear
-        textView.backgroundColor = UIColor(named: "textViewButtonColor")
-        textView.textColor = UIColor(named: "textViewPlaceholderColor")
-        clearButton.tintColor = UIColor(named: "clearButtonColor")
-        readyButton.backgroundColor = UIColor(named: "readyButtonColor")
-        countLabel.textColor = UIColor(named: "textColor")
     }
     
-    // MARK: Setup Subviews
+    private func setupNavigationItem() {
+        navigationItem.title = "Оформление доставки"
+        navigationItem.backButtonTitle = ""
+    }
     
-    private func setupScrollView() {
-        scrollView.layer.cornerRadius = 20
-        scrollView.showsVerticalScrollIndicator = false
-        
+    private func setupViewsHierarchy() {
         view.addSubview(scrollView)
-        
+        scrollView.addSubview(addressButton)
+        scrollView.addSubview(dateCollectionView)
+        scrollView.addSubview(timeCollectionView)
+        scrollView.addSubview(commentTextView)
+        commentTextView.addSubview(commentPlaceholderLabel)
+        view.addSubview(clearCommentButton)
+        scrollView.addSubview(commentCountLabel)
+        view.addSubview(hideKeyboardButton)
+        view.addSubview(primaryButton)
+    }
+    
+    private func setupConstraints() {
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.bottom.equalTo(view)
         }
-    }
-    
-    private func setupAddressButton() {
-        addressButton.setTitle("Ивангород, ул. Гагарина, д. 1", for: .normal)
-        addressButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        addressButton.contentHorizontalAlignment = .leading
-        addressButton.contentVerticalAlignment = .center
-        addressButton.titleEdgeInsets.left = 12
-        addressButton.titleEdgeInsets.right = 12
-        addressButton.layer.cornerRadius = 16
-        addressButton.addTarget(self, action: #selector(addressButtonTapped), for: .touchUpInside)
-        
-        scrollView.addSubview(addressButton)
         
         addressButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.top).offset(24)
@@ -216,126 +199,195 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
             make.width.equalTo(view.bounds.size.width - 32)
             make.height.equalTo(56)
         }
-    }
-    
-    private func setupDateCollectionView() {
-        dateCollectionView.dataSource = self
-        dateCollectionView.delegate = self
-        let dateLayout = UICollectionViewFlowLayout()
-        dateLayout.scrollDirection = .horizontal
-        dateCollectionView.setCollectionViewLayout(dateLayout, animated: false)
-        dateCollectionView.showsHorizontalScrollIndicator = false
-        dateCollectionView.register(DateCell.self, forCellWithReuseIdentifier: "DateCell")
-        
-        scrollView.addSubview(dateCollectionView)
         
         dateCollectionView.snp.makeConstraints { make in
             make.top.equalTo(addressButton.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(30)
         }
-    }
-    
-    private func setupTimeCollectionView() {
-        timeCollectionView.dataSource = self
-        timeCollectionView.delegate = self
-        let timeLayout = UICollectionViewFlowLayout()
-        timeLayout.scrollDirection = .horizontal
-        timeCollectionView.setCollectionViewLayout(timeLayout, animated: false)
-        timeCollectionView.showsHorizontalScrollIndicator = false
-        timeCollectionView.register(TimeCell.self, forCellWithReuseIdentifier: "TimeCell")
-        
-        scrollView.addSubview(timeCollectionView)
         
         timeCollectionView.snp.makeConstraints { make in
             make.top.equalTo(dateCollectionView.snp.bottom).offset(2)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(82)
         }
-    }
-    
-    private func setupTextView() {
-        textView.delegate = self
-        textView.text = "Как добраться и когда вам позвонить"
-        textView.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        textView.showsVerticalScrollIndicator = false
-        textView.textContainerInset = .init(top: 18, left: 12, bottom: 18, right: 47)
-        textView.layer.cornerRadius = 16
-        textView.isScrollEnabled = false
-    
-        scrollView.addSubview(textView)
         
-        textView.snp.makeConstraints { make in
+        commentTextView.snp.makeConstraints { make in
             make.top.equalTo(timeCollectionView.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(56)
         }
-    }
-    
-    private func setupClearButton() {
-        clearButton.isHidden = true
-        clearButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
-        view.addSubview(clearButton)
+        commentPlaceholderLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(top: .zero, left: 12, bottom: .zero, right: 47))
+        }
         
-        clearButton.snp.makeConstraints { make in
-            make.centerY.equalTo(textView.snp.centerY)
-            make.trailing.equalTo(textView.snp.trailing).offset(-12)
+        clearCommentButton.snp.makeConstraints { make in
+            make.centerY.equalTo(commentTextView.snp.centerY)
+            make.trailing.equalTo(commentTextView.snp.trailing).offset(-12)
             make.size.equalTo(16)
         }
-    }
-    
-    private func setupCountLabel() {
-        countLabel.text = "Можно написать 150 символов"
-        countLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         
-        scrollView.addSubview(countLabel)
-        
-        countLabel.snp.makeConstraints { make in
-            make.top.equalTo(textView.snp.bottom).offset(12)
+        commentCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(commentTextView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(28)
             make.bottom.equalTo(scrollView.snp.bottom)
             make.height.equalTo(18)
         }
-    }
-    
-    private func setupReadyButton() {
-        readyButton.setTitle("Готово", for: .normal)
-        readyButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        readyButton.layer.cornerRadius = 12
-        readyButton.layer.shadowColor = UIColor.black.cgColor
-        readyButton.layer.shadowOpacity = 0.1
-        readyButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        readyButton.layer.shadowRadius = 4
-        readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
         
-        view.addSubview(readyButton)
-            
-        readyButton.snp.makeConstraints { make in
+        hideKeyboardButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(60)
             make.width.equalTo(84)
             make.height.equalTo(44)
         }
-    }
-    
-    private func setupDeliveryButton() {
-        view.addSubview(deliveryButton)
         
-        deliveryButton.snp.makeConstraints { make in
+        primaryButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-24)
         }
     }
+        
+    private func setupKeyboardObservation() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
     
-    // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+    // MARK: Events
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == dateCollectionView {
-            return dates.count
+    @objc private func addressButtonTapped() {
+        presenter.viewDidTapAddress()
+    }
+    
+    private func deliveryButtonTapped() {
+        presenter.viewDidTapPrimaryButton()
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        
+        let contentInsets = keyboardFrame.size.height + hideKeyboardButton.bounds.height + 32
+        scrollView.contentInset.bottom = contentInsets
+        scrollView.verticalScrollIndicatorInsets.bottom = contentInsets
+        scrollView.scrollRectToVisible(commentTextView.frame, animated: true)
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            hideKeyboardButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-(keyboardFrame.size.height + 16))
+            }
+            view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        scrollView.contentInset.bottom = 0
+        scrollView.verticalScrollIndicatorInsets.bottom = 0
+        
+        UIView.animate(withDuration: 0.5) { [self] in
+            hideKeyboardButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(60)
+            }
+            view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func clearButtonTapped() {
+        commentTextView.text = ""
+        commentTextView.snp.updateConstraints { make in
+            make.height.equalTo(56)
+        }
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // MARK: Helpers
+
+    private func updateTextViewAccessories() {
+        if commentTextView.isFirstResponder || commentTextView.hasText {
+            commentCountLabel.text = "Осталось \(.maxTextViewContentLength - commentTextView.text.count) символов"
         } else {
-            return times.count
+            commentCountLabel.text = "Можно написать \(Int.maxTextViewContentLength) символов"
+        }
+        
+        commentPlaceholderLabel.isHidden = commentTextView.isFirstResponder || commentTextView.hasText
+        clearCommentButton.isHidden = !commentTextView.isFirstResponder
+    }
+}
+
+// MARK: - IMeetingAppointmentView
+
+extension MeetingAppointmentViewController: IMeetingAppointmentView {
+    func reloadDateCollection() {
+        dateCollectionView.reloadData()
+    }
+    
+    func selectDateSlot(at index: Int) {
+        dateCollectionView.selectItem(
+            at: IndexPath(item: index, section: .zero),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
+    }
+    
+    func selectTimeSlot(at index: Int) {
+        timeCollectionView.selectItem(
+            at: IndexPath(item: index, section: .zero),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
+    }
+    
+    func reloadTimeCollection(animated: Bool) {
+        animated
+            ? timeCollectionView.reloadSections(IndexSet(integer: .zero))
+            : timeCollectionView.reloadData()
+    }
+    
+    func set(address: String) {
+        addressButton.setTitle(address, for: .normal)
+    }
+    
+    func set(primaryButtonTitle: String) {
+        primaryButton.setTitle(primaryButtonTitle)
+    }
+    
+    func setPrimaryButtonsTinkoffStyle() {
+        primaryButton.setStyle(.primaryTinkoff)
+    }
+    
+    func setPrimaryButtonsDestructiveStyle() {
+        primaryButton.setStyle(.destructive)
+    }
+    
+    func showErrorAlert() {
+        present(UIAlertController.defaultErrorAlert(), animated: true)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension MeetingAppointmentViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case dateCollectionView:
+            return presenter.viewDidRequestNumberOfDateSlots()
+        default:
+            return presenter.viewDidRequestNumberOfTimeSlots()
         }
     }
     
@@ -343,37 +395,57 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        if collectionView == dateCollectionView {
-            if let dateCell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "DateCell",
-                for: indexPath
-            ) as? DateCell {
-                let textDateCell = dates[indexPath.row].date
-                dateCell.setupCell(text: textDateCell)
-                return dateCell
-            }
-        } else {
-            if let timeCell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "TimeCell",
-                for: indexPath
-            ) as? TimeCell {
-                let textTimeCell = times[indexPath.row].time
-                let textDateCell = times[indexPath.row].date
-                timeCell.setupCell(timeText: textTimeCell, dateText: textDateCell)
-                return timeCell
-            }
+        switch collectionView {
+        case dateCollectionView:
+            let model = presenter.viewDidRequestDateSlot(at: indexPath.row)
+            let cell = collectionView.dequeue(DateCell.self, for: indexPath)
+            cell.setupCell(text: model.date)
+            return cell
+        default:
+            let model = presenter.viewDidRequestTimeSlot(at: indexPath.row)
+            let cell = collectionView.dequeue(TimeCell.self, for: indexPath)
+            cell.setupCell(timeText: model.time, dateText: model.date)
+            return cell
         }
-        return UICollectionViewCell()
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MeetingAppointmentViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        switch collectionView {
+        case dateCollectionView:
+            presenter.viewDidSelectDateSlot(at: indexPath.row)
+        default:
+            presenter.viewDidSelectTimeSlot(at: indexPath.row)
+        }
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        switch collectionView {
+        case dateCollectionView:
+            return true
+        default:
+            return presenter.viewShouldSelectTimeSlot(at: indexPath.row)
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MeetingAppointmentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        if collectionView == dateCollectionView {
+        switch collectionView {
+        case dateCollectionView:
             return CGSize(width: 77, height: 30)
-        } else {
+        default:
             return CGSize(width: 116, height: 62)
         }
     }
@@ -383,9 +455,10 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        if collectionView == dateCollectionView {
+        switch collectionView {
+        case dateCollectionView:
             return 8
-        } else {
+        default:
             return 12
         }
     }
@@ -397,4 +470,44 @@ final class MeetingAppointmentViewController: UIViewController, UICollectionView
     ) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
+}
+
+// MARK: - UITextViewDelegate
+
+extension MeetingAppointmentViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        updateTextViewAccessories()
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > .maxTextViewContentLength {
+            textView.deleteBackward()
+        }
+        
+        let height = min(primaryButton.frame.maxY - textView.frame.maxY, textView.sizeThatFits(CGSize(
+            width: textView.frame.width,
+            height: CGFloat.greatestFiniteMagnitude
+        )).height)
+        
+        textView.snp.updateConstraints { make in
+            make.height.equalTo(height)
+        }
+        
+        if height >= primaryButton.frame.maxY - textView.frame.maxY - 50 {
+            textView.deleteBackward()
+        }
+        
+        updateTextViewAccessories()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        updateTextViewAccessories()
+        presenter.viewDidChange(comment: textView.text)
+    }
+}
+
+// MARK: - Constants
+
+private extension Int {
+    static let maxTextViewContentLength = 150
 }
