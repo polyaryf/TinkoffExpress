@@ -6,53 +6,80 @@
 //
 
 import UIKit
+import Combine
 
 protocol CartPresenterProtocol {
     func viewDidLoad()
     func checkoutButtonTapped()
-    func checkoutButtonTouchDown(with button: UIButton)
-    func checkoutButtonTouchUpInside(with button: UIButton)
+    func viewDidIncreaseCounterOfItem(at index: Int)
+    func viewDidDecreaseCounterOfItem(at index: Int)
+    func deleteAllItems()
 }
 
 final class CartPresenter: CartPresenterProtocol {
     // MARK: Dependencies
     
-    weak var view: CartViewController?
-    private var coordinator: Coordinator?
-    private var service: CartService?
+    weak var view: ICartViewController?
+    private let service: ICartService
+    
+    private var cartProducts: [CartProduct] = []
+    var cancellables: Set<AnyCancellable> = []
 
     // MARK: Init
-    init(coordinator: Coordinator, service: CartService) {
-        self.coordinator = coordinator
+    
+    init(service: ICartService) {
         self.service = service
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
-            guard let self = self else { return }
-            self.view?.items = items ?? []
-        }
+        service.currentProductsPublisher.receive(on: DispatchQueue.main)
+            .sink { [weak self] cartProducts in
+                guard let self else { return }
+                
+                self.cartProducts = cartProducts.map {
+                    CartProduct(product: $0.product, counter: $0.counter)
+                }
+                
+                self.view?.setItems(with: self.cartProducts.map { cartProduct in
+                    CartItem(
+                        text: cartProduct.product.title,
+                        imageName: cartProduct.product.image,
+                        count: "\(cartProduct.counter)",
+                        price: "\(cartProduct.product.price)"
+                    )
+                })
+            }
+            .store(in: &cancellables)
+    }
+    
+    func viewDidIncreaseCounterOfItem(at index: Int) {
+        service.add(product: cartProducts[index].product)
+    }
+    
+    func viewDidDecreaseCounterOfItem(at index: Int) {
+        service.remove(product: cartProducts[index].product)
+    }
+    
+    func deleteAllItems() {
+        service.removeAllProducts()
+        view?.setItems(with: [])
     }
     
     // MARK: Events
     
     func checkoutButtonTapped() {
-        showDelivery()
-    }
-    
-    func checkoutButtonTouchDown(with button: UIButton) {
-        button.backgroundColor = UIColor(named: "yellowButtonPressedColor")
-    }
-    
-    func checkoutButtonTouchUpInside(with button: UIButton) {
-        button.backgroundColor = UIColor(named: "yellowButtonColor")
-    }
-    
-    // MARK: Navigation
-    
-    private func showDelivery() {
-        coordinator?.move(DeliveryAssembly(), with: .present)
+        if cartProducts.isEmpty {
+            return
+        } else {
+            var items: [TEApiItem] = []
+            for cartProduct in cartProducts {
+                for _ in 0..<cartProduct.counter {
+                    items.append(TEApiItem(name: cartProduct.product.title, price: cartProduct.product.price))
+                }
+            }
+            // TODO: move to Delivery with [item]
+        }
     }
 }

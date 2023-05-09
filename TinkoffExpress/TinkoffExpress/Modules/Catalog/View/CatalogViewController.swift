@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ICatalogViewController: AnyObject {
-    func setProducts(with products: [Product])
+    func setProducts(with products: [CatalogProduct])
 }
 
 final class CatalogViewController: UIViewController {
@@ -27,7 +27,7 @@ final class CatalogViewController: UIViewController {
     
     // MARK: State
     
-    private var products: [Product] = []
+    private var products: [CatalogProduct] = []
     
     // MARK: Dependency
     
@@ -91,16 +91,23 @@ extension CatalogViewController: UITableViewDataSource {
             withIdentifier: "productCell",
             for: indexPath
         ) as? CatalogTableViewCell {
-            let product = products[indexPath.row]
+            let product = products[indexPath.row].product
+            let count = products[indexPath.row].counter
+            
             cell.selectionStyle = .none
             cell.set(
                 title: product.title,
                 price: product.price,
                 image: product.image
             )
-        
-            cell.onCounterDidChange { counter in
-                // presenter.viewDidChangeCounterOfItem(at: index)
+            cell.updateView(with: products[indexPath.row].counter)
+            
+            cell.onCounterDidIncrease { [presenter] in
+                presenter.viewDidIncreaseCounterOfItem(at: indexPath.row)
+            }
+            
+            cell.onCounterDidDecrease { [presenter] in
+                presenter.viewDidDecreaseCounterOfItem(at: indexPath.row)
             }
             
             return cell
@@ -119,7 +126,7 @@ extension CatalogViewController: UITableViewDelegate {
 // MARK: - ICatalogViewController
 
 extension CatalogViewController: ICatalogViewController {
-    func setProducts(with products: [Product]) {
+    func setProducts(with products: [CatalogProduct]) {
         self.products = products
         tableView.reloadData()
     }
