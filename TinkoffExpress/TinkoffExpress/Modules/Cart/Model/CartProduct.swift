@@ -7,12 +7,7 @@
 
 import Foundation
 
-class CartProduct {
+struct CartProduct {
     let product: Product
     var counter: Int
-    
-    init(product: Product, counter: Int) {
-        self.product = product
-        self.counter = counter
-    }
 }

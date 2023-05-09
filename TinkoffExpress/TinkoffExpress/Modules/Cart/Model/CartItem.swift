@@ -11,4 +11,5 @@ struct CartItem {
     let text: String
     let imageName: String
     let count: String
+    let price: String
 }
