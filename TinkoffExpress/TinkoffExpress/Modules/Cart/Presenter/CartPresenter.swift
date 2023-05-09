@@ -10,8 +10,6 @@ import UIKit
 protocol CartPresenterProtocol {
     func viewDidLoad()
     func checkoutButtonTapped()
-    func checkoutButtonTouchDown(with button: UIButton)
-    func checkoutButtonTouchUpInside(with button: UIButton)
 }
 
 final class CartPresenter: CartPresenterProtocol {
@@ -33,7 +31,11 @@ final class CartPresenter: CartPresenterProtocol {
     func viewDidLoad() {
         products = service.getAll()
         view?.setItems(with: products.map { cartProduct in
-            Cart(text: cartProduct.product.title, imageName: cartProduct.product.image, count: "\(cartProduct.counter)")
+            CartItem(
+                text: cartProduct.product.title,
+                imageName: cartProduct.product.image,
+                count: "\(cartProduct.counter)"
+            )
         })
     }
     
@@ -41,14 +43,6 @@ final class CartPresenter: CartPresenterProtocol {
     
     func checkoutButtonTapped() {
         showDelivery()
-    }
-    
-    func checkoutButtonTouchDown(with button: UIButton) {
-        button.backgroundColor = UIColor(named: "yellowButtonPressedColor")
-    }
-    
-    func checkoutButtonTouchUpInside(with button: UIButton) {
-        button.backgroundColor = UIColor(named: "yellowButtonColor")
     }
     
     // MARK: Navigation

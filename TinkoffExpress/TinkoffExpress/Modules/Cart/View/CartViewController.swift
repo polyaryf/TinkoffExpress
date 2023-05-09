@@ -71,7 +71,7 @@ final class CartViewController: UIViewController {
     
     // MARK: Properties
     
-    private var items: [Cart] = []
+    private var items: [CartItem] = []
     
     // MARK: Init
     
@@ -189,7 +189,7 @@ final class CartViewController: UIViewController {
     
     // MARK: Public
     
-    func setItems(with items: [Cart]) {
+    func setItems(with items: [CartItem]) {
         self.items = items
         collectionView.reloadData()
     }
@@ -201,11 +201,11 @@ final class CartViewController: UIViewController {
     }
     
     @objc private func checkoutButtonTouchDown() {
-        cartPresenter.checkoutButtonTouchDown(with: checkoutButton)
+        checkoutButton.backgroundColor = UIColor(named: "yellowButtonPressedColor")
     }
     
     @objc private func checkoutButtonTouchUpInside() {
-        cartPresenter.checkoutButtonTouchUpInside(with: checkoutButton)
+        checkoutButton.backgroundColor = UIColor(named: "yellowButtonColor")
     }
 }
 
