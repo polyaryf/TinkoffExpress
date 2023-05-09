@@ -33,29 +33,31 @@ final class CartService: ICartService {
     }
     
     func add(product: Product) {
-        if !products.value.contains(where: { cartProduct in
+        let cartProducts = products.value
+        if !cartProducts.contains(where: { cartProduct in
             cartProduct.product == product
         }) {
-            products.value.append(CartProduct(product: product, counter: 0))
+            products.value.append(CartProduct(product: product, counter: 1))
+            return
         }
-        products.value.forEach { cartProduct in
+        products.value = cartProducts.map { cartProduct in
             if cartProduct.product == product {
-                cartProduct.counter += 1
+                return CartProduct(product: cartProduct.product, counter: cartProduct.counter + 1)
             }
+            return cartProduct
         }
     }
     
     func remove(product: Product) {
-        products.value.forEach { cartProduct in
+        products.value = products.value
+        .map { cartProduct in
             if cartProduct.product == product {
-                if cartProduct.counter > 0 {
-                    cartProduct.counter -= 1
-                } else {
-                    let id = products.value.firstIndex { $0 === cartProduct }
-                    guard let id else { return }
-                    products.value.remove(at: id)
-                }
+                return CartProduct(product: cartProduct.product, counter: cartProduct.counter - 1)
             }
+            return cartProduct
+        }
+        .filter {
+            $0.counter > 0
         }
     }
     
