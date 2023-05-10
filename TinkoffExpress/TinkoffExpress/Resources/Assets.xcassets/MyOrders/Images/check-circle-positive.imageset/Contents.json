@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tui-notification-middle.png",
+      "filename" : "check-circle-positive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tui-notification-middle@2x.png",
+      "filename" : "check-circle-positive@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tui-notification-middle@3x.png",
+      "filename" : "check-circle-positive@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
