@@ -24,7 +24,10 @@ final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
     private func createView(withType type: OrderCheckoutModuleType) -> UIViewController {
         let networkService = TEApiService()
         let restService = RestOrderCheckoutService(networkService: networkService)
-        let router = OrderCheckoutRouter(finalDeliveryAssembly: FinalDeliveryAssembly())
+        let router = OrderCheckoutRouter(
+            finalDeliveryAssembly: FinalDeliveryAssembly(),
+            meetingAppointmentAssembly: MeetingAppointmentAssembly()
+        )
         let mapper = OrderCheckoutMapper()
 
         let presenter = OrderCheckoutPresenter(

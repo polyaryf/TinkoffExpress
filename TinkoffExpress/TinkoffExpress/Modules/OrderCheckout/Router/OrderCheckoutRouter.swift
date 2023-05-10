@@ -9,6 +9,7 @@ import UIKit
 
 protocol IOrderCheckoutRouter {
     func openFinalDelivery(with model: FinalDelivery)
+    func openMeetingAppointment(with model: TEApiOrder)
 }
 
 final class OrderCheckoutRouter: IOrderCheckoutRouter {
@@ -16,11 +17,16 @@ final class OrderCheckoutRouter: IOrderCheckoutRouter {
 
     weak var transitionHandler: UIViewController?
     private let finalDeliveryAssembly: IFinalDelivaryAssembly
+    private let meetingAppointmentAssembly: IMeetingAppointmentAssembly
     
     // MARK: Init
     
-    init(finalDeliveryAssembly: IFinalDelivaryAssembly) {
+    init(
+        finalDeliveryAssembly: IFinalDelivaryAssembly,
+        meetingAppointmentAssembly: IMeetingAppointmentAssembly
+    ) {
         self.finalDeliveryAssembly = finalDeliveryAssembly
+        self.meetingAppointmentAssembly = meetingAppointmentAssembly
     }
     
     // MARK: IOrderCheckoutRouter
@@ -28,5 +34,10 @@ final class OrderCheckoutRouter: IOrderCheckoutRouter {
     func openFinalDelivery(with model: FinalDelivery) {
         let finalDeliveryView = finalDeliveryAssembly.createFinalDeliveryView(with: model)
         transitionHandler?.navigationController?.setViewControllers([finalDeliveryView], animated: true)
+    }
+    
+    func openMeetingAppointment(with model: TEApiOrder) {
+        let meetingAppointmentView = meetingAppointmentAssembly.createMeetingAppointmentView()
+        transitionHandler?.navigationController?.pushViewController(meetingAppointmentView, animated: true)
     }
 }
