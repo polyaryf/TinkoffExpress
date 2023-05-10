@@ -141,7 +141,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             deliverySlot: inputModel.deliverySlot,
             items: [],
             comment: inputModel.comment,
-            status: "0"
+            status: .created
         )
         
         service.createOrder(with: request) { [weak self] result in
@@ -167,7 +167,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             paymentMethod: selectedMethod.rawValue,
             deliverySlot: order.deliverySlot,
             comment: order.comment,
-            status: "0"
+            status: .created
         )
         service.updateOrder(
             id: order.id,

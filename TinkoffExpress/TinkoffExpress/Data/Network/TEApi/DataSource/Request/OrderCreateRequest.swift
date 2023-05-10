@@ -13,7 +13,7 @@ struct OrderCreateRequest: Codable {
     let deliverySlot: TEApiTimeSlot
     let items: [TEApiItem]
     let comment: String
-    let status: String?
+    let status: TEApiOrderStatus?
     
     private enum CodingKeys: String, CodingKey {
         case address = "point"

@@ -10,7 +10,7 @@ struct OrderUpdateRequest: Codable {
     let paymentMethod: String?
     let deliverySlot: TEApiTimeSlot?
     let comment: String?
-    let status: String?
+    let status: TEApiOrderStatus?
     
     private enum CodingKeys: String, CodingKey {
         case address = "point"

@@ -25,6 +25,7 @@
 		29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */; };
 		29852A3F2A0672CD005DCF46 /* OrderCheckoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */; };
 		29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A452A068735005DCF46 /* MyOrdersRouter.swift */; };
+		2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -176,6 +177,7 @@
 		29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutMapper.swift; sourceTree = "<group>"; };
 		29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutRouter.swift; sourceTree = "<group>"; };
 		29852A452A068735005DCF46 /* MyOrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersRouter.swift; sourceTree = "<group>"; };
+		2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrderStatus.swift; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				29C391F029F980990041F569 /* TEApiAddress.swift */,
 				29C391F129F980990041F569 /* TEApiItem.swift */,
 				29C391F229F980990041F569 /* TEApiOrder.swift */,
+				2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1693,6 +1696,7 @@
 				43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */,
 				29C392DC29F9809A0041F569 /* DeliveryCell.swift in Sources */,
 				29C392D429F9809A0041F569 /* CartPresenter.swift in Sources */,
+				2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */,
 				DE533B7B2A07DA340069E653 /* UIAlertController+Utils.swift in Sources */,
 				43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */,
 				2946204D2A0B7E8900200C31 /* DeliveryRouter.swift in Sources */,

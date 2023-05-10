@@ -32,7 +32,7 @@ final class OrderCheckoutMapper: IOrderCheckoutMapper {
             deliverySlot: TEApiTimeSlot(date: "", timeFrom: "", timeTo: ""),
             items: [],
             comment: "",
-            status: ""
+            status: .created
         )
     }
     
