@@ -9,6 +9,7 @@ import UIKit
 
 protocol IOrderCheckoutRouter {
     func openFinalDelivery(with model: FinalDelivery)
+    func openMeetingAppointment()
 }
 
 final class OrderCheckoutRouter: IOrderCheckoutRouter {
@@ -28,5 +29,9 @@ final class OrderCheckoutRouter: IOrderCheckoutRouter {
     func openFinalDelivery(with model: FinalDelivery) {
         let finalDeliveryView = finalDeliveryAssembly.createFinalDeliveryView(with: model)
         transitionHandler?.navigationController?.setViewControllers([finalDeliveryView], animated: true)
+    }
+    
+    func openMeetingAppointment() {
+        // TODO: move to meeting appointment
     }
 }

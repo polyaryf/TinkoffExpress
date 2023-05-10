@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+protocol IMyOrdersViewController: AnyObject {
+    func showNotificationView()
+    func updateView(with items: [MyOrder])
+}
+
 final class MyOrdersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // MARK: Dependencies
     
@@ -20,6 +25,17 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     // MARK: Subviews
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var notificationView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "notification"))
+        imageView.isHidden = true
+        imageView.tag = 10
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        return imageView
+    }()
     
     // MARK: Init
     
@@ -43,11 +59,6 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         setupColors()
         
         myOrdersPresenter.viewDidLoad()
-    }
-    
-    func updateView(with items: [MyOrder]) {
-        self.items = items
-        collectionView.reloadData()
     }
     
     // MARK: Actions
@@ -84,7 +95,12 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // TODO: убирать вью с нотификацией, когда тыкаем в любое другое место
+    }
+    
     // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+    
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -129,5 +145,19 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
         return 20
+    }
+}
+
+extension MyOrdersViewController: IMyOrdersViewController {
+    func showNotificationView() {
+        notificationView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [notificationView] in
+            notificationView.isHidden = true
+        }
+    }
+    
+    func updateView(with items: [MyOrder]) {
+        self.items = items
+        collectionView.reloadData()
     }
 }

@@ -26,11 +26,11 @@ final class MyOrdersRouter: IMyOrdersRouter {
     // MARK: IMyOrdersRouter
     
     func openOrderCheckout(with model: TEApiOrder) {
-//        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
-//            withModuleType: .editingOrder,
-//            with: model
-//        )
-//        orderCheckoutView.hidesBottomBarWhenPushed = true
-//        transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
+        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
+            
+            with: model
+        )
+        orderCheckoutView.hidesBottomBarWhenPushed = true
+        transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
     }
 }

@@ -26,7 +26,8 @@ final class RestMyOrdersService: MyOrdersService {
         networkService.getOrders { result in
             switch result {
             case .success(let orders):
-                completion(orders)
+                let filteredOrders = orders.filter { $0.status != "3" }
+                completion(filteredOrders)
             case .failure:
                 completion([])
             }
