@@ -90,9 +90,16 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     func yesButtonAlertTapped() {
         switch type {
         case let .editingOrder(apiOrder):
-            service.delete(order: apiOrder)
-            listener.didUpdateOrderWithDelete()
-            showMyOrders()
+            service.delete(order: apiOrder) { [weak self] result in
+                switch result {
+                case .success(let flag):
+                    if flag {
+                        self?.listener.didUpdateOrderWithDelete()
+                        self?.showMyOrders()
+                    }
+                case .failure: break
+                }
+            }
         case .creatingOrder:
             break
         }
