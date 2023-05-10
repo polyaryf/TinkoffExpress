@@ -19,7 +19,10 @@ protocol OrderCheckoutService {
         completion: @escaping (Result<Bool, Error>) -> Void
     )
     
-    func delete(order: TEApiOrder)
+    func delete(
+        order: TEApiOrder,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
 }
 
 final class RestOrderCheckoutService: OrderCheckoutService {
@@ -56,7 +59,7 @@ final class RestOrderCheckoutService: OrderCheckoutService {
         }
     }
     
-    func delete(order: TEApiOrder) {
+    func delete(order: TEApiOrder, completion: @escaping (Result<Bool, Error>) -> Void) {
         let request = OrderUpdateRequest(
             address: order.address,
             paymentMethod: order.paymentMethod.rawValue,
@@ -66,7 +69,10 @@ final class RestOrderCheckoutService: OrderCheckoutService {
         )
         networkService.updateOrder(
             request: request,
-            orderId: order.id) { _ in }
+            orderId: order.id) { result in
+                let newResult = result.mapError { $0 as Error }
+                completion(newResult)
+            }
     }
 }
 
@@ -79,5 +85,7 @@ class MockOrderCheckoutService: OrderCheckoutService {
         completion(.success(true))
     }
     
-    func delete(order: TEApiOrder) {}
+    func delete(order: TEApiOrder, completion: @escaping (Result<Bool, Error>) -> Void) {
+        completion(.success(true))
+    }
 }
