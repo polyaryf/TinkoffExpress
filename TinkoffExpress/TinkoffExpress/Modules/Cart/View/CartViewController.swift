@@ -200,6 +200,7 @@ final class CartViewController: UIViewController {
     }
     
     // MARK: Actions
+    
     @objc private func deleteAll() {
         cartPresenter.deleteAllItems()
     }

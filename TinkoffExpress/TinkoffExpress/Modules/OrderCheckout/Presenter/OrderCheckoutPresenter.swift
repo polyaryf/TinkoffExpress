@@ -84,7 +84,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     func editButtonTapped() {
-        router.openMeetingAppointment()
+        showMeetingAppointment()
     }
     
     func yesButtonAlertTapped() {
@@ -218,7 +218,14 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     
     // MARK: Navigation
     
-    private func showMeetingAppointment() {}
+    private func showMeetingAppointment() {
+        switch type {
+        case .creatingOrder:
+            view?.closeView()
+        case .editingOrder(let order):
+            router.openMeetingAppointment(with: order)
+        }
+    }
     
     private func showFinalDelivery() {
         switch type {

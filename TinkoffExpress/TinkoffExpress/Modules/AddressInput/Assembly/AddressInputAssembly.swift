@@ -20,7 +20,7 @@ final class AddressInputAssembly: IAddressInputAssembly {
             mapper: AddressInputMapper()
         )
 
-        let presenter = AddressInputPresenter(service: mockService, output: output)
+        let presenter = AddressInputPresenter(service: restService, output: output)
         let viewController = AddressInputViewController(presenter: presenter)
         presenter.view = viewController
         return viewController

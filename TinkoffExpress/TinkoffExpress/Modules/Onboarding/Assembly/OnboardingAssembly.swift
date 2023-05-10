@@ -7,12 +7,18 @@
 
 import UIKit
 
-final class OnboardingAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol IOnboardingAssembly {
+    func createOnboardingView() -> UIViewController
+}
+
+final class OnboardingAssembly: IOnboardingAssembly {
+    func createOnboardingView() -> UIViewController {
         let mockService = MockOnboardingService()
-        let presenter = OnboardingPresenter(coordinator: coordinator, service: mockService)
+        let router = OnboardingRouter(meetingAppointmentAssembly: MeetingAppointmentAssembly())
+        let presenter = OnboardingPresenter(service: mockService, router: router)
         let viewController = OnboardingViewController(onboardingPresenter: presenter)
         presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

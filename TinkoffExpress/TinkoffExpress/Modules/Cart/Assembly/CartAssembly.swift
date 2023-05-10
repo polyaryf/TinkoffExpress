@@ -10,9 +10,11 @@ import UIKit
 final class CartAssembly: Assembly {
     func createViewController(coordinator: Coordinator) -> UIViewController {
         let service = CartService.shared
-        let presenter = CartPresenter( service: service)
+        let router = CartRouter(deliveryAssembly: DeliveryAssembly())
+        let presenter = CartPresenter( service: service, router: router)
         let viewController = CartViewController(cartPresenter: presenter)
         presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

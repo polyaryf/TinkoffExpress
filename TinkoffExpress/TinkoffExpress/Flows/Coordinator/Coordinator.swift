@@ -12,7 +12,6 @@ protocol Coordinator {
     var isRootCoordinator: Bool { get }
     
     func start(_ navigationController: UINavigationController)
-    func move(_ assembly: Assembly, with typeOfNavigation: TypeOfNavigation)
 }
 
 final class AppCoordinator: Coordinator {
@@ -24,26 +23,6 @@ final class AppCoordinator: Coordinator {
         self.navigationController = navigationController
         
         setupTabBar()
-    }
-    
-    func move(_ assembly: Assembly, with typeOfNavigation: TypeOfNavigation) {
-        switch typeOfNavigation {
-        case .push:
-            let viewController = assembly.createViewController(coordinator: self)
-            navigationController?.pushViewController(viewController, animated: true)
-        case .present:
-            let childCoordinator = AppCoordinator()
-            childCoordinator.isRootCoordinator = false
-            
-            let viewController = assembly.createViewController(coordinator: childCoordinator)
-            let childNavigationController = UINavigationController(rootViewController: viewController)
-            
-            childCoordinator.navigationController = childNavigationController
-            navigationController?.present(childNavigationController, animated: true)
-        case .set:
-            let viewController = assembly.createViewController(coordinator: self)
-            navigationController?.setViewControllers([viewController], animated: true)
-        }
     }
     
     private func setupTabBar() {
