@@ -21,14 +21,19 @@ final class CartPresenter: CartPresenterProtocol {
     
     weak var view: ICartViewController?
     private let service: ICartService
+    private let router: ICartRouter
     
     private var cartProducts: [CartProduct] = []
     var cancellables: Set<AnyCancellable> = []
 
     // MARK: Init
     
-    init(service: ICartService) {
+    init(
+        service: ICartService,
+        router: ICartRouter
+    ) {
         self.service = service
+        self.router = router
     }
     
     // MARK: Life Cycle
@@ -79,6 +84,7 @@ final class CartPresenter: CartPresenterProtocol {
                     items.append(TEApiItem(name: cartProduct.product.title, price: cartProduct.product.price))
                 }
             }
+            router.openDelivery()
             // TODO: move to Delivery with [item]
         }
     }

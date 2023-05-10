@@ -13,6 +13,9 @@
 		29328F9B2A07BCB9001CE5AA /* CatalogAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */; };
 		29328F9E2A07CFC4001CE5AA /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */; };
 		29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328FA02A07D01F001CE5AA /* CatalogService.swift */; };
+		2946204A2A0B79ED00200C31 /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294620492A0B79ED00200C31 /* CartRouter.swift */; };
+		2946204D2A0B7E8900200C31 /* DeliveryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946204C2A0B7E8900200C31 /* DeliveryRouter.swift */; };
+		294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */; };
 		29475B2D2A09796100001A2A /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29475B2C2A09796100001A2A /* CartProduct.swift */; };
 		297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C871D2A07F5DD00DE110F /* CatalogProduct.swift */; };
 		297FF59D29FFD37D00636B01 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF59C29FFD37D00636B01 /* TextField.swift */; };
@@ -161,6 +164,9 @@
 		29328F9A2A07BCB9001CE5AA /* CatalogAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogAssembly.swift; sourceTree = "<group>"; };
 		29328F9D2A07CFC4001CE5AA /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
 		29328FA02A07D01F001CE5AA /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
+		294620492A0B79ED00200C31 /* CartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
+		2946204C2A0B7E8900200C31 /* DeliveryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryRouter.swift; sourceTree = "<group>"; };
+		2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		29475B2C2A09796100001A2A /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		297C871D2A07F5DD00DE110F /* CatalogProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProduct.swift; sourceTree = "<group>"; };
 		297FF59C29FFD37D00636B01 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -384,6 +390,30 @@
 				29328FA02A07D01F001CE5AA /* CatalogService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		294620482A0B79DD00200C31 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				294620492A0B79ED00200C31 /* CartRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2946204B2A0B7E7800200C31 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2946204C2A0B7E8900200C31 /* DeliveryRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2946204E2A0B81A200200C31 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		297FF59B29FFC17800636B01 /* ViewController */ = {
@@ -1079,6 +1109,7 @@
 		29C3925229F980990041F569 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				294620482A0B79DD00200C31 /* Router */,
 				29C3925329F980990041F569 /* Assembly */,
 				29C3925529F980990041F569 /* Presenter */,
 				29C3925729F980990041F569 /* Model */,
@@ -1133,6 +1164,7 @@
 		29C3925E29F980990041F569 /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
+				2946204B2A0B7E7800200C31 /* Router */,
 				29C3925F29F980990041F569 /* Assembly */,
 				29C3926129F980990041F569 /* Presenter */,
 				29C3926329F980990041F569 /* Model */,
@@ -1187,6 +1219,7 @@
 		29C3926B29F980990041F569 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				2946204E2A0B81A200200C31 /* Router */,
 				29C3926C29F980990041F569 /* Assembly */,
 				29C3926E29F980990041F569 /* Presenter */,
 				29C3927029F980990041F569 /* Model */,
@@ -1648,6 +1681,7 @@
 				29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */,
 				297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */,
 				29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */,
+				2946204A2A0B79ED00200C31 /* CartRouter.swift in Sources */,
 				29C392C029F9809A0041F569 /* MeetingAppointment.swift in Sources */,
 				29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */,
 				29C392BD29F9809A0041F569 /* AddressInputMapper.swift in Sources */,
@@ -1661,6 +1695,7 @@
 				29C392D429F9809A0041F569 /* CartPresenter.swift in Sources */,
 				DE533B7B2A07DA340069E653 /* UIAlertController+Utils.swift in Sources */,
 				43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */,
+				2946204D2A0B7E8900200C31 /* DeliveryRouter.swift in Sources */,
 				29C3928C29F9809A0041F569 /* Theme.swift in Sources */,
 				29C3929D29F9809A0041F569 /* TEApiAddress.swift in Sources */,
 				29C392BF29F9809A0041F569 /* MeetingAppointmentPresenter.swift in Sources */,
@@ -1719,6 +1754,7 @@
 				29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */,
 				29C3929F29F9809A0041F569 /* TEApiOrder.swift in Sources */,
 				43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */,
+				294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */,
 				29C392A729F9809A0041F569 /* TEApiService.swift in Sources */,
 				29C3928929F9809A0041F569 /* HighlightSettings.swift in Sources */,
 				29C93E5629FED85500EBFB23 /* ABTestFieldType.swift in Sources */,

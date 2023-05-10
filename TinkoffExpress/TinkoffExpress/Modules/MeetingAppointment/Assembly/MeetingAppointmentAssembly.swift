@@ -7,8 +7,12 @@
 
 import UIKit
 
-final class MeetingAppointmentAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol IMeetingAppointmentAssembly {
+    func createMeetingAppointmentView() -> UIViewController
+}
+
+final class MeetingAppointmentAssembly: IMeetingAppointmentAssembly {
+    func createMeetingAppointmentView() -> UIViewController {
         let mockService = MeetingAppointmentService(api: TEApiService())
         let router = MeetingAppointmentRouter(
             addressInputAssembly: AddressInputAssembly(),
