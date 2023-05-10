@@ -11,6 +11,7 @@ protocol IOrderCheckoutMapper {
     func toOrderCheckout(from model: MyOrder) -> OrderCheckout
     func toOrderCreateRequest() -> OrderCreateRequest
     func toFinalDelivery(from model: OrderCheckout) -> FinalDelivery
+    func toTEApiItems(from products: [CartProduct]) -> [TEApiItem]
 }
 
 final class OrderCheckoutMapper: IOrderCheckoutMapper {
@@ -42,5 +43,19 @@ final class OrderCheckoutMapper: IOrderCheckoutMapper {
             when: model.deliveryWhen,
             what: "Посылку"
         )
+    }
+    
+    func toTEApiItems(from products: [CartProduct]) -> [TEApiItem] {
+        var items: [TEApiItem] = []
+        for cartProduct in products {
+            for _ in 0 ..< cartProduct.counter {
+                items.append(TEApiItem(
+                    name: cartProduct.product.title,
+                    price: cartProduct.product.price)
+                )
+            }
+        }
+        
+        return items
     }
 }

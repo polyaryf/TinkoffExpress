@@ -36,7 +36,8 @@ final class OrderCheckoutAssembly: IOrderCheckoutAssembly {
             mapper: mapper,
             type: type,
             dateFormatter: TEDateFormatter(),
-            listener: TEOrdersNotificationsService.shared
+            listener: TEOrdersNotificationsService.shared,
+            cartService: CartService.shared
         )
 
         let viewController = OrderCheckoutViewController(orderCheckoutPresenter: presenter)
