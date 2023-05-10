@@ -223,15 +223,15 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(
-            title: "Да",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.orderCheckoutPresenter.yesButtonAlertTapped()
-        })
-        alert.addAction(UIAlertAction(
             title: "Нет",
             style: UIAlertAction.Style.default,
             handler: nil)
         )
+        alert.addAction(UIAlertAction(
+            title: "Да",
+            style: UIAlertAction.Style.default) { [weak self] _ in
+                self?.orderCheckoutPresenter.yesButtonAlertTapped()
+        })
         self.present(alert, animated: true, completion: nil)
     }
     
