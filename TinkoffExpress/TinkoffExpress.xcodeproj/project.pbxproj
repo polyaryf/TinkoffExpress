@@ -25,6 +25,7 @@
 		29852A382A0520F6005DCF46 /* OrderCheckoutMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */; };
 		29852A3F2A0672CD005DCF46 /* OrderCheckoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */; };
 		29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A452A068735005DCF46 /* MyOrdersRouter.swift */; };
+		2989F93D2A0C1F3F000D1A41 /* NotificationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -176,6 +177,7 @@
 		29852A372A0520F6005DCF46 /* OrderCheckoutMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutMapper.swift; sourceTree = "<group>"; };
 		29852A3E2A0672CD005DCF46 /* OrderCheckoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCheckoutRouter.swift; sourceTree = "<group>"; };
 		29852A452A068735005DCF46 /* MyOrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersRouter.swift; sourceTree = "<group>"; };
+		2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationView .swift"; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -471,6 +473,14 @@
 				29852A452A068735005DCF46 /* MyOrdersRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		2989F93B2A0C1F0D000D1A41 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */,
+			);
+			path = NotificationView;
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -1468,6 +1478,7 @@
 		43EF490C2A029D2D002424CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				43EF490D2A029D2D002424CE /* MyOrdersCell.swift */,
 				43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */,
 			);
@@ -1721,6 +1732,7 @@
 				29C392B029F9809A0041F569 /* DataResponse.swift in Sources */,
 				29C392C729F9809A0041F569 /* FinalDeliveryViewController.swift in Sources */,
 				439B5E0E2A0657C8001764B0 /* SettingsPresenter.swift in Sources */,
+				2989F93D2A0C1F3F000D1A41 /* NotificationView .swift in Sources */,
 				439B5E122A066B57001764B0 /* SettingsCell.swift in Sources */,
 				29C392E329F9809A0041F569 /* OnboardingViewController.swift in Sources */,
 				29475B2D2A09796100001A2A /* CartProduct.swift in Sources */,
