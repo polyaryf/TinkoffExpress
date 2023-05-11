@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol Coordinator {
     var navigationController: UINavigationController? { get set }
@@ -18,6 +19,13 @@ final class AppCoordinator: Coordinator {
     weak var navigationController: UINavigationController?
     var isRootCoordinator = true
     
+    // MARK: State
+    
+    private let service: ICartService = CartService.shared
+    private var cancellables: Set<AnyCancellable> = []
+    private let tabBarController = UITabBarController()
+    private var viewControllers: [UIViewController] = []
+    
     func start(_ navigationController: UINavigationController) {
         guard isRootCoordinator else { return }
         self.navigationController = navigationController
@@ -26,38 +34,76 @@ final class AppCoordinator: Coordinator {
     }
     
     private func setupTabBar() {
-        let tabBarController = UITabBarController()
-        var viewControllers: [UIViewController] = []
-        
-        let cartController = UINavigationController(
-            rootViewController: CartAssembly().createViewController(coordinator: self)
-        )
-        let myOrdersController = UINavigationController(rootViewController: MyOrdersAssembly().createMyOrdersView())
-        let settingsController = UINavigationController(
-            rootViewController: SettingsAssembly().createViewController(coordinator: self)
-        )
-        let catalogController = UINavigationController(rootViewController: CatalogAssembly().createCatalogView())
-        catalogController.tabBarItem = getTabBarItem(with: 0)
-        cartController.tabBarItem = getTabBarItem(with: 1)
-        myOrdersController.tabBarItem = getTabBarItem(with: 2)
-        settingsController.tabBarItem = getTabBarItem(with: 3)
-        
-        viewControllers.append(catalogController)
-        viewControllers.append(cartController)
-        viewControllers.append(myOrdersController)
-        viewControllers.append(settingsController)
+        setupCatalogController()
+        setupCartController()
+        setupMyOrdersController()
+        setupSettingsController()
         
         tabBarController.viewControllers = viewControllers
         navigationController?.setViewControllers([tabBarController], animated: true)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func getTabBarItem(with index: Int) -> UITabBarItem {
-        let titles: [String] = ["Каталог", "Корзина", "Мои заказы", "Настройки"]
-        let imageNames: [String] = ["catalogTabBarItemImage", "cartTabBarItemImage", "myOrdersTabBarItemImage"]
-        if index == 3 {
-            return UITabBarItem(title: titles[index], image: UIImage(systemName: "gear"), tag: index)
+    private func setupCatalogController() {
+        let catalogController = UINavigationController(rootViewController: CatalogAssembly().createCatalogView())
+        catalogController.tabBarItem = UITabBarItem(
+            title: "Каталог",
+            image:  UIImage(named: "catalogTabBarItemImage"),
+            tag: 0
+        )
+        
+        viewControllers.append(catalogController)
+    }
+    
+    private func setupCartController() {
+        let cartController = UINavigationController(
+            rootViewController: CartAssembly().createViewController(coordinator: self)
+        )
+        let cartTabBarItem = UITabBarItem(
+            title: "Корзина",
+            image: UIImage(named: "cartTabBarItemImage"),
+            tag: 1
+        )
+        cartTabBarItem.badgeColor = UIColor(named: "yellowButtonColor")
+        cartTabBarItem.setBadgeTextAttributes(
+            [.foregroundColor: UIColor(named: "badgeColor")],
+            for: .normal
+        )
+        
+        cartController.tabBarItem = cartTabBarItem
+        viewControllers.append(cartController)
+        
+        service.currentProductsPublisher.sink { [weak self] cartProducts in
+            var totalCount = 0
+            cartProducts.forEach { cart in
+                totalCount += Int(cart.counter)
+            }
+            if totalCount == 0 {
+                self?.tabBarController.tabBar.items?[1].badgeValue = nil
+            } else {
+                self?.tabBarController.tabBar.items?[1].badgeValue = "\(totalCount)"
+            }
         }
-        return UITabBarItem(title: titles[index], image: UIImage(named: imageNames[index]), tag: index)
+        .store(in: &cancellables)
+    }
+    
+    private func setupMyOrdersController() {
+        let myOrdersController = UINavigationController(rootViewController: MyOrdersAssembly().createMyOrdersView())
+        myOrdersController.tabBarItem = UITabBarItem(
+            title: "Мои заказы", image: UIImage(named: "myOrdersTabBarItemImage"), tag: 2
+        )
+        
+        viewControllers.append(myOrdersController)
+    }
+    
+    private func setupSettingsController() {
+        let settingsController = UINavigationController(
+            rootViewController: SettingsAssembly().createViewController(coordinator: self)
+        )
+        settingsController.tabBarItem = UITabBarItem(
+            title: "Настройки", image: UIImage(systemName: "gear"), tag: 3
+        )
+
+        viewControllers.append(settingsController)
     }
 }

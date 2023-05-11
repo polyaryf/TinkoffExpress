@@ -72,7 +72,7 @@ final class RestOrderCheckoutService: OrderCheckoutService {
             orderId: order.id) { result in
                 let newResult = result.mapError { $0 as Error }
                 completion(newResult)
-            }
+        }
     }
 }
 
