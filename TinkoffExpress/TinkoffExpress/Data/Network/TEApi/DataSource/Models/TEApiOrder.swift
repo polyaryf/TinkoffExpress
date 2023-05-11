@@ -13,7 +13,7 @@ struct TEApiOrder: Codable {
     let deliverySlot: TEApiTimeSlot
     let items: [TEApiItem]
     let comment: String
-    let status: String
+    let status: TEApiOrderStatus
     let id: Int
     
     private enum CodingKeys: String, CodingKey {

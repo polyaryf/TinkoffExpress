@@ -26,6 +26,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     private let mapper: IOrderCheckoutMapper
     private let dateFormatter: ITEDateFormatter
     private let listener: ITEOrdersNotificationsListener
+    private let cartService: ICartService
     
     // MARK: State
     
@@ -40,7 +41,8 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         mapper: IOrderCheckoutMapper,
         type: OrderCheckoutModuleType,
         dateFormatter: ITEDateFormatter,
-        listener: ITEOrdersNotificationsListener
+        listener: ITEOrdersNotificationsListener,
+        cartService: ICartService
     ) {
         self.router = router
         self.service = service
@@ -48,6 +50,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         self.type = type
         self.dateFormatter = dateFormatter
         self.listener = listener
+        self.cartService = cartService
     }
     
     // MARK: OrderCheckoutPresenterProtocol
@@ -139,9 +142,9 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             address: TEApiAddress(address: inputModel.address, lat: .zero, lon: .zero),
             paymentMethod: selectedMethod.rawValue,
             deliverySlot: inputModel.deliverySlot,
-            items: [],
+            items: mapper.toTEApiItems(from: cartService.getAll()),
             comment: inputModel.comment,
-            status: "0"
+            status: .created
         )
         
         service.createOrder(with: request) { [weak self] result in
@@ -167,7 +170,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             paymentMethod: selectedMethod.rawValue,
             deliverySlot: order.deliverySlot,
             comment: order.comment,
-            status: "0"
+            status: .created
         )
         service.updateOrder(
             id: order.id,
