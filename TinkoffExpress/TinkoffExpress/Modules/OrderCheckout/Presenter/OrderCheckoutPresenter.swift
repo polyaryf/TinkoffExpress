@@ -154,6 +154,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                     self?.listener.didCreateNewOrder()
                     self?.view?.stopButtonLoading()
                     self?.showFinalDelivery()
+                    self?.cartService.removeAllProducts()
                 } else {
                     self?.view?.stopButtonLoading()
                 }
