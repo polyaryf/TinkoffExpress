@@ -7,12 +7,18 @@
 
 import UIKit
 
-final class DeliveryAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol IDeliveryAssembly {
+    func createDeliveryView() -> UIViewController
+}
+
+final class DeliveryAssembly: IDeliveryAssembly {
+    func createDeliveryView() -> UIViewController {
         let mockService = MockDeliveryService()
-        let presenter = DeliveryPresenter(coordinator: coordinator, service: mockService)
+        let router = DeliveryRouter(onboardingAssembly: OnboardingAssembly())
+        let presenter = DeliveryPresenter(service: mockService, router: router)
         let viewController = DeliveryViewController(deliveryPresenter: presenter)
         presenter.view = viewController
+        router.transitionHandler = viewController
         return viewController
     }
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 enum OrderCheckoutModuleType {
-    case creatingOrder
-    case editingOrder
+    case creatingOrder(NewOrderInputModel)
+    case editingOrder(TEApiOrder)
 }

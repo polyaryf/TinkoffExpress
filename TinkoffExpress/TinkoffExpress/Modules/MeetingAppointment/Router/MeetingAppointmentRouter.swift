@@ -10,7 +10,7 @@ import UIKit
 protocol IMeetingAppointmentRouter {
     func openAddressInput(output: IAddressInputModuleOutput)
     func openABtest(output: IABTestModuleOutput)
-    func openOrderCheckout(with model: OrderCheckout)
+    func openOrderCheckout(with model: NewOrderInputModel)
 }
 
 final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
@@ -47,11 +47,8 @@ final class MeetingAppointmentRouter: IMeetingAppointmentRouter {
         transitionHandler?.present(navigationController, animated: true)
     }
     
-    func openOrderCheckout(with model: OrderCheckout) {
-        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
-            withModuleType: .creatingOrder,
-            with: model
-        )
+    func openOrderCheckout(with model: NewOrderInputModel) {
+        let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(with: model)
         transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
     }
 }

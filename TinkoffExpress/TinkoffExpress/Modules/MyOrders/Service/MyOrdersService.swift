@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MyOrdersService {
-    func loadItems(completion: @escaping ([MyOrder]) -> Void)
+    func loadItems(completion: @escaping ([TEApiOrder]) -> Void)
 }
 
 final class RestMyOrdersService: MyOrdersService {
@@ -22,32 +22,15 @@ final class RestMyOrdersService: MyOrdersService {
         self.networkService = networkService
     }
     
-    func loadItems(completion: @escaping ([MyOrder]) -> Void) {
+    func loadItems(completion: @escaping ([TEApiOrder]) -> Void) {
         networkService.getOrders { result in
-            let newResult = result.map { apiOrders in
-                apiOrders.map { apiOrder in
-                    MyOrder(
-                        id: apiOrder.id,
-                        text: "Доставка",
-                        description: "\(apiOrder.deliverySlot.date) с \(apiOrder.deliverySlot.timeFrom) до \(apiOrder.deliverySlot.timeTo)",
-                        imageName: "myOrdersDeliveryImage",
-                        address: apiOrder.address.address,
-                        paymentMethod: apiOrder.paymentMethod
-                    )
-                }
-            }
-            
-            switch newResult {
-            case .success(let orders): completion(orders)
-            case .failure: completion([])
+            switch result {
+            case .success(let orders):
+                let filteredOrders = orders.filter { $0.status != "3" }
+                completion(filteredOrders)
+            case .failure:
+                completion([])
             }
         }
-    }
-}
-
-final class MockMyOrdersService: MyOrdersService {
-    func loadItems(completion: @escaping ([MyOrder]) -> Void) {
-        let items: [MyOrder] = []
-        completion(items)
     }
 }

@@ -16,19 +16,23 @@ final class DeliveryPresenter: DeliveryPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: DeliveryViewController?
-    private var coordinator: Coordinator?
-    private var service: DeliveryService?
+    private let service: DeliveryService
+    private let router: IDeliveryRouter
     
     // MARK: Init
-    init(coordinator: Coordinator, service: DeliveryService) {
-        self.coordinator = coordinator
+    
+    init(
+        service: DeliveryService,
+        router: IDeliveryRouter
+    ) {
         self.service = service
+        self.router = router
     }
     
     // MARK: Life Cycle
     
     func viewDidLoad() {
-        service?.loadItems { [weak self] items in
+        service.loadItems { [weak self] items in
             guard let self = self else { return }
             self.view?.items = items ?? []
         }
@@ -43,6 +47,6 @@ final class DeliveryPresenter: DeliveryPresenterProtocol {
     // MARK: Navigation
     
     private func showOnboarding() {
-        coordinator?.move(OnboardingAssembly(), with: .push)
+        router.openOnboarding()
     }
 }

@@ -13,6 +13,7 @@ protocol IOrderCheckoutViewController: AnyObject {
     func stopButtonLoading()
     func set(item: OrderCheckout)
     func showCancelAlert(with title: String)
+    func closeView()
 }
 
 final class OrderCheckoutViewController: UIViewController {
@@ -73,10 +74,8 @@ final class OrderCheckoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        orderCheckoutPresenter.viewDidLoad()
-
         setupView()
+        orderCheckoutPresenter.viewDidLoad()
     }
     
     // MARK: Actions
@@ -146,16 +145,16 @@ final class OrderCheckoutViewController: UIViewController {
             preferredStyle: .actionSheet
         )
         alert.addAction(UIAlertAction(
-            title: "Картой при получении",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.item.paymentMethod = "Картой при получении"
-                self?.tableView.reloadData()
+            title: TEApiPaymentMethod.card.localized,
+            style: UIAlertAction.Style.default
+        ) { [weak self] _ in
+            self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .card)
         })
         alert.addAction(UIAlertAction(
-            title: "Наличными курьеру",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.item.paymentMethod = "Наличными курьеру"
-                self?.tableView.reloadData()
+            title: TEApiPaymentMethod.cash.localized,
+            style: UIAlertAction.Style.default
+        ) { [weak self] _ in
+            self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .cash)
         })
         alert.addAction(UIAlertAction(
             title: "Отмена",
@@ -213,6 +212,7 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
     
     func set(item: OrderCheckout) {
         self.item = item
+        tableView.reloadData()
     }
     
     func showCancelAlert(with title: String) {
@@ -222,15 +222,19 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(
-            title: "Да",
-            style: UIAlertAction.Style.default) { [weak self] _ in
-                self?.orderCheckoutPresenter.yesButtonAlertTapped()
-        })
-        alert.addAction(UIAlertAction(
             title: "Нет",
             style: UIAlertAction.Style.default,
             handler: nil)
         )
+        alert.addAction(UIAlertAction(
+            title: "Да",
+            style: UIAlertAction.Style.default) { [weak self] _ in
+                self?.orderCheckoutPresenter.yesButtonAlertTapped()
+        })
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func closeView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

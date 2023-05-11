@@ -9,7 +9,7 @@ import Foundation
 
 struct TEApiOrder: Codable {
     let address: TEApiAddress
-    let paymentMethod: String
+    let paymentMethod: TEApiPaymentMethod
     let deliverySlot: TEApiTimeSlot
     let items: [TEApiItem]
     let comment: String

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IMyOrdersRouter {
-    func openOrderCheckout(with model: OrderCheckout)
+    func openOrderCheckout(with model: TEApiOrder)
 }
 
 final class MyOrdersRouter: IMyOrdersRouter {
@@ -25,9 +25,8 @@ final class MyOrdersRouter: IMyOrdersRouter {
     
     // MARK: IMyOrdersRouter
     
-    func openOrderCheckout(with model: OrderCheckout) {
+    func openOrderCheckout(with model: TEApiOrder) {
         let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
-            withModuleType: .editingOrder,
             with: model
         )
         orderCheckoutView.hidesBottomBarWhenPushed = true

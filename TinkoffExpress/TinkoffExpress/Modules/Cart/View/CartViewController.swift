@@ -8,29 +8,80 @@
 import UIKit
 import SnapKit
 
-final class CartViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    // MARK: Dependencies
+protocol ICartViewController: AnyObject {
+    func setItems(with items: [CartItem])
+}
+
+final class CartViewController: UIViewController {
+    // MARK: Subviews
+    
+    private lazy var countLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        label.textColor = UIColor(named: "textColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "\(items.count) товаров"
+        return label
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewFlowLayout()
+        )
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delaysContentTouches = false
+        collectionView.backgroundColor = .white
+        collectionView.register(CartCell.self, forCellWithReuseIdentifier: "CartCell")
+        collectionView.backgroundColor = UIColor(named: "backgroundColor")
+        return collectionView
+    }()
+    
+    private lazy var finalView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 20
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        view.backgroundColor = UIColor(named: "finalViewColor")
+        return view
+    }()
+    
+    private lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: "textColor")
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
+    
+    private lazy var finalLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Итоговая стоимость"
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = UIColor(named: "finalLabelColor")
+        return label
+    }()
+    
+    private lazy var checkoutButton = UIButton()
+    
+    // MARK: Dependency
     
     private var cartPresenter: CartPresenterProtocol
     
     // MARK: Properties
     
-    lazy var items: [Cart] = []
-    
-    // MARK: Subviews
-    private lazy var titleLabel = UILabel()
-    private lazy var trashButton = UIButton()
-    private lazy var countLabel = UILabel()
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private lazy var finalView = UIView()
-    private lazy var priceLabel = UILabel()
-    private lazy var finalLabel = UILabel()
-    private lazy var checkoutButton = UIButton()
+    private var items: [CartItem] = []
     
     // MARK: Init
     
     init(cartPresenter: CartPresenterProtocol) {
         self.cartPresenter = cartPresenter
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,114 +92,60 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        cartPresenter.viewDidLoad()
+        updateView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cartPresenter.viewDidLoad()
-        
-        setupTitleLabel()
-        setupTrashButton()
-        setupCountLabel()
-        setupCollectionView()
-        setupFinalView()
-        setupColors()
+        setupView()
     }
-    
-    // MARK: Actions
-    
-    @objc private func checkoutButtonTapped() {
-        cartPresenter.checkoutButtonTapped()
-    }
-    
-    @objc private func checkoutButtonTouchDown() {
-        cartPresenter.checkoutButtonTouchDown(with: checkoutButton)
-    }
-    
-    @objc private func checkoutButtonTouchUpInside() {
-        cartPresenter.checkoutButtonTouchUpInside(with: checkoutButton)
-    }
-    
-    // MARK: Setup Colors
-    
-    private func setupColors() {
-        view.backgroundColor = UIColor(named: "backgroundColor")
-        titleLabel.textColor = UIColor(named: "textColor")
-        countLabel.textColor = UIColor(named: "textColor")
-        collectionView.backgroundColor = UIColor(named: "backgroundColor")
-        finalView.backgroundColor = UIColor(named: "finalViewColor")
-        priceLabel.textColor = UIColor(named: "textColor")
-        checkoutButton.backgroundColor = UIColor(named: "yellowButtonColor")
-    }
-    
+
     // MARK: Setup Subviews
     
-    private func setupTitleLabel() {
-        titleLabel.text = "Корзина"
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+    private func setupView() {
+        view.backgroundColor = UIColor(named: "backgroundColor")
         
-        view.addSubview(titleLabel)
-        
-        titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(56)
-            make.width.equalTo(71)
-            make.height.equalTo(20)
-        }
+        setupNavigationItem()
+        setupViewHierarchy()
+        setupConstraints()
+        setupCheckoutButton()
     }
     
-    private func setupTrashButton() {
-        trashButton.setImage(UIImage(named: "trash"), for: .normal)
-        
-        view.addSubview(trashButton)
-        
-        trashButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(56)
-            make.trailing.equalToSuperview().offset(-16)
-            make.width.equalTo(24)
-            make.height.equalTo(24)
-        }
+    private func setupNavigationItem() {
+        navigationItem.title = "Корзина"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "trash"),
+            style: .done,
+            target: self,
+            action: #selector(deleteAll)
+        )
     }
     
-    private func setupCountLabel() {
-        countLabel.text = "\(items.count) товаров"
-        countLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-        
+    private func setupViewHierarchy() {
+        view.addSubview(collectionView)
         view.addSubview(countLabel)
-        
+        view.addSubview(finalView)
+        finalView.addSubview(priceLabel)
+        finalView.addSubview(finalLabel)
+        finalView.addSubview(checkoutButton)
+    }
+    
+    private func setupConstraints() {
         countLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(32)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(26)
         }
-    }
-    
-    private func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-
-        collectionView.delaysContentTouches = false
-        collectionView.backgroundColor = .white
-        collectionView.register(CartCell.self, forCellWithReuseIdentifier: "CartCell")
-
-        view.addSubview(collectionView)
-
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(countLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
         }
-    }
-    
-    private func setupFinalView() {
-        finalView.layer.cornerRadius = 20
-        
-        finalView.layer.shadowColor = UIColor.black.cgColor
-        finalView.layer.shadowOpacity = 0.1
-        finalView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        finalView.layer.shadowRadius = 4
-        
-        view.addSubview(finalView)
-        
         finalView.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -156,32 +153,28 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.height.equalTo(80)
         }
-        
-        priceLabel.text = "3 556 ₽"
-        priceLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-        
-        finalView.addSubview(priceLabel)
-        
+        checkoutButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-34)
+            make.width.equalTo(111)
+            make.height.equalTo(30)
+        }
         priceLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(-38)
-            make.width.equalTo(82)
         }
-        
-        finalLabel.text = "Итоговая стоимость"
-        finalLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        finalLabel.textColor = UIColor(named: "finalLabelColor")
-        
-        finalView.addSubview(finalLabel)
-        
         finalLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(46)
             make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-18)
-            make.width.equalTo(212)
         }
-        
+    }
+    
+    private func setupCheckoutButton() {
+        checkoutButton.backgroundColor = UIColor(named: "yellowButtonColor")
         checkoutButton.setTitle("Оформить", for: .normal)
         checkoutButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         checkoutButton.setTitleColor(.black, for: .normal)
@@ -190,18 +183,44 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTapped), for: .touchUpInside)
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTouchDown), for: .touchDown)
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTouchUpInside), for: .touchUpInside)
-        
-        finalView.addSubview(checkoutButton)
-        
-        checkoutButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-34)
-            make.width.equalTo(111)
-        }
     }
     
-    // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+    // MARK: Update View
+    
+    private func updateView() {
+        var totalCount = 0
+        var totalSum = 0
+        items.forEach { cart in
+            totalCount += Int(cart.count) ?? 0
+            totalSum += (Int(cart.price) ?? 0) * totalCount
+        }
+        countLabel.text = "\(totalCount) товаров"
+        priceLabel.text = "\(totalSum) ₽"
+        collectionView.reloadData()
+    }
+    
+    // MARK: Actions
+    
+    @objc private func deleteAll() {
+        cartPresenter.deleteAllItems()
+    }
+    
+    @objc private func checkoutButtonTapped() {
+        cartPresenter.checkoutButtonTapped()
+    }
+    
+    @objc private func checkoutButtonTouchDown() {
+        checkoutButton.backgroundColor = UIColor(named: "yellowButtonPressedColor")
+    }
+    
+    @objc private func checkoutButtonTouchUpInside() {
+        checkoutButton.backgroundColor = UIColor(named: "yellowButtonColor")
+    }
+}
+
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
+ 
+extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -211,7 +230,16 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         ) as? CartCell {
             let textCell = items[indexPath.row].text
             let imageNameCell = items[indexPath.row].imageName
-            cell.setupCell(text: textCell, imageName: imageNameCell)
+            let count = items[indexPath.row].count
+            
+            cell.set(text: textCell, imageName: imageNameCell, count: count)
+            
+            cell.onCounterDidIncrease { [cartPresenter] in
+                cartPresenter.viewDidIncreaseCounterOfItem(at: indexPath.row)
+            }
+            cell.onCounterDidDecrease { [cartPresenter] in
+                cartPresenter.viewDidDecreaseCounterOfItem(at: indexPath.row)
+            }
             return cell
         } else {
             return UICollectionViewCell()
@@ -228,5 +256,12 @@ final class CartViewController: UIViewController, UICollectionViewDataSource, UI
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 36, height: 72)
+    }
+}
+
+extension CartViewController: ICartViewController {
+    func setItems(with items: [CartItem]) {
+        self.items = items
+        updateView()
     }
 }

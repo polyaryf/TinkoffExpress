@@ -48,10 +48,11 @@ class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     }
     
     func getSlots(
+        forDate date: String,
         completion: @escaping (Result<[TEApiTimeSlot], HttpClientError>) -> Void
     ) {
         service.performAndDecode(
-            target: .getSlots,
+            target: .getSlots(date: date),
             completion: completion
         )
     }
