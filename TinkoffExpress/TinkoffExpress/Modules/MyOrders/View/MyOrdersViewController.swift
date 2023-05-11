@@ -25,17 +25,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     // MARK: Subviews
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private lazy var notificationView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "notification"))
-        imageView.isHidden = true
-        imageView.tag = 10
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
-        }
-        return imageView
-    }()
+    private lazy var notificationView = NotificationView()
     
     // MARK: Init
     
@@ -57,7 +47,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         setupNavigationBar()
         setupCollectionView()
         setupColors()
-        
+        setupNotificationView()
         myOrdersPresenter.viewDidLoad()
     }
     
@@ -95,8 +85,20 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    private func setupNotificationView() {
+        notificationView.isHidden = true
+        view.addSubview(notificationView)
+        
+        notificationView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // TODO: убирать вью с нотификацией, когда тыкаем в любое другое место
+        let touch = touches.first
+        if touch?.view == self.notificationView {
+            notificationView.isHidden = true
+        }
     }
     
     // MARK: UICollectionViewDataSource & UICollectionViewDelegateFlowLayout
