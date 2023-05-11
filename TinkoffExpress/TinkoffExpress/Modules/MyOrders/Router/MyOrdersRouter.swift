@@ -27,7 +27,6 @@ final class MyOrdersRouter: IMyOrdersRouter {
     
     func openOrderCheckout(with model: TEApiOrder) {
         let orderCheckoutView = orderCheckoutAssembly.createOrderCheckoutView(
-            
             with: model
         )
         orderCheckoutView.hidesBottomBarWhenPushed = true

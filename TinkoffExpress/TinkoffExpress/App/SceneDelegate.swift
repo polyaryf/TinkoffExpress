@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reachability
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -19,12 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let rootNavigationController = UINavigationController()
+        let rootController = TinkoffExpressViewController()
+        let childController = UINavigationController()
+        
+        rootController.view.addSubview(childController.view)
+        
+        rootController.addChild(childController)
         
         coordinator = AppCoordinator()
-        coordinator?.start(rootNavigationController)
+        coordinator?.start(childController)
         
-        window?.rootViewController = rootNavigationController
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
 }

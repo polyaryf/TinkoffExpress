@@ -144,7 +144,6 @@ final class OrderCheckoutViewController: UIViewController {
             message: nil,
             preferredStyle: .actionSheet
         )
-
         alert.addAction(UIAlertAction(
             title: TEApiPaymentMethod.card.localized,
             style: UIAlertAction.Style.default

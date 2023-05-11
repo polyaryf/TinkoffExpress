@@ -42,6 +42,11 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
         loadItems()
     }
     
+    func showNotification() {
+      
+        view?.showNotificationView()
+    }
+    
     // MARK: Events
     
     func didSelect(item: MyOrder) {
