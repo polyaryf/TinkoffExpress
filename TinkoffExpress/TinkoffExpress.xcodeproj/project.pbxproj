@@ -27,6 +27,8 @@
 		29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A452A068735005DCF46 /* MyOrdersRouter.swift */; };
 		29852A482A06AFD3005DCF46 /* TinkoffExpressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A472A06AFD3005DCF46 /* TinkoffExpressViewController.swift */; };
 		2989F93A2A0BBCFD000D1A41 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */; };
+		2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */; };
+		2989F93D2A0C1F3F000D1A41 /* NotificationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -180,6 +182,8 @@
 		29852A452A068735005DCF46 /* MyOrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersRouter.swift; sourceTree = "<group>"; };
 		29852A472A06AFD3005DCF46 /* TinkoffExpressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffExpressViewController.swift; sourceTree = "<group>"; };
 		2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
+		2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrderStatus.swift; sourceTree = "<group>"; };
+		2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationView .swift"; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -483,6 +487,16 @@
 				2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */,
 			);
 			path = NoInternetView;
+      
+      sourceTree = "<group>";
+		};
+		2989F93B2A0C1F0D000D1A41 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */,
+			);
+			path = NotificationView;
+
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -721,6 +735,7 @@
 				29C391F029F980990041F569 /* TEApiAddress.swift */,
 				29C391F129F980990041F569 /* TEApiItem.swift */,
 				29C391F229F980990041F569 /* TEApiOrder.swift */,
+				2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1482,6 +1497,7 @@
 		43EF490C2A029D2D002424CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				43EF490D2A029D2D002424CE /* MyOrdersCell.swift */,
 				43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */,
 			);
@@ -1707,6 +1723,7 @@
 				43EF49112A029D2D002424CE /* MyOrdersAssembly.swift in Sources */,
 				29C392DC29F9809A0041F569 /* DeliveryCell.swift in Sources */,
 				29C392D429F9809A0041F569 /* CartPresenter.swift in Sources */,
+				2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */,
 				DE533B7B2A07DA340069E653 /* UIAlertController+Utils.swift in Sources */,
 				43EF49142A029D2D002424CE /* MyOrdersCell.swift in Sources */,
 				2946204D2A0B7E8900200C31 /* DeliveryRouter.swift in Sources */,
@@ -1735,6 +1752,7 @@
 				29C392B029F9809A0041F569 /* DataResponse.swift in Sources */,
 				29C392C729F9809A0041F569 /* FinalDeliveryViewController.swift in Sources */,
 				439B5E0E2A0657C8001764B0 /* SettingsPresenter.swift in Sources */,
+				2989F93D2A0C1F3F000D1A41 /* NotificationView .swift in Sources */,
 				439B5E122A066B57001764B0 /* SettingsCell.swift in Sources */,
 				29C392E329F9809A0041F569 /* OnboardingViewController.swift in Sources */,
 				29475B2D2A09796100001A2A /* CartProduct.swift in Sources */,

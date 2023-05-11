@@ -65,7 +65,7 @@ final class RestOrderCheckoutService: OrderCheckoutService {
             paymentMethod: order.paymentMethod.rawValue,
             deliverySlot: order.deliverySlot,
             comment: order.comment,
-            status: "3"
+            status: .cancelled
         )
         networkService.updateOrder(
             request: request,

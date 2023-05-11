@@ -10,7 +10,6 @@ import Foundation
 protocol MyOrdersPresenterProtocol {
     func viewDidLoad()
     func didSelect(item: MyOrder)
-    func showNotification()
 }
 
 final class MyOrdersPresenter: MyOrdersPresenterProtocol {
@@ -93,6 +92,6 @@ extension MyOrdersPresenter: ITEOrdersNotificationsListener {
     
     func didUpdateOrderWithDelete() {
         loadItems()
-        showNotification()
+        view?.showNotificationView()
     }
 }
