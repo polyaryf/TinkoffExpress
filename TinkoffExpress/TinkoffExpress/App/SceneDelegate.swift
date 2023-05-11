@@ -11,21 +11,26 @@ import Reachability
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var coordinator: Coordinator?
-        
+    
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        guard let windowScene = scene as? UIWindowScene else { return }
-        window = TinkoffExpressWindow(windowScene: windowScene)
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
 
-        let rootNavigationController = UINavigationController()
+        let rootController = TinkoffExpressViewController()
+        let childController = UINavigationController()
+        
+        rootController.view.addSubview(childController.view)
+        
+        rootController.addChild(childController)
         
         coordinator = AppCoordinator()
-        coordinator?.start(rootNavigationController)
+        coordinator?.start(childController)
         
-        window?.rootViewController = rootNavigationController
+        window?.rootViewController = rootController
         window?.makeKeyAndVisible()
     }
 }
