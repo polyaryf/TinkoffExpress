@@ -153,7 +153,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
 extension MyOrdersViewController: IMyOrdersViewController {
     func showNotificationView() {
         notificationView.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [notificationView] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [notificationView] in
             notificationView.isHidden = true
         }
     }
