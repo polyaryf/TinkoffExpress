@@ -255,7 +255,6 @@ extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
         }
     }
     
-    
     func viewDidChange(comment: String) {
         self.comment = comment
     }
