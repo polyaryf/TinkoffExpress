@@ -19,7 +19,7 @@ final class MyOrdersAssembly: IMyOrdersAssembly {
         let router = MyOrdersRouter(orderCheckoutAssembly: OrderCheckoutAssembly())
         let presenter = MyOrdersPresenter(
             router: router,
-            service: mockService,
+            service: restService,
             formatter: TEDateFormatter(),
             notifier: TEOrdersNotificationsService.shared
         )
