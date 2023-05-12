@@ -9,17 +9,25 @@ import Foundation
 
 protocol IMeetingAppointmentService {
     func loadSlots(forDate date: Date, completion: @escaping (Result<[TEApiTimeSlot], Error>) -> Void)
+    func updateOrder(
+        id: Int,
+        with request: OrderUpdateRequest,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
 }
 
 final class MeetingAppointmentService: IMeetingAppointmentService {
     // MARK: Dependencies
     
-    private let api: TESlotApiProtocol
+    private let api: TEApiService
     private let dateFormatter: DateFormatter
     
     // MARK: Init
     
-    init(api: TESlotApiProtocol, dateFormatter: DateFormatter = .default) {
+    init(
+        api: TEApiService,
+        dateFormatter: DateFormatter = .default
+    ){
         self.api = api
         self.dateFormatter = dateFormatter
     }
@@ -29,6 +37,17 @@ final class MeetingAppointmentService: IMeetingAppointmentService {
     func loadSlots(forDate date: Date, completion: @escaping (Result<[TEApiTimeSlot], Error>) -> Void) {
         api.getSlots(forDate: dateFormatter.string(from: date)) { result in
             completion(result.mapError { $0 as Error })
+        }
+    }
+    
+    func updateOrder(
+        id: Int,
+        with request: OrderUpdateRequest,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        api.updateOrder(request: request, orderId: id) { result in
+            let newResult = result.mapError { $0 as Error }
+            completion(newResult)
         }
     }
 }

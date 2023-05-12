@@ -34,3 +34,29 @@ final class RestMyOrdersService: MyOrdersService {
         }
     }
 }
+
+final class MockMyOrdersService: MyOrdersService {
+    func loadItems(completion: @escaping ([TEApiOrder]) -> Void) {
+        let orders: [TEApiOrder] = [
+            .init(
+                address: TEApiAddress(address: "Казань, ул. Кремлевская, 35", lat: 0, lon: 0),
+                paymentMethod: .cash,
+                deliverySlot: TEApiTimeSlot(date: "2023-05-11", timeFrom: "12:00", timeTo: "14:00"),
+                items: [],
+                comment: "",
+                status: .created,
+                id: 1
+            ),
+            .init(
+                address: TEApiAddress(address: "Казань, ул. Кремлевская, 35", lat: 0, lon: 0),
+                paymentMethod: .cash,
+                deliverySlot: TEApiTimeSlot(date: "2023-05-12", timeFrom: "14:00", timeTo: "16:00"),
+                items: [],
+                comment: "",
+                status: .created,
+                id: 1
+            )
+        ]
+        completion(orders)
+    }
+}

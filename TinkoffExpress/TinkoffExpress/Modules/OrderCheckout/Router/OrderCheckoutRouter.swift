@@ -37,7 +37,7 @@ final class OrderCheckoutRouter: IOrderCheckoutRouter {
     }
     
     func openMeetingAppointment(with model: TEApiOrder) {
-        let meetingAppointmentView = meetingAppointmentAssembly.createMeetingAppointmentView()
+        let meetingAppointmentView = meetingAppointmentAssembly.createMeetingAppointmentView(with: model)
         transitionHandler?.navigationController?.pushViewController(meetingAppointmentView, animated: true)
     }
 }
