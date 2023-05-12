@@ -53,7 +53,12 @@ final class AppCoordinator: Coordinator {
     }
     
     private func getTabBarItem(with index: Int) -> UITabBarItem {
-        let titles: [String] = ["Каталог", "Корзина", "Мои заказы", "Настройки"]
+        let titles: [String] = [
+            NSLocalizedString("tabBarCatalog", comment: ""),
+            NSLocalizedString("tabBarCart", comment: ""),
+            NSLocalizedString("tabBarMyOrders", comment: ""),
+            NSLocalizedString("tabBarSettings", comment: "")
+        ]
         let imageNames: [String] = ["catalogTabBarItemImage", "cartTabBarItemImage", "myOrdersTabBarItemImage"]
         if index == 3 {
             return UITabBarItem(title: titles[index], image: UIImage(systemName: "gear"), tag: index)

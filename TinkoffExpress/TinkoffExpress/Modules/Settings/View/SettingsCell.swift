@@ -39,13 +39,9 @@ final class SettingsCell: UICollectionViewCell {
     // MARK: Actions
     
     @objc func toggleSwitchDidChange(_ sender: UISwitch) {
-        switch label.text {
-        case "Поиск":
-            descriptionLabel.text = sender.isOn ? Search.standard.rawValue : Search.detailed.rawValue
-        case "Локализация":
-            descriptionLabel.text = sender.isOn ? Localization.ru_RU.rawValue : Localization.en_US.rawValue
-        default: break
-        }
+        descriptionLabel.text = sender.isOn
+        ? NSLocalizedString("settingsSearchStandart", comment: "")
+        : NSLocalizedString("settingsSearchDetailed", comment: "")
     }
     
     // MARK: Setup Colors

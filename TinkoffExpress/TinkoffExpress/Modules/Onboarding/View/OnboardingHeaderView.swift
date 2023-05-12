@@ -35,7 +35,7 @@ final class OnboardingHeaderView: UICollectionReusableView {
     // MARK: Setup Subviews
     
     private func setupTitleLabel() {
-        titleLabel.text = "Оформите\nбесплатную доставку"
+        titleLabel.text = NSLocalizedString("onboardingTitle", comment: "")
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.numberOfLines = 2
         

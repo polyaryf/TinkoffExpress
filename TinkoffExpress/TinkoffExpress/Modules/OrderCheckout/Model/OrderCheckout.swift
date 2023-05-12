@@ -31,7 +31,7 @@ struct OrderCheckout {
 extension OrderCheckout {
     static func from(model: MyOrder) -> OrderCheckout {
         OrderCheckout(
-            whatWillBeDelivered: "Посылку",
+            whatWillBeDelivered: NSLocalizedString("orderCheckoutPackage", comment: ""),
             deliveryWhen: model.description,
             deliveryWhere: model.address,
             paymentMethod: model.paymentMethod

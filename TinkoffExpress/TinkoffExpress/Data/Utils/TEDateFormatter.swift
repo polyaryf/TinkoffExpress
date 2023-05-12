@@ -32,16 +32,16 @@ final class TEDateFormatter: ITEDateFormatter {
 
     func format(date: Date) -> String {
         if calendar.isDateInToday(date) {
-            return "Сегодня"
+            return NSLocalizedString("TEDateFormatterToday", comment: "")
         } else if calendar.isDateInTomorrow(date) {
-            return "Завтра"
+            return NSLocalizedString("TEDateFormatterTomorrow", comment: "")
         } else {
             return localizedFormatter.string(from: date)
         }
     }
 
     func format(date: Date, timeFrom: String, timeTo: String) -> String {
-        "\(format(date: date)) с \(timeFrom) по \(timeTo)"
+        "\(format(date: date)) \(timeFrom)-\(timeTo)"
     }
 
     func format(date: String, timeFrom: String, timeTo: String) -> String {

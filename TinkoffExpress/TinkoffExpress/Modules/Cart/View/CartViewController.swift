@@ -20,7 +20,7 @@ final class CartViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.textColor = UIColor(named: "textColor")
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "\(items.count) товаров"
+        label.text = "\(items.count) \(NSLocalizedString("cartNumberOfProducts", comment: ""))"
         return label
     }()
     
@@ -61,7 +61,7 @@ final class CartViewController: UIViewController {
     
     private lazy var finalLabel: UILabel = {
         let label = UILabel()
-        label.text = "Итоговая стоимость"
+        label.text = NSLocalizedString("cartTotalCost", comment: "")
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textColor = UIColor(named: "finalLabelColor")
         return label
@@ -117,7 +117,7 @@ final class CartViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.title = "Корзина"
+        navigationItem.title = NSLocalizedString("cartTitle", comment: "")
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "trash"),
             style: .done,
@@ -175,7 +175,7 @@ final class CartViewController: UIViewController {
     
     private func setupCheckoutButton() {
         checkoutButton.backgroundColor = UIColor(named: "yellowButtonColor")
-        checkoutButton.setTitle("Оформить", for: .normal)
+        checkoutButton.setTitle(NSLocalizedString("cartButtonChechoutButton", comment: ""), for: .normal)
         checkoutButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         checkoutButton.setTitleColor(.black, for: .normal)
         checkoutButton.layer.cornerRadius = 15
@@ -194,7 +194,7 @@ final class CartViewController: UIViewController {
             totalCount += Int(cart.count) ?? 0
             totalSum += (Int(cart.price) ?? 0) * totalCount
         }
-        countLabel.text = "\(totalCount) товаров"
+        countLabel.text = "\(totalCount) \(NSLocalizedString("cartNumberOfProducts", comment: ""))"
         priceLabel.text = "\(totalSum) ₽"
         collectionView.reloadData()
     }

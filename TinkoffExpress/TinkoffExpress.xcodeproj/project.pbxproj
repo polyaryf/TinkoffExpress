@@ -27,8 +27,8 @@
 		29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A452A068735005DCF46 /* MyOrdersRouter.swift */; };
 		29852A482A06AFD3005DCF46 /* TinkoffExpressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29852A472A06AFD3005DCF46 /* TinkoffExpressViewController.swift */; };
 		2989F93A2A0BBCFD000D1A41 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */; };
-		2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */; };
 		2989F93D2A0C1F3F000D1A41 /* NotificationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */; };
+		2989F93F2A0C352A000D1A41 /* TEApiOrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */; };
 		29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29B3AECD29C388C0007C763D /* .swiftlint.yml */; };
 		29BFDD3E2A0197E6001943E4 /* ABTestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BFDD3D2A0197E6001943E4 /* ABTestService.swift */; };
 		29C3928529F9809A0041F569 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C391C829F980990041F569 /* UIView+Utils.swift */; };
@@ -136,6 +136,7 @@
 		29C93E5929FEE3D000EBFB23 /* ABTestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5829FEE3D000EBFB23 /* ABTestPresenter.swift */; };
 		29C93E5C29FEEA9800EBFB23 /* ABTestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5B29FEEA9800EBFB23 /* ABTestAssembly.swift */; };
 		29C93E5E29FF033300EBFB23 /* ABTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C93E5D29FF033300EBFB23 /* ABTestView.swift */; };
+		43643DA72A0E1B1200B25A76 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43643DA92A0E1B1200B25A76 /* Localizable.strings */; };
 		439B5E082A065765001764B0 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E072A065765001764B0 /* SettingsAssembly.swift */; };
 		439B5E0A2A0657A9001764B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E092A0657A9001764B0 /* Settings.swift */; };
 		439B5E0C2A0657BD001764B0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B5E0B2A0657BD001764B0 /* SettingsViewController.swift */; };
@@ -182,8 +183,8 @@
 		29852A452A068735005DCF46 /* MyOrdersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersRouter.swift; sourceTree = "<group>"; };
 		29852A472A06AFD3005DCF46 /* TinkoffExpressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffExpressViewController.swift; sourceTree = "<group>"; };
 		2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
-		2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrderStatus.swift; sourceTree = "<group>"; };
 		2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationView .swift"; sourceTree = "<group>"; };
+		2989F93E2A0C352A000D1A41 /* TEApiOrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiOrderStatus.swift; sourceTree = "<group>"; };
 		29B3AECD29C388C0007C763D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		29B3AED129C38C3A007C763D /* TinkoffExpress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffExpress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BFDD3D2A0197E6001943E4 /* ABTestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABTestService.swift; sourceTree = "<group>"; };
@@ -299,6 +300,8 @@
 		29F42F5129E075C800D9D8F1 /* TEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEApiService.swift; sourceTree = "<group>"; };
 		29F42F5329E0778500D9D8F1 /* MockTEApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTEApiService.swift; sourceTree = "<group>"; };
 		29F42F5529E0816500D9D8F1 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		43643DA82A0E1B1200B25A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43643DAA2A0E1B6A00B25A76 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		439B5E072A065765001764B0 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		439B5E092A0657A9001764B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		439B5E0B2A0657BD001764B0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -487,8 +490,7 @@
 				2989F9392A0BBCFD000D1A41 /* NoInternetView.swift */,
 			);
 			path = NoInternetView;
-      
-      sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		2989F93B2A0C1F0D000D1A41 /* NotificationView */ = {
 			isa = PBXGroup;
@@ -496,7 +498,6 @@
 				2989F93C2A0C1F3F000D1A41 /* NotificationView .swift */,
 			);
 			path = NotificationView;
-
 			sourceTree = "<group>";
 		};
 		29B3AEAC29C37E73007C763D = {
@@ -514,6 +515,7 @@
 		29B3AEB729C37E73007C763D /* TinkoffExpress */ = {
 			isa = PBXGroup;
 			children = (
+				43643D9F2A0E1A7D00B25A76 /* Localization */,
 				29C3928229F9809A0041F569 /* App */,
 				29C3928029F9809A0041F569 /* Assembly */,
 				29C391C529F980990041F569 /* CommonUI */,
@@ -1404,6 +1406,14 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		43643D9F2A0E1A7D00B25A76 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				43643DA92A0E1B1200B25A76 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		439B5E002A0656EA001764B0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1601,6 +1611,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 29B3AEAC29C37E73007C763D;
 			productRefGroup = 29B3AEAC29C37E73007C763D;
@@ -1618,6 +1629,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29C392E729F9809A0041F569 /* Assets.xcassets in Resources */,
+				43643DA72A0E1B1200B25A76 /* Localizable.strings in Resources */,
 				29B3AECE29C388C0007C763D /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1843,11 +1855,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		43643DA92A0E1B1200B25A76 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43643DA82A0E1B1200B25A76 /* en */,
+				43643DAA2A0E1B6A00B25A76 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		29B3AEC729C37E74007C763D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1908,6 +1933,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1966,7 +1992,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 72SVK4HY2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1998,7 +2024,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 72SVK4HY2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

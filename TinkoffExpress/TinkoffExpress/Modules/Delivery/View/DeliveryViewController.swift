@@ -74,7 +74,7 @@ final class DeliveryViewController: UIViewController, UICollectionViewDataSource
     // MARK: Setup Subviews
     
     private func setupCloseButton() {
-        closeButton.setTitle("Закрыть", for: .normal)
+        closeButton.setTitle(NSLocalizedString("deliveryCloseButton", comment: ""), for: .normal)
         closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
 
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)

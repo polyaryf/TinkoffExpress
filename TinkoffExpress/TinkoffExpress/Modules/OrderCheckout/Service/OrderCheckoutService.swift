@@ -67,12 +67,10 @@ final class RestOrderCheckoutService: OrderCheckoutService {
             comment: order.comment,
             status: .cancelled
         )
-        networkService.updateOrder(
-            request: request,
-            orderId: order.id) { result in
-                let newResult = result.mapError { $0 as Error }
-                completion(newResult)
-            }
+        networkService.updateOrder(request: request, orderId: order.id) { result in
+            let newResult = result.mapError { $0 as Error }
+            completion(newResult)
+        }
     }
 }
 

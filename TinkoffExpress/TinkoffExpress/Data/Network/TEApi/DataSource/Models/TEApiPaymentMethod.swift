@@ -14,9 +14,9 @@ enum TEApiPaymentMethod: String, Codable {
     var localized: String {
         switch self {
         case .card:
-            return "Картой при получении"
+            return "orderCheckoutByCard"
         case .cash:
-            return "Наличными курьеру"
+            return "orderCheckoutByCash"
         }
     }
 }

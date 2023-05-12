@@ -14,8 +14,7 @@ protocol DeliveryService {
 final class MockDeliveryService: DeliveryService {
     func loadItems(completion: @escaping ([Delivery]?) -> Void) {
         let items: [Delivery] = [
-            .init(text: "Доставка", imageName: "deliveryLetter"),
-            .init(text: "Самовывоз", imageName: "deliveryPin")
+            .init(text: NSLocalizedString("deliveryLetter", comment: ""), imageName: "deliveryLetter")
         ]
         completion(items)
     }

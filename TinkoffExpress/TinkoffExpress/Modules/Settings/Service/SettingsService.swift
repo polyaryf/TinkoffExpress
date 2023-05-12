@@ -15,14 +15,8 @@ final class MockSettingsService: SettingsService {
     func loadItems(completion: @escaping ([Settings]?) -> Void) {
         let items: [Settings] = [
             .init(
-                text: "Поиск",
-                description: "Стандартный",
-                imageName: "myOrdersDeliveryImage",
-                isActive: true
-            ),
-            .init(
-                text: "Локализация",
-                description: "Русская",
+                text: NSLocalizedString("settingsSearchTitle", comment: ""),
+                description: NSLocalizedString("settingsSearchStandart", comment: ""),
                 imageName: "myOrdersDeliveryImage",
                 isActive: true
             )

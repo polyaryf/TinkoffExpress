@@ -122,7 +122,7 @@ class MeetingAppointmentPresenter {
     
     private func updatePrimaryButtonTitle() {
         let selectedDate = dateSlots[selectedDateSlotIndex].date
-        let title = "Доставить \(dateFormatter.format(date: selectedDate).lowercased())"
+        let title = "\(NSLocalizedString("meetingAppointmentDeliveryButton", comment: "")) \(dateFormatter.format(date: selectedDate).lowercased())"
         view?.set(primaryButtonTitle: title)
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 enum OrderCheckoutCellType: String {
     case empty
-    case whatWillBeDelivered = "Что привезем"
-    case delivery = "Доставка"
-    case payment = "Оплата"
+    case whatWillBeDelivered = "orderCheckoutWhatToBring"
+    case delivery = "orderCheckoutDelivery"
+    case payment = "orderCheckoutPayment"
 }

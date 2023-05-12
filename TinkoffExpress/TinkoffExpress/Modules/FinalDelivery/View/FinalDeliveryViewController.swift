@@ -25,7 +25,7 @@ final class FinalDeliveryViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Заказ оформлен"
+        label.text = NSLocalizedString("finalDeliveryTitle", comment: "")
         label.textColor = UIColor(named: "title.finalDelivery.color")
         label.font = .boldSystemFont(ofSize: 30)
         return label
@@ -37,7 +37,7 @@ final class FinalDeliveryViewController: UIViewController {
     }()
     private lazy var okButton: Button = {
         let config = Button.Configuration(
-            title: "Хорошо",
+            title: NSLocalizedString("finalDeliveryButton", comment: ""),
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )

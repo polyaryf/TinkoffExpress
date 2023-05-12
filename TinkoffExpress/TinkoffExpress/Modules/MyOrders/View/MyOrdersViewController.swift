@@ -67,7 +67,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     // MARK: Setup Subviews
     
     private func setupNavigationBar() {
-        navigationItem.title = "Мои заказы"
+        navigationItem.title = NSLocalizedString("myOrdersTitle", comment: "")
         navigationItem.backButtonTitle = ""
     }
     
@@ -111,10 +111,9 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
             withReuseIdentifier: "MyOrdersCell",
             for: indexPath
         ) as? MyOrdersCell {
-            let textCell = items[indexPath.row].text
             let descriptionCell = items[indexPath.row].description
             let imageNameCell = items[indexPath.row].imageName
-            cell.setupCell(text: textCell, description: descriptionCell, imageName: imageNameCell)
+            cell.setupCell(description: descriptionCell, imageName: imageNameCell)
             return cell
         } else {
             return UICollectionViewCell()

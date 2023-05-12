@@ -13,13 +13,3 @@ struct Settings {
     let imageName: String
     let isActive: Bool
 }
-
-enum Search: String {
-    case standard = "Стандартный"
-    case detailed = "Подробный"
-}
-
-enum Localization: String {
-    case ru_RU = "Русская"
-    case en_US = "Английская"
-}
