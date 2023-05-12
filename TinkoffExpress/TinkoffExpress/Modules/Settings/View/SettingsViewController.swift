@@ -15,7 +15,9 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: Properties
     
-    lazy var items: [Settings] = []
+    private let items: [Settings] = [
+        Settings(text: "Ввод адреса", description: "С подсказками", imageName: "myOrdersDeliveryImage", isActive: true)
+    ]
     
     // MARK: Subviews
     
@@ -38,8 +40,6 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingsPresenter.viewDidLoad()
-        
         setupCollectionView()
         setupColors()
     }
@@ -47,7 +47,7 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = "Настройки"
+        navigationItem.title = NSLocalizedString("settingsTitle", comment: "")
     }
     
     // MARK: Setup Colors
@@ -92,6 +92,9 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
                 imageName: imageNameCell,
                 isActive: isActiveCell
             )
+            cell.onToggleSwitchDidChange { [settingsPresenter] flag in
+                settingsPresenter.viewToggleSwitchDidChange(with: flag)
+            }
             return cell
         } else {
             return UICollectionViewCell()

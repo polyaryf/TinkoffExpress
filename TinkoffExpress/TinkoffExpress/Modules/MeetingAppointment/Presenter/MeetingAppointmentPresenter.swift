@@ -70,6 +70,7 @@ class MeetingAppointmentPresenter {
     private var dateSlots: [DateSlot] = []
     private var selectedDateSlotIndex = 0
     private var selectedTimeSlotIndex = 0
+    private var buttonName = NSLocalizedString("meetingAppointmentDeliveryButton", comment: "")
     private var orderToUpdate: TEApiOrder?
     
     // MARK: Init
@@ -127,7 +128,7 @@ class MeetingAppointmentPresenter {
     
     private func updatePrimaryButtonTitle() {
         let selectedDate = dateSlots[selectedDateSlotIndex].date
-        let title = "Доставить \(dateFormatter.format(date: selectedDate).lowercased())"
+        let title = "\(buttonName) \(dateFormatter.format(date: selectedDate).lowercased())"
         view?.set(primaryButtonTitle: title)
     }
     
@@ -348,7 +349,10 @@ private extension MeetingAppointmentPresenter.DateSlot {
         .map { slot(withDate: $0, formattingWith: formatter) }
     }
 
-    static func slot(withDate date: Date, formattingWith formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.DateSlot {
+    static func slot(
+        withDate date: Date,
+        formattingWith formatter: ITEDateFormatter
+    ) -> MeetingAppointmentPresenter.DateSlot {
         MeetingAppointmentPresenter.DateSlot(
             date: date,
             viewModel: MeetingAppointmentDate(date: formatter.format(date: date))
@@ -357,7 +361,11 @@ private extension MeetingAppointmentPresenter.DateSlot {
 }
 
 private extension MeetingAppointmentPresenter.TimeSlot {
-    static func from(apiTimeSlot: TEApiTimeSlot, date: Date, formatter: ITEDateFormatter) -> MeetingAppointmentPresenter.TimeSlot {
+    static func from(
+        apiTimeSlot: TEApiTimeSlot,
+        date: Date,
+        formatter: ITEDateFormatter
+    ) -> MeetingAppointmentPresenter.TimeSlot {
         MeetingAppointmentPresenter.TimeSlot(
             apiTime: apiTimeSlot,
             viewModel: MeetingAppointmentTime(

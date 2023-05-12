@@ -30,7 +30,7 @@ class AddressInputViewController: UIViewController {
 
     private lazy var doneButton: UIButton = {
         var button = UIButton.init()
-        button.setTitle("Готово", for: .normal)
+        button.setTitle(NSLocalizedString("addressInputReadyButton", comment: ""), for: .normal)
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
@@ -96,7 +96,7 @@ class AddressInputViewController: UIViewController {
 
     private func setupNavigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Отмена",
+            title: NSLocalizedString("addressInputCancelButton", comment: ""),
             style: .plain,
             target: self,
             action: #selector(cancelButtonTapped)
@@ -167,7 +167,7 @@ class AddressInputViewController: UIViewController {
         guard let clearButton = inputTextView.viewWithTag(111) as? UIButton else { return }
         clearButton.addTarget(self, action: #selector(clearInputTextButtonTapped), for: .touchUpInside)
        
-        inputTextView.setPlaceholder(with: "Адрес")
+        inputTextView.setPlaceholder(with: NSLocalizedString("addressInputPlaceholder", comment: ""))
         inputTextView.showsVerticalScrollIndicator = false
         inputTextView.layer.cornerRadius = 16
         inputTextView.clipsToBounds = true

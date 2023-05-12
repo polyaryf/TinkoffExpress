@@ -35,7 +35,7 @@ final class DeliveryHeaderView: UICollectionReusableView {
     // MARK: Setup Subviews
     
     private func setupTitleLabel() {
-        titleLabel.text = "Выберите\nспособ получения"
+        titleLabel.text = NSLocalizedString("deliveryTitle", comment: "")
         titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         titleLabel.numberOfLines = 2
         

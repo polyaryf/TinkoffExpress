@@ -41,7 +41,7 @@ final class OrderCheckoutMapper: IOrderCheckoutMapper {
         FinalDelivery(
             where: model.deliveryWhere,
             when: model.deliveryWhen,
-            what: "Посылку"
+            what: NSLocalizedString("orderCheckoutPackage", comment: "")
         )
     }
     

@@ -15,11 +15,6 @@ struct Settings {
 }
 
 enum Search: String {
-    case standard = "Стандартный"
-    case detailed = "Подробный"
-}
-
-enum Localization: String {
-    case ru_RU = "Русская"
-    case en_US = "Английская"
+    case standard = "С подсказками"
+    case detailed = "По полям"
 }

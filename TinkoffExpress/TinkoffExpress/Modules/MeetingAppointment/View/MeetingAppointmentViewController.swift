@@ -90,7 +90,7 @@ final class MeetingAppointmentViewController: UIViewController {
     
     private lazy var commentPlaceholderLabel: UILabel = {
         let label = UILabel()
-        label.text = "Как добраться и когда вам позвонить"
+        label.text = NSLocalizedString("meetingAppointmentCommentPlaceholder", comment: "")
         label.textColor = UIColor(named: "textViewPlaceholderColor")
         label.font = .systemFont(ofSize: 17, weight: .regular)
         return label
@@ -115,7 +115,7 @@ final class MeetingAppointmentViewController: UIViewController {
     private lazy var hideKeyboardButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "readyButtonColor")
-        button.setTitle("Готово", for: .normal)
+        button.setTitle(NSLocalizedString("meetingAppointmentReadyButton", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         button.layer.cornerRadius = 12
         button.layer.shadowColor = UIColor.black.cgColor
@@ -138,6 +138,11 @@ final class MeetingAppointmentViewController: UIViewController {
         }
         return button
     }()
+    
+    private var commentInfoPressed1 = NSLocalizedString("meetingAppointmentCommentInfoPressed1", comment: "")
+    private var commentInfoPressed2 = NSLocalizedString("meetingAppointmentCommentInfoPressed2", comment: "")
+    private var commentInfoNotPressed1 = NSLocalizedString("meetingAppointmentCommentInfoNotPressed1", comment: "")
+    private var commentInfoNotPressed2 = NSLocalizedString("meetingAppointmentCommentInfoNotPressed2", comment: "")
     
     // MARK: Init
     
@@ -170,7 +175,7 @@ final class MeetingAppointmentViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.title = "Оформление доставки"
+        navigationItem.title = NSLocalizedString("meetingAppointmentTitle", comment: "")
         navigationItem.backButtonTitle = ""
     }
     
@@ -320,9 +325,11 @@ final class MeetingAppointmentViewController: UIViewController {
 
     private func updateTextViewAccessories() {
         if commentTextView.isFirstResponder || commentTextView.hasText {
-            commentCountLabel.text = "Осталось \(.maxTextViewContentLength - commentTextView.text.count) символов"
+            commentCountLabel.text =
+            "\(commentInfoPressed1) \(.maxTextViewContentLength - commentTextView.text.count) \(commentInfoPressed2)"
         } else {
-            commentCountLabel.text = "Можно написать \(Int.maxTextViewContentLength) символов"
+            commentCountLabel.text =
+            "\(commentInfoNotPressed1) \(Int.maxTextViewContentLength) \(commentInfoNotPressed2)"
         }
         
         commentPlaceholderLabel.isHidden = commentTextView.isFirstResponder || commentTextView.hasText

@@ -1,0 +1,82 @@
+// Mark: - TabBar
+"tabBarCatalog" = "Каталог";
+"tabBarCart" = "Корзина";
+"tabBarMyOrders" = "Мои заказы";
+"tabBarSettings" = "Настройки";
+
+// Mark: - Catalog
+"catalogTitle" = "Каталог";
+"catalorKettle" = "Чайник электрический";
+"catalorPhone" = "Мобильный телефон";
+"catalorHammer" = "Молоток";
+
+// Mark: - Cart
+"cartTitle" = "Корзина";
+"cartNumberOfProducts" = "товаров";
+"cartTotalCost" = "Итоговая стоимость";
+"cartButtonChechoutButton" = "Оформить";
+
+// Mark: - MyOrders
+"myOrdersTitle" = "Мои заказы";
+"myOrdersDelivery" = "Доставка";
+
+// Mark: - Settings
+"settingsTitle" = "Настройки";
+"settingsSearchTitle" = "Поиск";
+"settingsSearchStandart" = "Стандартный";
+"settingsSearchDetailed" = "Подробный";
+
+// Mark: - Delivery
+"deliveryTitle" = "Выберите\nспособ получения";
+"deliveryCloseButton" = "Закрыть";
+"deliveryLetter" = "Доставка";
+
+// Mark: - Onboarding
+"onboardingTitle" = "Оформите\nбесплатную доставку";
+"onboardingPin" = "Выберите, когда и куда доставить";
+"onboardingMessage" = "В назначенный день мы свяжемся с вами";
+"onboardingLetter" = "Курьер доставит посылку в указанное время";
+"onboardingContinueButton" = "Продолжить";
+
+// Mark: - MeetingAppointment
+"meetingAppointmentTitle" = "Оформление доставки";
+"meetingAppointmentCommentPlaceholder" = "Как добраться и когда вам позвонить";
+"meetingAppointmentCommentInfoNotPressed1" = "Можно написать";
+"meetingAppointmentCommentInfoNotPressed2" = "символов";
+"meetingAppointmentCommentInfoPressed1" = "Осталось";
+"meetingAppointmentCommentInfoPressed2" = "символов";
+"meetingAppointmentReadyButton" = "Готово";
+"meetingAppointmentDeliveryButton" = "Доставить";
+
+// Mark: - OrderCheckout
+"orderCheckoutTitle" = "Оформление товара";
+"orderCheckoutWhatToBring" = "Что привезем";
+"orderCheckoutPackage" = "Посылку";
+"orderCheckoutDelivery" = "Доставка";
+"orderCheckoutChangeButton" = "Изменить";
+"orderCheckoutPayment" = "Оплата";
+"orderCheckoutByCard" = "Картой при получении";
+"orderCheckoutByCash" = "Наличными курьеру";
+"orderCheckoutButton" = "Оформить";
+"orderCheckoutCancelButton" = "Отменить";
+"orderCheckoutPaymentMethod" = "Способ оплаты";
+
+// Mark: - FinalDelivery
+"finalDeliveryTitle" = "Заказ оформлен";
+"finalDeliveryWhere" = "Куда";
+"finalDeliveryTitleWhen" = "Когда";
+"finalDeliveryTitleWhatToBring" = "Что привезем";
+"finalDeliveryButton" = "Хорошо";
+
+// Mark: - AddressInput
+"addressInputCancelButton" = "Отмена";
+"addressInputPlaceholder" = "Адрес";
+"addressInputReadyButton" = "Готово";
+
+
+// Mark: - TEDateFormatter
+"TEDateFormatterToday" = "Сегодня";
+"TEDateFormatterTomorrow" = "Завтра";
+
+
+

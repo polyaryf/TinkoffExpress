@@ -22,7 +22,7 @@ final class OnboardingViewController: UIViewController, UICollectionViewDataSour
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var continueButton: Button = {
         let config = Button.Configuration(
-            title: "Продолжить",
+            title: NSLocalizedString("onboardingContinueButton", comment: ""),
             style: .primaryTinkoff,
             contentSize: .basicLarge
         )
