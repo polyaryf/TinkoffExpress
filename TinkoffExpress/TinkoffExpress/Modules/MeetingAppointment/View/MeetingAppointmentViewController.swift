@@ -324,9 +324,11 @@ final class MeetingAppointmentViewController: UIViewController {
 
     private func updateTextViewAccessories() {
         if commentTextView.isFirstResponder || commentTextView.hasText {
-            commentCountLabel.text = "\(commentInfoPressed1) \(.maxTextViewContentLength - commentTextView.text.count) \(commentInfoPressed2)"
+            commentCountLabel.text =
+            "\(commentInfoPressed1) \(.maxTextViewContentLength - commentTextView.text.count) \(commentInfoPressed2)"
         } else {
-            commentCountLabel.text = "\(commentInfoNotPressed1) \(Int.maxTextViewContentLength) \(commentInfoNotPressed2)"
+            commentCountLabel.text =
+            "\(commentInfoNotPressed1) \(Int.maxTextViewContentLength) \(commentInfoNotPressed2)"
         }
         
         commentPlaceholderLabel.isHidden = commentTextView.isFirstResponder || commentTextView.hasText

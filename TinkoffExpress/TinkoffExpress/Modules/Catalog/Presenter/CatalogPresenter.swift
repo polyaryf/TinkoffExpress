@@ -52,7 +52,7 @@ final class CatalogPresenter: ICatalogPresenter {
                     if let cartProduct = cartProducts.first(where: { $0.product == catalogProduct.product }) {
                         return CatalogProduct(product: catalogProduct.product, counter: cartProduct.counter)
                     }
-                    if !cartProducts.contains(where: {$0.product == catalogProduct.product}) {
+                    if !cartProducts.contains(where: { $0.product == catalogProduct.product }) {
                         return CatalogProduct(product: catalogProduct.product, counter: 0)
                     }
                     return catalogProduct
