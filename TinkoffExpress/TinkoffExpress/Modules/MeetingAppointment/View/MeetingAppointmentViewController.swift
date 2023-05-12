@@ -20,6 +20,7 @@ protocol IMeetingAppointmentView: AnyObject {
     func setPrimaryButtonsTinkoffStyle()
     func setPrimaryButtonsDestructiveStyle()
     func showErrorAlert()
+    func closeView()
 }
 
 final class MeetingAppointmentViewController: UIViewController {
@@ -383,6 +384,10 @@ extension MeetingAppointmentViewController: IMeetingAppointmentView {
     
     func showErrorAlert() {
         present(UIAlertController.defaultErrorAlert(), animated: true)
+    }
+    
+    func closeView() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 

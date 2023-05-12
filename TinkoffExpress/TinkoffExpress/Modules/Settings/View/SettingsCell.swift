@@ -20,6 +20,10 @@ final class SettingsCell: UICollectionViewCell {
     
     private lazy var sizeImageView = CGRect(x: 0, y: 0, width: 40, height: 40)
     
+    // MARK: Callback
+    
+    private var onToggleSwitchDidChange: ((Bool) -> Void)?
+    
     // MARK: Init
     
     override init(frame: CGRect) {
@@ -36,12 +40,15 @@ final class SettingsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Actions
+    // MARK: Action
     
-    @objc func toggleSwitchDidChange(_ sender: UISwitch) {
-        descriptionLabel.text = sender.isOn
-        ? NSLocalizedString("settingsSearchStandart", comment: "")
-        : NSLocalizedString("settingsSearchDetailed", comment: "")
+    func onToggleSwitchDidChange(_ action: @escaping (Bool) -> Void) {
+        onToggleSwitchDidChange = action
+    }
+    
+    @objc private func toggleSwitchDidChange(_ sender: UISwitch) {
+        onToggleSwitchDidChange?(sender.isOn)
+        descriptionLabel.text = sender.isOn ? Search.standard.rawValue : Search.detailed.rawValue
     }
     
     // MARK: Setup Colors

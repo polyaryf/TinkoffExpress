@@ -47,7 +47,7 @@ final class CatalogPresenter: ICatalogPresenter {
         cartService.currentProductsPublisher.receive(on: DispatchQueue.main)
             .sink { [weak self] cartProducts in
                 guard let self else { return }
-
+                
                 let newProducts = self.catalogProducts.map { catalogProduct in
                     if let cartProduct = cartProducts.first(where: { $0.product == catalogProduct.product }) {
                         return CatalogProduct(product: catalogProduct.product, counter: cartProduct.counter)

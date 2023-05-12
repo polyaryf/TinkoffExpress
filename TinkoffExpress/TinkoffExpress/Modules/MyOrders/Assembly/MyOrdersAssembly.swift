@@ -15,10 +15,11 @@ final class MyOrdersAssembly: IMyOrdersAssembly {
     func createMyOrdersView() -> UIViewController {
         let network = TEApiService()
         let restService = RestMyOrdersService(networkService: network)
+        let mockService = MockMyOrdersService()
         let router = MyOrdersRouter(orderCheckoutAssembly: OrderCheckoutAssembly())
         let presenter = MyOrdersPresenter(
             router: router,
-            service: restService,
+            service: mockService,
             formatter: TEDateFormatter(),
             notifier: TEOrdersNotificationsService.shared
         )

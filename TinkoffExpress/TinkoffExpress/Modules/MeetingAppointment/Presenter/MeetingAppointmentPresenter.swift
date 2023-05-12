@@ -8,6 +8,7 @@
 import UIKit
 
 protocol IMeetingAppointmentPresenter {
+    func viewWillAppear(with order: TEApiOrder)
     func viewDidLoad()
     func viewDidTapAddress()
     func viewDidTapPrimaryButton()
@@ -63,12 +64,14 @@ class MeetingAppointmentPresenter {
     
     // MARK: State
     
+    private var isCreatingOrder: Bool
     private var address = "Ивангород, ул. Гагарина, д. 1"
     private var comment = ""
     private var dateSlots: [DateSlot] = []
     private var selectedDateSlotIndex = 0
     private var selectedTimeSlotIndex = 0
     private var buttonName = NSLocalizedString("meetingAppointmentDeliveryButton", comment: "")
+    private var orderToUpdate: TEApiOrder?
     
     // MARK: Init
     
@@ -77,13 +80,15 @@ class MeetingAppointmentPresenter {
         service: IMeetingAppointmentService,
         dateFormatter: ITEDateFormatter,
         addressSearchType: AddressSearchType,
-        useCase: UseCase
+        useCase: UseCase,
+        isCreatingOrder: Bool
     ) {
         self.router = router
         self.service = service
         self.dateFormatter = dateFormatter
         self.addressSearchType = addressSearchType
         self.useCase = useCase
+        self.isCreatingOrder = isCreatingOrder
     }
     
     // MARK: Helpers
@@ -141,14 +146,73 @@ class MeetingAppointmentPresenter {
         
         return isAddressValid && isTimeSlotSelected
     }
+    
+    private func getIndexFor(timeSlot: TEApiTimeSlot) -> Int {
+        if timeSlot.timeFrom == "12:00" {
+            return 0
+        } else if timeSlot.timeFrom == "14:00" {
+            return 1
+        } else {
+            return 2
+        }
+    }
+    
+    private func getIndexFor(dateSlot: TEApiTimeSlot) -> Int {
+        if let index = dateSlots.firstIndex(where: {
+            let dateFromSlot = dateFormatter.format(
+                date: $0.date,
+                timeFrom: dateSlot.timeFrom,
+                timeTo: dateSlot.timeFrom
+            )
+            let dateFromModel = dateFormatter.format(
+                date: dateSlot.date,
+                timeFrom: dateSlot.timeFrom,
+                timeTo: dateSlot.timeFrom
+            )
+            return dateFromSlot == dateFromModel
+        }) {
+            return index
+        } else {
+            return 0
+        }
+    }
+    
+    private func createOrderUpdateRequest(
+        with model: TEApiOrder,
+        timeSlots: [MeetingAppointmentPresenter.TimeSlot]
+    ) -> OrderUpdateRequest {
+        OrderUpdateRequest(
+            address: TEApiAddress(address: address, lat: 0, lon: 0),
+            paymentMethod: model.paymentMethod.rawValue,
+            deliverySlot: timeSlots[selectedTimeSlotIndex].apiTime,
+            comment: comment,
+            status: .created
+        )
+    }
 }
 
 // MARK: - IMeetingAppointmentPresenter
 
 extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
+    func viewWillAppear(with order: TEApiOrder) {
+        orderToUpdate = order
+    }
+    
     func viewDidLoad() {
         dateSlots = DateSlot.defaultRange(formattingWith: dateFormatter)
         view?.reloadDateCollection()
+        guard let orderToUpdate else {
+            view?.selectDateSlot(at: selectedDateSlotIndex)
+            view?.set(address: address)
+            updatePrimaryButtonTitle()
+            loadTimeSlots(for: selectedDateSlotIndex, animateLoadingState: false)
+            return
+        }
+        address = orderToUpdate.address.address
+        selectedDateSlotIndex = getIndexFor(dateSlot: orderToUpdate.deliverySlot)
+        selectedTimeSlotIndex = getIndexFor(timeSlot: orderToUpdate.deliverySlot)
+        comment = orderToUpdate.comment
+        
         view?.selectDateSlot(at: selectedDateSlotIndex)
         view?.set(address: address)
         updatePrimaryButtonTitle()        
@@ -175,8 +239,21 @@ extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
             deliverySlot: timeSlots[selectedTimeSlotIndex].apiTime,
             comment: comment
         )
-
-        router.openOrderCheckout(with: model)
+        if isCreatingOrder {
+            router.openOrderCheckout(with: model)
+        } else {
+            guard let orderToUpdate else { return }
+            
+            service.updateOrder(
+                id: orderToUpdate.id,
+                with: createOrderUpdateRequest(with: orderToUpdate, timeSlots: timeSlots)
+            ) { [weak self] result in
+                switch result {
+                case .success: self?.view?.closeView()
+                case .failure: break
+                }
+            }
+        }
     }
     
     func viewDidChange(comment: String) {

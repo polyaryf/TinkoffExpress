@@ -41,6 +41,10 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     
     // MARK: Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        myOrdersPresenter.viewWillAppear()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

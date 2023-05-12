@@ -8,6 +8,7 @@
 import Foundation
 
 protocol MyOrdersPresenterProtocol {
+    func viewWillAppear()
     func viewDidLoad()
     func didSelect(item: MyOrder)
 }
@@ -37,9 +38,12 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     
     // MARK: Life Cycle
     
+    func viewWillAppear() {
+        loadItems()
+    }
+    
     func viewDidLoad() {
         notifier.add(listener: self)
-        loadItems()
     }
     
     func showNotification() {

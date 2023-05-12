@@ -13,3 +13,8 @@ struct Settings {
     let imageName: String
     let isActive: Bool
 }
+
+enum Search: String {
+    case standard = "С подсказками"
+    case detailed = "По полям"
+}

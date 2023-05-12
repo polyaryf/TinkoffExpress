@@ -8,28 +8,24 @@
 import Foundation
 
 protocol SettingsPresenterProtocol {
-    func viewDidLoad()
+    func viewToggleSwitchDidChange(with flag: Bool)
 }
 
 final class SettingsPresenter: SettingsPresenterProtocol {
     // MARK: Dependencies
     
     weak var view: SettingsViewController?
-    private var coordinator: Coordinator?
-    private var service: SettingsService?
+    private let service: ISettingsService
     
     // MARK: Init
-    init(coordinator: Coordinator, service: SettingsService) {
-        self.coordinator = coordinator
+    
+    init(service: SettingsService) {
         self.service = service
     }
     
-    // MARK: Life Cycle
-    
-    func viewDidLoad() {
-        service?.loadItems { [weak self] items in
-            guard let self = self else { return }
-            self.view?.items = items ?? []
-        }
+    // MARK: SettingsPresenterProtocol
+
+    func viewToggleSwitchDidChange(with flag: Bool) {
+        service.setToggle(with: flag)
     }
 }
