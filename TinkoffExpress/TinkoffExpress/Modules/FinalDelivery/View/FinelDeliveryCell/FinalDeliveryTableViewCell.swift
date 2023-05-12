@@ -47,7 +47,7 @@ final class FinalDeliveryTableViewCell: UITableViewCell {
     }
     
     func setPrimaryText(_ text: String) {
-        primaryText.text = text
+        primaryText.text = NSLocalizedString(text, comment: "")
     }
     
     // MARK: Private
@@ -57,7 +57,7 @@ final class FinalDeliveryTableViewCell: UITableViewCell {
         contentView.addSubview(primaryText)
         contentView.backgroundColor = UIColor(named: "background.finalDelivery.color")
     
-        titleLabel.text = type.rawValue
+        titleLabel.text = NSLocalizedString(type.rawValue, comment: "")
         
         setupCellConsrtaints()
     }

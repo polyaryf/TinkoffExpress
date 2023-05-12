@@ -1,0 +1,78 @@
+// Mark: - TabBar
+"tabBarCatalog" = "Catalog";
+"tabBarCart" = "Cart";
+"tabBarMyOrders" = "My Orders";
+"tabBarSettings" = "Settings";
+
+// Mark: - Catalog
+"catalogTitle" = "Catalog";
+"catalorKettle" = "Electric kettle";
+"catalorPhone" = "Mobile Phone";
+"catalorHammer" = "Hammer";
+
+// Mark: - Cart
+"cartTitle" = "Cart";
+"cartNumberOfProducts" = "products";
+"cartTotalCost" = "Total cost";
+"cartButtonChechoutButton" = "Checkout";
+
+// Mark: - MyOrders
+"myOrdersTitle" = "My Orders";
+"myOrdersDelivery" = "Доставка";
+
+// Mark: - Settings
+"settingsTitle" = "Settings";
+"settingsSearchTitle" = "Search";
+"settingsSearchStandart" = "Standard";
+"settingsSearchDetailed" = "Detailed";
+
+// Mark: - Delivery
+"deliveryTitle" = "Choose\na delivery method";
+"deliveryCloseButton" = "Close";
+"deliveryLetter" = "Delivery";
+
+// Mark: - Onboarding
+"onboardingTitle" = "Get\nfree delivery";
+"onboardingPin" = "Choose when and where to deliver";
+"onboardingMessage" = "We will contact you on the appointed day";
+"onboardingLetter" = "Courier will deliver the package at the specified time";
+"onboardingContinueButton" = "Continue";
+
+// Mark: - MeetingAppointment
+"meetingAppointmentTitle" = "Delivery checkout";
+"meetingAppointmentCommentPlaceholder" = "How to get there and when to call you";
+"meetingAppointmentCommentInfoNotPressed1" = "You can write";
+"meetingAppointmentCommentInfoNotPressed2" = "characters";
+"meetingAppointmentCommentInfoPressed1" = "Remaining";
+"meetingAppointmentCommentInfoPressed2" = "characters";
+"meetingAppointmentReadyButton" = "Ready";
+"meetingAppointmentDeliveryButton" = "Deliver";
+
+// Mark: - OrderCheckout
+"orderCheckoutTitle" = "Order checkout";
+"orderCheckoutWhatToBring" = "What to bring";
+"orderCheckoutPackage" = "Package";
+"orderCheckoutDelivery" = "Delivery";
+"orderCheckoutChangeButton" = "Change";
+"orderCheckoutPayment" = "Payment";
+"orderCheckoutByCard" = "By card on delivery";
+"orderCheckoutByCash" = "Cash to the courier";
+"orderCheckoutButton" = "Checkout";
+"orderCheckoutCancelButton" = "Cancel";
+"orderCheckoutPaymentMethod" = "Payment method";
+
+// Mark: - FinalDelivery
+"finalDeliveryTitle" = "Order placed";
+"finalDeliveryWhere" = "Where";
+"finalDeliveryTitleWhen" = "When";
+"finalDeliveryTitleWhatToBring" = "What to bring";
+"finalDeliveryButton" = "OK";
+
+// Mark: - AddressInput
+"addressInputCancelButton" = "Cancel";
+"addressInputPlaceholder" = "Address";
+"addressInputReadyButton" = "Ready";
+
+// Mark: - TEDateFormatter
+"TEDateFormatterToday" = "Today";
+"TEDateFormatterTomorrow" = "Tomorrow";

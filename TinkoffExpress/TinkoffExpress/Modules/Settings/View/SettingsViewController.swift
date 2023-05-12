@@ -47,7 +47,7 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = "Настройки"
+        navigationItem.title = NSLocalizedString("settingsTitle", comment: "")
     }
     
     // MARK: Setup Colors

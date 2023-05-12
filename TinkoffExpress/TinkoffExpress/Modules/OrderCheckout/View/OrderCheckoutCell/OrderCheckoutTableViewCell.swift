@@ -40,7 +40,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     }()
     lazy var editButton: UIButton = {
         var button = UIButton(type: .system)
-        button.setTitle("Изменить", for: .normal)
+        button.setTitle(NSLocalizedString("orderCheckoutChangeButton", comment: ""), for: .normal)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = .clear
         button.titleLabel?.font = .systemFont(ofSize: 17)
@@ -69,11 +69,11 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
     }
     
     func setPrimaryText(_ text: String) {
-        primaryText.text = text
+        primaryText.text = NSLocalizedString(text, comment: "")
     }
     
     func setSecondaryText(_ text: String) {
-        secondaryText.text = text
+        secondaryText.text = NSLocalizedString(text, comment: "")
     }
     
     // MARK: Private
@@ -94,7 +94,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         
         whatWillBeDeliveredCellConsrtaints()
         
-        titleLabel.text = type.rawValue
+        titleLabel.text = NSLocalizedString(type.rawValue, comment: "")
     }
     
     private func setupDeliveryCellView() {
@@ -105,7 +105,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         
         deliveryCellConsrtaints()
         
-        titleLabel.text = type.rawValue
+        titleLabel.text = NSLocalizedString(type.rawValue, comment: "")
     }
     
     private func setupPaymentCellView() {
@@ -115,7 +115,7 @@ final class OrderCheckoutTableViewCell: UITableViewCell {
         
         paymentCellConsrtaints()
         
-        titleLabel.text = type.rawValue
+        titleLabel.text = NSLocalizedString(type.rawValue, comment: "")
     }
     
     // MARK: Consrtaints

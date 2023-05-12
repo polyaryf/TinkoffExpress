@@ -64,7 +64,7 @@ final class CatalogViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.title = "Каталог"
+        navigationItem.title = NSLocalizedString("catalogTitle", comment: "")
     }
     
     private func setupTableView() {

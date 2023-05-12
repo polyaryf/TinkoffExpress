@@ -195,7 +195,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         switch type {
         case let .editingOrder(apiOrder):
             item = OrderCheckout(
-                whatWillBeDelivered: "Посылку",
+                whatWillBeDelivered: NSLocalizedString("orderCheckoutPackage", comment: ""),
                 deliveryWhen: dateFormatter.format(
                     date: apiOrder.deliverySlot.date,
                     timeFrom: apiOrder.deliverySlot.timeFrom,
@@ -206,7 +206,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
             )
         case let .creatingOrder(inputModel):
             item = OrderCheckout(
-                whatWillBeDelivered: "Посылку",
+                whatWillBeDelivered: NSLocalizedString("orderCheckoutPackage", comment: ""),
                 deliveryWhen: dateFormatter.format(
                     date: inputModel.deliverySlot.date,
                     timeFrom: inputModel.deliverySlot.timeFrom,
@@ -241,7 +241,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                     timeFrom: model.deliverySlot.timeFrom,
                     timeTo: model.deliverySlot.timeTo
                 ),
-                what: "Посылку"
+                what: NSLocalizedString("orderCheckoutPackage", comment: "")
             )
             router.openFinalDelivery(with: finalDelivery)
         case .editingOrder:

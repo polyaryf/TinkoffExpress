@@ -14,9 +14,9 @@ protocol OnboardingService {
 final class MockOnboardingService: OnboardingService {
     func loadItems(completion: @escaping ([Onboarding]?) -> Void) {
         let items: [Onboarding] = [
-            .init(text: "Выберите, когда и куда доставить", imageName: "OnboardingPin"),
-            .init(text: "В назначенный день мы свяжемся с вами", imageName: "OnboardingMessage"),
-            .init(text: "Курьер доставит посылку в указанное время", imageName: "OnboardingLetter")
+            .init(text: NSLocalizedString("onboardingPin", comment: ""), imageName: "OnboardingPin"),
+            .init(text: NSLocalizedString("onboardingMessage", comment: ""), imageName: "OnboardingMessage"),
+            .init(text: NSLocalizedString("onboardingLetter", comment: ""), imageName: "OnboardingLetter")
         ]
         completion(items)
     }

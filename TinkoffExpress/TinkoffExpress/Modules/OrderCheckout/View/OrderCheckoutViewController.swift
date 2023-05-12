@@ -37,13 +37,13 @@ final class OrderCheckoutViewController: UIViewController {
         switch orderCheckoutPresenter.getModuleType() {
         case .creatingOrder:
             config = Button.Configuration(
-                title: "Оформить",
+                title: NSLocalizedString("orderCheckoutButton", comment: ""),
                 style: .primaryTinkoff,
                 contentSize: .basicLarge
             )
         case .editingOrder:
             config = Button.Configuration(
-                title: "Отменить",
+                title: NSLocalizedString("orderCheckoutCancelButton", comment: ""),
                 style: .destructive,
                 contentSize: .basicLarge
             )
@@ -135,29 +135,29 @@ final class OrderCheckoutViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.title = "Оформление товара"
+        navigationItem.title = NSLocalizedString("orderCheckoutTitle", comment: "")
     }
     
     private func showPaymentMethodAlert() {
         let alert = UIAlertController(
-            title: "Способ оплаты",
+            title: NSLocalizedString("orderCheckoutPaymentMethod", comment: ""),
             message: nil,
             preferredStyle: .actionSheet
         )
         alert.addAction(UIAlertAction(
-            title: TEApiPaymentMethod.card.localized,
+            title: NSLocalizedString(TEApiPaymentMethod.card.localized, comment: ""),
             style: UIAlertAction.Style.default
         ) { [weak self] _ in
             self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .card)
         })
         alert.addAction(UIAlertAction(
-            title: TEApiPaymentMethod.cash.localized,
+            title: NSLocalizedString(TEApiPaymentMethod.cash.localized, comment: ""),
             style: UIAlertAction.Style.default
         ) { [weak self] _ in
             self?.orderCheckoutPresenter.viewDidSelect(paymentMethod: .cash)
         })
         alert.addAction(UIAlertAction(
-            title: "Отмена",
+            title: NSLocalizedString("orderCheckoutCancelButton", comment: ""),
             style: UIAlertAction.Style.cancel,
             handler: nil)
         )

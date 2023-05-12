@@ -16,19 +16,19 @@ final class MockCatalogService: CatalogService {
         let products: [Product] = [
             .init(
                 productTypeId: ProductType.kettle.rawValue,
-                title: "Чайник электрический",
+                title: NSLocalizedString("catalorKettle", comment: ""),
                 price: 3556,
                 image: "kettle"
             ),
             .init(
                 productTypeId: ProductType.phone.rawValue,
-                title: "Мобильный телефон",
+                title: NSLocalizedString("catalorPhone", comment: ""),
                 price: 43999,
                 image: "phone"
             ),
             .init(
                 productTypeId: ProductType.hammer.rawValue,
-                title: "Молоток",
+                title: NSLocalizedString("catalorHammer", comment: ""),
                 price: 399,
                 image: "hammer"
             )

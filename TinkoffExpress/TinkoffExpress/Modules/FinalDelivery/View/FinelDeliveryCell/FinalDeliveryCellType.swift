@@ -7,7 +7,7 @@
 
 enum FinalDeliveryCellType: String {
     case empty
-    case _where = "Куда"
-    case when = "Когда"
-    case what = "Что привезем"
+    case _where = "finalDeliveryWhere"
+    case when = "finalDeliveryTitleWhen"
+    case what = "finalDeliveryTitleWhatToBring"
 }

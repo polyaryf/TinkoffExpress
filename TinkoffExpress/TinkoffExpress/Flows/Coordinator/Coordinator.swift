@@ -47,7 +47,7 @@ final class AppCoordinator: Coordinator {
     private func setupCatalogController() {
         let catalogController = UINavigationController(rootViewController: CatalogAssembly().createCatalogView())
         catalogController.tabBarItem = UITabBarItem(
-            title: "Каталог",
+            title: NSLocalizedString("tabBarCatalog", comment: ""),
             image:  UIImage(named: "catalogTabBarItemImage"),
             tag: 0
         )
@@ -60,7 +60,7 @@ final class AppCoordinator: Coordinator {
             rootViewController: CartAssembly().createViewController(coordinator: self)
         )
         let cartTabBarItem = UITabBarItem(
-            title: "Корзина",
+            title:  NSLocalizedString("tabBarCart", comment: ""),
             image: UIImage(named: "cartTabBarItemImage"),
             tag: 1
         )
@@ -90,7 +90,7 @@ final class AppCoordinator: Coordinator {
     private func setupMyOrdersController() {
         let myOrdersController = UINavigationController(rootViewController: MyOrdersAssembly().createMyOrdersView())
         myOrdersController.tabBarItem = UITabBarItem(
-            title: "Мои заказы", image: UIImage(named: "myOrdersTabBarItemImage"), tag: 2
+            title: NSLocalizedString("tabBarMyOrders", comment: ""), image: UIImage(named: "myOrdersTabBarItemImage"), tag: 2
         )
         
         viewControllers.append(myOrdersController)
@@ -101,7 +101,7 @@ final class AppCoordinator: Coordinator {
             rootViewController: SettingsAssembly().createViewController(coordinator: self)
         )
         settingsController.tabBarItem = UITabBarItem(
-            title: "Настройки", image: UIImage(systemName: "gear"), tag: 3
+            title:  NSLocalizedString("tabBarSettings", comment: ""), image: UIImage(systemName: "gear"), tag: 3
         )
 
         viewControllers.append(settingsController)

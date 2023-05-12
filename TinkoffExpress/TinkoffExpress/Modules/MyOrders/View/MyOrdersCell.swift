@@ -44,8 +44,8 @@ final class MyOrdersCell: UICollectionViewCell {
     
     // MARK: Setup Subviews
     
-    func setupCell(text: String, description: String, imageName: String) {
-        label.text = text
+    func setupCell(description: String, imageName: String) {
+        label.text = NSLocalizedString("myOrdersDelivery", comment: "")
         descriptionLabel.text = description
         imageView.image = UIImage(named: imageName)
     }
