@@ -9,8 +9,8 @@ import UIKit
 import Combine
 
 protocol IMeetingAppointmentAssembly {
-    func createMeetingAppointmentView() -> UIViewController
     func createMeetingAppointmentView(with model: TEApiOrder) -> UIViewController
+    func createMeetingAppointmentView() -> UIViewController
 }
 
 final class MeetingAppointmentAssembly: IMeetingAppointmentAssembly {
@@ -29,7 +29,7 @@ final class MeetingAppointmentAssembly: IMeetingAppointmentAssembly {
             router: router,
             service: mockService,
             dateFormatter: TEDateFormatter(),
-            addressSearchType: .daData,
+            addressSearchType: setCurrentAddressSearchType(),
             useCase: .ordering,
             isCreatingOrder: false
         )
