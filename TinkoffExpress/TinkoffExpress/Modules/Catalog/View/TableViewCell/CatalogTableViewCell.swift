@@ -23,7 +23,6 @@ final class CatalogTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Title"
         return label
     }()
     

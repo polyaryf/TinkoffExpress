@@ -61,7 +61,7 @@ final class ABTestViewController: UIViewController {
     
     private func setupNavigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Отмена",
+            title: NSLocalizedString("abTestLeftBarButtonItemTitle", comment: ""),
             style: .plain,
             target: self,
             action: #selector(cancelButtonTapped)

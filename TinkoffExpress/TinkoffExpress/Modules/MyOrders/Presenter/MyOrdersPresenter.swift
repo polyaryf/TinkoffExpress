@@ -66,7 +66,7 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
                 MyOrder(
                     apiModel: apiOrder,
                     id: apiOrder.id,
-                    text: "Доставка",
+                    text: NSLocalizedString("myOrdersDelivery", comment: ""),
                     description: self.formatter.format(
                         date: apiOrder.deliverySlot.date,
                         timeFrom: apiOrder.deliverySlot.timeFrom,

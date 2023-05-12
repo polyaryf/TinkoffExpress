@@ -22,9 +22,9 @@
 
 // Mark: - Settings
 "settingsTitle" = "Настройки";
-"settingsSearchTitle" = "Поиск";
-"settingsSearchStandart" = "Стандартный";
-"settingsSearchDetailed" = "Подробный";
+"searchTypeStandard" = "С подсказками";
+"searchTypeDetailed" = "По полям";
+"settingsCellText" = "Ввод адреса";
 
 // Mark: - Delivery
 "deliveryTitle" = "Выберите\nспособ получения";
@@ -47,6 +47,7 @@
 "meetingAppointmentCommentInfoPressed2" = "символов";
 "meetingAppointmentReadyButton" = "Готово";
 "meetingAppointmentDeliveryButton" = "Доставить";
+"meetingAppointmentDefaultAddress" = "Ивангород, ул. Гагарина, д. 1";
 
 // Mark: - OrderCheckout
 "orderCheckoutTitle" = "Оформление товара";
@@ -60,6 +61,9 @@
 "orderCheckoutButton" = "Оформить";
 "orderCheckoutCancelButton" = "Отменить";
 "orderCheckoutPaymentMethod" = "Способ оплаты";
+"orderCheckoutCancelAlertText" = "Вы уверены, что хотите отменить доставку?";
+"orderCheckoutCancelAlertActionTitleYes" = "Да";
+"orderCheckoutCancelAlertActionTitleNo" = "Нет";
 
 // Mark: - FinalDelivery
 "finalDeliveryTitle" = "Заказ оформлен";
@@ -72,11 +76,30 @@
 "addressInputCancelButton" = "Отмена";
 "addressInputPlaceholder" = "Адрес";
 "addressInputReadyButton" = "Готово";
-
+"addressInputErrorLabelText" = "Мы не знаем этого адреса";
 
 // Mark: - TEDateFormatter
 "TEDateFormatterToday" = "Сегодня";
 "TEDateFormatterTomorrow" = "Завтра";
 
+// Mark: - DefaultErrorAlert
+"defaultErrorAlertTitle" = "Что-то пошло не так";
+"defaultErrorAlertMessage" = "Попробуйте оформить позже";
+"defaultErrorAlertActionTitle" = "Понятно";
 
+// Mark: - NoInternetView
+"noInternetViewLabelText" = "Нет Интернета";
 
+// Mark: - ABTest
+"abTestDoneButtonTitleNext" = "Далее";
+"abTestDoneButtonTitleDone" = "Готово";
+"abTestTextFieldPlaceholderCountry" = "Страна";
+"abTestTextFieldPlaceholderRegion" = "Регион";
+"abTestTextFieldPlaceholderStreet" = "Улица";
+"abTestTextFieldPlaceholderHouse" = "Строение/корпус";
+"abTestTextFieldPlaceholderCity" = "Населенный пункт";
+"abTestTextFieldPlaceholderPostalCode" = "Индекс";
+"abTestLeftBarButtonItemTitle" = "Отмена";
+
+// Mark: - NotificationView
+"notificationViewLabelText" = "Доставка отменена";

@@ -65,7 +65,7 @@ class MeetingAppointmentPresenter {
     // MARK: State
     
     private var isCreatingOrder: Bool
-    private var address = "Ивангород, ул. Гагарина, д. 1"
+    private var address = NSLocalizedString("meetingAppointmentDefaultAddress", comment: "")
     private var comment = ""
     private var dateSlots: [DateSlot] = []
     private var selectedDateSlotIndex = 0

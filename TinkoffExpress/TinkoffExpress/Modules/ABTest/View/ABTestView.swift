@@ -28,7 +28,7 @@ final class ABTestView: UIView {
     lazy var doneButton: UIButton = {
         var button = UIButton.init()
         button.backgroundColor = UIColor(named: "blue.color")
-        button.setTitle("Далее", for: .normal)
+        button.setTitle(NSLocalizedString("abTestDoneButtonTitle", comment: ""), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 12
@@ -141,22 +141,22 @@ final class ABTestView: UIView {
         
         switch type {
         case .country:
-            textField.placeholder = "Страна"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderCountry", comment: "")
             textField.returnKeyType = .next
         case .region:
-            textField.placeholder = "Регион"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderRegion", comment: "")
             textField.returnKeyType = .next
         case .street:
-            textField.placeholder = "Улица"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderStreet", comment: "")
             textField.returnKeyType = .next
         case .house:
-            textField.placeholder = "Строение/корпус"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderHouse", comment: "")
             textField.returnKeyType = .next
         case .settlement:
-            textField.placeholder = "Населенный пункт"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderCity", comment: "")
             textField.returnKeyType = .next
         case .postalCode:
-            textField.placeholder = "Индекс"
+            textField.placeholder = NSLocalizedString("abTestTextFieldPlaceholderPostalCode", comment: "")
             textField.returnKeyType = .done
         }
         return textField
@@ -256,9 +256,9 @@ final class ABTestView: UIView {
     
     func checkDoneButton() {
         if currentTextField === stackView.arrangedSubviews.last {
-            doneButton.setTitle("Готово", for: .normal)
+            doneButton.setTitle(NSLocalizedString("abTestDoneButtonTitleDone", comment: ""), for: .normal)
         } else {
-            doneButton.setTitle("Далее", for: .normal)
+            doneButton.setTitle(NSLocalizedString("abTestDoneButtonTitleNext", comment: ""), for: .normal)
         }
     }
 }
