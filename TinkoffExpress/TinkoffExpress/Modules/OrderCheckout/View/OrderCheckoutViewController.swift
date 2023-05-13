@@ -13,6 +13,7 @@ protocol IOrderCheckoutViewController: AnyObject {
     func stopButtonLoading()
     func set(item: OrderCheckout)
     func showCancelAlert(with title: String)
+    func showErrorAlert()
     func closeView()
 }
 
@@ -231,6 +232,11 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             style: UIAlertAction.Style.default) { [weak self] _ in
                 self?.orderCheckoutPresenter.yesButtonAlertTapped()
         })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController.defaultErrorAlert()
         self.present(alert, animated: true, completion: nil)
     }
     

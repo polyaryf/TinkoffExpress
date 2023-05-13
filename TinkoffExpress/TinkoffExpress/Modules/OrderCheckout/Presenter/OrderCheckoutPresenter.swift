@@ -100,7 +100,8 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                         self?.listener.didUpdateOrderWithDelete()
                         self?.showMyOrders()
                     }
-                case .failure: break
+                case .failure:
+                    self?.view?.showErrorAlert()
                 }
             }
         case .creatingOrder:
@@ -161,6 +162,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                 
             case .failure:
                 self?.view?.stopButtonLoading()
+                self?.view?.showErrorAlert()
             }
         }
     }
@@ -185,6 +187,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                 }
             case .failure:
                 self?.view?.stopButtonLoading()
+                self?.view?.showErrorAlert()
             }
         }
     }

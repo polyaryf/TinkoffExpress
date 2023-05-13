@@ -250,7 +250,7 @@ extension MeetingAppointmentPresenter: IMeetingAppointmentPresenter {
             ) { [weak self] result in
                 switch result {
                 case .success: self?.view?.closeView()
-                case .failure: break
+                case .failure: self?.view?.showErrorAlert()
                 }
             }
         }

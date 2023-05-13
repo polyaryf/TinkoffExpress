@@ -84,7 +84,7 @@
 
 // Mark: - DefaultErrorAlert
 "defaultErrorAlertTitle" = "Что-то пошло не так";
-"defaultErrorAlertMessage" = "Попробуйте оформить позже";
+"defaultErrorAlertMessage" = "Попробуйте еще раз позже";
 "defaultErrorAlertActionTitle" = "Понятно";
 
 // Mark: - NoInternetView
