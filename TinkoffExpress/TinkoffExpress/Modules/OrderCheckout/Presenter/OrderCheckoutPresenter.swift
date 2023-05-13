@@ -110,11 +110,10 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     func viewDidSelect(paymentMethod: TEApiPaymentMethod) {
-       
-        
         switch type {
         case .creatingOrder:
-            break
+            selectedMethod = paymentMethod
+            reloadView()
         case .editingOrder(let order):
             if serviceUpdateRequest(with: order) {
                 selectedMethod = paymentMethod
