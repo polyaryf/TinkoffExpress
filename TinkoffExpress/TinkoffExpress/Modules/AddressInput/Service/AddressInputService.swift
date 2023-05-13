@@ -27,8 +27,9 @@ final class RestAddressInputService: AddressInputService {
     }
     
     func loadAddresses(with text: String, completion: @escaping (Result<[InputAddress], Error>) -> Void) {
+        let locale = NSLocale.current.languageCode
         networkService.getAddresses(
-            request: AddressSuggestionRequest(query: text, language: "")
+            request: AddressSuggestionRequest(query: text, language: locale?.lowercased() ?? "")
         ) { [ weak self] result in
             let newResult = result.map { suggestionsResponse in
                 suggestionsResponse.suggestions.compactMap { suggestion in
