@@ -84,7 +84,7 @@
 
 // Mark: - DefaultErrorAlert
 "defaultErrorAlertTitle" = "Something went wrong";
-"defaultErrorAlertMessage" = "Please try to checkout later";
+"defaultErrorAlertMessage" = "Please try again later";
 "defaultErrorAlertActionTitle" = "Ok";
 
 // Mark: - NoInternetView

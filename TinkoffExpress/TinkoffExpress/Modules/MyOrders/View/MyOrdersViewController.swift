@@ -11,6 +11,9 @@ import SnapKit
 protocol IMyOrdersViewController: AnyObject {
     func showNotificationView()
     func updateView(with items: [MyOrder])
+    func startLoading()
+    func stopLoading()
+    func showErrorAlert()
 }
 
 final class MyOrdersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -26,6 +29,12 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var notificationView = NotificationView()
+    private lazy var activityIndicatorView: ActivityIndicatorView = {
+        let view = ActivityIndicatorView(style: .mYellow)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     // MARK: Init
     
@@ -52,6 +61,8 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         setupCollectionView()
         setupColors()
         setupNotificationView()
+        setupActivityIndicatorView()
+        
         myOrdersPresenter.viewDidLoad()
     }
     
@@ -95,6 +106,16 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
         
         notificationView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+    
+    private func setupActivityIndicatorView() {
+        activityIndicatorView.isHidden = true
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
     }
     
@@ -164,5 +185,20 @@ extension MyOrdersViewController: IMyOrdersViewController {
     func updateView(with items: [MyOrder]) {
         self.items = items
         collectionView.reloadData()
+    }
+    
+    func startLoading() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimation(animated: true)
+    }
+    
+    func stopLoading() {
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimation(animated: true)
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController.defaultErrorAlert()
+        self.present(alert, animated: true)
     }
 }

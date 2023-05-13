@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MyOrdersService {
-    func loadItems(completion: @escaping ([TEApiOrder]) -> Void)
+    func loadItems(completion: @escaping ((orders: [TEApiOrder], flag: Bool)) -> Void)
 }
 
 final class RestMyOrdersService: MyOrdersService {
@@ -22,21 +22,21 @@ final class RestMyOrdersService: MyOrdersService {
         self.networkService = networkService
     }
     
-    func loadItems(completion: @escaping ([TEApiOrder]) -> Void) {
+    func loadItems(completion: @escaping ((orders: [TEApiOrder], flag: Bool)) -> Void) {
         networkService.getOrders { result in
             switch result {
             case .success(let orders):
                 let filteredOrders = orders.filter { $0.status != .cancelled }
-                completion(filteredOrders)
+                completion((filteredOrders, true))
             case .failure:
-                completion([])
+                completion(([], false))
             }
         }
     }
 }
 
 final class MockMyOrdersService: MyOrdersService {
-    func loadItems(completion: @escaping ([TEApiOrder]) -> Void) {
+    func loadItems(completion: @escaping ((orders: [TEApiOrder], flag: Bool)) -> Void) {
         let orders: [TEApiOrder] = [
             .init(
                 address: TEApiAddress(address: "Казань, ул. Кремлевская, 35", lat: 0, lon: 0),
@@ -57,6 +57,6 @@ final class MockMyOrdersService: MyOrdersService {
                 id: 1
             )
         ]
-        completion(orders)
+        completion((orders, true))
     }
 }
