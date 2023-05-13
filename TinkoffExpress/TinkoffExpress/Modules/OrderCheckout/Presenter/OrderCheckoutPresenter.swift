@@ -110,14 +110,16 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     func viewDidSelect(paymentMethod: TEApiPaymentMethod) {
-        selectedMethod = paymentMethod
-        reloadView()
+       
         
         switch type {
         case .creatingOrder:
             break
         case .editingOrder(let order):
-            serviceUpdateRequest(with: order)
+            if serviceUpdateRequest(with: order) {
+                selectedMethod = paymentMethod
+                reloadView()
+            }
         }
     }
     
@@ -167,7 +169,8 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
         }
     }
     
-    private func serviceUpdateRequest(with order: TEApiOrder) {
+    private func serviceUpdateRequest(with order: TEApiOrder) -> Bool {
+        var resultFlag: Bool = false
         let request = OrderUpdateRequest(
             address: order.address,
             paymentMethod: selectedMethod.rawValue,
@@ -184,12 +187,18 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
                 if flag {
                     self?.listener.didUpdateOrder()
                     self?.view?.stopButtonLoading()
+                } else {
+                    self?.view?.stopButtonLoading()
+                    self?.view?.showErrorAlert()
                 }
+                resultFlag = flag
             case .failure:
                 self?.view?.stopButtonLoading()
                 self?.view?.showErrorAlert()
+                resultFlag = false
             }
         }
+        return resultFlag
     }
 
     private func reloadView() {
