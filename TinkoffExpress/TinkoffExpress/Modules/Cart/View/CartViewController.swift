@@ -255,7 +255,7 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 36, height: 72)
+        return CGSize(width: collectionView.bounds.width - 36, height: 132)
     }
 }
 

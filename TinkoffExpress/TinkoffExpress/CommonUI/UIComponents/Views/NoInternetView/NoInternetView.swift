@@ -13,7 +13,7 @@ final class NoInternetView: UIView {
     private lazy var containerView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 181, height: 50))
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.backgroundColor = UIColor(named: "backgroundColor2")
         view.layer.cornerRadius = 24
         view.clipsToBounds = true
         return view
@@ -61,6 +61,7 @@ final class NoInternetView: UIView {
     private func setupView() {
         setupViewHierarchy()
         setupConstraints()
+        setupShadow()
         
         self.addGestureRecognizer(upSwipeGestureRecognizer)
     }
@@ -85,6 +86,16 @@ final class NoInternetView: UIView {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(imageView.snp.right).offset(12)
         }
+    }
+    
+    private func setupShadow() {
+        containerView.dropShadow(
+            offsetX: 0,
+            offsetY: 0,
+            color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.12),
+            opacity: 1,
+            radius: 34
+        )
     }
     
     func onViewDidSwipeUP(_ action: @escaping () -> Void) {

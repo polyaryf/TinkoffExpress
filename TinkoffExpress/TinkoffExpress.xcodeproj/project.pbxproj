@@ -610,6 +610,7 @@
 		29C391D329F980990041F569 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				2989F9382A0BBCE3000D1A41 /* NoInternetView */,
 				297FF5A02A00034C00636B01 /* TextField */,
 				29C391D429F980990041F569 /* TextView */,
@@ -1507,7 +1508,6 @@
 		43EF490C2A029D2D002424CE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				43EF490D2A029D2D002424CE /* MyOrdersCell.swift */,
 				43EF490E2A029D2D002424CE /* MyOrdersViewController.swift */,
 			);
@@ -1992,7 +1992,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72SVK4HY2X;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2024,7 +2024,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72SVK4HY2X;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffExpress/Config/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
