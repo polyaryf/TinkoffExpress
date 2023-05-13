@@ -22,10 +22,8 @@ final class CartCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        imageView.layer.cornerRadius = imageView.bounds.size.width / 2
-        imageView.clipsToBounds = true
         return imageView
     }()
     private lazy var countLabel: UILabel = {
@@ -38,6 +36,8 @@ final class CartCell: UICollectionViewCell {
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(increaseCounter), for: .touchUpInside)
         return button
@@ -46,6 +46,8 @@ final class CartCell: UICollectionViewCell {
     private lazy var minusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(decreaseCounter), for: .touchUpInside)
         return button
@@ -114,27 +116,31 @@ final class CartCell: UICollectionViewCell {
     
     private func setupConstraints() {
         imageView.snp.makeConstraints { make in
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.width.equalTo(100)
+            make.height.equalTo(100)
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset((contentView.bounds.height - 40) / 2)
+            make.left.equalToSuperview().offset(16)
         }
         label.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.left.equalTo(imageView.snp.right).offset(16)
             make.centerY.equalToSuperview()
         }
-        plusButton.snp.makeConstraints {
-            $0.right.equalToSuperview().offset(-16)
-            $0.centerY.equalToSuperview()
-        }
         countLabel.snp.makeConstraints {
-            $0.right.equalTo(plusButton.snp.left).offset(-6)
             $0.centerY.equalToSuperview()
+            $0.right.equalToSuperview().offset(-9)
+            $0.width.equalTo(25)
+        }
+        plusButton.snp.makeConstraints {
+            $0.bottom.equalTo(countLabel.snp.top).offset(-(countLabel.frame.height + 10))
+            $0.right.equalToSuperview().offset(-16)
+            $0.width.equalTo(25)
+            $0.height.equalTo(25)
         }
         minusButton.snp.makeConstraints {
-            $0.right.equalTo(plusButton.snp.left).offset(-27)
-            $0.centerY.equalToSuperview()
+            $0.right.equalToSuperview().offset(-16)
+            $0.top.equalTo(countLabel.snp.bottom).offset((countLabel.frame.height + 10))
+            $0.width.equalTo(25)
+            $0.height.equalTo(25)
         }
     }
     

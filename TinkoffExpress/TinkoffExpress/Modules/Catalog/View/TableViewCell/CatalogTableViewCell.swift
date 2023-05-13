@@ -42,6 +42,8 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(increaseCounter), for: .touchUpInside)
         return button
@@ -50,6 +52,8 @@ final class CatalogTableViewCell: UITableViewCell {
     private lazy var minusButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(decreaseCounter), for: .touchUpInside)
         return button
@@ -122,20 +126,20 @@ final class CatalogTableViewCell: UITableViewCell {
         }
         counterLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.right.equalToSuperview().offset(-18)
+            $0.right.equalToSuperview().offset(-16)
             $0.width.equalTo(25)
         }
         plusButton.snp.makeConstraints {
             $0.bottom.equalTo(counterLabel.snp.top).offset(-(counterLabel.frame.height + 10))
             $0.right.equalToSuperview().offset(-16)
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+            $0.width.equalTo(25)
+            $0.height.equalTo(25)
         }
         minusButton.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-16)
             $0.top.equalTo(counterLabel.snp.bottom).offset((counterLabel.frame.height + 10))
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+            $0.width.equalTo(25)
+            $0.height.equalTo(25)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(productImage.snp.top)
