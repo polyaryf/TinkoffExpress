@@ -59,10 +59,17 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     // MARK: Helpers
 
     private func loadItems() {
+        view?.startLoading()
         service.loadItems { [weak self] items in
             guard let self = self else { return }
-
-            let orders = items.map { apiOrder in
+            if items.flag {
+                self.view?.stopLoading()
+            } else {
+                self.view?.stopLoading()
+                self.view?.showErrorAlert()
+                return
+            }
+            let orders = items.orders.map { apiOrder in
                 MyOrder(
                     apiModel: apiOrder,
                     id: apiOrder.id,
