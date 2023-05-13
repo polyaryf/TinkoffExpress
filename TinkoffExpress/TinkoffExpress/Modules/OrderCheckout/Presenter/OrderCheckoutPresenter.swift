@@ -134,7 +134,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func editingType() {
-        view?.showCancelAlert(with: "Вы уверены, что хотите отменить доставку?")
+        view?.showCancelAlert(with: NSLocalizedString("orderCheckoutCancelAlertText", comment: ""))
     }
     
     private func serviceCreateRequest(with inputModel: NewOrderInputModel) {

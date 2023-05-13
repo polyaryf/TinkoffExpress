@@ -7,8 +7,12 @@
 
 import UIKit
 
-final class CartAssembly: Assembly {
-    func createViewController(coordinator: Coordinator) -> UIViewController {
+protocol ICartAssembly {
+    func createCartView() -> UIViewController
+}
+
+final class CartAssembly: ICartAssembly {
+    func createCartView() -> UIViewController {
         let service = CartService.shared
         let router = CartRouter(deliveryAssembly: DeliveryAssembly())
         let presenter = CartPresenter( service: service, router: router)

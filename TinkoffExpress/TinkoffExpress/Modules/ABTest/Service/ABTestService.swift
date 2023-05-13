@@ -33,8 +33,9 @@ final class RestABTestService: ABTestService {
         with text: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
+        let locale = NSLocale.current.languageCode
         networkService.getAddresses(
-            request: AddressSuggestionRequest(query: text, language: "")
+            request: AddressSuggestionRequest(query: text, language: locale?.lowercased() ?? "")
         ) { result in
             let newResult = result.map { suggestionsResponse in
                 guard let address = suggestionsResponse.suggestions.first?.value else {

@@ -18,13 +18,13 @@
 
 // Mark: - MyOrders
 "myOrdersTitle" = "My Orders";
-"myOrdersDelivery" = "Доставка";
+"myOrdersDelivery" = "Delivery";
 
 // Mark: - Settings
 "settingsTitle" = "Settings";
-"settingsSearchTitle" = "Search";
-"settingsSearchStandart" = "Standard";
-"settingsSearchDetailed" = "Detailed";
+"searchTypeStandard" = "With hints";
+"searchTypeDetailed" = "By fields";
+"settingsCellText" = "Address input";
 
 // Mark: - Delivery
 "deliveryTitle" = "Choose\na delivery method";
@@ -47,6 +47,7 @@
 "meetingAppointmentCommentInfoPressed2" = "characters";
 "meetingAppointmentReadyButton" = "Ready";
 "meetingAppointmentDeliveryButton" = "Deliver";
+"meetingAppointmentDefaultAddress" = "IvanGorod, st. Gagarina, h. 1";
 
 // Mark: - OrderCheckout
 "orderCheckoutTitle" = "Order checkout";
@@ -60,6 +61,9 @@
 "orderCheckoutButton" = "Checkout";
 "orderCheckoutCancelButton" = "Cancel";
 "orderCheckoutPaymentMethod" = "Payment method";
+"orderCheckoutCancelAlertText" = "Are you sure you want to cancel the delivery?";
+"orderCheckoutCancelAlertActionTitleYes" = "Yes";
+"orderCheckoutCancelAlertActionTitleNo" = "No";
 
 // Mark: - FinalDelivery
 "finalDeliveryTitle" = "Order placed";
@@ -72,7 +76,30 @@
 "addressInputCancelButton" = "Cancel";
 "addressInputPlaceholder" = "Address";
 "addressInputReadyButton" = "Ready";
+"addressInputErrorLabelText" = "We don't know this address";
 
 // Mark: - TEDateFormatter
 "TEDateFormatterToday" = "Today";
 "TEDateFormatterTomorrow" = "Tomorrow";
+
+// Mark: - DefaultErrorAlert
+"defaultErrorAlertTitle" = "Something went wrong";
+"defaultErrorAlertMessage" = "Please try to checkout later";
+"defaultErrorAlertActionTitle" = "Ok";
+
+// Mark: - NoInternetView
+"noInternetViewLabelText" = "No Internet";
+
+// Mark: - ABTest
+"abTestDoneButtonTitleNext" = "Next";
+"abTestDoneButtonTitleDone" = "Done";
+"abTestTextFieldPlaceholderCountry" = "Country";
+"abTestTextFieldPlaceholderRegion" = "Region";
+"abTestTextFieldPlaceholderStreet" = "Street";
+"abTestTextFieldPlaceholderHouse" = "House";
+"abTestTextFieldPlaceholderCity" = "City";
+"abTestTextFieldPlaceholderPostalCode" = "Postal сode";
+"abTestLeftBarButtonItemTitle" = "Cancel";
+
+// Mark: - NotificationView
+"notificationViewLabelText" = "Delivery canceled";

@@ -10,12 +10,12 @@ import UIKit
 extension UIAlertController {
     static func defaultErrorAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Что-то пошло не так",
-            message: "Попробуйте оформить позже",
+            title: NSLocalizedString("defaultErrorAlertTitle", comment: ""),
+            message: NSLocalizedString("defaultErrorAlertMessage", comment: ""),
             preferredStyle: .alert
         )
         
-        let action = UIAlertAction(title: "Понятно", style: .default)
+        let action = UIAlertAction(title: NSLocalizedString("defaultErrorAlertActionTitle", comment: ""), style: .default)
         alert.addAction(action)
         return alert
     }

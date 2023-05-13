@@ -29,7 +29,7 @@ final class NotificationView: UIView {
     
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Доставка отменена"
+        label.text = NSLocalizedString("notificationViewLabelText", comment: "")
         label.font = .systemFont(ofSize: 15)
         label.textColor = UIColor(named: "myOrdersDeliveryTextColor")
         return label

@@ -48,7 +48,7 @@ final class AppCoordinator: Coordinator {
         let catalogController = UINavigationController(rootViewController: CatalogAssembly().createCatalogView())
         catalogController.tabBarItem = UITabBarItem(
             title: NSLocalizedString("tabBarCatalog", comment: ""),
-            image:  UIImage(named: "catalogTabBarItemImage"),
+            image: UIImage(named: "catalogTabBarItemImage"),
             tag: 0
         )
         
@@ -57,10 +57,10 @@ final class AppCoordinator: Coordinator {
     
     private func setupCartController() {
         let cartController = UINavigationController(
-            rootViewController: CartAssembly().createViewController(coordinator: self)
+            rootViewController: CartAssembly().createCartView()
         )
         let cartTabBarItem = UITabBarItem(
-            title:  NSLocalizedString("tabBarCart", comment: ""),
+            title: NSLocalizedString("tabBarCart", comment: ""),
             image: UIImage(named: "cartTabBarItemImage"),
             tag: 1
         )
@@ -90,7 +90,9 @@ final class AppCoordinator: Coordinator {
     private func setupMyOrdersController() {
         let myOrdersController = UINavigationController(rootViewController: MyOrdersAssembly().createMyOrdersView())
         myOrdersController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("tabBarMyOrders", comment: ""), image: UIImage(named: "myOrdersTabBarItemImage"), tag: 2
+            title: NSLocalizedString("tabBarMyOrders", comment: ""),
+            image: UIImage(named: "myOrdersTabBarItemImage"),
+            tag: 2
         )
         
         viewControllers.append(myOrdersController)
@@ -98,10 +100,12 @@ final class AppCoordinator: Coordinator {
     
     private func setupSettingsController() {
         let settingsController = UINavigationController(
-            rootViewController: SettingsAssembly().createViewController(coordinator: self)
+            rootViewController: SettingsAssembly().createSettingsView()
         )
         settingsController.tabBarItem = UITabBarItem(
-            title:  NSLocalizedString("tabBarSettings", comment: ""), image: UIImage(systemName: "gear"), tag: 3
+            title: NSLocalizedString("tabBarSettings", comment: ""),
+            image: UIImage(systemName: "gear"),
+            tag: 3
         )
 
         viewControllers.append(settingsController)

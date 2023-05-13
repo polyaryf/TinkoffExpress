@@ -15,6 +15,6 @@ struct Settings {
 }
 
 enum Search: String {
-    case standard = "С подсказками"
-    case detailed = "По полям"
+    case standard = "searchTypeStandard"
+    case detailed = "searchTypeDetailed"
 }

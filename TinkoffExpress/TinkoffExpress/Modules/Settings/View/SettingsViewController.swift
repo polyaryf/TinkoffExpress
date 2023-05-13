@@ -16,7 +16,12 @@ final class SettingsViewController: UIViewController, UICollectionViewDataSource
     // MARK: Properties
     
     private let items: [Settings] = [
-        Settings(text: "Ввод адреса", description: "С подсказками", imageName: "myOrdersDeliveryImage", isActive: true)
+        Settings(
+            text: NSLocalizedString("settingsCellText", comment: ""),
+            description: NSLocalizedString("searchTypeStandard", comment: ""),
+            imageName: "myOrdersDeliveryImage",
+            isActive: true
+        )
     ]
     
     // MARK: Subviews

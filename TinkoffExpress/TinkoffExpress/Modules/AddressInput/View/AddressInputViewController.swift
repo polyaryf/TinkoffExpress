@@ -40,7 +40,7 @@ class AddressInputViewController: UIViewController {
     private lazy var errorLabel: UILabel = {
         var label = UILabel.init()
         label.isHidden = true
-        label.text = "Мы не знаем этого адреса"
+        label.text = NSLocalizedString("addressInputErrorLabelText", comment: "")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

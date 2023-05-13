@@ -48,7 +48,9 @@ final class SettingsCell: UICollectionViewCell {
     
     @objc private func toggleSwitchDidChange(_ sender: UISwitch) {
         onToggleSwitchDidChange?(sender.isOn)
-        descriptionLabel.text = sender.isOn ? Search.standard.rawValue : Search.detailed.rawValue
+        descriptionLabel.text = sender.isOn ?
+            NSLocalizedString(Search.standard.rawValue, comment: "") :
+            NSLocalizedString(Search.detailed.rawValue, comment: "")
     }
     
     // MARK: Setup Colors

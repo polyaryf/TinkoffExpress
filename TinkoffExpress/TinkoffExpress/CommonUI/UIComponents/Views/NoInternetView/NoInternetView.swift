@@ -28,7 +28,7 @@ final class NoInternetView: UIView {
     
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Нет интернета"
+        label.text = NSLocalizedString("noInternetViewLabelText", comment: "")
         label.textColor = UIColor(named: "textColor2")
         label.font = .systemFont(ofSize: 14)
         return label

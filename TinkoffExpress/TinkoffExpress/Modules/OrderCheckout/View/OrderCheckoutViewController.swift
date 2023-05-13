@@ -222,12 +222,12 @@ extension OrderCheckoutViewController: IOrderCheckoutViewController {
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(
-            title: "Нет",
+            title: NSLocalizedString("orderCheckoutCancelAlertActionTitleNo", comment: ""),
             style: UIAlertAction.Style.default,
             handler: nil)
         )
         alert.addAction(UIAlertAction(
-            title: "Да",
+            title: NSLocalizedString("orderCheckoutCancelAlertActionTitleYes", comment: ""),
             style: UIAlertAction.Style.default) { [weak self] _ in
                 self?.orderCheckoutPresenter.yesButtonAlertTapped()
         })
