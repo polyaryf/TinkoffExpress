@@ -49,7 +49,7 @@ final class TinkoffExpressViewController: UIViewController {
     private func animatedHidingView() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self else { return }
-            if let superview = noInternetView.superview {
+            if let superview = self.noInternetView.superview {
                 self.noInternetView.center.y -= superview.bounds.height
             }
         }
