@@ -22,7 +22,12 @@ class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
     ) {
         service.performAndDecode(
             target: .getOrders,
-            completion: completion
+            completion: { (result: Result<GetOrdersResponce, HttpClientError>) in
+                let newResult = result.map { responce in
+                    responce.orders
+                }
+                completion(newResult)
+            }
         )
     }
     
@@ -55,5 +60,30 @@ class TEApiService: TEOrderApiProtocol, TESlotApiProtocol {
             target: .getSlots(date: date),
             completion: completion
         )
+    }
+}
+
+struct GetOrdersResponce: Decodable {
+    let orders: [TEApiOrder]
+    
+    enum CodingKeys: CodingKey {
+        case orders
+    }
+    
+    init(from decoder: Decoder) throws {
+        orders = try Array<SafeDecodable<TEApiOrder>>(from: decoder)
+            .compactMap { order in
+                try? order.decodingResult.get()
+        }
+    }
+}
+
+struct SafeDecodable<T: Decodable>: Decodable {
+    let decodingResult: Result<T, Error>
+    
+    init(from decoder: Decoder) throws {
+        self.decodingResult = Result(catching: {
+            try T.init(from: decoder)
+        })
     }
 }
