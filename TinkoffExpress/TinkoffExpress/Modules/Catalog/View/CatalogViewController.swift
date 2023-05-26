@@ -92,7 +92,6 @@ extension CatalogViewController: UITableViewDataSource {
             for: indexPath
         ) as? CatalogTableViewCell {
             let product = products[indexPath.row].product
-            let count = products[indexPath.row].counter
             
             cell.selectionStyle = .none
             cell.set(

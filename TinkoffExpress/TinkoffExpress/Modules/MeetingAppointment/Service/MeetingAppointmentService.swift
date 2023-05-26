@@ -27,7 +27,7 @@ final class MeetingAppointmentService: IMeetingAppointmentService {
     init(
         api: TEApiService,
         dateFormatter: DateFormatter = .default
-    ){
+    ) {
         self.api = api
         self.dateFormatter = dateFormatter
     }

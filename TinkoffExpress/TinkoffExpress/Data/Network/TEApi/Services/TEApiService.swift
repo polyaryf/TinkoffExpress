@@ -74,7 +74,7 @@ struct GetOrdersResponce: Decodable {
         orders = try Array<SafeDecodable<TEApiOrder>>(from: decoder)
             .compactMap { order in
                 try? order.decodingResult.get()
-        }
+            }
     }
 }
 

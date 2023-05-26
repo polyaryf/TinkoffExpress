@@ -169,7 +169,7 @@ class OrderCheckoutPresenter: OrderCheckoutPresenterProtocol {
     }
     
     private func serviceUpdateRequest(with order: TEApiOrder) -> Bool {
-        var resultFlag: Bool = false
+        var resultFlag = false
         let request = OrderUpdateRequest(
             address: order.address,
             paymentMethod: selectedMethod.rawValue,
