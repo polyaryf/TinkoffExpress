@@ -106,3 +106,4 @@
 
 // Mark: - RatingView
 "ratingViewQuestionLabel" = "Did you like your last order?";
+"ratingViewDoneLabel" = "Done";

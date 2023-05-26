@@ -29,7 +29,7 @@ final class RatingViewController: UIViewController {
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .custom)
         button.dropShadow(with: .medium)
-        button.setTitle("Готово", for: .normal)
+        button.setTitle(NSLocalizedString("ratingViewDoneLabel", comment: ""), for: .normal)
         button.backgroundColor = UIColor(named: "rating.button")
         button.setTitleColor(UIColor(named: "rating.text1"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14)

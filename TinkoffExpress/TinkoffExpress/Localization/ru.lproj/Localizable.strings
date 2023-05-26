@@ -106,3 +106,4 @@
 
 // Mark: - RatingView
 "ratingViewQuestionLabel" = "Вам понравился ваш последний заказ?";
+"ratingViewDoneLabel" = "Готово";
