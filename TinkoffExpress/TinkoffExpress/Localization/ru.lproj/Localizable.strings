@@ -103,3 +103,6 @@
 
 // Mark: - NotificationView
 "notificationViewLabelText" = "Доставка отменена";
+
+// Mark: - RatingView
+"ratingViewQuestionLabel" = "Вам понравился ваш последний заказ?";
