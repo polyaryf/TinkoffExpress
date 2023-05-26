@@ -44,6 +44,8 @@ final class MyOrdersPresenter: MyOrdersPresenterProtocol {
     
     func viewDidLoad() {
         notifier.add(listener: self)
+        
+        router.openRating()
     }
     
     func showNotification() {
