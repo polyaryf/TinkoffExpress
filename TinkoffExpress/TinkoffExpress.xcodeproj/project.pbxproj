@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291634A92A239D3F0016ED4F /* StarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291634A82A239D3F0016ED4F /* StarImageView.swift */; };
 		29328F912A07B443001CE5AA /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F902A07B443001CE5AA /* CatalogViewController.swift */; };
 		29328F942A07B566001CE5AA /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */; };
 		29328F982A07B68A001CE5AA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F972A07B68A001CE5AA /* Product.swift */; };
@@ -18,6 +19,10 @@
 		294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */; };
 		29475B2D2A09796100001A2A /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29475B2C2A09796100001A2A /* CartProduct.swift */; };
 		297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C871D2A07F5DD00DE110F /* CatalogProduct.swift */; };
+		297CA5142A1FF9E6001CC5ED /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */; };
+		297CA5172A20B8B0001CC5ED /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5162A20B8B0001CC5ED /* RatingViewController.swift */; };
+		297CA51A2A20CDCB001CC5ED /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5192A20CDCB001CC5ED /* PresentationController.swift */; };
+		297CA51C2A20CE61001CC5ED /* RatingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA51B2A20CE61001CC5ED /* RatingAssembly.swift */; };
 		297FF59D29FFD37D00636B01 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF59C29FFD37D00636B01 /* TextField.swift */; };
 		297FF5A22A003E5000636B01 /* ABTestView+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */; };
 		297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */; };
@@ -162,6 +167,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		291634A82A239D3F0016ED4F /* StarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarImageView.swift; sourceTree = "<group>"; };
 		29328F902A07B443001CE5AA /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		29328F972A07B68A001CE5AA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -173,6 +179,10 @@
 		2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		29475B2C2A09796100001A2A /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		297C871D2A07F5DD00DE110F /* CatalogProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProduct.swift; sourceTree = "<group>"; };
+		297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
+		297CA5162A20B8B0001CC5ED /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		297CA5192A20CDCB001CC5ED /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		297CA51B2A20CE61001CC5ED /* RatingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAssembly.swift; sourceTree = "<group>"; };
 		297FF59C29FFD37D00636B01 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		297FF5A12A003E5000636B01 /* ABTestView+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+UIScrollView.swift"; sourceTree = "<group>"; };
 		297FF5A42A003E9800636B01 /* ABTestView+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ABTestView+TextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -425,6 +435,49 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		297CA5122A1FF9D2001CC5ED /* StarsRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */,
+				291634A82A239D3F0016ED4F /* StarImageView.swift */,
+			);
+			path = StarsRatingView;
+			sourceTree = "<group>";
+		};
+		297CA5152A20B889001CC5ED /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				297CA51D2A20CE6F001CC5ED /* Assembly */,
+				297CA5182A20CDB5001CC5ED /* View */,
+				297CA51E2A20EBE4001CC5ED /* Presentation */,
+			);
+			path = Rating;
+			sourceTree = "<group>";
+		};
+		297CA5182A20CDB5001CC5ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				297CA5162A20B8B0001CC5ED /* RatingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		297CA51D2A20CE6F001CC5ED /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				297CA51B2A20CE61001CC5ED /* RatingAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		297CA51E2A20EBE4001CC5ED /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				297CA5192A20CDCB001CC5ED /* PresentationController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		297FF59B29FFC17800636B01 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +660,7 @@
 		29C391D329F980990041F569 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				297CA5122A1FF9D2001CC5ED /* StarsRatingView */,
 				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				2989F9382A0BBCE3000D1A41 /* NoInternetView */,
 				297FF5A02A00034C00636B01 /* TextField */,
@@ -883,6 +937,7 @@
 		29C3921A29F980990041F569 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				297CA5152A20B889001CC5ED /* Rating */,
 				29328F8F2A07B431001CE5AA /* Catalog */,
 				439B5E002A0656EA001764B0 /* Settings */,
 				29C93E4B29FEBD4600EBFB23 /* ABTest */,
@@ -1710,6 +1765,7 @@
 				29C392D529F9809A0041F569 /* CartItem.swift in Sources */,
 				439B5E082A065765001764B0 /* SettingsAssembly.swift in Sources */,
 				29852A462A068735005DCF46 /* MyOrdersRouter.swift in Sources */,
+				297CA51C2A20CE61001CC5ED /* RatingAssembly.swift in Sources */,
 				297FF5A52A003E9800636B01 /* ABTestView+TextFieldDelegate.swift in Sources */,
 				29C392C829F9809A0041F569 /* FinalDeliveryTableViewCell.swift in Sources */,
 				2946204A2A0B79ED00200C31 /* CartRouter.swift in Sources */,
@@ -1735,6 +1791,7 @@
 				43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */,
 				29328F942A07B566001CE5AA /* CatalogTableViewCell.swift in Sources */,
 				29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */,
+				297CA5142A1FF9E6001CC5ED /* StarsRatingView.swift in Sources */,
 				29C392AD29F9809A0041F569 /* HttpClientError.swift in Sources */,
 				29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */,
 				29C392D929F9809A0041F569 /* DeliveryAssembly.swift in Sources */,
@@ -1770,6 +1827,7 @@
 				29C3929029F9809A0041F569 /* Button+Configuration.swift in Sources */,
 				29C392AA29F9809A0041F569 /* GenericService.swift in Sources */,
 				29C392C429F9809A0041F569 /* MeetingAppointmentService.swift in Sources */,
+				297CA5172A20B8B0001CC5ED /* RatingViewController.swift in Sources */,
 				29C392A329F9809A0041F569 /* HttpValidationError.swift in Sources */,
 				297FF59D29FFD37D00636B01 /* TextField.swift in Sources */,
 				29C392D629F9809A0041F569 /* CartViewController.swift in Sources */,
@@ -1786,6 +1844,7 @@
 				29C3928829F9809A0041F569 /* HSBAColor+UIColor.swift in Sources */,
 				29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */,
 				29C3929F29F9809A0041F569 /* TEApiOrder.swift in Sources */,
+				291634A92A239D3F0016ED4F /* StarImageView.swift in Sources */,
 				43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */,
 				294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */,
 				29C392A729F9809A0041F569 /* TEApiService.swift in Sources */,
@@ -1833,6 +1892,7 @@
 				29C392E429F9809A0041F569 /* OnboardingHeaderView.swift in Sources */,
 				29328FA12A07D01F001CE5AA /* CatalogService.swift in Sources */,
 				29C3929A29F9809A0041F569 /* Extension+UIColor.swift in Sources */,
+				297CA51A2A20CDCB001CC5ED /* PresentationController.swift in Sources */,
 				29C392E029F9809A0041F569 /* OnboardingAssembly.swift in Sources */,
 				570ADBC92A0A300300665878 /* NewOrderInputModel.swift in Sources */,
 				29852A362A051CC8005DCF46 /* OrderCheckoutModuleType.swift in Sources */,

@@ -26,7 +26,7 @@ final class MyOrdersViewController: UIViewController, UICollectionViewDataSource
     private var items: [MyOrder] = []
     
     // MARK: Subviews
-    
+   
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var notificationView = NotificationView()
     private lazy var activityIndicatorView: ActivityIndicatorView = {
@@ -200,5 +200,17 @@ extension MyOrdersViewController: IMyOrdersViewController {
     func showErrorAlert() {
         let alert = UIAlertController.defaultErrorAlert()
         self.present(alert, animated: true)
+    }
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension MyOrdersViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

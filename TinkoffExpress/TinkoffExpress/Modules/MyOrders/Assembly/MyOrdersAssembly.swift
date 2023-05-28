@@ -16,7 +16,10 @@ final class MyOrdersAssembly: IMyOrdersAssembly {
         let network = TEApiService()
         let restService = RestMyOrdersService(networkService: network)
         let mockService = MockMyOrdersService()
-        let router = MyOrdersRouter(orderCheckoutAssembly: OrderCheckoutAssembly())
+        let router = MyOrdersRouter(
+            orderCheckoutAssembly: OrderCheckoutAssembly(),
+            ratingAssembly: RatingAssembly()
+        )
         let presenter = MyOrdersPresenter(
             router: router,
             service: restService,

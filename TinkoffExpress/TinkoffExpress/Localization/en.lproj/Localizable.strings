@@ -103,3 +103,7 @@
 
 // Mark: - NotificationView
 "notificationViewLabelText" = "Delivery canceled";
+
+// Mark: - RatingView
+"ratingViewQuestionLabel" = "Did you like your last order?";
+"ratingViewDoneLabel" = "Done";

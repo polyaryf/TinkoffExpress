@@ -9,6 +9,7 @@ import UIKit
 
 protocol IMyOrdersRouter {
     func openOrderCheckout(with model: TEApiOrder)
+    func openRating()
 }
 
 final class MyOrdersRouter: IMyOrdersRouter {
@@ -16,11 +17,16 @@ final class MyOrdersRouter: IMyOrdersRouter {
 
     weak var transitionHandler: UIViewController?
     private let orderCheckoutAssembly: IOrderCheckoutAssembly
+    private let ratingAssembly: IRatingAssembly
     
     // MARK: Init
     
-    init(orderCheckoutAssembly: IOrderCheckoutAssembly) {
+    init(
+        orderCheckoutAssembly: IOrderCheckoutAssembly,
+        ratingAssembly: IRatingAssembly
+    ) {
         self.orderCheckoutAssembly = orderCheckoutAssembly
+        self.ratingAssembly = ratingAssembly
     }
     
     // MARK: IMyOrdersRouter
@@ -31,5 +37,12 @@ final class MyOrdersRouter: IMyOrdersRouter {
         )
         orderCheckoutView.hidesBottomBarWhenPushed = true
         transitionHandler?.navigationController?.pushViewController(orderCheckoutView, animated: true)
+    }
+    
+    func openRating() {
+        let ratingView = ratingAssembly.createRatingView()
+        ratingView.modalPresentationStyle = .custom
+        ratingView.transitioningDelegate = transitionHandler.self as? any UIViewControllerTransitioningDelegate
+        transitionHandler?.present(ratingView, animated: true, completion: nil)
     }
 }

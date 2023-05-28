@@ -15,7 +15,10 @@ extension UIAlertController {
             preferredStyle: .alert
         )
         
-        let action = UIAlertAction(title: NSLocalizedString("defaultErrorAlertActionTitle", comment: ""), style: .default)
+        let action = UIAlertAction(
+            title: NSLocalizedString("defaultErrorAlertActionTitle", comment: ""),
+            style: .default
+        )
         alert.addAction(action)
         return alert
     }
