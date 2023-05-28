@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291634A92A239D3F0016ED4F /* StarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291634A82A239D3F0016ED4F /* StarImageView.swift */; };
 		29328F912A07B443001CE5AA /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F902A07B443001CE5AA /* CatalogViewController.swift */; };
 		29328F942A07B566001CE5AA /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */; };
 		29328F982A07B68A001CE5AA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29328F972A07B68A001CE5AA /* Product.swift */; };
@@ -18,7 +19,7 @@
 		294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */; };
 		29475B2D2A09796100001A2A /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29475B2C2A09796100001A2A /* CartProduct.swift */; };
 		297C871E2A07F5DD00DE110F /* CatalogProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C871D2A07F5DD00DE110F /* CatalogProduct.swift */; };
-		297CA5142A1FF9E6001CC5ED /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5132A1FF9E6001CC5ED /* StarRatingView.swift */; };
+		297CA5142A1FF9E6001CC5ED /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */; };
 		297CA5172A20B8B0001CC5ED /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5162A20B8B0001CC5ED /* RatingViewController.swift */; };
 		297CA51A2A20CDCB001CC5ED /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA5192A20CDCB001CC5ED /* PresentationController.swift */; };
 		297CA51C2A20CE61001CC5ED /* RatingAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297CA51B2A20CE61001CC5ED /* RatingAssembly.swift */; };
@@ -166,6 +167,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		291634A82A239D3F0016ED4F /* StarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarImageView.swift; sourceTree = "<group>"; };
 		29328F902A07B443001CE5AA /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		29328F932A07B566001CE5AA /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		29328F972A07B68A001CE5AA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 		2946204F2A0B81BD00200C31 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		29475B2C2A09796100001A2A /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		297C871D2A07F5DD00DE110F /* CatalogProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProduct.swift; sourceTree = "<group>"; };
-		297CA5132A1FF9E6001CC5ED /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
 		297CA5162A20B8B0001CC5ED /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		297CA5192A20CDCB001CC5ED /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		297CA51B2A20CE61001CC5ED /* RatingAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingAssembly.swift; sourceTree = "<group>"; };
@@ -433,12 +435,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		297CA5122A1FF9D2001CC5ED /* StarRatingView */ = {
+		297CA5122A1FF9D2001CC5ED /* StarsRatingView */ = {
 			isa = PBXGroup;
 			children = (
-				297CA5132A1FF9E6001CC5ED /* StarRatingView.swift */,
+				297CA5132A1FF9E6001CC5ED /* StarsRatingView.swift */,
+				291634A82A239D3F0016ED4F /* StarImageView.swift */,
 			);
-			path = StarRatingView;
+			path = StarsRatingView;
 			sourceTree = "<group>";
 		};
 		297CA5152A20B889001CC5ED /* Rating */ = {
@@ -657,7 +660,7 @@
 		29C391D329F980990041F569 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				297CA5122A1FF9D2001CC5ED /* StarRatingView */,
+				297CA5122A1FF9D2001CC5ED /* StarsRatingView */,
 				2989F93B2A0C1F0D000D1A41 /* NotificationView */,
 				2989F9382A0BBCE3000D1A41 /* NoInternetView */,
 				297FF5A02A00034C00636B01 /* TextField */,
@@ -1788,7 +1791,7 @@
 				43EF49122A029D2D002424CE /* MyOrdersPresenter.swift in Sources */,
 				29328F942A07B566001CE5AA /* CatalogTableViewCell.swift in Sources */,
 				29C392B729F9809A0041F569 /* AddressInputAssembly.swift in Sources */,
-				297CA5142A1FF9E6001CC5ED /* StarRatingView.swift in Sources */,
+				297CA5142A1FF9E6001CC5ED /* StarsRatingView.swift in Sources */,
 				29C392AD29F9809A0041F569 /* HttpClientError.swift in Sources */,
 				29C392CE29F9809A0041F569 /* OrderCheckout.swift in Sources */,
 				29C392D929F9809A0041F569 /* DeliveryAssembly.swift in Sources */,
@@ -1841,6 +1844,7 @@
 				29C3928829F9809A0041F569 /* HSBAColor+UIColor.swift in Sources */,
 				29C392EC29F9809A0041F569 /* AppDelegate.swift in Sources */,
 				29C3929F29F9809A0041F569 /* TEApiOrder.swift in Sources */,
+				291634A92A239D3F0016ED4F /* StarImageView.swift in Sources */,
 				43EF49232A029EC1002424CE /* TypeOfNavigation.swift in Sources */,
 				294620502A0B81BD00200C31 /* OnboardingRouter.swift in Sources */,
 				29C392A729F9809A0041F569 /* TEApiService.swift in Sources */,

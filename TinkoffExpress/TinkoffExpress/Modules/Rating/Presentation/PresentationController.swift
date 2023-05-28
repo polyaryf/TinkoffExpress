@@ -19,15 +19,12 @@ final class PresentationController: UIPresentationController {
         presentedViewController: UIViewController,
         presenting presentingViewController: UIViewController?
     ) {
-        let blurEffect = UIBlurEffect(style: .dark)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissController))
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.blurEffectView.isUserInteractionEnabled = true
-        self.blurEffectView.addGestureRecognizer(tapGestureRecognizer)
+        
+        setup()
     }
   
     override var frameOfPresentedViewInContainerView: CGRect {
@@ -76,13 +73,19 @@ final class PresentationController: UIPresentationController {
         presentedView?.frame = frameOfPresentedViewInContainerView
         blurEffectView.frame = containerView?.bounds ?? CGRect(origin: .zero, size: .zero)
     }
+    
+    private func setup() {
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.blurEffectView.isUserInteractionEnabled = true
+        self.blurEffectView.addGestureRecognizer(tapGestureRecognizer)
+    }
 
-    @objc func dismissController() {
+    @objc private func dismissController() {
         self.presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
 
-extension UIView {
+private extension UIView {
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: bounds,

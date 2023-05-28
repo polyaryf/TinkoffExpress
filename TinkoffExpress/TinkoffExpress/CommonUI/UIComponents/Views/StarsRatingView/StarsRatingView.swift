@@ -1,5 +1,5 @@
 //
-//  StarRatingView.swift
+//  StarsRatingView.swift
 //  TinkoffExpress
 //
 //  Created by Полина Рыфтина on 25.05.2023.
@@ -203,61 +203,6 @@ final class StarsRatingView: UIView {
         fifthStarView.snp.makeConstraints { 
             $0.width.equalTo(45)
             $0.height.equalTo(45)
-        }
-    }
-}
-
-class StarImageView: UIImageView {
-    var rate: Rate = .one
-
-    required convenience init(rate: Rate, image: UIImage) {
-        self.init(image: image)
-
-        self.rate = rate
-    }
-
-    override init(image: UIImage?) {
-        super.init(image: image)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-final class StarRatingView: UIImageView {
-    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer()
-        gesture.addTarget(self, action: #selector(imageTapped))
-        return gesture
-    }()
-    
-    // MARK: State
-    
-    private var isTapped = false
-    
-    // MARK: Init
-    
-    override init(image: UIImage?) {
-        super.init(image: image)
-        
-        self.isUserInteractionEnabled = true
-        self.contentMode = .scaleAspectFit
-        self.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc private func imageTapped() {
-        if isTapped {
-            image = UIImage(named: "star")
-            isTapped = false
-        } else {
-            isTapped = true
-            image = UIImage(named: "star.fill")
         }
     }
 }
